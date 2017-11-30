@@ -1,0 +1,20 @@
+<% c++ #include "app/views/layouts/dashboard.h" %>
+<% skin bootstrap_skin %>
+<% view layouts_dashboard uses app::views::layouts::Dashboard extends layouts_master %>
+<% template dashboard_js() %><% end %>
+<% template dashboard_css() %><% end %>
+<% template css() %>
+  <link rel="stylesheet" href="<%= asset("css/dashboard.bundle.css") %>" />
+  <% include dashboard_css() %>
+<% end %>
+<% template js() %>
+  <script type="text/javascript" src="<%= asset("js/dashboard.bundle.js") %>"></script>
+  <% include dashboard_js() %>
+<% end %>
+<% template layouts_dashboard_content() %><% end %>
+<% template master_content() %>
+
+  <% include layouts_dashboard_content() %>
+<% end template %>
+<% end view %>
+<% end skin %>

@@ -1,0 +1,25 @@
+<% c++ #include "app/views/layouts/home.h" %>
+<% skin bootstrap_skin %>
+<% view layouts_home uses app::views::layouts::Home extends layouts_master %>
+<% template layouts_home_js() %><% end %>
+<% template layouts_home_css() %><% end %>
+<% template css() %>
+  <link rel="stylesheet" href="<%= asset("css/app.bundle.css") %>" />
+  <% include layouts_home_css() %>
+<% end %>
+<% template js() %>
+  <script type="text/javascript" src="<%= asset("js/app.bundle.js") %>"></script>
+  <% include layouts_home_js() %>
+<% end %>
+<% template layouts_home_content() %><% end %>
+<% template master_content() %>
+  <nav class="navbar navbar-inverse bg-inverse">
+    <div class="container text-right">
+      <a class="btn btn-sm align-middle btn-primary" href="<% url "login" %>">Đăng nhập</a>
+      <a class="btn btn-sm align-middle btn-success" href="<% url "register" %>">Đăng kí</a>
+    </div>
+  </nav>
+  <% include layouts_home_content() %>
+<% end template %>
+<% end view %>
+<% end skin %>

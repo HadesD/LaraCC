@@ -1,0 +1,16 @@
+language: cpp
+
+before_install:
+  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+  - ls -ls ../usr
+  - sudo cp -f -R --verbose ../usr/* /usr/
+  - ls -ls /usr/include
+  - ls -ls /usr/local/bin
+  - ls -ls /usr/local/lib
+  - sudo apt install -y build-essential libpcre3-dev libicu-dev libgcrypt11-dev zlib1g-dev cmake
+
+install:
+  - cd build && cmake .. && make && cd ..
+
+script:
+  - ./WebApp -c config.json
