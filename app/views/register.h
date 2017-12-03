@@ -1,10 +1,12 @@
-#ifndef _APP_VIEWS_REGISTER_H_
-#define _APP_VIEWS_REGISTER_H_
+#ifndef __APP_VIEWS_REGISTER_HPP__
+#define __APP_VIEWS_REGISTER_HPP__
+
 #include <cppcms/form.h>
 
 #include "app/views/layouts/home.h"
 
 namespace app { namespace views {
+
   struct Register : public app::views::layouts::Home
   {
     struct RegisterForm : public cppcms::form
@@ -19,6 +21,7 @@ namespace app { namespace views {
 
     RegisterForm register_form;
   };
+
 } }
 
 #endif

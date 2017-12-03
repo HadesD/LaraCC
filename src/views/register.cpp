@@ -1,6 +1,7 @@
 #include "app/views/register.h"
 
 namespace app { namespace views {
+
   Register::RegisterForm::RegisterForm()
   {
     username.message(_("Username"));
@@ -23,4 +24,5 @@ namespace app { namespace views {
     add(confirm_password);
     add(submit);
   }
+
 } }

@@ -5,7 +5,7 @@
 # include <unistd.h>
 #endif
 
-#include "../app/core/Kernel.h"
+#include "app/core/Kernel.hpp"
 
 int main(int argc, char **argv)
 {
@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     cppcms::service srv(argc, argv);
     srv.applications_pool().mount(
       cppcms::applications_factory<app::core::Kernel>()
-    );
+      );
 
     std::cout << "*Server running at " << srv.settings().get<std::string>("service.ip") << ":" << srv.settings().get<int>("service.port");
 #ifdef linux

@@ -1,11 +1,14 @@
-#include "app/core/View.h"
+#include "app/core/View.hpp"
 
 namespace app { namespace core {
+
   View::View()
   {
   }
-  std::string View::asset(std::string path)
+
+  std::string View::asset(const std::string urlPath)
   {
-    return "/media/" + path;
+    return "/media/" + urlPath;
   }
+
 } }

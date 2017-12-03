@@ -1,11 +1,12 @@
 #include <cppcms/http_request.h>
 #include <iostream>
 
-#include "app/core/Kernel.h"
+#include "app/core/Kernel.hpp"
 #include "app/routes/Web.hpp"
 #include "app/routes/API.hpp"
 
 namespace app { namespace core {
+
   Kernel::Kernel(cppcms::service &s) : cppcms::application(s)
   {
     attach(new routes::API(s),
@@ -22,11 +23,11 @@ namespace app { namespace core {
       1);
   }
 
-  void Kernel::main(std::string path)
+  void Kernel::main(const std::string urlPath)
   {
     try
     {
-      cppcms::application::main(path);
+      cppcms::application::main(urlPath);
     }
     catch(std::exception const &e)
     {

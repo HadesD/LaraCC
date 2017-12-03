@@ -1,8 +1,10 @@
 #ifndef APP_HTTP_CONTROLLERS_HOME_CONTROLLER_H_
 #define APP_HTTP_CONTROLLERS_HOME_CONTROLLER_H_
-#include "app/core/Controller.h"
+
+#include "app/core/Controller.hpp"
 
 namespace app { namespace http { namespace controllers {
+
   class HomeController : public app::core::Controller
   {
     public:
@@ -10,6 +12,7 @@ namespace app { namespace http { namespace controllers {
 
     void index();
   };
+
 } } }
 
 #endif

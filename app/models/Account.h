@@ -1,10 +1,12 @@
-#ifndef _APP_MODELS_ACCOUNT_H_
-#define _APP_MODELS_ACCOUNT_H_
+#ifndef __APP_MODELS_ACCOUNT_HPP_
+#define __APP_MODELS_ACCOUNT_HPP_
+
 #include <string>
 
-#include "app/core/Model.h"
+#include "app/core/Model.hpp"
 
 namespace app { namespace models {
+
   struct Account : public app::core::Model
   {
     unsigned int id;
@@ -12,6 +14,7 @@ namespace app { namespace models {
     std::string email;
     std::string password;
   };
+
 } }
 
 #endif

@@ -1,8 +1,10 @@
-#ifndef _APP_HTTP_CONTROLLERS_AUTH_LOGIN_CONTROLLER_H_
-#define _APP_HTTP_CONTROLLERS_AUTH_LOGIN_CONTROLLER_H_
-#include "app/core/Controller.h"
+#ifndef __APP_HTTP_CONTROLLERS_AUTH_LOGIN_CONTROLLER_HPP_
+#define __APP_HTTP_CONTROLLERS_AUTH_LOGIN_CONTROLLER_HPP_
+
+#include "app/core/Controller.hpp"
 
 namespace app { namespace http { namespace controllers { namespace auth {
+
   class LoginController : public app::core::Controller
   {
     public:
@@ -10,6 +12,7 @@ namespace app { namespace http { namespace controllers { namespace auth {
 
       void index();
   };
+
 } } } }
 
 #endif
