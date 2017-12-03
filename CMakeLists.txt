@@ -91,6 +91,7 @@ set(APP_SRC
   src/core/Controller.cpp
   src/core/Model.cpp
   src/core/View.cpp
+  src/database/CppDbConnector.cpp
 
   ###############################################
   # Application

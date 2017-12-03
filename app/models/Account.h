@@ -1,5 +1,5 @@
-#ifndef __APP_MODELS_ACCOUNT_HPP_
-#define __APP_MODELS_ACCOUNT_HPP_
+#ifndef __APP_MODELS_ACCOUNT_HPP__
+#define __APP_MODELS_ACCOUNT_HPP__
 
 #include <string>
 
