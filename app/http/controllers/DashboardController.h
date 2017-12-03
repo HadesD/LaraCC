@@ -12,7 +12,7 @@ namespace app { namespace http { namespace controllers {
 
     public:
       void index();
-      void do_login();
+      void login();
   };
 
 } } }

@@ -3,9 +3,10 @@
 #include "app/http/controllers/HomeController.h"
 #include "app/http/controllers/DashboardController.h"
 #include "app/http/controllers/auth/LoginController.h"
-#include "app/http/controllers/auth/RegisterController.h"
+#include "app/http/controllers/auth/SignUpController.h"
 
 namespace app { namespace routes {
+
   Web::Web(cppcms::service &s) : app::core::ServiceProvider(s)
   {
     attach(new app::http::controllers::HomeController(s),
@@ -14,22 +15,23 @@ namespace app { namespace routes {
       "/",
       1);
 
+    attach(new app::http::controllers::DashboardController(s),
+      "dashboard",
+      "/dashboard{1}",
+      "/dashboard((/?.*))",
+      1);
+
     attach(new app::http::controllers::auth::LoginController(s),
       "login",
       "{1}",
       "/login",
       1);
 
-    attach(new app::http::controllers::auth::RegisterController(s),
-      "register",
+    attach(new app::http::controllers::auth::SignUpController(s),
+      "sign_up",
       "{1}",
-      "/register",
-      1);
-
-    attach(new app::http::controllers::DashboardController(s),
-      "dashboard",
-      "/dashboard{1}",
-      "/dashboard((/?.*))",
+      "/sign-up",
       1);
   }
+
 } }

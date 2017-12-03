@@ -7,22 +7,22 @@ namespace app { namespace views {
     username.message(_("Username"));
     username.name("username");
     username.attributes_string("class=\"form-control\"");
+    this->add(username);
 
-    password.message("Password");
+    password.message(_("Password"));
     password.name("password");
     password.attributes_string("class=\"form-control\"");
+    this->add(password);
 
-    confirm_password.message("Confirm password");
+    confirm_password.message(_("Confirm password"));
     password.name("confirm_password");
     confirm_password.attributes_string("class=\"form-control\"");
+    this->add(confirm_password);
 
-    submit.value("Register");
+    submit.value(_("Register"));
     submit.attributes_string("class=\"btn btn-primary\"");
-
-    add(username);
-    add(password);
-    add(confirm_password);
-    add(submit);
+    this->add(submit);
   }
 
 } }
+

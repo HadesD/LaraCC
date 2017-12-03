@@ -1,14 +1,14 @@
 #ifndef _APP_CORE_MODEL_HPP_
 #define _APP_CORE_MODEL_HPP_
 
-#include <cppcms/application.h>
+#include <string>
 
 namespace app { namespace core {
 
-  class Model : public cppcms::application
+  class Model
   {
     public:
-      Model(cppcms::service &s);
+      Model();
 
     public:
       std::string web;

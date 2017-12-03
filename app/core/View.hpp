@@ -1,7 +1,6 @@
 #ifndef __APP_CORE_VIEW_HPP__
 #define __APP_CORE_VIEW_HPP__
 
-#include <cppcms/application.h>
 #include <cppcms/view.h>
 #include <string>
 
@@ -13,7 +12,7 @@ namespace app { namespace core {
   {
     View();
 
-    std::string asset(const std::string urlPath);
+    std::string asset(const std::string& urlPath);
   };
 
 } }

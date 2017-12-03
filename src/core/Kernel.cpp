@@ -7,9 +7,10 @@
 
 namespace app { namespace core {
 
-  Kernel::Kernel(cppcms::service &s) : cppcms::application(s)
+  Kernel::Kernel(cppcms::service& s) : cppcms::application(s)
   {
-    attach(new routes::API(s),
+    auto r = new routes::API(s);
+    attach(r,
       "api",
       "/api{1}",
       "/api((/?.*))",
@@ -29,10 +30,15 @@ namespace app { namespace core {
     {
       cppcms::application::main(urlPath);
     }
-    catch(std::exception const &e)
+    catch(const std::exception& e)
     {
-      std::cerr << "Failed: " << e.what() << std::endl;
+      std::cerr << "Failed: " << std::endl;
       std::cerr << booster::trace(e) << std::endl;
     }
+    catch(...)
+    {
+      std::cerr << "Error has exceptioned!" << std::endl;
+    }
   }
+
 } }

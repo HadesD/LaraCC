@@ -5,10 +5,10 @@
 
 namespace app { namespace http { namespace controllers { namespace auth {
 
-  class RegisterController : public app::core::Controller
+  class SignUpController : public app::core::Controller
   {
     public:
-      RegisterController(cppcms::service &s);
+      SignUpController(cppcms::service &s);
 
       void index();
   };

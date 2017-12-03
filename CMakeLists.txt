@@ -70,7 +70,7 @@ set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/home.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/dashboard.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/register.tmpl
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.tmpl
   )
 
@@ -104,7 +104,7 @@ set(APP_SRC
   src/http/controllers/HomeController.cpp
   src/http/controllers/DashboardController.cpp
   src/http/controllers/auth/LoginController.cpp
-  src/http/controllers/auth/RegisterController.cpp
+  src/http/controllers/auth/SignUpController.cpp
 
   # Views
   src/views/register.cpp
@@ -115,6 +115,7 @@ set(APP_SRC
 # Setup various build flags for different supported compilers and systems
 #
 #############################################################################
+set(CXX_FLAGS "${CXX_FLAGS} -std=c++14")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_FLAGS}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_FLAGS}")
