@@ -9,28 +9,22 @@
 
 int main(int argc, char *argv[])
 {
-  try
-  {
+  __APP_TRY_CATCH_BEGIN__
+
     cppcms::service srv(argc, argv);
-    srv.applications_pool().mount(
-      cppcms::applications_factory<app::core::Kernel>()
-      );
+  srv.applications_pool().mount(
+    cppcms::applications_factory<app::core::Kernel>()
+    );
 
-    std::cout << "*Server running at " << srv.settings().get<std::string>("service.ip") << ":" << srv.settings().get<int>("service.port");
+  std::cout << "*Server running at " << srv.settings().get<std::string>("service.ip") << ":" << srv.settings().get<int>("service.port");
 #ifdef linux
-    std::cout << " PID: " << getpid();
+  std::cout << " PID: " << getpid();
 #endif
-    std::cout << std::endl;
+  std::cout << std::endl;
 
-    srv.run();
-  }
-  catch(std::exception const &e)
-  {
-    std::cerr << "Failed: " << e.what() << std::endl;
-    std::cerr << booster::trace(e) << std::endl;
+  srv.run();
 
-    return 1;
-  }
+  __APP_TRY_CATCH_END__
 
-  return 0;
+    return 0;
 }

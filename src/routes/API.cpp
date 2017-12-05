@@ -2,7 +2,7 @@
 
 namespace app { namespace routes {
 
-  API::API(cppcms::service &s) : cppcms::application(s)
+  API::API(cppcms::service &s) : app::core::ServiceProvider(s)
   {
   }
 

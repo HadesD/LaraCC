@@ -1,11 +1,11 @@
 #ifndef __APP_ROUTES_API_HPP__
 #define __APP_ROUTES_API_HPP__
 
-#include <cppcms/application.h>
+#include "../core/ServiceProvider.hpp"
 
 namespace app { namespace routes {
 
-  class API : public cppcms::application
+  class API : public app::core::ServiceProvider
   {
     public:
       API(cppcms::service &s);

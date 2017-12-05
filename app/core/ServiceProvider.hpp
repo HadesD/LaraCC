@@ -3,15 +3,12 @@
 
 #include <cppcms/application.h>
 
-#include "Model.hpp"
+#include "../config/Constants.hpp"
 
 namespace app { namespace core {
 
   class ServiceProvider : public cppcms::application
   {
-    public:
-      Model model;
-
     public:
       ServiceProvider(cppcms::service &s);
   };

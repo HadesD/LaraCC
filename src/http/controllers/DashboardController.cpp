@@ -1,8 +1,9 @@
-#include <cppcms/url_mapper.h>
-#include <cppcms/url_dispatcher.h>
-#include <cppdb/frontend.h>
-
 #include "app/http/controllers/DashboardController.h"
+
+#include <cppcms/url_dispatcher.h>
+#include <cppcms/url_mapper.h>
+// #include <cppdb/frontend.h>
+
 #include "app/views/dashboard.h"
 #include "app/models/Account.h"
 
@@ -10,11 +11,15 @@ namespace app { namespace http { namespace controllers {
 
   DashboardController::DashboardController(cppcms::service &s) : Controller(s)
   {
+    __APP_TRY_CATCH_BEGIN__
+
     dispatcher().assign("/login(/)?", &DashboardController::login, this);
     mapper().assign("login","/login");
 
     dispatcher().assign("(/)?", &DashboardController::index, this);
     mapper().assign("dashboard", "");
+
+    __APP_TRY_CATCH_END__
   }
 
   void DashboardController::index()

@@ -1,7 +1,9 @@
-#include <cppcms/http_request.h>
+#include "app/core/Kernel.hpp"
+
 #include <iostream>
 
-#include "app/core/Kernel.hpp"
+#include <cppcms/http_request.h>
+
 #include "app/routes/Web.hpp"
 #include "app/routes/API.hpp"
 
@@ -9,36 +11,35 @@ namespace app { namespace core {
 
   Kernel::Kernel(cppcms::service& s) : cppcms::application(s)
   {
-    auto r = new routes::API(s);
-    attach(r,
-      "api",
-      "/api{1}",
-      "/api((/?.*))",
-      1);
+    __APP_TRY_CATCH_BEGIN__
+
+      attach(
+        new routes::API(s),
+        "api",
+        "/api{1}",
+        "/api((/?.*))",
+        1
+        );
 
     // Web Route must be set at last of Router Lists.
-    attach(new routes::Web(s),
+    attach(
+      new routes::Web(s),
       "web",
       "{1}",
       "((/?.*))",
-      1);
+      1
+      );
+
+    __APP_TRY_CATCH_END__
   }
 
   void Kernel::main(const std::string urlPath)
   {
-    try
-    {
+    __APP_TRY_CATCH_BEGIN__
+
       cppcms::application::main(urlPath);
-    }
-    catch(const std::exception& e)
-    {
-      std::cerr << "Failed: " << std::endl;
-      std::cerr << booster::trace(e) << std::endl;
-    }
-    catch(...)
-    {
-      std::cerr << "Error has exceptioned!" << std::endl;
-    }
+
+    __APP_TRY_CATCH_END__
   }
 
 } }

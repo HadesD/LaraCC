@@ -6,6 +6,7 @@
 #include "app/views/layouts/home.h"
 
 namespace app { namespace http { namespace controllers {
+
   HomeController::HomeController(cppcms::service &s) :
     app::core::Controller(s)
   {
@@ -16,4 +17,5 @@ namespace app { namespace http { namespace controllers {
   {
     response().set_redirect_header(url("dashboard"), 301);
   }
+
 } } }
