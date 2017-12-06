@@ -16,21 +16,23 @@ namespace app { namespace http { namespace controllers {
     dispatcher().assign("/login", &DashboardController::login, this);
     mapper().assign("login","/login");
 
-    dispatcher().assign(".*", &DashboardController::index, this);
-    mapper().assign("dashboar", "/dashboar");
+    dispatcher().assign("", &DashboardController::index, this);
+    mapper().assign("root", "");
+
+    mapper().root("/root");
 
     __APP_TRY_CATCH_END__
   }
 
   void DashboardController::index()
   {
-    // response().set_redirect_header(url("login"), 301);
+    response().set_redirect_header(url("login"), 301);
   }
 
   void DashboardController::login()
   {
     app::views::dashboard::Login v;
-    v.title = _("Dashboard :: Login");
+    v.title = _("Root :: Login");
 
     render("dashboard_login", v);
   }

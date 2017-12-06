@@ -8,11 +8,13 @@
 
 namespace app { namespace core {
 
-  struct View : public cppcms::base_content
+  class View : public cppcms::base_content
   {
-    View();
+    public:
+      View();
 
-    std::string asset(const std::string& urlPath);
+    public:
+      std::string asset(const std::string& urlPath);
   };
 
 } }

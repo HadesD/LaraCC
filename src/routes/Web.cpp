@@ -21,9 +21,9 @@ namespace app { namespace routes {
 
     attach(
       new app::http::controllers::DashboardController(s),
-      "dashboar",
-      "/dashboar{1}",
-      "/dashboar((/?.*))",
+      "root",
+      "/root{1}",
+      "/root((/?.*))",
       1
       );
 
