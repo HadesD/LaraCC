@@ -72,6 +72,7 @@ set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.tmpl
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/login.tmpl
   )
 
 #############################################################################

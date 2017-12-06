@@ -1,10 +1,13 @@
 #ifndef _APP_CORE_MODEL_HPP_
 #define _APP_CORE_MODEL_HPP_
 
+#define APP_MODEL(snake_name,CamelName)
+
 #include <string>
 
 #include "../database/ConnectorInterface.hpp"
 #include "../database/CppDbConnector.hpp"
+
 
 namespace app { namespace core {
 
@@ -12,6 +15,7 @@ namespace app { namespace core {
   {
     public:
       Model();
+      virtual ~Model();
 
     public:
       void setConnector(const database::ConnectorInterface& connector);

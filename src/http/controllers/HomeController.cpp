@@ -1,8 +1,9 @@
+#include "app/http/controllers/HomeController.h"
+
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
-#include "app/http/controllers/HomeController.h"
 #include "app/views/layouts/home.h"
 
 namespace app { namespace http { namespace controllers {
@@ -15,7 +16,7 @@ namespace app { namespace http { namespace controllers {
 
   void HomeController::index()
   {
-    response().set_redirect_header(url("dashboard"), 301);
+    // response().set_redirect_header(url("dashboard"), 301);
   }
 
 } } }

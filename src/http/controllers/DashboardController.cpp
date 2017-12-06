@@ -2,10 +2,10 @@
 
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/url_mapper.h>
-// #include <cppdb/frontend.h>
 
 #include "app/views/dashboard.h"
 #include "app/models/Account.h"
+#include "app/views/dashboard/login.hpp"
 
 namespace app { namespace http { namespace controllers {
 
@@ -13,22 +13,26 @@ namespace app { namespace http { namespace controllers {
   {
     __APP_TRY_CATCH_BEGIN__
 
-    dispatcher().assign("/login(/)?", &DashboardController::login, this);
+    dispatcher().assign("/login", &DashboardController::login, this);
     mapper().assign("login","/login");
 
-    dispatcher().assign("(/)?", &DashboardController::index, this);
-    mapper().assign("dashboard", "");
+    dispatcher().assign(".*", &DashboardController::index, this);
+    mapper().assign("dashboar", "/dashboar");
 
     __APP_TRY_CATCH_END__
   }
 
   void DashboardController::index()
   {
-    response().set_redirect_header(url("login"), 301);
+    // response().set_redirect_header(url("login"), 301);
   }
 
   void DashboardController::login()
   {
+    app::views::dashboard::Login v;
+    v.title = _("Dashboard :: Login");
+
+    render("dashboard_login", v);
   }
 
 } } }

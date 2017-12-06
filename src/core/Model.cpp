@@ -9,6 +9,10 @@ namespace app { namespace core {
   {
   }
 
+  Model::~Model()
+  {
+  }
+
   database::ConnectorInterface& Model::getConnector() const
   {
     return m_connector;

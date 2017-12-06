@@ -15,15 +15,15 @@ namespace app { namespace routes {
         new app::http::controllers::HomeController(s),
         "home",
         "{1}",
-        "/[^']{1,}?",
+        "/",
         1
         );
 
     attach(
       new app::http::controllers::DashboardController(s),
-      "dashboard",
-      "/dashboard{1}",
-      "/dashboard((/?.*))",
+      "dashboar",
+      "/dashboar{1}",
+      "/dashboar((/?.*))",
       1
       );
 
@@ -39,7 +39,7 @@ namespace app { namespace routes {
       new app::http::controllers::auth::SignUpController(s),
       "sign_up",
       "{1}",
-      "/sign-up",
+      "/signup",
       1
       );
 
