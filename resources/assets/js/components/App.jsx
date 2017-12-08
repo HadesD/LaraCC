@@ -1,5 +1,15 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom'
+
+import {
+  DashboardLogin as Login
+} from './dashboard/Login.jsx'
 
 class App extends React.Component
 {
@@ -11,12 +21,25 @@ class App extends React.Component
   render()
   {
     return (
-      <div>
+      <Router>
+        <div>
+          <Link to="/root/login">About Us (static)</Link>
+          <Link to="/login">About Us (static)</Link>
 
-      </div>
+          <Switch>
+            <Route path="/root/login" component={ DashboardLogin }/>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
+
+const DashboardLogin = () => (
+  <div>
+
+  </div>
+);
 
 // ======================================
 
@@ -24,3 +47,4 @@ ReactDom.render(
   <App />,
   document.getElementById('app')
 );
+
