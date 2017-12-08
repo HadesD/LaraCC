@@ -1,7 +1,11 @@
 <% c++ #include "app/views/dashboard/login.hpp" %>
 <% skin bootstrap_skin %>
-<% view dashboard_login uses app::views::dashboard::Login extends dashboard %>
-<% template dashboard_content() %>
+<% view dashboard_login uses app::views::dashboard::Login extends layouts_master %>
+<% template css() %>
+<% end %>
+<% template master_content() %>
+<% end %>
+<% template js() %>
 <% end %>
 <% end view %>
 <% end skin %>

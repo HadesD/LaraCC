@@ -3,6 +3,8 @@
 #include <cppcms/json.h>
 #include <fstream>
 
+#include "app/helpers/json.hpp"
+
 namespace app { namespace core {
 
   View::View()
@@ -12,7 +14,6 @@ namespace app { namespace core {
   std::string View::asset(const std::string& urlPath)
   {
     std::string fPath = urlPath;
-    std::cout << fPath << std::endl;
 
     std::string fsetting = this->app().settings()
       .get<std::string>("file_server.document_root")
@@ -20,11 +21,11 @@ namespace app { namespace core {
     std::ifstream f(fsetting);
     if (f.is_open())
     {
-      cppcms::json::value assets;
-      assets.load(f, true);
-      if (!assets[urlPath].str().empty())
+      nlohmann::json jP;
+      f >> jP;
+      if (jP[urlPath].is_string())
       {
-        fPath = assets.at(urlPath).str();
+        fPath = jP[urlPath];
       }
     }
 

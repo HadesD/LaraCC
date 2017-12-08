@@ -24,6 +24,8 @@ find_program(EXE_TMPL_CC
 
 set(LIST_FILES_COPY_AFTER_BUILD
   ${CMAKE_CURRENT_SOURCE_DIR}/config.json
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1.1.1
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.1.1.1
   )
 set(LIST_FOLDERS_COPY_AFTER_BUILD
   ${CMAKE_CURRENT_SOURCE_DIR}/public
@@ -163,6 +165,11 @@ file(GLOB HAVE_TO_COPY_FILES
 
 if (UNIX)
   # foreach( file_i ${LIST_FOLDERS_COPY_AFTER_BUILD})
+    add_custom_command(
+      TARGET ${APP_NAME} POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E remove_directory
+      $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
+      )
     add_custom_command(
       TARGET ${APP_NAME} POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory

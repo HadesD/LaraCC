@@ -1,6 +1,6 @@
-LD_LIB_PATH=${LD_LIBRARY_PATH}:./Dependencies/cppcms/prebuilt/linux/x64:./Dependencies/cppcms/prebuilt/linux/x64/booster
+LD_LIB_PATH=${LD_LIBRARY_PATH}:./Build/bin
 
-.PHONY: all
+.PHONY: build
 
 default: build
 
