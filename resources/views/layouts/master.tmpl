@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="<%= asset("css/app.base.css") %>" />
 </head>
 <body>
-  <% include master_content() %>
+  <div id="app">
+    <noscript><% include master_content() %></noscript>
+  </div>
   <% include js() %>
   <script type="text/javascript" src="<%= asset("js/app.js") %>"></script>
 </body>

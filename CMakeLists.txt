@@ -133,9 +133,9 @@ link_directories(${LINK_DIR})
 # Build project
 #
 #############################################################################
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Bin/$<CONFIG>)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Bin/$<CONFIG>)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Bin/$<CONFIG>)
 
 # Views build
 set(VIEW_SKIN bootstrap_skin)
@@ -165,11 +165,11 @@ file(GLOB HAVE_TO_COPY_FILES
 
 if (UNIX)
   # foreach( file_i ${LIST_FOLDERS_COPY_AFTER_BUILD})
-    add_custom_command(
-      TARGET ${APP_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E remove_directory
-      $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
-      )
+    # add_custom_command(
+    #   TARGET ${APP_NAME} POST_BUILD
+    #   COMMAND ${CMAKE_COMMAND} -E remove_directory
+    #   $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
+    #   )
     add_custom_command(
       TARGET ${APP_NAME} POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory

@@ -1,6 +1,6 @@
 LD_LIB_PATH=${LD_LIBRARY_PATH}:./Build/bin
 
-.PHONY: build
+.PHONY: build npm
 
 default: build
 
@@ -9,5 +9,8 @@ build:
 	cmake .. && \
 	make && \
 	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
-	cd bin && \
+	cd Bin && \
 	./WebApp -c config.json
+
+npm:
+	npm run dev
