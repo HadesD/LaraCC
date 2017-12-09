@@ -7,7 +7,6 @@ import {
 
 const terminalStyle = {
   backgroundColor: '#000',
-
 };
 
 export class Login extends React.Component

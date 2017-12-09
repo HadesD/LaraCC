@@ -24,8 +24,8 @@ class App extends React.Component
     return (
       <Router>
         <Switch>
-          <Route exact path="/root" component={DashboardIndex}/>
-          <Route exact path="/root/login" component={DashboardLogin}/>
+          <Route exact path="/root" component={Index}/>
+          <Route exact path="/root/login" component={Login}/>
         </Switch>
       </Router>
     );
