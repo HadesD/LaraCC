@@ -72,9 +72,10 @@ set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/home.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/dashboard.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.tmpl
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/login.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/login.tmpl
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home.tmpl
   )
 
 #############################################################################

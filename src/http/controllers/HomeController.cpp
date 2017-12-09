@@ -4,7 +4,7 @@
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
-#include "app/views/layouts/home.h"
+#include "app/views/home.hpp"
 
 namespace app { namespace http { namespace controllers {
 
@@ -16,7 +16,10 @@ namespace app { namespace http { namespace controllers {
 
   void HomeController::index()
   {
-    // response().set_redirect_header(url("dashboard"), 301);
+    app::views::Home v;
+    v.title = _("Home");
+
+    render("home", v);
   }
 
 } } }

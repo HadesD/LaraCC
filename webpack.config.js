@@ -18,13 +18,21 @@ module.exports = {
       './js/dashboard.js',
 
       // JSX
-      './js/components/dashboard/Login.jsx',
-      './js/components/App.jsx',
+      './js/components/DashboardApp.jsx',
     ],
-    'css/app.base': [
-      './css/app.base.css',
+    'js/home': [
+      './js/home.js',
+
+      // JSX
+      './js/components/HomeApp.jsx',
+    ],
+    'css/app': [
+      './css/app.css',
     ],
     'css/dashboard': [
+      './css/dashboard.css',
+    ],
+    'css/home': [
       './css/dashboard.css',
     ],
   },
