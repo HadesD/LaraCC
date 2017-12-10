@@ -1,29 +1,16 @@
-import { h, app } from 'hyperapp'
-import { router, Link } from "@hyperapp/router"
+import { h, app } from 'hyperapp';
+import { router, Link } from '@hyperapp/router';
+
+import {
+  Index as HomeIndex,
+  Login
+} from './home';
 
 app(
   {
     view: [
-      [
-        "/",
-        (state, actions) => {
-          return (
-            <Link to="/test" go={actions.router.go}>
-              Test
-            </Link>
-          )
-        }
-      ],
-      [
-        "/test",
-        (state, actions) => {
-          return (
-            <Link to="/" go={actions.router.go}>
-              Back
-            </Link>
-          )
-        }
-      ]
+      ['/', () => <HomeIndex />],
+      ['/login', () => <Login />],
     ],
     mixins: [router()],
     root: document.getElementById('app')

@@ -1,14 +1,8 @@
-import React from 'react';
+import { h } from 'hyperapp';
 
-export class Index extends React.Component
-{
-  render()
-  {
-    return (
-      <div>
-
-      </div>
-    );
-  }
+export const Index = (props, children) => {
+  return (
+    <button>sfsdfsfd</button>
+  );
 }
 

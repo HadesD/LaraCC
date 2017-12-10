@@ -1,41 +1,19 @@
-/*import React from 'react';
-import ReactDom from 'react-dom';
-import {
-  BrowserRouter as Router
-  , Route
-  , Link
-  , Switch
-} from 'react-router-dom';
+import { h, app } from 'hyperapp';
+import { router, Link } from '@hyperapp/router';
 
 import {
+  Index as DashboardIndex,
   Login
-  , Index
 } from './dashboard';
 
-class App extends React.Component
-{
-  constructor(props)
+app(
   {
-    super(props);
+    view: [
+      ['/root', () => <DashboardIndex />],
+      ['/root/login', () => <Login />],
+    ],
+    mixins: [router()],
+    root: document.getElementById('app')
   }
-
-  render()
-  {
-    return (
-      <Router>
-        <Switch>
-          <Route exact path="/root" component={Index}/>
-          <Route exact path="/root/login" component={Login}/>
-        </Switch>
-      </Router>
-    );
-  }
-}
-
-// ======================================
-
-ReactDom.render(
-  <App />
-  , document.getElementById('app')
 );
-*/
+
