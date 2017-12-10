@@ -31,13 +31,13 @@ module.exports = function (env) {
         './js/dashboard.js',
 
         // JSX
-        './js/components/DashboardApp.jsx'
+        './js/components/DashboardApp.js'
       ],
       'home': [
         './js/home.js',
 
         // JSX
-        './js/components/HomeApp.jsx'
+        './js/components/HomeApp.js'
       ],
     },
     output: {

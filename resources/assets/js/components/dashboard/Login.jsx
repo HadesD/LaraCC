@@ -9,11 +9,14 @@ import {
 import styles from '../../../css/dashboard/login.css';
 
 export const Login = (state, actions) => {
+  let mainClick = (e, s) => {
+    console.log(e);
+  };
   return (
-    <main className={styles.loginMain} onClick={() => {console.log(11)}}>
+    <main class={styles.loginMain} onclick={mainClick}>
       <div className="cmd">
         <span>#&nbsp;</span>
-        <textarea className={styles.cmdInput}></textarea>
+        <textarea class={styles.cmdInput}></textarea>
       </div>
       <Link to="/root" go={actions.router.go}>Root</Link>
     </main>
