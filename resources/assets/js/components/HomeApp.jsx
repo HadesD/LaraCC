@@ -9,8 +9,8 @@ import {
 app(
   {
     view: [
-      ['/', () => <HomeIndex />],
-      ['/login', () => <Login />],
+      ['/', HomeIndex],
+      ['/login', Login],
     ],
     mixins: [router()],
     root: document.getElementById('app')
