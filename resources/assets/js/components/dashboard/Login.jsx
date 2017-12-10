@@ -1,8 +1,19 @@
-import { h } from 'hyperapp';
+import {
+  h
+} from 'hyperapp';
+import {
+  router,
+  Link
+} from '@hyperapp/router';
 
-export const Login = () => {
+import styles from '../../../css/dashboard/login.css';
+
+export const Login = (state, actions) => {
   return (
-    <button>Login :: Root</button>
+    <main className="login-main">
+      <input type="text" className="cmd-input" />
+      <Link to="/root" go={actions.router.go}>Root</Link>
+    </main>
   );
-}
+};
 

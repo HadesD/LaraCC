@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const combineLoaders = require('webpack-combine-loaders')
 
 const plugins = [
   new ExtractTextPlugin({
@@ -50,7 +51,7 @@ module.exports = function (env) {
     },
 
     module: {
-      rules: [
+      loaders: [
         {
           test: /\.jsx?$/,
           loader: 'babel-loader',
@@ -65,10 +66,9 @@ module.exports = function (env) {
         },
         {
           test: /\.css$/,
-          use: ExtractTextPlugin.extract({
-            use: 'css-loader?importLoaders=1',
-          }),
-        }],
+          loader: 'style-loader!css-loader'
+        }
+      ],
     },
     plugins,
     watch: true,
