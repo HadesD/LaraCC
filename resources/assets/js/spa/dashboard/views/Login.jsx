@@ -15,6 +15,7 @@ const HistoryCmd = ({state, actions}) => {
         return (
           <div>
             {e.input}
+            {e.result}
           </div>
         );
       })}
@@ -26,7 +27,7 @@ const CmdInputBox = ({text, actions}) => {
   return (
     <div className="cmd">
       <span>#&nbsp;{text}</span>
-      <textarea class={styles.cmdInput} id={styles.cmdInput} onkeyup={actions.loginPage.onCmdInputKeyDown}></textarea>
+      <textarea class={styles.cmdInput} id={styles.cmdInput} onkeydown={actions.loginPage.onKeyDownCmdInput} onkeyup={actions.loginPage.onKeyUpCmdInput}></textarea>
     </div>
   );
 };
