@@ -1,5 +1,19 @@
-export * from './Index.jsx';
-export * from './Login.jsx';
-export * from './actions.js';
-export * from './state.js';
+import {
+  app
+} from 'hyperapp';
+import {
+  router
+} from '@hyperapp/router';
+
+import state from './state';
+import actions from './actions';
+import views from './views';
+
+app({
+  state,
+  actions,
+  view: views,
+  mixins: [router()],
+  root: document.getElementById('app')
+});
 

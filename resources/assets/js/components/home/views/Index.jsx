@@ -1,6 +1,6 @@
 import { h } from 'hyperapp';
 
-export const Index = (props, children) => {
+export default (state, actions) => {
   return (
     <button>
       sfsdfsfd

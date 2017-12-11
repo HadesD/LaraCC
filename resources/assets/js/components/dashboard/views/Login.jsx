@@ -6,9 +6,9 @@ import {
   Link
 } from '@hyperapp/router';
 
-import styles from '../../../css/dashboard/login.css';
+import styles from '../../../../css/dashboard/login.css';
 
-export const Login = (state, actions) => {
+export default (state, actions) => {
   let mainClick = (e, s) => {
     console.log(e);
   };
