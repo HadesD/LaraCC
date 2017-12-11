@@ -14,8 +14,7 @@ const HistoryCmd = ({state, actions}) => {
       {state.loginPage.historyCmd.map(e => {
         return (
           <div>
-            {e.input}
-            {e.result}
+            {e.result}: {e.input}
           </div>
         );
       })}
@@ -25,10 +24,11 @@ const HistoryCmd = ({state, actions}) => {
 
 const CmdInputBox = ({text, actions}) => {
   return (
-    <div className="cmd">
-      <span>#&nbsp;{text}</span>
-      <textarea class={styles.cmdInput} id={styles.cmdInput} onkeydown={actions.loginPage.onKeyDownCmdInput} onkeyup={actions.loginPage.onKeyUpCmdInput}></textarea>
-    </div>
+    <pre className="cmd">
+      <textarea class={styles.cmdInput} id={styles.cmdInput} oninput={actions.loginPage.onInputCmdInput} onkeydown={actions.loginPage.onKeyDownCmdInput}></textarea>
+      <span class={styles.cmdInputShow}>#&nbsp;{text}</span>
+      <div class={styles.cmdInputCursor}> </div>
+    </pre>
   );
 };
 

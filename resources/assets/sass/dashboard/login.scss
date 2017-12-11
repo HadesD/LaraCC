@@ -5,12 +5,15 @@ body
 }
 .loginMain
 {
-  background-color: #000;
+  background-color: #0a0a0a;
   cursor: text;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   color: #FFF;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   font-size: 14px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .cmdInput
@@ -22,3 +25,40 @@ body
   margin: 0;
   padding: 0;
 }
+
+.cmdInputShow
+{
+
+}
+
+.cmdInputCursor {
+  display: inline-block;
+  background: #FFF;
+  margin-left: 1px;
+
+  -webkit-animation: blink 1s linear 0s infinite;
+  -moz-animation: blink 1s linear 0s infinite;
+  -ms-animation: blink 1s linear 0s infinite;
+  -o-animation: blink 1s linear 0s infinite;
+}
+
+@-webkit-keyframes blink {
+  50%  { background: #000 }
+  100% { background: #FFF }
+}
+
+@-moz-keyframes blink {
+  50%  { background: #000 }
+  100% { background: #FFF }
+}
+
+@-ms-keyframes blink {
+  50%  { background: #000 }
+  100% { background: #FFF }
+}
+
+@-o-keyframes blink {
+  50%  { background: #000 }
+  100% { background: #FFF }
+}
+
