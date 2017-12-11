@@ -45,21 +45,30 @@ set(INCLUDE_DIR
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/include
   )
 
-set (LINK_DIR
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
-  )
+set(LINK_DIR)
 
-if(UNIX)
+if(UNIX AND NOT APPLE)
+  set (LINK_DIR "${LINK_DIR}"
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
+    )
   set(INCLUDE_DIR "${INCLUDE_DIR}"
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
     )
-else()
+elseif(APPLE)
+  set (LINK_DIR "${LINK_DIR}"
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/osx
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster
+    )
   set(INCLUDE_DIR "${INCLUDE_DIR}"
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster
     )
 endif()
+
 
 #############################################################################
 #
@@ -148,8 +157,8 @@ add_custom_command(
   ${VIEWS_TMPL}
   DEPENDS ${VIEWS_TMPL}
   )
-add_library(${VIEW_SKIN} SHARED ${CMAKE_CURRENT_BINARY_DIR}/view.cpp)
-target_link_libraries(${VIEW_SKIN})
+add_library(${VIEW_SKIN} SHARED "${CMAKE_CURRENT_BINARY_DIR}/view.cpp" ${APP_SRC})
+target_link_libraries(${VIEW_SKIN} ${APP_REQUIRED_LIB})
 
 # Application build
 add_executable(${APP_NAME} ${APP_SRC})
@@ -166,25 +175,25 @@ file(GLOB HAVE_TO_COPY_FILES
 
 if (UNIX)
   # foreach( file_i ${LIST_FOLDERS_COPY_AFTER_BUILD})
-    # add_custom_command(
-    #   TARGET ${APP_NAME} POST_BUILD
-    #   COMMAND ${CMAKE_COMMAND} -E remove_directory
-    #   $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
-    #   )
-    add_custom_command(
-      TARGET ${APP_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-      # ${file_i}
-      ${CMAKE_CURRENT_SOURCE_DIR}/public
-      $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
-      )
-    add_custom_command(
-      TARGET ${APP_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-      # ${file_i}
-      ${CMAKE_CURRENT_SOURCE_DIR}/storage
-      $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/storage
-      )
+  # add_custom_command(
+  #   TARGET ${APP_NAME} POST_BUILD
+  #   COMMAND ${CMAKE_COMMAND} -E remove_directory
+  #   $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
+  #   )
+  add_custom_command(
+    TARGET ${APP_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    # ${file_i}
+    ${CMAKE_CURRENT_SOURCE_DIR}/public
+    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
+    )
+  add_custom_command(
+    TARGET ${APP_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    # ${file_i}
+    ${CMAKE_CURRENT_SOURCE_DIR}/storage
+    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/storage
+    )
   # endforeach( file_i )
   foreach( file_i ${LIST_FILES_COPY_AFTER_BUILD})
     add_custom_command(
