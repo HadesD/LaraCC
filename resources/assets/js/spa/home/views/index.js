@@ -1,7 +1,7 @@
-import {Index as HomeIndex} from './Index.jsx';
+import Index from './Index.jsx';
 import Login from './Login.jsx';
 
 export default [
-  ['/', HomeIndex],
+  ['/', Index],
   ['/login', Login],
 ];

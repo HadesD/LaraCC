@@ -31,13 +31,13 @@ module.exports = function (env) {
         './js/dashboard.js',
 
         // JSX
-        './js/components/DashboardApp.jsx'
+        './js/spa/DashboardApp.jsx'
       ],
       'home': [
         './js/home.js',
 
         // JSX
-        './js/components/HomeApp.jsx'
+        './js/spa/HomeApp.jsx'
       ],
     },
     output: {
@@ -60,7 +60,7 @@ module.exports = function (env) {
           },
         },
         {
-          test: /\.css$/,
+          test: /\.s?css$/,
           exclude: /node_modules/,
           loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'),
         }
