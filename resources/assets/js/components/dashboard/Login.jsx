@@ -12,11 +12,16 @@ export const Login = (state, actions) => {
   let mainClick = (e, s) => {
     console.log(e);
   };
+  let cmdInputChange = (e) => {
+    console.log(e)
+  };
+  console.log(actions);
+  console.log(state);
   return (
     <main class={styles.loginMain} onclick={mainClick}>
       <div className="cmd">
         <span>#&nbsp;</span>
-        <textarea class={styles.cmdInput}></textarea>
+        <textarea class={styles.cmdInput} onchange={cmdInputChange}></textarea>
       </div>
       <Link to="/root" go={actions.router.go}>Root</Link>
     </main>
