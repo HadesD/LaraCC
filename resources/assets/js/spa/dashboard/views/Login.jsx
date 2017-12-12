@@ -14,7 +14,9 @@ const HistoryCmd = ({state, actions}) => {
       {state.loginPage.historyCmd.map(e => {
         return (
           <div>
-            {e.result}: {e.input}
+            Executing: {e.input}
+            <br />
+            {e.result}
           </div>
         );
       })}
@@ -24,11 +26,11 @@ const HistoryCmd = ({state, actions}) => {
 
 const CmdInputBox = ({text, actions}) => {
   return (
-    <pre className="cmd">
+    <div className="cmd">
       <textarea class={styles.cmdInput} id={styles.cmdInput} oninput={actions.loginPage.onInputCmdInput} onkeydown={actions.loginPage.onKeyDownCmdInput}></textarea>
       <span class={styles.cmdInputShow}>#&nbsp;{text}</span>
       <div class={styles.cmdInputCursor}> </div>
-    </pre>
+    </div>
   );
 };
 
@@ -37,14 +39,16 @@ export default (state, actions) => {
 
   return (
     <main class={styles.loginMain} onclick={actions.loginPage.onMainClick}>
-      <HistoryCmd
-        state={state}
-        actions={actions}
-      />
-      <CmdInputBox
-        text={state.loginPage.cmdInputText}
-        actions={actions}
-      />
+      <pre>
+        <HistoryCmd
+          state={state}
+          actions={actions}
+        />
+        <CmdInputBox
+          text={state.loginPage.cmdInputText}
+          actions={actions}
+        />
+      </pre>
       <Link to="/root" go={actions.router.go}>Root</Link>
     </main>
   );

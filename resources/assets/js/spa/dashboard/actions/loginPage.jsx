@@ -18,14 +18,49 @@ export default {
     {
       case 13:
         state.loginPage.historyCmd.push({
-          input: event.target.value,
-          result: 'Command not found',
+          input: event.target.value.trim(),
+          result: actions.loginPage.execCmd(event.target.value.trim()),
         });
         state.loginPage.cmdInputText = event.target.value = null;
         break;
       default:
         break;
     }
-  }
+  },
+  execCmd: (state, actions, cmd) => {
+    let result = null;
+    let cmdArr = cmd.split(' ');
+    let exec = (cmdArr.length === 1) ? cmd : cmdArr[0];
+    console.log(exec, cmdArr);
+
+    const loginCall = (cmdArr) => {
+      let rs = null;
+
+      if (cmdArr.length <= 2)
+      {
+        rs = 'ss\nss';
+      }
+      else
+      {
+
+      }
+
+      return rs;
+    };
+
+    switch (exec)
+    {
+      case 'su':
+        result = loginCall(cmdArr);
+        break;
+      default:
+        result = 'Command not found: ' + cmd;
+        break;
+    }
+
+    return (update) => {
+      return result;
+    };
+  },
 };
 
