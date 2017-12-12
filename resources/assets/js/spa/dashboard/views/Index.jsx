@@ -5,11 +5,11 @@ import {
   Link
 } from '@hyperapp/router';
 
-export const Index = (state, actions) => {
+export const Index = (state) => (actions) => (props) => {
   return (
     <main>
       <button>ROOT</button>
-      <Link to="/root/login" go={actions.router.go}>Login</Link>
+      <Link to="/root/login">Login</Link>
     </main>
   );
 }

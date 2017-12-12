@@ -4,8 +4,9 @@
 #include <cppcms/url_mapper.h>
 
 #include "app/views/dashboard.h"
-#include "app/models/Account.h"
 #include "app/views/dashboard/login.hpp"
+
+#include "app/models/Account.h"
 
 namespace app { namespace http { namespace controllers {
 
@@ -26,7 +27,11 @@ namespace app { namespace http { namespace controllers {
 
   void DashboardController::index()
   {
-    response().set_redirect_header(url("login"), 301);
+    // response().set_redirect_header(url("login"), 301);
+    app::views::Dashboard v;
+    v.title = _("Root :: Login");
+
+    render("dashboard", v);
   }
 
   void DashboardController::login()

@@ -3,6 +3,7 @@ import {
   app
 } from 'hyperapp';
 import {
+  location,
   Route,
   Switch
 } from '@hyperapp/router';
@@ -24,6 +25,7 @@ import {
       return (
         <Switch>
           <Route path="/root/login" render={Login(state)(actions)} />
+          <Route path="/root" render={Index(state)(actions)} />
         </Switch>
       );
     },
@@ -31,6 +33,5 @@ import {
   document.getElementById('app')
 );
 
-// location.subcribe(appActions.location);
-
+// location.subscribe(appActions.location);
 

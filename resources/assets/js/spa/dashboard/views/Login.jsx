@@ -2,8 +2,8 @@ import {
   h
 } from 'hyperapp';
 import {
-  router,
-  Link
+  Link,
+  Redirect
 } from '@hyperapp/router';
 
 import styles from '../../../../sass/dashboard/login.scss';
@@ -23,7 +23,6 @@ const HistoryCmd = ({state, actions}) => {
 };
 
 const CmdInputBox = ({state, actions, text}) => {
-  let time = (new Date()).getTime();
   return (
     <div className="cmd">
       <textarea
@@ -42,6 +41,9 @@ const CmdInputBox = ({state, actions, text}) => {
 
 export const Login = (state) => (actions) => (props) => {
   state.loginPage.cmdInputId = styles.cmdInput;
+  // return (
+  //   <Redirect to="/root" />
+  // );
 
   return (
     <main class={styles.loginMain} onclick={actions.loginPage.onMainClick(state)(actions)}>
