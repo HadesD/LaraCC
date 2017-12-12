@@ -5,61 +5,75 @@ export default {
     // console.log(actions);
     document.getElementById(state.loginPage.cmdInputId).focus();
   },
+  onKeyDownCmdInput: (state, actions, event) => {
+    switch(event.keyCode)
+    {
+      case 13:
+        actions.loginPage.execCmd(event.target.value.trim());
+        state.loginPage.cmdInputText = event.target.value = null;
+
+        // Move scroll
+        window.scrollTo(0, document.body.scrollHeight);
+        break;
+      default:
+        break;
+    }
+
+    return (update) => {
+      update({});
+    };
+  },
   onInputCmdInput: (state, actions, event) => {
-    state.loginPage.cmdInputText = event.target.value.trim();
+    state.loginPage.cmdInputText = event.target.value;
 
     // Update DOM
     return (update) => {
       update({});
     }
   },
-  onKeyDownCmdInput: (state, actions, event) => {
+  onKeyUpCmdInput: (state, actions, event) => {
     switch(event.keyCode)
     {
       case 13:
-        state.loginPage.historyCmd.push({
-          input: event.target.value.trim(),
-          result: actions.loginPage.execCmd(event.target.value.trim()),
-        });
         state.loginPage.cmdInputText = event.target.value = null;
         break;
       default:
         break;
     }
-  },
-  execCmd: (state, actions, cmd) => {
-    let result = null;
-    let cmdArr = cmd.split(' ');
-    let exec = (cmdArr.length === 1) ? cmd : cmdArr[0];
-    console.log(exec, cmdArr);
-
-    const loginCall = (cmdArr) => {
-      let rs = null;
-
-      if (cmdArr.length <= 2)
-      {
-        rs = 'ss\nss';
-      }
-      else
-      {
-
-      }
-
-      return rs;
-    };
-
-    switch (exec)
-    {
-      case 'su':
-        result = loginCall(cmdArr);
-        break;
-      default:
-        result = 'Command not found: ' + cmd;
-        break;
-    }
 
     return (update) => {
-      return result;
+      update({});
+    };
+  },
+  execCmd: (state, actions, cmd) => {
+    return (update) => {
+      state.loginPage.historyCmd.push(
+        '# ' + cmd,
+      );
+      update({});
+
+      let result = null;
+      let cmdArr = cmd.split(' ');
+      let exec = (cmdArr.length === 1) ? cmd : cmdArr[0];
+
+      console.log(exec, cmdArr);
+
+      const loginCall = (cmdArr) => {
+
+        return cmdArr;
+      };
+
+      switch (exec)
+      {
+        case 'su':
+          result = loginCall(cmdArr);
+          break;
+        default:
+          result = 'Command not found: ' + cmd;
+          break;
+      }
+
+      state.loginPage.historyCmd.push(result);
     };
   },
 };
