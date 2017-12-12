@@ -40,6 +40,14 @@ export default (state, actions) => {
   return (
     <main class={styles.loginMain} onclick={actions.loginPage.onMainClick}>
       <div>
+        <pre>
+          ╭━━━╮╱╱╱╱╭╮╱╱╭╮╱╭╮╱╱╱╱╭╮<br />
+          ╰╮╭╮┃╱╱╱╱┃┃╱╱┃┃╱┃┃╱╱╱╱┃┃<br />
+          ╱┃┃┃┣━━┳━┫┃╭╮┃╰━╯┣━━┳━╯┣━━┳━━╮<br />
+          ╱┃┃┃┃╭╮┃╭┫╰╯╯┃╭━╮┃╭╮┃╭╮┃┃━┫━━┫<br />
+          ╭╯╰╯┃╭╮┃┃┃╭╮┳┫┃╱┃┃╭╮┃╰╯┃┃━╋━━┃<br />
+          ╰━━━┻╯╰┻╯╰╯╰┻┻╯╱╰┻╯╰┻━━┻━━┻━━╯
+        </pre>
         Welcome to Root Manager!
         <br />
         Type 'help' for help
