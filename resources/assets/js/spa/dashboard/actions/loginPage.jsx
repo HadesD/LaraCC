@@ -9,7 +9,7 @@ export default {
     switch(event.keyCode)
     {
       case 13:
-        actions.loginPage.execCmd(event.target.value.trim());
+        actions.loginPage.execCmd(event.target.value);
         state.loginPage.cmdInputText = event.target.value = null;
 
         // Move scroll
@@ -52,40 +52,43 @@ export default {
       );
       update({});
 
-      let result = null;
-      let cmdArr = cmd.split(' ');
-      let exec = (cmdArr.length === 1) ? cmd : cmdArr[0];
+      let trimCmd = cmd.trim();
 
-      const loginCall = (cmdArr) => {
+      let cmdArr = trimCmd.split(' ');
+      let exec = (cmdArr.length === 1) ? trimCmd : cmdArr[0];
 
-        return cmdArr;
-      };
-
-      const cmdList = [
+      if (exec.length > 0)
+      {
+        const cmdList = [
         {
           exec: 'help',
-          callBack: loginCall,
+          callBack: (cmdArr) => {
+
+            return cmdArr;
+          },
         },
+          {
+            exec: 'su',
+            callBack: () => {},
+          },
+        ];
+
+        let findCmd = cmdList.find(findCmd => (
+          (findCmd.exec === exec) && (findCmd.callBack != undefined)
+        ));
+
+        let result = null;
+
+        if (findCmd === undefined)
         {
-          exec: 'su',
-          callBack: () =>{},
-        },
-      ];
-
-      let findCmd = cmdList.find(findCmd => (
-        (findCmd.exec == cmd) && (findCmd.callBack != undefined)
-      ));
-
-      if (findCmd === undefined)
-      {
-        result = 'Command not found: ' + cmd;
+          result = 'Command not found: ' + cmd;
+        }
+        else
+        {
+          result = findCmd.callBack(cmdArr);
+        }
+        state.loginPage.historyCmd.push(result);
       }
-      else
-      {
-        result = findCmd.callBack(cmdArr);
-      }
-
-      state.loginPage.historyCmd.push(result);
     };
   },
 };
