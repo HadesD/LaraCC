@@ -56,21 +56,33 @@ export default {
       let cmdArr = cmd.split(' ');
       let exec = (cmdArr.length === 1) ? cmd : cmdArr[0];
 
-      console.log(exec, cmdArr);
-
       const loginCall = (cmdArr) => {
 
         return cmdArr;
       };
 
-      switch (exec)
+      const cmdList = [
+        {
+          exec: 'help',
+          callBack: loginCall,
+        },
+        {
+          exec: 'su',
+          callBack: () =>{},
+        },
+      ];
+
+      let findCmd = cmdList.find(findCmd => (
+        (findCmd.exec == cmd) && (findCmd.callBack != undefined)
+      ));
+
+      if (findCmd === undefined)
       {
-        case 'su':
-          result = loginCall(cmdArr);
-          break;
-        default:
-          result = 'Command not found: ' + cmd;
-          break;
+        result = 'Command not found: ' + cmd;
+      }
+      else
+      {
+        result = findCmd.callBack(cmdArr);
       }
 
       state.loginPage.historyCmd.push(result);

@@ -27,7 +27,7 @@ const CmdInputBox = ({text, actions}) => {
   return (
     <div className="cmd">
       {/* {time} */}
-      <textarea class={styles.cmdInput} id={styles.cmdInput} onkeydown={actions.loginPage.onKeyDownCmdInput} oninput={actions.loginPage.onInputCmdInput} onkeyup={actions.loginPage.onKeyUpCmdInput}></textarea>
+      <textarea class={styles.cmdInput} id={styles.cmdInput} onkeydown={actions.loginPage.onKeyDownCmdInput} oninput={actions.loginPage.onInputCmdInput} onkeyup={actions.loginPage.onKeyUpCmdInput} autofocus="true"></textarea>
       <span class={styles.cmdInputShow}>#&nbsp;{text}</span>
       <div class={styles.cmdInputCursor}> </div>
     </div>
@@ -39,6 +39,11 @@ export default (state, actions) => {
 
   return (
     <main class={styles.loginMain} onclick={actions.loginPage.onMainClick}>
+      <div>
+        Welcome to Root Manager!
+        <br />
+        Type 'help' for help
+      </div>
       <pre>
         <HistoryCmd
           state={state}
