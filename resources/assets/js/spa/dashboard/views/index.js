@@ -1,8 +1,22 @@
-import Index from './Index.jsx';
-import Login from './Login.jsx';
+// import {
+//   Router
+// } from '@hyperapp/router';
 
-export default [
-  ['/root', Index],
-  ['/root/login', Login],
-];
+// import Index from './Index.jsx';
+// import Login from './Login.jsx';
+//
+// export default [
+//   {
+//     path: '/',
+//     view: Index
+//   },
+//   {
+//     path: '/root/login', 
+//     view: Login 
+//   },
+// ];
+
+export * from './Index.jsx';
+export * from './Login.jsx';
+
 

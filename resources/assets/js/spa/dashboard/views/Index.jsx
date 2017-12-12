@@ -2,11 +2,10 @@ import {
   h
 } from 'hyperapp';
 import {
-  router,
   Link
 } from '@hyperapp/router';
 
-export default (state, actions) => {
+export const Index = (state, actions) => {
   return (
     <main>
       <button>ROOT</button>

@@ -22,16 +22,16 @@ const HistoryCmd = ({state, actions}) => {
   );
 };
 
-const CmdInputBox = ({text, actions}) => {
+const CmdInputBox = ({state, actions, text}) => {
   let time = (new Date()).getTime();
   return (
     <div className="cmd">
       <textarea
         class={styles.cmdInput}
         id={styles.cmdInput}
-        onkeydown={actions.loginPage.onKeyDownCmdInput}
-        oninput={actions.loginPage.onInputCmdInput}
-        onkeyup={actions.loginPage.onKeyUpCmdInput}
+        onkeydown={actions.loginPage.onKeyDownCmdInput(state)(actions)}
+        oninput={actions.loginPage.onInputCmdInput(state)(actions)}
+        onkeyup={actions.loginPage.onKeyUpCmdInput(state)(actions)}
         autofocus="true"
       />
       <span class={styles.cmdInputShow}>#&nbsp;{text}</span>
@@ -40,11 +40,11 @@ const CmdInputBox = ({text, actions}) => {
   );
 };
 
-export default (state, actions) => {
+export const Login = (state) => (actions) => (props) => {
   state.loginPage.cmdInputId = styles.cmdInput;
 
   return (
-    <main class={styles.loginMain} onclick={actions.loginPage.onMainClick}>
+    <main class={styles.loginMain} onclick={actions.loginPage.onMainClick(state)(actions)}>
       <div>
         <pre>
           {
@@ -68,11 +68,12 @@ export default (state, actions) => {
           actions={actions}
         />
         <CmdInputBox
-          text={state.loginPage.cmdInputText}
+          state={state}
           actions={actions}
+          text={state.loginPage.cmdInputText}
         />
       </pre>
-      <Link to="/root" go={actions.router.go}>Root</Link>
+      <Link to="/root">Root</Link>
     </main>
   );
 };

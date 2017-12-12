@@ -1,11 +1,12 @@
 export default {
-  onMainClick: (state, actions, event) => {
+  onMainClick: (state) => (actions) => (event) => {
     // console.log('Mouse clicked');
     // console.log(state);
     // console.log(actions);
     document.getElementById(state.loginPage.cmdInputId).focus();
   },
-  onKeyDownCmdInput: (state, actions, event) => {
+  onKeyDownCmdInput: (state) => (actions) => (event) => {
+    console.log(state);
     switch(event.keyCode)
     {
       case 13:
@@ -20,10 +21,11 @@ export default {
     }
 
     return (update) => {
+      console.log("Update");
       update({});
     };
   },
-  onInputCmdInput: (state, actions, event) => {
+  onInputCmdInput: (state) => (actions) => (event) => {
     state.loginPage.cmdInputText = event.target.value;
 
     // Update DOM
@@ -31,7 +33,7 @@ export default {
       update({});
     }
   },
-  onKeyUpCmdInput: (state, actions, event) => {
+  onKeyUpCmdInput: (state) => (actions) => (event) => {
     switch(event.keyCode)
     {
       case 13:

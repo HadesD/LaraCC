@@ -1,4 +1,10 @@
+import {
+  location
+} from '@hyperapp/router';
+
 export default {
+  location: location.state,
+
   title: null,
 
   isLoggedIn: false,
