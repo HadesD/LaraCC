@@ -15,7 +15,7 @@ const plugins = [
   }),
   new ManifestPlugin({
     path: publicPath
-  })
+  }),
   // isProduction ? new UglifyJsPlugin() : new ManifestPlugin()
 ];
 
@@ -50,14 +50,6 @@ module.exports = function (env) {
         {
           test: /\.jsx?$/,
           loader: 'babel-loader',
-          query: {
-            presets: [
-              'env',
-            ],
-            plugins: [
-              ['transform-react-jsx', { "pragma": "h" }]
-            ]
-          },
         },
         {
           test: /\.s?css$/,

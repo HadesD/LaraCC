@@ -26,8 +26,14 @@ const CmdInputBox = ({text, actions}) => {
   let time = (new Date()).getTime();
   return (
     <div className="cmd">
-      {/* {time} */}
-      <textarea class={styles.cmdInput} id={styles.cmdInput} onkeydown={actions.loginPage.onKeyDownCmdInput} oninput={actions.loginPage.onInputCmdInput} onkeyup={actions.loginPage.onKeyUpCmdInput} autofocus="true"></textarea>
+      <textarea
+        class={styles.cmdInput}
+        id={styles.cmdInput}
+        onkeydown={actions.loginPage.onKeyDownCmdInput}
+        oninput={actions.loginPage.onInputCmdInput}
+        onkeyup={actions.loginPage.onKeyUpCmdInput}
+        autofocus="true"
+      />
       <span class={styles.cmdInputShow}>#&nbsp;{text}</span>
       <div class={styles.cmdInputCursor}> </div>
     </div>
@@ -41,12 +47,16 @@ export default (state, actions) => {
     <main class={styles.loginMain} onclick={actions.loginPage.onMainClick}>
       <div>
         <pre>
-          ╭━━━╮╱╱╱╱╭╮╱╱╭╮╱╭╮╱╱╱╱╭╮<br />
-          ╰╮╭╮┃╱╱╱╱┃┃╱╱┃┃╱┃┃╱╱╱╱┃┃<br />
-          ╱┃┃┃┣━━┳━┫┃╭╮┃╰━╯┣━━┳━╯┣━━┳━━╮<br />
-          ╱┃┃┃┃╭╮┃╭┫╰╯╯┃╭━╮┃╭╮┃╭╮┃┃━┫━━┫<br />
-          ╭╯╰╯┃╭╮┃┃┃╭╮┳┫┃╱┃┃╭╮┃╰╯┃┃━╋━━┃<br />
+          {
+            `
+          ╭━━━╮╱╱╱╱╭╮╱╱╭╮╱╭╮╱╱╱╱╭╮
+          ╰╮╭╮┃╱╱╱╱┃┃╱╱┃┃╱┃┃╱╱╱╱┃┃
+          ╱┃┃┃┣━━┳━┫┃╭╮┃╰━╯┣━━┳━╯┣━━┳━━╮
+          ╱┃┃┃┃╭╮┃╭┫╰╯╯┃╭━╮┃╭╮┃╭╮┃┃━┫━━┫
+          ╭╯╰╯┃╭╮┃┃┃╭╮┳┫┃╱┃┃╭╮┃╰╯┃┃━╋━━┃
           ╰━━━┻╯╰┻╯╰╯╰┻┻╯╱╰┻╯╰┻━━┻━━┻━━╯
+            `
+          }
         </pre>
         Welcome to Root Manager!
         <br />

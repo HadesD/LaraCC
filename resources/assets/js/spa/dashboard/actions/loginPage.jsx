@@ -48,7 +48,7 @@ export default {
   execCmd: (state, actions, cmd) => {
     return (update) => {
       state.loginPage.historyCmd.push(
-        '# ' + cmd,
+        '# ' + (cmd || ''),
       );
       update({});
 
@@ -60,27 +60,24 @@ export default {
       if (exec.length > 0)
       {
         const cmdList = [
-        {
-          exec: 'help',
-          callBack: (cmdArr) => {
-            let rs = null;
-            for (let i = 0; i < cmdList.length; i++)
-            {
-              rs = `╭━━━╮╱╱╱╱╭╮╱╱╭╮╱╭╮╱╱╱╱╭╮
-╰╮╭╮┃╱╱╱╱┃┃╱╱┃┃╱┃┃╱╱╱╱┃┃
-╱┃┃┃┣━━┳━┫┃╭╮┃╰━╯┣━━┳━╯┣━━┳━━╮
-╱┃┃┃┃╭╮┃╭┫╰╯╯┃╭━╮┃╭╮┃╭╮┃┃━┫━━┫
-╭╯╰╯┃╭╮┃┃┃╭╮┳┫┃╱┃┃╭╮┃╰╯┃┃━╋━━┃
-╰━━━┻╯╰┻╯╰╯╰┻┻╯╱╰┻╯╰┻━━┻━━┻━━╯
-              `;
-            }
+          {
+            exec: 'help',
+            callBack: (cmdArr) => {
+              let rs = null;
+              for (let i = 0; i < cmdList.length; i++)
+              {
+              }
 
-            return rs;
+              return rs;
+            },
           },
-        },
           {
             exec: 'su',
-            callBack: () => {},
+            callBack: (cmdArr) => {
+              let rs = null;
+
+              return rs;
+            },
           },
         ];
 
@@ -98,7 +95,7 @@ export default {
         {
           result = findCmd.callBack(cmdArr);
         }
-        state.loginPage.historyCmd.push(result);
+        state.loginPage.historyCmd.push(result || '');
       }
     };
   },

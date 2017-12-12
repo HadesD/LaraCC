@@ -1,2 +1,2 @@
-import styles from '../css/app.css';
+import styles from '../sass/app.scss';
 
