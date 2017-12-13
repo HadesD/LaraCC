@@ -15,7 +15,7 @@ import Login from './Login.jsx';
 export default (state) => {
   return (
     <Switch>
-      <Route path="/root/login" render={Login(state)(actions)} />
+      <Route path="/root/login" render={Login} />
       <Route path="/root" render={Index(state)(actions)} />
     </Switch>
   );

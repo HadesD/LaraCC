@@ -8,7 +8,8 @@ import {
 export default (state) => (actions) => (props) => {
   return (
     <main>
-      <button>ROOT</button>
+      <button onclick={actions.indexPage.changeI}>ROOT</button>
+      {state.title}
       <Link to="/root/login">Login</Link>
     </main>
   );

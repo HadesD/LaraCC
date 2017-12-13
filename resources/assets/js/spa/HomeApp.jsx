@@ -1,18 +1,35 @@
 import { h, app } from "hyperapp"
 import { location, Link, Route } from "@hyperapp/router"
-import state from './dashboard/state';
-import actions from './dashboard/actions';
 
-const homeView = ({state, actions, props, match, location}) => {
+let actions = {
+  location: location.actions,
+  up: (event) => {
+    console.log(state, actions);
+    return ({c:1})
+  },
+}
+
+let state = {
+  c: 1,
+  location: location.state
+}
+
+const homeView = (state) => {
   return (
     <div>
-      { console.log(state, actions, props, match, location) }
+      <button onclick={actions.up} />
+      {state.c}
+      {console.log(state, actions)}
       <h2>Home</h2>
     </div>
   );
 };
 
-const aboutView = (s) => <h2>About</h2>
+const aboutView = (s) => {
+  return (
+    <h2>About</h2>
+  )
+}
 const topicsView = ({ match }) => (
   <div>
     <h2>Topics</h2>
@@ -33,11 +50,13 @@ const topicsView = ({ match }) => (
     <Route parent path={`${match.path}/:topicId`} render={topicView} />
   </div>
 )
-const topicView = ({ match }) => <h3>{match.params.topicId}</h3>
+const topicView = ({ match }) => {
+  return (<h3>{match.params.topicId}</h3>);
+}
 
 const a = app({
-  actions,
-  state,
+  actions: actions,
+  state: state,
   view: (state) => {
     return (
       <div>

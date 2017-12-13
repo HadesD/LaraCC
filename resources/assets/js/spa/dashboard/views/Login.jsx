@@ -8,6 +8,9 @@ import {
 
 import styles from '../../../../sass/dashboard/login.scss';
 
+import actions from '../actions';
+import state from '../state';
+
 const HistoryCmd = ({state, actions}) => {
   return (
     <div>
@@ -25,12 +28,13 @@ const HistoryCmd = ({state, actions}) => {
 const CmdInputBox = ({state, actions, text}) => {
   return (
     <div className="cmd">
+      {state.title}
       <textarea
         class={styles.cmdInput}
         id={styles.cmdInput}
-        onkeydown={actions.loginPage.onKeyDownCmdInput(state)(actions)}
-        oninput={actions.loginPage.onInputCmdInput(state)(actions)}
-        onkeyup={actions.loginPage.onKeyUpCmdInput(state)(actions)}
+        onkeydown={actions.loginPage.onKeyDownCmdInput}
+        oninput={actions.loginPage.onInputCmdInput}
+        onkeyup={actions.loginPage.onKeyUpCmdInput}
         autofocus="true"
       />
       <span class={styles.cmdInputShow}>#&nbsp;{text}</span>
@@ -39,14 +43,15 @@ const CmdInputBox = ({state, actions, text}) => {
   );
 };
 
-export default (state) => (actions) => (props) => {
+export default () => {
+  console.log(state, actions);
   state.loginPage.cmdInputId = styles.cmdInput;
-  // return (
-  //   <Redirect to="/root" />
-  // );
 
   return (
-    <main class={styles.loginMain} onclick={actions.loginPage.onMainClick(state)(actions)}>
+    <main
+      class={styles.loginMain}
+      onclick={actions.loginPage.onMainClick}
+    >
       <div>
         <pre>
           {
