@@ -5,19 +5,34 @@ import {
 import {
   location,
   Route,
-  Switch
+  Switch,
+  Link
 } from '@hyperapp/router';
 
 import state from './dashboard/state';
 import actions from './dashboard/actions';
-// import views from './views';
 
 import {
   Index,
   Login
 } from './dashboard/views';
 
-/* const appActions =  */app(
+const LoginI = () => {
+  return (
+    <div>
+      <Link to="/root">ff</Link>
+    </div>
+  );
+}
+const LoginI1 = () => {
+  return (
+    <div>
+      <Link to="/root/login">fff</Link>
+    </div>
+  );
+}
+
+const appActions = app(
   {
     state,
     actions,
@@ -33,5 +48,5 @@ import {
   document.getElementById('app')
 );
 
-// location.subscribe(appActions.location);
+location.subscribe(appActions.location);
 
