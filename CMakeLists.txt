@@ -24,8 +24,8 @@ find_program(EXE_TMPL_CC
 
 set(LIST_FILES_COPY_AFTER_BUILD
   ${CMAKE_CURRENT_SOURCE_DIR}/config.json
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1.1.1
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.1.1.1
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/ubuntu/libcppcms.so.1.2.0
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/ubuntu/booster/libbooster.so.0.2.0
   )
 set(LIST_FOLDERS_COPY_AFTER_BUILD
   ${CMAKE_CURRENT_SOURCE_DIR}/public
@@ -48,17 +48,17 @@ set(INCLUDE_DIR
 set(LINK_DIR)
 
 if(UNIX AND NOT APPLE)
-  set (LINK_DIR "${LINK_DIR}"
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
+  set(LINK_DIR "${LINK_DIR}"
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/ubuntu
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/ubuntu
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/ubuntu/booster
     )
   set(INCLUDE_DIR "${INCLUDE_DIR}"
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/ubuntu
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/ubuntu/booster
     )
 elseif(APPLE)
-  set (LINK_DIR "${LINK_DIR}"
+  set(LINK_DIR "${LINK_DIR}"
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/osx
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster
