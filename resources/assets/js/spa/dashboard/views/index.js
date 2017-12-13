@@ -1,22 +1,26 @@
-// import {
-//   Router
-// } from '@hyperapp/router';
+import {
+  h
+} from 'hyperapp';
+import {
+  Route,
+  Switch,
+  Link
+} from '@hyperapp/router';
 
-// import Index from './Index.jsx';
-// import Login from './Login.jsx';
-//
-// export default [
-//   {
-//     path: '/',
-//     view: Index
-//   },
-//   {
-//     path: '/root/login', 
-//     view: Login 
-//   },
-// ];
+import actions from '../actions';
 
-export * from './Index.jsx';
-export * from './Login.jsx';
+import Index from './Index.jsx';
+import Login from './Login.jsx';
 
+export default (state) => {
+  return (
+    <Switch>
+      <Route path="/root/login" render={Login(state)(actions)} />
+      <Route path="/root" render={Index(state)(actions)} />
+    </Switch>
+  );
+};
+
+// export * from './Index.jsx';
+// export * from './Login.jsx';
 

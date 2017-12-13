@@ -3,47 +3,23 @@ import {
   app
 } from 'hyperapp';
 import {
-  location,
-  Route,
-  Switch,
-  Link
+  location
 } from '@hyperapp/router';
 
 import state from './dashboard/state';
 import actions from './dashboard/actions';
+import views from './dashboard/views';
 
 import {
   Index,
   Login
 } from './dashboard/views';
 
-const LoginI = () => {
-  return (
-    <div>
-      <Link to="/root">ff</Link>
-    </div>
-  );
-}
-const LoginI1 = () => {
-  return (
-    <div>
-      <Link to="/root/login">fff</Link>
-    </div>
-  );
-}
-
 const appActions = app(
   {
     state,
     actions,
-    view: (state) => {
-      return (
-        <Switch>
-          <Route path="/root/login" render={Login(state)(actions)} />
-          <Route path="/root" render={Index(state)(actions)} />
-        </Switch>
-      );
-    },
+    view: views,
   },
   document.getElementById('app')
 );

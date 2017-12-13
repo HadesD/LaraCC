@@ -39,7 +39,7 @@ const CmdInputBox = ({state, actions, text}) => {
   );
 };
 
-export const Login = (state) => (actions) => (props) => {
+export default (state) => (actions) => (props) => {
   state.loginPage.cmdInputId = styles.cmdInput;
   // return (
   //   <Redirect to="/root" />

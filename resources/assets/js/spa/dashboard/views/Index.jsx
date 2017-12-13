@@ -5,7 +5,7 @@ import {
   Link
 } from '@hyperapp/router';
 
-export const Index = (state) => (actions) => (props) => {
+export default (state) => (actions) => (props) => {
   return (
     <main>
       <button>ROOT</button>
