@@ -7,26 +7,18 @@
 
 namespace app { namespace http { namespace controllers { namespace api { namespace dashboard {
 
-  Login::Login(cppcms::service &s) :
-    // app::core::Controller(s),
-    // json_srv(s)
-    cppcms::rpc::json_rpc_server(s)
+  Login::Login(cppcms::service &s) : app::core::Controller(s)
   {
-    // dispatcher().assign(".*", &Login::index, this);
-    std::bind("get", cppcms::rpc::json_method(&Login::index, this),
-              method_role);
+    dispatcher().assign(".*", &Login::index, this);
   }
 
   void Login::index()
   {
     cppcms::json::value r;
-    r['s'] = 1;
+    r["success"] = 1;
+    r["success"]["data"] = 1;
 
-    this->return_result(r);
-
-    // json_srv.return_result("fsdfsdf");
-
-    // return r;
+    this->response().out() << r;
   }
 
 } } } } }
