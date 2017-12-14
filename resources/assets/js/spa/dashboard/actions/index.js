@@ -4,20 +4,69 @@ import {
 
 import indexPage from './indexPage';
 
+const execCmd = (cmd) => {
+  let trimCmd = cmd.trim();
+
+  let cmdArr = trimCmd.split(' ');
+  let exec = (cmdArr.length === 1) ? trimCmd : cmdArr[0];
+
+  if (exec.length > 0)
+  {
+    const cmdList = [
+      {
+        exec: 'help',
+        callBack: (cmdArr) => {
+          let rs = null;
+          for (let i = 0; i < cmdList.length; i++)
+          {
+          }
+
+          return rs;
+        },
+      },
+      {
+        exec: 'su',
+        callBack: (cmdArr) => {
+          let rs = null;
+
+          return rs;
+        },
+      },
+    ];
+
+    let findCmd = cmdList.find(findCmd => (
+      (findCmd.exec === exec) && (findCmd.callBack != undefined)
+    ));
+
+    let result = null;
+
+    if (findCmd === undefined)
+    {
+      result = 'Command not found: ' + cmd;
+    }
+    else
+    {
+      result = findCmd.callBack(cmdArr);
+    }
+    return result || '';
+  }
+}
+
 export default {
   location: location.actions,
   onMainClick: (event) => (state) => (actions) => {
     // console.log('Mouse clicked');
-    console.log(state);
-    console.log(actions);
+    // console.log(state);
+    // console.log(actions);
     document.getElementById(state.loginPage.cmdInputId).focus();
   },
   onKeyDownCmdInput: (event) => (state) => (actions) => {
-    console.log(state);
     switch(event.keyCode)
     {
       case 13:
-        execCmd(event.target.value);
+        state.loginPage.historyCmd.push(
+          execCmd(event.target.value)
+        );
         state.loginPage.cmdInputText = event.target.value = null;
 
         // Move scroll
@@ -27,15 +76,15 @@ export default {
         break;
     }
 
-    return (
-      state => state
-    );
+    return ({
+      state
+    });
   },
   onInputCmdInput: (event) => (state) => (actions) => {
     state.loginPage.cmdInputText = event.target.value;
 
     return ({
-      loginPage: state.loginPage
+      state
     });
   },
   onKeyUpCmdInput: (event) => (state) => (actions) => {
@@ -47,6 +96,8 @@ export default {
       default:
         break;
     }
+
+    return ({state})
   },
   indexPage,
 };

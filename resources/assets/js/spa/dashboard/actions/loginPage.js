@@ -53,12 +53,12 @@ const execCmd = (cmd) => {
 export default {
   onMainClick: (event) => (state) => (actions) => {
     // console.log('Mouse clicked');
-    console.log(state);
-    console.log(actions);
+    // console.log(state);
+    // console.log(actions);
     document.getElementById(state.loginPage.cmdInputId).focus();
   },
   onKeyDownCmdInput: (event) => (state) => (actions) => {
-    console.log(state);
+    // console.log(state);
     switch(event.keyCode)
     {
       case 13:
