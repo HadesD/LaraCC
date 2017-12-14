@@ -1,8 +1,4 @@
 const execCmd = (cmd) => {
-  state.loginPage.historyCmd.push(
-    '# ' + (cmd || ''),
-  );
-
   let trimCmd = cmd.trim();
 
   let cmdArr = trimCmd.split(' ');
@@ -46,24 +42,25 @@ const execCmd = (cmd) => {
     {
       result = findCmd.callBack(cmdArr);
     }
-    state.loginPage.historyCmd.push(result || '');
+    return result || '';
   }
 }
 
 export default {
   onMainClick: (event) => (state) => (actions) => {
     // console.log('Mouse clicked');
-    // console.log(state);
+    console.log(state);
     // console.log(actions);
-    document.getElementById(state.loginPage.cmdInputId).focus();
+    document.getElementById(state.cmdInputId).focus();
   },
   onKeyDownCmdInput: (event) => (state) => (actions) => {
-    // console.log(state);
     switch(event.keyCode)
     {
       case 13:
-        execCmd(event.target.value);
-        state.loginPage.cmdInputText = event.target.value = null;
+        state.historyCmd.push(
+          execCmd(event.target.value)
+        );
+        state.cmdInputText = event.target.value = null;
 
         // Move scroll
         window.scrollTo(0, document.body.scrollHeight);
@@ -73,25 +70,27 @@ export default {
     }
 
     return ({
-      loginPage: state.loginPage
+      state
     });
   },
   onInputCmdInput: (event) => (state) => (actions) => {
-    state.loginPage.cmdInputText = event.target.value;
+    state.cmdInputText = event.target.value;
 
     return ({
-      loginPage: state.loginPage
+      state
     });
   },
   onKeyUpCmdInput: (event) => (state) => (actions) => {
     switch(event.keyCode)
     {
       case 13:
-        state.loginPage.cmdInputText = event.target.value = null;
+        state.cmdInputText = event.target.value = null;
         break;
       default:
         break;
     }
+
+    return ({state})
   },
 };
 

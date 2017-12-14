@@ -25,13 +25,12 @@ const HistoryCmd = ({state, actions}) => {
 const CmdInputBox = ({state, actions}) => {
   return (
     <div className="cmd">
-      {console.log('HistoryCmd: ', state)}
       <textarea
         class={styles.cmdInput}
         id={styles.cmdInput}
-        onkeydown={actions.onKeyDownCmdInput}
-        oninput={actions.onInputCmdInput}
-        onkeyup={actions.onKeyUpCmdInput}
+        onkeydown={actions.loginPage.onKeyDownCmdInput}
+        oninput={actions.loginPage.onInputCmdInput}
+        onkeyup={actions.loginPage.onKeyUpCmdInput}
         autofocus="true"
       />
       <span class={styles.cmdInputShow}>#&nbsp;{state.loginPage.cmdInputText}</span>
@@ -47,7 +46,7 @@ export default (state, actions) => (props) => {
   return (
     <main
       class={styles.loginMain}
-      onclick={actions.onMainClick}
+      onclick={actions.loginPage.onMainClick}
     >
       <div>
         <pre>
