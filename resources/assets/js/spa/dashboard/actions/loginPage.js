@@ -66,7 +66,6 @@ export default {
         state.cmdInputText = event.target.value = null;
 
         // Move scroll
-        window.scrollTo(0, document.body.scrollHeight);
         break;
       default:
         break;

@@ -43,6 +43,7 @@ export default (state, actions) => (props) => {
   // console.log(state, actions);
   state.loginPage.cmdInputId = styles.cmdInput;
 
+  { window.scrollTo(0, document.body.scrollHeight) }
   return (
     <main
       class={styles.loginMain}
