@@ -44,12 +44,12 @@ const execCmd = (cmd) => {
     }
     return result || '';
   }
-}
+};
 
 export default {
   onMainClick: (event) => (state) => (actions) => {
     // console.log('Mouse clicked');
-    console.log(state);
+    // console.log(state);
     // console.log(actions);
     document.getElementById(state.cmdInputId).focus();
   },
@@ -57,6 +57,9 @@ export default {
     switch(event.keyCode)
     {
       case 13:
+        state.historyCmd.push(
+          '# ' + event.target.value
+        );
         state.historyCmd.push(
           execCmd(event.target.value)
         );
@@ -70,14 +73,12 @@ export default {
     }
 
     return ({
-      state
     });
   },
   onInputCmdInput: (event) => (state) => (actions) => {
     state.cmdInputText = event.target.value;
 
     return ({
-      state
     });
   },
   onKeyUpCmdInput: (event) => (state) => (actions) => {
@@ -90,7 +91,8 @@ export default {
         break;
     }
 
-    return ({state})
+    return ({
+    });
   },
 };
 
