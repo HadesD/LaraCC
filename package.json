@@ -1,8 +1,8 @@
 {
   "author": "Dark.Hades",
   "scripts": {
-    "dev": "webpack -d",
-    "prd": "webpack -p"
+    "dev": "./node_modules/webpack/bin/webpack.js -d",
+    "prd": "./node_modules/webpack/bin/webpack.js -p"
   },
   "license": "MIT",
   "devDependencies": {

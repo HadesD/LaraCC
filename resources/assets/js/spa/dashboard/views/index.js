@@ -7,15 +7,13 @@ import {
   Link
 } from '@hyperapp/router';
 
-import actions from '../actions';
-
 import Index from './Index.jsx';
 import Login from './Login.jsx';
 
-export default (state) => {
+export default (state) => (actions) => {
   return (
     <Switch>
-      <Route path="/root/login" render={Login} />
+      <Route path="/root/login" render={Login(state, actions)} />
       <Route path="/root" render={Index(state)(actions)} />
     </Switch>
   );

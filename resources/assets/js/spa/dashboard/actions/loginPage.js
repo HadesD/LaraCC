@@ -1,6 +1,3 @@
-import state from '../state';
-import actions from './index.js';
-
 const execCmd = (cmd) => {
   state.loginPage.historyCmd.push(
     '# ' + (cmd || ''),
@@ -54,13 +51,13 @@ const execCmd = (cmd) => {
 }
 
 export default {
-  onMainClick: (event) => {
+  onMainClick: (event) => (state) => (actions) => {
     // console.log('Mouse clicked');
-    // console.log(state);
-    // console.log(actions);
+    console.log(state);
+    console.log(actions);
     document.getElementById(state.loginPage.cmdInputId).focus();
   },
-  onKeyDownCmdInput: (event) => {
+  onKeyDownCmdInput: (event) => (state) => (actions) => {
     console.log(state);
     switch(event.keyCode)
     {
@@ -76,17 +73,17 @@ export default {
     }
 
     return ({
-      title: 's'
+      loginPage: state.loginPage
     });
   },
-  onInputCmdInput: (event) => {
+  onInputCmdInput: (event) => (state) => (actions) => {
     state.loginPage.cmdInputText = event.target.value;
 
     return ({
       loginPage: state.loginPage
     });
   },
-  onKeyUpCmdInput: (event) => {
+  onKeyUpCmdInput: (event) => (state) => (actions) => {
     switch(event.keyCode)
     {
       case 13:

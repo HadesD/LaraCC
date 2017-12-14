@@ -8,9 +8,6 @@ import {
 
 import styles from '../../../../sass/dashboard/login.scss';
 
-import actions from '../actions';
-import state from '../state';
-
 const HistoryCmd = ({state, actions}) => {
   return (
     <div>
@@ -32,9 +29,9 @@ const CmdInputBox = ({state, actions, text}) => {
       <textarea
         class={styles.cmdInput}
         id={styles.cmdInput}
-        onkeydown={actions.loginPage.onKeyDownCmdInput}
-        oninput={actions.loginPage.onInputCmdInput}
-        onkeyup={actions.loginPage.onKeyUpCmdInput}
+        onkeydown={actions.onKeyDownCmdInput}
+        oninput={actions.onInputCmdInput}
+        onkeyup={actions.onKeyUpCmdInput}
         autofocus="true"
       />
       <span class={styles.cmdInputShow}>#&nbsp;{text}</span>
@@ -43,14 +40,14 @@ const CmdInputBox = ({state, actions, text}) => {
   );
 };
 
-export default () => {
+export default (state, actions) => (props) => {
   console.log(state, actions);
   state.loginPage.cmdInputId = styles.cmdInput;
 
   return (
     <main
       class={styles.loginMain}
-      onclick={actions.loginPage.onMainClick}
+      onclick={actions.onMainClick}
     >
       <div>
         <pre>
@@ -77,7 +74,7 @@ export default () => {
         <CmdInputBox
           state={state}
           actions={actions}
-          text={state.loginPage.cmdInputText}
+          text={state.cmdInputText}
         />
       </pre>
       <Link to="/root">Root</Link>

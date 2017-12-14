@@ -1,23 +1,12 @@
 import { h, app } from "hyperapp"
 import { location, Link, Route } from "@hyperapp/router"
 
-let actions = {
-  location: location.actions,
-  up: (event) => {
-    console.log(state, actions);
-    return ({c:1})
-  },
-}
-
-let state = {
-  c: 1,
-  location: location.state
-}
-
-const homeView = (state) => {
+const homeView = (state, actions) => (props) => {
   return (
     <div>
-      <button onclick={actions.up} />
+      <button onclick={actions.up}>
+        FFF
+      </button>
       {state.c}
       {console.log(state, actions)}
       <h2>Home</h2>
@@ -55,9 +44,18 @@ const topicView = ({ match }) => {
 }
 
 const a = app({
-  actions: actions,
-  state: state,
-  view: (state) => {
+  actions: {
+      location: location.actions,
+      up: (event) => (state) => (actions) => {
+        console.log(state, actions);
+        return ({c:state.c+1})
+      },
+    },
+  state: {
+  c: "fff",
+  location: location.state
+},
+  view: (state) => (actions) => {
     return (
       <div>
         <ul>
@@ -74,7 +72,7 @@ const a = app({
 
         <hr />
 
-        <Route path="/" render={homeView} />
+        <Route path="/" render={homeView(state, actions)} />
         <Route path="/about" render={aboutView} />
         <Route parent path="/topics" render={topicsView} />
       </div>
