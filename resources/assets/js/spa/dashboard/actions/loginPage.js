@@ -24,8 +24,26 @@ const execCmd = (cmd) => {
       {
         exec: 'su',
         callBack: (cmdArr) => {
+
+          if ((cmdArr.length !== 3) || (cmdArr[1] !== '-'))
+          {
+            return 'Must be "su - <username>"';
+          }
+
           let rs = null;
 
+          axios.post(constants.api + '/root/login', {
+            params: {
+              username: cmdArr[2],
+            }
+          })
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+          ;
           return rs;
         },
       },
@@ -51,8 +69,6 @@ const execCmd = (cmd) => {
 
 export default {
   onMainClick: (event) => (state) => (actions) => {
-    // console.log('Mouse clicked');
-    // console.log(state);
     // console.log(actions);
     document.getElementById(state.cmdInputId).focus();
   },
@@ -67,14 +83,6 @@ export default {
           execCmd(event.target.value)
         );
         state.cmdInputText = event.target.value = null;
-
-        // Move scroll
-        axios.get(constants.api + '/root/login')
-          .then(res => {
-            console.log(res);
-          })
-        ;
-        console.log(constants);
         break;
       default:
         break;

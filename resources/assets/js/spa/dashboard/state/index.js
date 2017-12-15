@@ -14,6 +14,7 @@ export default {
   isLoggedIn: false,
 
   loginPage: {
+    isCmdInputPassword: false, // Input is a password
     cmdInputId: null,
     historyCmd: [],
     cmdInputText: null,

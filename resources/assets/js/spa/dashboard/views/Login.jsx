@@ -33,7 +33,13 @@ const CmdInputBox = ({state, actions}) => {
         onkeyup={actions.loginPage.onKeyUpCmdInput}
         autofocus="true"
       />
-      <span class={styles.cmdInputShow}>#&nbsp;{state.loginPage.cmdInputText}</span>
+      <span class={styles.cmdInputShow}>
+        {
+          state.loginPage.isCmdInputPassword ?
+          'Password: ' :
+          '# ' + (state.loginPage.cmdInputText || '')
+        }
+      </span>
       <div class={styles.cmdInputCursor}> </div>
     </div>
   );
