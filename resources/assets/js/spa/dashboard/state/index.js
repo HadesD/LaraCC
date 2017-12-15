@@ -18,6 +18,7 @@ export default {
     cmdInputId: null,
     historyCmd: [],
     cmdInputText: null,
+    usernameInput: null,
   },
 };
 
