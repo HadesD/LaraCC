@@ -1,3 +1,6 @@
+import axios from 'axios';
+import constants from '../state/constants.js';
+
 const execCmd = (cmd) => {
   let trimCmd = cmd.trim();
 
@@ -66,6 +69,12 @@ export default {
         state.cmdInputText = event.target.value = null;
 
         // Move scroll
+        axios.get(constants.api + '/root/login')
+          .then(res => {
+            console.log(res);
+          })
+        ;
+        console.log(constants);
         break;
       default:
         break;

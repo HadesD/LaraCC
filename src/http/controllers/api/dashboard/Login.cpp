@@ -9,7 +9,7 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
 
   Login::Login(cppcms::service &s) : app::core::Controller(s)
   {
-    dispatcher().assign(".*", &Login::index, this);
+    this->dispatcher().assign(".*", &Login::index, this);
   }
 
   void Login::index()

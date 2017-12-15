@@ -31,7 +31,7 @@ namespace app { namespace http { namespace controllers {
     app::views::Dashboard v;
     v.title = _("Root :: Login");
 
-    render("dashboard", v);
+    this->render("dashboard", v);
   }
 
   void DashboardController::login()
@@ -39,7 +39,7 @@ namespace app { namespace http { namespace controllers {
     app::views::dashboard::Login v;
     v.title = _("Root :: Login");
 
-    render("dashboard_login", v);
+    this->render("dashboard_login", v);
   }
 
 } } }
