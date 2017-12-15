@@ -45,9 +45,10 @@ const CmdInputBox = ({state, actions}) => {
   );
 };
 
-export default (state, actions) => (props) => {
-  // console.log(state, actions);
+export default (state) => (location) => (actions) => {
   state.loginPage.cmdInputId = styles.cmdInput;
+
+  // console.log(state, actions);
 
   { window.scrollTo(0, document.body.scrollHeight) }
   return (

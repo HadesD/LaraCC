@@ -1,6 +1,6 @@
 import { h } from 'hyperapp';
 
-export default (props, children) => {
+export default (state) => (location) => (actions) => {
   return (
     <button>Login</button>
   );

@@ -10,15 +10,13 @@ import {
 import Index from './Index.jsx';
 import Login from './Login.jsx';
 
-export default (state) => (actions) => {
+export default (state) => {
   return (
     <Switch>
-      <Route path="/root/login" render={Login(state, actions)} />
-      <Route path="/root" render={Index(state)(actions)} />
+      {/* {console.log(state)} */}
+      <Route path="/root/login" render={Login(state)} />
+      <Route path="/root" render={Index(state)} />
     </Switch>
   );
 };
-
-// export * from './Index.jsx';
-// export * from './Login.jsx';
 

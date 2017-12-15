@@ -10,11 +10,6 @@ import state from './dashboard/state';
 import actions from './dashboard/actions';
 import views from './dashboard/views';
 
-import {
-  Index,
-  Login
-} from './dashboard/views';
-
 const appActions = app(
   {
     state,

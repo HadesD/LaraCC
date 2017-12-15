@@ -56,9 +56,15 @@ const execCmd = (state, actions, cmd) => {
               }
             })
               .then((response) => {
-                state.historyCmd.push(
-                  // response.data
-                );
+                setTimeout(
+                  () => {
+                    state.historyCmd.push(
+                      "sdfsdf"
+                      // response.data
+                    );
+                    actions.update();
+                  }
+                  ,1000);
               })
               .catch((error) => {
                 state.historyCmd.push(
@@ -103,12 +109,13 @@ const execCmd = (state, actions, cmd) => {
     {
       result = findCmd.callBack(cmdArr);
     }
-    return result || '';
+    return result;
   }
 };
 
 export default {
   onMainClick: (event) => (state) => (actions) => {
+    // console.log(state);
     // console.log(actions);
     document.getElementById(state.cmdInputId).focus();
   },
@@ -147,5 +154,6 @@ export default {
     return ({
     });
   },
+  update: () => {return ({})},
 };
 
