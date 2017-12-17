@@ -7,7 +7,7 @@ import snarkdown from 'snarkdown';
 
 import Main from '../components/Main.jsx';
 
-let articleData = {
+let articleInfo = {
   title: 'Test 1',
   type: 'default article',
   post_time: (new Date()).getDate(),
@@ -16,7 +16,7 @@ let articleData = {
     url: '/authors/sss',
   },
   permalink: '/article/sss',
-  content: `s\n### Block Quotes`,
+  content: 's\n### Block Quotes```sfsdf```',
   tags: [
     {
       name: 'sfsdf',
@@ -38,7 +38,7 @@ const dangerouslySetInnerHTML = (html) => {
 };
 
 export default (state) => (location) => (actions) => {
-  console.log(location)
+  actions.articlePage.loadArticleInfo(state);
   return (
     <Main state={state} actions={actions}>
       <div class="article-wrapper u-cf single">
@@ -51,14 +51,14 @@ export default (state) => (location) => (actions) => {
             {/* </div> */}
           <div class="content">
             <h3>
-              <Link to={articleData.permalink}>
-                {articleData.title}
+              <Link to={articleInfo.permalink}>
+                {articleInfo.title}
               </Link>
             </h3>
             <div class="meta">
-              <span class="date moment">{articleData.post_time}</span>
+              <span class="date moment">{articleInfo.post_time}</span>
               <span class="categories">
-                {articleData.categories.map(c => {
+                {articleInfo.categories.map(c => {
                   return (
                     <Link to={c.url}>
                       {c.name}
@@ -67,7 +67,7 @@ export default (state) => (location) => (actions) => {
                 })}
               </span>
             </div>
-            <p oncreate={dangerouslySetInnerHTML(snarkdown(articleData.content))} />
+            <p oncreate={dangerouslySetInnerHTML(snarkdown(articleInfo.content))} />
           </div>
         </article>
       </div>

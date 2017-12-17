@@ -9,7 +9,7 @@ let mainState = {
 };
 
 const Loading = ({state, actions}) => {
-  console.log(state);
+  // console.log(state);
   return (
     <div>
     </div>
