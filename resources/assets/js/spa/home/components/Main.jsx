@@ -7,17 +7,29 @@ export default ({state, actions}, children) => {
   return (
     <div className="bilberry-hugo-theme">
       <nav className="permanentTopNav">
+        <div class="container">
+          <ul class="topnav">
+            <li><a href="/bilberry-hugo-theme/page/about-bilberry/">About Bilberry</a></li>
+            <li><a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Github</a></li>
+          </ul>
+          <div id="search-box" class="search">
+            <i class="fa fa-search"></i>
+            <input id="search" type="text" placeholder="Search ..." />
+          </div>
+        </div>
       </nav>
       <header>
         <div class="container">
           <div class="logo">
-            <a href="/" class="logo">
+            <Link to="/" class="logo">
               <img src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?d=mm&size=200" alt="" />
               <span class="overlay"><i class="fa fa-home"></i></span>
-            </a>
+            </Link>
           </div>
           <div class="titles">
-            <h3 class="title"><a href="/">My cool new Blog</a></h3>
+            <h3 class="title">
+              <Link to="/">My cool new Blog</Link>
+            </h3>
             <span class="subtitle">Hello World! This is the most epic subtitle ever.</span>
           </div>
           <div class="toggler permanentTopNav">
