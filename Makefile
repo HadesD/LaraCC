@@ -1,4 +1,4 @@
-LD_LIB_PATH=${LD_LIBRARY_PATH}:./Build/bin
+LD_LIB_PATH=${LD_LIBRARY_PATH}:./Build/Bin
 
 .PHONY: build npm
 
@@ -8,8 +8,8 @@ build:
 	cd Build && \
 	cmake .. && \
 	make && \
-	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
 	cd Bin && \
+	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
 	./WebApp -c config.json
 
 npm:

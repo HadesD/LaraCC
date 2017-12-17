@@ -4,6 +4,9 @@ import {
 
 export default {
   location: location.state,
+
+  isFetchingPage: false,
+
   articlePage: {
     isLoadCalled: false,
   },

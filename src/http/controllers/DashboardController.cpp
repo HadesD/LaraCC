@@ -13,15 +13,15 @@ namespace app { namespace http { namespace controllers {
   DashboardController::DashboardController(cppcms::service &s) : Controller(s)
   {
     __APP_TRY_CATCH_BEGIN__
+    {
+      dispatcher().assign("/login", &DashboardController::login, this);
+      mapper().assign("login","/login");
 
-    dispatcher().assign("/login", &DashboardController::login, this);
-    mapper().assign("login","/login");
+      dispatcher().assign("", &DashboardController::index, this);
+      mapper().assign("root", "");
 
-    dispatcher().assign("", &DashboardController::index, this);
-    mapper().assign("root", "");
-
-    mapper().root("/root");
-
+      mapper().root("/root");
+    }
     __APP_TRY_CATCH_END__
   }
 

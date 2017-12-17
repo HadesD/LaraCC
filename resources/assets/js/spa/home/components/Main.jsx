@@ -9,9 +9,15 @@ let mainState = {
 };
 
 const Loading = ({state, actions}) => {
-  // console.log(state);
+  console.log(state);
+  if (!state.isFetchingPage)
+  {
+    return false;
+  }
+
   return (
     <div>
+      <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
     </div>
   );
 };
@@ -21,8 +27,16 @@ const TopNav = ({state, actions}) => {
     <nav className="permanentTopNav">
       <div class="container">
         <ul class="topnav">
-          <li><a href="/bilberry-hugo-theme/page/about-bilberry/">About Bilberry</a></li>
-          <li><a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Github</a></li>
+          <li>
+            <a href="/bilberry-hugo-theme/page/about-bilberry/">
+              About Bilberry
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">
+              Github
+            </a>
+          </li>
         </ul>
         <div id="search-box" class="search">
           <i class="fa fa-search"></i>
@@ -69,7 +83,9 @@ const Footer = () => {
           &copy; {(new Date().getFullYear() > mY) ? mY+' - ' : ''}{(new Date().getFullYear())} by <a href="https://github.com/HadesD" target="_blank">Dark.Hades</a>
         </div>
         <div class="author">
-          <a href="https://github.com/Lednerb/gohugo-theme-bilberry" target="_blank">Bilberry Hugo Theme</a>
+          Theme by <a href="https://github.com/Lednerb" target="_blank">
+            <i class="fa fa-heart"></i> Lednerb
+          </a>
         </div>
       </div>
     </footer>
@@ -77,6 +93,7 @@ const Footer = () => {
 };
 
 export default ({state, actions}, children) => {
+  // state.isFetchingPage = false;
   return (
     <div className="bilberry-hugo-theme">
       <Loading state={state} actions={actions} />
