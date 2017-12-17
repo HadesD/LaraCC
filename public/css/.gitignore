@@ -1,4 +1,8 @@
 *
 !.gitignore
+
 !/home-theme.css
+
 !/fonts
+!/fonts/*
+
