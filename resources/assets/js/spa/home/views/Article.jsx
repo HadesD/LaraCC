@@ -3,6 +3,8 @@ import {
   Link
 } from '@hyperapp/router';
 
+import snarkdown from 'snarkdown';
+
 import Main from '../components/Main.jsx';
 
 let articleData = {
@@ -14,7 +16,7 @@ let articleData = {
     url: '/authors/sss',
   },
   permalink: '/article/sss',
-  content: 'sdfsdfsdf',
+  content: `s\n### Block Quotes`,
   tags: [
     {
       name: 'sfsdf',
@@ -29,6 +31,12 @@ let articleData = {
   ],
 };
 
+const dangerouslySetInnerHTML = (html) => {
+  return (element) => {
+    element.innerHTML = html;
+  };
+};
+
 export default (state) => (location) => (actions) => {
   console.log(location)
   return (
@@ -39,8 +47,8 @@ export default (state) => (location) => (actions) => {
         </a>
         <article class="video">
           {/* <div class="responsive-video youtube"> */}
-          {/*   <iframe src="https://www.youtube-nocookie.com/embed/Yk_BI3ne0Ic?rel=0" frameborder="0" allowfullscreen></iframe> */}
-          {/* </div> */}
+            {/*   <iframe src="https://www.youtube-nocookie.com/embed/Yk_BI3ne0Ic?rel=0" frameborder="0" allowfullscreen></iframe> */}
+            {/* </div> */}
           <div class="content">
             <h3>
               <Link to={articleData.permalink}>
@@ -59,9 +67,7 @@ export default (state) => (location) => (actions) => {
                 })}
               </span>
             </div>
-            <div>
-              {articleData.content}
-            </div>
+            <p oncreate={dangerouslySetInnerHTML(snarkdown(articleData.content))} />
           </div>
         </article>
       </div>

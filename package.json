@@ -21,6 +21,7 @@
   "dependencies": {
     "@hyperapp/router": "next",
     "axios": "^0.17.1",
-    "hyperapp": "^0.16.2"
+    "hyperapp": "^0.16.2",
+    "snarkdown": "^1.2.2"
   }
 }
