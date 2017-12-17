@@ -13,9 +13,8 @@ import Login from './Login.jsx';
 export default (state) => {
   return (
     <Switch>
-      {/* {console.log(state)} */}
-      <Route path="/" render={Login(state)} />
-      <Route path="/login" render={Index(state)} />
+      <Route path="/" render={Index(state)} />
+      <Route path="/login" render={Login(state)} />
     </Switch>
   );
 };

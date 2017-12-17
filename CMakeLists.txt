@@ -176,11 +176,11 @@ file(GLOB HAVE_TO_COPY_FILES
 
 if (UNIX)
   # foreach( file_i ${LIST_FOLDERS_COPY_AFTER_BUILD})
-  # add_custom_command(
-  #   TARGET ${APP_NAME} POST_BUILD
-  #   COMMAND ${CMAKE_COMMAND} -E remove_directory
-  #   $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
-  #   )
+  add_custom_command(
+    TARGET ${APP_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E remove_directory
+    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
+    )
   add_custom_command(
     TARGET ${APP_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
