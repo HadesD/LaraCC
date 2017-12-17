@@ -5,13 +5,13 @@ import {
 
 import Main from '../components/Main.jsx';
 
-const articleData = {
+let articleData = {
   title: 'Test 1',
   type: 'default article',
   post_time: (new Date()).getDate(),
   author: {
     name: 'Dark.Hades',
-    url: '/sss',
+    url: '/authors/sss',
   },
   permalink: '/article/sss',
   content: 'sdfsdfsdf',
@@ -38,9 +38,9 @@ export default (state) => (location) => (actions) => {
           <i class="fa fa-fw fa-video-camera"></i>
         </a>
         <article class="video">
-          <div class="responsive-video youtube">
-              <iframe src="https://www.youtube-nocookie.com/embed/Yk_BI3ne0Ic?rel=0" frameborder="0" allowfullscreen></iframe>
-            </div>
+          {/* <div class="responsive-video youtube"> */}
+          {/*   <iframe src="https://www.youtube-nocookie.com/embed/Yk_BI3ne0Ic?rel=0" frameborder="0" allowfullscreen></iframe> */}
+          {/* </div> */}
           <div class="content">
             <h3>
               <Link to={articleData.permalink}>

@@ -5,14 +5,14 @@ import {
 
 import Main from '../components/Main.jsx';
 
-const listPost = [
+let listPost = [
   {
     title: 'Test 1',
     type: 'default article',
     post_time: (new Date()).getDate(),
     author: {
       name: 'Dark.Hades',
-      url: '/sss',
+      url: '/authors/sss',
     },
     permalink: '/article/sss',
     content: 'sdfsdfsdf',
@@ -36,11 +36,11 @@ export default (state) => (location) => (actions) => {
               </i>
             </Link>
             <article class={p.type}>
-              <div class="featured-image">
-                <Link to={p.permalink}>
-                  <img src="/bilberry-hugo-theme/images/patreon.png" alt="" />
-                </Link>
-              </div>
+              {/* <div class="featured-image"> */}
+              {/*   <Link to={p.permalink}> */}
+              {/*     <img src="/bilberry-hugo-theme/images/patreon.png" alt="" /> */}
+              {/*   </Link> */}
+              {/* </div> */}
               <div class="content">
                 <h3>
                   <Link to={p.permalink}>
