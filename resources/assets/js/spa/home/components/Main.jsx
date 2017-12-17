@@ -3,20 +3,21 @@ import {
   Link
 } from '@hyperapp/router';
 
+import styles from '../../../../sass/home.scss';
+
 const mY = 2013;
 
 let mainState = {
 };
 
 const Loading = ({state, actions}) => {
-  console.log(state);
   if (!state.isFetchingPage)
   {
     return false;
   }
 
   return (
-    <div>
+    <div class={styles.loading}>
       <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
     </div>
   );

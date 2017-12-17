@@ -11,11 +11,48 @@ namespace app { namespace routes {
   {
     __APP_TRY_CATCH_BEGIN__
     {
+      // Home
       attach(
         new app::http::controllers::HomeController(s),
         "home",
         "{1}",
         "/",
+        1
+        );
+
+      // Article
+      attach(
+        new app::http::controllers::HomeController(s),
+        "article",
+        "{1}",
+        "/article/((.*))",
+        1
+        );
+
+      // Authors
+      attach(
+        new app::http::controllers::HomeController(s),
+        "authors",
+        "{1}",
+        "/authors((/?.*))",
+        1
+        );
+
+      // Categories
+      attach(
+        new app::http::controllers::HomeController(s),
+        "categories",
+        "{1}",
+        "/categories((/?.*))",
+        1
+        );
+
+      // Tags
+      attach(
+        new app::http::controllers::HomeController(s),
+        "tags",
+        "{1}",
+        "/tags((/?.*))",
         1
         );
 
