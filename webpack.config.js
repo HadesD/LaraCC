@@ -39,6 +39,9 @@ module.exports = function (env) {
         // JSX
         './js/spa/HomeApp.jsx'
       ],
+      'home.rebase': [
+        './css/home.css',
+      ],
     },
     output: {
       path: path.resolve(__dirname, publicPath),
@@ -52,9 +55,14 @@ module.exports = function (env) {
           loader: 'babel-loader',
         },
         {
-          test: /\.s?css$/,
+          test: /\.scss$/,
           exclude: /node_modules/,
           loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'),
+        },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          loader: ExtractTextPlugin.extract('css-loader'),
         }
       ],
     },
