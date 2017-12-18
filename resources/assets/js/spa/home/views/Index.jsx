@@ -37,10 +37,10 @@ export default (state) => (location) => (actions) => {
             </Link>
             <article class={p.type}>
               {/* <div class="featured-image"> */}
-              {/*   <Link to={p.permalink}> */}
-              {/*     <img src="/bilberry-hugo-theme/images/patreon.png" alt="" /> */}
-              {/*   </Link> */}
-              {/* </div> */}
+                {/*   <Link to={p.permalink}> */}
+                  {/*     <img src="/bilberry-hugo-theme/images/patreon.png" alt="" /> */}
+                  {/*   </Link> */}
+                {/* </div> */}
               <div class="content">
                 <h3>
                   <Link to={p.permalink}>
@@ -60,8 +60,7 @@ export default (state) => (location) => (actions) => {
                 </div>
               </div>
               <div class="tags">
-                <i class="fa fa-tags"></i>
-                {p.tags.map(t => {
+                <i class="fa fa-tags"></i> {p.tags.map(t => {
                   return (
                     <Link to={t.url}>
                       {t.name}

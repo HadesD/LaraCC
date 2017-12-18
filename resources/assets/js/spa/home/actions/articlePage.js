@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export default {
   update: (doUpdate) => {return (doUpdate ? {} : false)},
+
   loadArticleInfo: (state) => () => (actions) => {
     let lastFetchingStatus = state.isFetchingPage;
     if (state.articlePage.isLoadCalled)
@@ -23,19 +24,19 @@ export default {
       url: '',
     })
       .then((response) => {
-        setTimeout(() => {
+        // setTimeout(() => {
           console.log(lastFetchingStatus);
           state.isFetchingPage = false;
           state.articlePage.isLoadCalled = true;
           actions.update(lastFetchingStatus);
-        }, 1000);
+        // }, 1000);
       })
       .catch((error) => {
-        setTimeout(() => {
+        // setTimeout(() => {
           state.isFetchingPage = false;
           // state.articlePage.isLoadCalled = false;
           // actions.update();
-        }, 1000);
+        // }, 1000);
       })
     ;
 
