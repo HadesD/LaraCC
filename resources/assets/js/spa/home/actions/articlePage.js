@@ -27,7 +27,7 @@ export default {
           console.log(lastFetchingStatus);
           state.isFetchingPage = false;
           state.articlePage.isLoadCalled = true;
-          actions.update(!lastFetchingStatus);
+          actions.update(lastFetchingStatus);
         }, 1000);
       })
       .catch((error) => {
