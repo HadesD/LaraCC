@@ -1,16 +1,22 @@
 import axios from 'axios';
 
 export default {
-  update: () => {return ({});},
+  update: (doUpdate) => {return (doUpdate ? {} : false)},
   loadArticleInfo: (state) => () => (actions) => {
+    let lastFetchingStatus = state.isFetchingPage;
     if (state.articlePage.isLoadCalled)
     {
       state.articlePage.isLoadCalled = false;
+      state.isFetchingPage = false;
       return false;
     }
 
-    state.articlePage.isLoadCalled = true;
-    state.isFetchingPage = true;
+    if (!state.isFetchingPage)
+    {
+      console.log('Set fetching true');
+      state.isFetchingPage = true;
+      return {};
+    }
 
     axios({
       method: 'GET',
@@ -18,9 +24,10 @@ export default {
     })
       .then((response) => {
         setTimeout(() => {
+          console.log(lastFetchingStatus);
           state.isFetchingPage = false;
-          // state.articlePage.isLoadCalled = false;
-          // actions.update();
+          state.articlePage.isLoadCalled = true;
+          actions.update(!lastFetchingStatus);
         }, 1000);
       })
       .catch((error) => {
@@ -32,7 +39,6 @@ export default {
       })
     ;
 
-    return ({});
   },
 };
 

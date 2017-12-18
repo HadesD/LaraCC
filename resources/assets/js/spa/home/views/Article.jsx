@@ -16,7 +16,7 @@ let articleInfo = {
     url: '/authors/sss',
   },
   permalink: '/article/sss',
-  content: 's\n### Block Quotes```sfsdf```',
+  content: '### Block Quotes\n```cpp\nTest code\n```\n`Test CODE`',
   tags: [
     {
       name: 'sfsdf',
@@ -42,9 +42,9 @@ export default (state) => (location) => (actions) => {
   return (
     <Main state={state} actions={actions}>
       <div class="article-wrapper u-cf single">
-        <a class="bubble" href="/bilberry-hugo-theme/video/kilez-more-leben-und-tod-des-imperialismus">
+        <Link class="bubble" to={articleInfo.permalink}>
           <i class="fa fa-fw fa-video-camera"></i>
-        </a>
+        </Link>
         <article class="video">
           {/* <div class="responsive-video youtube"> */}
             {/*   <iframe src="https://www.youtube-nocookie.com/embed/Yk_BI3ne0Ic?rel=0" frameborder="0" allowfullscreen></iframe> */}
