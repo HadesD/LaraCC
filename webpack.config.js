@@ -16,7 +16,9 @@ const plugins = [
   new ManifestPlugin({
     path: publicPath
   }),
-  // isProduction ? new UglifyJsPlugin() : new ManifestPlugin()
+  new webpack.ProvidePlugin({
+    Promise: 'bluebird'
+  }),
 ];
 
 
