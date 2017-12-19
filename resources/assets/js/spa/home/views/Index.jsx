@@ -5,6 +5,7 @@ import {
 
 import Main from '../components/Main.jsx';
 
+
 let listPost = [
   {
     title: 'Test 1',

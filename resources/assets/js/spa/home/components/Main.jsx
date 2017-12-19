@@ -5,6 +5,9 @@ import {
 
 import styles from '../../../../sass/home.scss';
 
+import utils from '../../commons/utils.js';
+import site from '../../commons/site.js';
+
 const mY = 2013;
 
 let mainState = {
@@ -18,7 +21,7 @@ const Loading = ({state, actions}) => {
 
   return (
     <div class={styles.loading}>
-      <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+      <i class="fa fa-spinner fa-pulse fa-fw"></i>
     </div>
   );
 };
@@ -29,13 +32,14 @@ const TopNav = ({state, actions}) => {
       <div class="container">
         <ul class="topnav">
           <li>
-            <a href="/bilberry-hugo-theme/page/about-bilberry/">
-              About Bilberry
+            <a href="https://github.com/HadesD" target="_blank">
+              {/* <i class="fa fa-github fa-2x"></i> */}
+              GitHub
             </a>
           </li>
           <li>
-            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">
-              Github
+            <a href="https://twitter.com/darkhades1002" target="_blank">
+              Twitter
             </a>
           </li>
         </ul>
@@ -54,7 +58,7 @@ const Header = ({state, actions}) => {
       <div class="container">
         <div class="logo">
           <Link to="/" class="logo">
-            <img src="" alt="" />
+            <img src={utils.asset('images/rem-chibi.jpg')} alt="" />
             <span class="overlay">
               <i class="fa fa-home"></i>
             </span>
@@ -62,10 +66,12 @@ const Header = ({state, actions}) => {
         </div>
         <div class="titles">
           <h3 class="title">
-            <Link to="/">My cool new Blog</Link>
+            <Link to="/">
+              {site.title}
+            </Link>
           </h3>
           <span class="subtitle">
-            Hello World! This is the most epic subtitle ever.
+            {site.subtitle}
           </span>
         </div>
         <div class="toggler permanentTopNav">
