@@ -1,5 +1,6 @@
 import os
 import subprocess
+import time
 
 PWD = os.path.dirname(os.path.abspath(__file__))
 
@@ -17,10 +18,13 @@ f.close()
 f = open(BUILD_DIR + '/.gitignore', 'w')
 f.write(
   r
+  + '\n'
   + '/Bin\n'
   + '/Bin/**'
 )
 f.close()
+
+time.sleep(2)
 
 subprocess.Popen([
   'git',
@@ -33,12 +37,16 @@ subprocess.Popen([
   '.'
 ], cwd=CWD)
 
+time.sleep(2)
+
 subprocess.Popen([
   'git',
   'commit',
   '-m',
   '"Deploy Heroku"'
 ], cwd=CWD)
+
+time.sleep(2)
 
 subprocess.call([
   'git',
