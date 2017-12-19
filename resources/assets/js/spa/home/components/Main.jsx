@@ -21,14 +21,14 @@ const Loading = ({state, actions}) => {
 
   return (
     <div class={styles.loading}>
-      <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+      <i class="fa fa-circle-o-notch fa-spin fa-fw fa-4x"></i>
     </div>
   );
 };
 
 const TopNav = ({state, actions}) => {
   return (
-    <nav className="permanentTopNav">
+    <nav class="permanentTopNav">
       <div class="container">
         <ul class="topnav">
           <li>
@@ -84,7 +84,7 @@ const Header = ({state, actions}) => {
 
 const Footer = () => {
   return (
-    <footer className="credits">
+    <footer class="credits">
       <div class="container">
         <div class="copyright">
           &copy; {(new Date().getFullYear() > mY) ? mY+' - ' : ''}{(new Date().getFullYear())} by <a href="https://github.com/HadesD" target="_blank">Dark.Hades</a>
@@ -100,31 +100,17 @@ const Footer = () => {
 };
 
 const Main = ({state, actions, children}) => {
-  if (state.isFetchingPage)
-  {
-    return (
-      <main className="main container">
-        <div style={{
-          textAlign: 'center',
-          margin: '15px 0',
-        }}>
-          <i class="fa fa-circle-o-notch fa-spin fa-fw fa-4x"></i>
-        </div>
-      </main>
-    );
-  }
   return (
-    <main className="main container">
+    <main class="main container">
+      <Loading state={state} actions={actions} />
       {children}
     </main>
   );
 };
 
 export default ({state, actions}, children) => {
-  // state.isFetchingPage = false;
   return (
-    <div className="bilberry-hugo-theme">
-      <Loading state={state} actions={actions} />
+    <div class="bilberry-hugo-theme">
       <TopNav state={state} actions={actions} />
       <Header state={state} actions={actions} />
       <Main state={state} actions={actions} children={children} />
