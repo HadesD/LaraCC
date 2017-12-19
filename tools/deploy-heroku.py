@@ -19,8 +19,8 @@ f = open(BUILD_DIR + '/.gitignore', 'w')
 f.write(
   r
   + '\n'
-  + '/Bin\n'
-  + '/Bin/**'
+  + '!/Bin\n'
+  + '!/Bin/**'
 )
 f.close()
 
@@ -31,13 +31,15 @@ subprocess.Popen([
   'status'
 ], cwd=CWD)
 
+time.sleep(5)
+
 subprocess.Popen([
   'git',
   'add',
   '.'
 ], cwd=CWD)
 
-time.sleep(2)
+time.sleep(5)
 
 subprocess.Popen([
   'git',
