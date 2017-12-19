@@ -7,6 +7,8 @@ os.chdir(PWD+'/..')
 
 print(os.getcwd())
 
+CWD = os.getcwd()
+
 BUILD_DIR = os.getcwd() + '/Build'
 
 f = open(BUILD_DIR + '/.gitignore', 'r')
@@ -20,23 +22,23 @@ f.write(
 )
 f.close()
 
-subprocess.call([
+subprocess.Popen([
   'git',
   'status'
-], cwd=PWD)
+], cwd=CWD)
 
-subprocess.call([
+subprocess.Popen([
   'git',
   'add',
   '.'
-], cwd=PWD)
+], cwd=CWD)
 
-subprocess.call([
+subprocess.Popen([
   'git',
   'commit',
   '-m',
   '"Deploy Heroku"'
-], cwd=PWD)
+], cwd=CWD)
 
 subprocess.call([
   'git',
@@ -44,5 +46,5 @@ subprocess.call([
   'heroku',
   'master',
   '-f'
-], cwd=PWD)
+], cwd=CWD)
 
