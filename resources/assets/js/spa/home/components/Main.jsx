@@ -21,7 +21,7 @@ const Loading = ({state, actions}) => {
 
   return (
     <div class={styles.loading}>
-      <i class="fa fa-circle-o-notch fa-spin fa-fw fa-4x"></i>
+      <i class="fa fa-circle-o-notch fa-spin fa-fw fa-2x"></i>
     </div>
   );
 };
@@ -57,7 +57,7 @@ const Header = ({state, actions}) => {
     <header>
       <div class="container">
         <div class="logo">
-          <Link to="/" class="logo">
+          <Link class="logo" to="/">
             <img src={utils.asset('images/rem-chibi.jpg')} alt="" />
             <span class="overlay">
               <i class="fa fa-home"></i>
