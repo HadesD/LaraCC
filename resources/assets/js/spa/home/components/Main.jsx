@@ -21,7 +21,7 @@ const Loading = ({state, actions}) => {
 
   return (
     <div class={styles.loading}>
-      <i class="fa fa-spinner fa-pulse fa-fw"></i>
+      <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
     </div>
   );
 };
@@ -99,6 +99,27 @@ const Footer = () => {
   );
 };
 
+const Main = ({state, actions, children}) => {
+  if (state.isFetchingPage)
+  {
+    return (
+      <main className="main container">
+        <div style={{
+          textAlign: 'center',
+          margin: '15px 0',
+        }}>
+          <i class="fa fa-circle-o-notch fa-spin fa-fw fa-4x"></i>
+        </div>
+      </main>
+    );
+  }
+  return (
+    <main className="main container">
+      {children}
+    </main>
+  );
+};
+
 export default ({state, actions}, children) => {
   // state.isFetchingPage = false;
   return (
@@ -106,9 +127,7 @@ export default ({state, actions}, children) => {
       <Loading state={state} actions={actions} />
       <TopNav state={state} actions={actions} />
       <Header state={state} actions={actions} />
-      <main className="main container">
-        {children}
-      </main>
+      <Main state={state} actions={actions} children={children} />
       <Footer state={state} actions={actions} />
     </div>
   );
