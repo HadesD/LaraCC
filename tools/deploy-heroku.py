@@ -37,6 +37,7 @@ subprocess.call([
   'git',
   'push',
   'heroku',
-  'master'
+  'master',
+  '-f'
 ], cwd=PWD)
 
