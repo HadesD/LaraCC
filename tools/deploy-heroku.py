@@ -15,15 +15,20 @@ f.close()
 f = open(BUILD_DIR + '/.gitignore', 'w')
 f.write(
   r
-  + '/Bin'
+  + '/Bin\n'
   + '/Bin/**'
 )
 f.close()
 
 subprocess.call([
   'git',
+  'status'
+], cwd=PWD)
+
+subprocess.call([
+  'git',
   'add',
-  '.',
+  '.'
 ], cwd=PWD)
 
 subprocess.call([
