@@ -6,7 +6,7 @@
 #include <string>
 
 #include "../database/ConnectorInterface.hpp"
-#include "../database/CppDbConnector.hpp"
+#include "../database/SQLiteModernCppConnector.hpp"
 
 
 namespace app { namespace core {
@@ -26,7 +26,7 @@ namespace app { namespace core {
 
     private:
       // Default Connector
-      database::CppDbConnector m_cppDb;
+      database::SQLiteModernCppConnector m_sqliteModernCpp;
   };
 
 } }

@@ -5,7 +5,7 @@
 
 namespace app { namespace core {
 
-  Model::Model() : m_connector(m_cppDb)
+  Model::Model() : m_connector(m_sqliteModernCpp)
   {
   }
 

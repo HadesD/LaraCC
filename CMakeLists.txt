@@ -37,7 +37,7 @@ set(LIST_FOLDERS_COPY_AFTER_BUILD
 set(APP_REQUIRED_LIB
   booster
   cppcms
-  # cppdb
+  sqlite3
   )
 
 set(INCLUDE_DIR
@@ -45,6 +45,7 @@ set(INCLUDE_DIR
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/include
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/include/booster
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite_modern_cpp/include/hdr
   )
 
 set(LINK_DIR)
@@ -106,6 +107,7 @@ set(APP_SRC
   src/core/Model.cpp
   src/core/View.cpp
   src/database/CppDbConnector.cpp
+  src/database/SQLiteModernCppConnector.cpp
 
   ###############################################
   # Application
