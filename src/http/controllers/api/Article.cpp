@@ -5,6 +5,7 @@
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
+#include "app/models/Article.hpp"
 
 namespace app { namespace http { namespace controllers { namespace api {
 

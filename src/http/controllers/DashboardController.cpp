@@ -6,8 +6,6 @@
 #include "app/views/dashboard.h"
 #include "app/views/dashboard/login.hpp"
 
-#include "app/models/Account.h"
-
 namespace app { namespace http { namespace controllers {
 
   DashboardController::DashboardController(cppcms::service &s) : Controller(s)

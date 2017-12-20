@@ -106,9 +106,19 @@ set(APP_SRC
   src/core/Controller.cpp
   src/core/Model.cpp
   src/core/View.cpp
+  
+  ###############################################
+  # Database
+  ###############################################
   src/database/CppDbConnector.cpp
   src/database/SQLiteModernCppConnector.cpp
 
+  ###############################################
+  # Models
+  ###############################################
+  src/models/Account.cpp
+  src/models/Article.cpp
+  
   ###############################################
   # Application
   ###############################################

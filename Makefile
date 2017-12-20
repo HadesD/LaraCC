@@ -12,5 +12,8 @@ build:
 	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
 	./WebApp -c config.json
 
-npm:
+dev:
 	npm run dev
+
+prd:
+	npm run prd

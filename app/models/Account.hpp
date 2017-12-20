@@ -9,6 +9,7 @@ namespace app { namespace models {
 
   struct Account : public app::core::Model
   {
+    Account();
     unsigned int id;
     std::string name;
     std::string email;
