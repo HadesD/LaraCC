@@ -18,6 +18,7 @@ namespace app { namespace database {
 
     protected:
       // Connection string
+      sqlite::database m_database
   };
 
 } }

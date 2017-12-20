@@ -8,7 +8,6 @@
 #include "../database/ConnectorInterface.hpp"
 #include "../database/SQLiteModernCppConnector.hpp"
 
-
 namespace app { namespace core {
 
   class Model

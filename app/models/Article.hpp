@@ -7,13 +7,18 @@
 
 namespace app { namespace models {
 
-  struct Article : public app::core::Model
+  class Article : public app::core::Model
   {
-    Article();
-    unsigned int id;
-    std::string title;
-    std::string content;
-    std::string author_id;
+    public:
+      Article();
+    
+    private:
+      unsigned int id;
+      std::string title;
+      std::string content;
+      std::string author_id;
+      
+    private:
   };
 
 } }
