@@ -11,16 +11,17 @@ namespace app { namespace models {
   {
     public:
       Article();
-    
+
     private:
       unsigned int id;
       std::string title;
       std::string content;
       std::string author_id;
-      
+
     private:
   };
 
 } }
 
 #endif
+

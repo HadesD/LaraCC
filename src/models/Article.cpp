@@ -5,5 +5,5 @@ namespace app { namespace models {
   Article::Article()
   {
   }
-    
+
 } }
