@@ -2,7 +2,11 @@
 
 namespace app { namespace models {
 
-  Article::Article()
+  Article::Article(const int id)
+  {
+  }
+
+  Article::Article(const std::string& slug)
   {
   }
 
