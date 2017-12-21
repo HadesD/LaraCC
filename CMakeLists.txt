@@ -28,10 +28,7 @@ set(LIST_FILES_COPY_AFTER_BUILD
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0.2.0
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0
-  )
-set(LIST_FOLDERS_COPY_AFTER_BUILD
-  ${CMAKE_CURRENT_SOURCE_DIR}/public
-  ${CMAKE_CURRENT_SOURCE_DIR}/storage
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/database/db.sqlite3
   )
 
 set(APP_REQUIRED_LIB
