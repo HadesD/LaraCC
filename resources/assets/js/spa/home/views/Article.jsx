@@ -15,7 +15,7 @@ let articleInfo = {
     name: 'Dark.Hades',
     url: '/authors/sss',
   },
-  permalink: '/article/sss',
+  permalink: '/articles/sss',
   content: '### Block Quotes\n```cpp\nTest code\n```\n`Test CODE`',
   tags: [
     {

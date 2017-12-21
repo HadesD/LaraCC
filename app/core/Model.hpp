@@ -40,14 +40,14 @@ namespace app { namespace core {
       virtual ~Model() = 0;
 
     public:
-      void setConnector(const database::ConnectorInterface& connector);
-      database::ConnectorInterface& getConnector() const;
+      // void setConnector(const database::ConnectorInterface& connector);
+      // database::ConnectorInterface getConnector() const;
 
     protected:
-      app::database::SQLiteModernCppConnector& m_connector;
+      app::database::SQLiteModernCppConnector m_connector;
 
     private:
-      app::database::SQLiteModernCppConnector m_sqlite;
+      // app::database::SQLiteModernCppConnector m_sqlite;
 
   };
 

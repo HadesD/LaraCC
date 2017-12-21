@@ -23,9 +23,9 @@ namespace app { namespace routes {
       // Article
       attach(
         new app::http::controllers::HomeController(s),
-        "article",
+        "articles",
         "{1}",
-        "/article/((.*))",
+        "/articles((.*))",
         1
         );
 

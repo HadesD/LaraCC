@@ -15,7 +15,7 @@ export default (state) => {
   return (
     <Switch>
       <Route path="/" render={Index(state)} />
-      <Route path="/article/:slug" render={Article(state)} />
+      <Route path="/articles/:slug" render={Article(state)} />
       <Route path="/login" render={Login(state)} />
     </Switch>
   );

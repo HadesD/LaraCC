@@ -12,18 +12,18 @@ namespace app { namespace database {
       virtual bool connect() = 0;
 
     public:
-      template<typename T>
+      template<typename T, typename I>
         T select(
           const std::string& column,
           const std::string& from,
-          const int id
-          ){}
+          const I id
+          );
       template<typename T, typename W>
         T select(
           const std::string& column,
           const std::string& from,
           const std::pair<std::string, W>& where
-          ){}
+          );
   };
 
 } }

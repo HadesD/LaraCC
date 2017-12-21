@@ -103,7 +103,7 @@ set(APP_SRC
   src/core/Controller.cpp
   src/core/Model.cpp
   src/core/View.cpp
-  
+
   ###############################################
   # Database
   ###############################################
@@ -115,7 +115,7 @@ set(APP_SRC
   ###############################################
   src/models/Account.cpp
   src/models/Article.cpp
-  
+
   ###############################################
   # Application
   ###############################################
@@ -125,6 +125,7 @@ set(APP_SRC
   src/routes/API.cpp
 
   # Controllers
+  src/http/controllers/api/ApiController.cpp
   src/http/controllers/api/Article.cpp
   src/http/controllers/api/dashboard/Login.cpp
   src/http/controllers/HomeController.cpp

@@ -9,12 +9,13 @@
 
 namespace app { namespace http { namespace controllers { namespace api {
 
-  Article::Article(cppcms::service &s) : app::core::Controller(s)
+  Article::Article(cppcms::service &s) : ApiController(s)
   {
-    this->dispatcher().assign(".*", &Article::index, this);
+    this->dispatcher().map("GET", ".*", &Article::read, this);
+    this->dispatcher().map("POST", ".*", &Article::read, this);
   }
 
-  void Article::index()
+  void Article::read()
   {
     __APP_TRY_CATCH_BEGIN__
     {
@@ -24,7 +25,7 @@ namespace app { namespace http { namespace controllers { namespace api {
       r["ss"] = a.getId();
       r["s"] = a.getTitle();
       r["success"]["data"] = 1;
-  
+
       this->response().out() << r;
     }
     __APP_TRY_CATCH_END__

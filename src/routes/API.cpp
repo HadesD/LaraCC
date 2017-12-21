@@ -19,9 +19,9 @@ namespace app { namespace routes {
 
       attach(
         new app::http::controllers::api::Article(s),
-        "article",
+        "articles",
         "{1}",
-        "/article((/?).*)",
+        "/articles((/?).*)",
         1
         );
     }

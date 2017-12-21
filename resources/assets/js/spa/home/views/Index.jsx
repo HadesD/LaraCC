@@ -15,7 +15,7 @@ let listPost = [
       name: 'Dark.Hades',
       url: '/authors/sss',
     },
-    permalink: '/article/sss',
+    permalink: '/articles/sss',
     content: 'sdfsdfsdf',
     tags: [
       {
