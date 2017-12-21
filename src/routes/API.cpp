@@ -1,7 +1,7 @@
 #include "app/routes/API.hpp"
 
 #include "app/http/controllers/api/dashboard/Login.hpp"
-#include "app/http/controllers/api/Article.hpp"
+#include "app/http/controllers/api/ArticleController.hpp"
 
 namespace app { namespace routes {
 
@@ -18,7 +18,7 @@ namespace app { namespace routes {
         );
 
       attach(
-        new app::http::controllers::api::Article(s),
+        new app::http::controllers::api::ArticleController(s),
         "articles",
         "{1}",
         "/articles((/?).*)",

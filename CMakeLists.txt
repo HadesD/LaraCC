@@ -126,7 +126,7 @@ set(APP_SRC
 
   # Controllers
   src/http/controllers/api/ApiController.cpp
-  src/http/controllers/api/Article.cpp
+  src/http/controllers/api/ArticleController.cpp
   src/http/controllers/api/dashboard/Login.cpp
   src/http/controllers/HomeController.cpp
   src/http/controllers/DashboardController.cpp

@@ -10,12 +10,6 @@ namespace app { namespace http { namespace controllers { namespace api {
     public:
       ApiController(cppcms::service& s);
       virtual ~ApiController() = 0;
-
-    public:
-      virtual void create() = 0;
-      virtual void read() = 0;
-      virtual void update() = 0;
-      virtual void del() = 0;
   };
 
 } } } }
