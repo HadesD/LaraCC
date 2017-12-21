@@ -9,15 +9,22 @@ namespace app { namespace models {
 
   class Article : public app::core::Model
   {
-    APP_MODEL("article");
+    APP_MODEL("articles");
 
     public:
-      Article(const int id);
-      Article(const std::string& slug);
+      Article(const std::string& slug)
+      {
+        std::pair<std::string, std::string> w("slug", slug);
+        this->id = m_connector.select<int>(
+          "id",
+          m_tableName,
+          w
+        );
+      }
 
     private:
-      int id;
       std::string slug;
+      APP_SYNTHESIZE(int, id, Id);
       APP_SYNTHESIZE(std::string, title, Title);
       APP_SYNTHESIZE(std::string, content, Content);
       APP_SYNTHESIZE(int, author_id, AuthorId);

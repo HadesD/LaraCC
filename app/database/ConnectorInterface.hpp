@@ -13,13 +13,13 @@ namespace app { namespace database {
 
     public:
       template<typename T>
-        T select(const std::string& column, const std::string& from);
+        T select(const std::string& column, const std::string& from){}
       template<typename T, typename W>
         T select(
           const std::string& column,
           const std::string& from,
-          const std::pair<std::string, W> where
-          );
+          const std::pair<std::string, W>& where
+          ){}
   };
 
 } }

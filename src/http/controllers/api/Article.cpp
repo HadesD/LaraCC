@@ -16,11 +16,18 @@ namespace app { namespace http { namespace controllers { namespace api {
 
   void Article::index()
   {
-    cppcms::json::value r;
-    r["success"] = 1;
-    r["success"]["data"] = 1;
-
-    this->response().out() << r;
+    __APP_TRY_CATCH_BEGIN__
+    {
+      app::models::Article a("ff-ff");
+      cppcms::json::value r;
+      r["success"] = 1;
+      r["ss"] = a.getId();
+      r["s"] = a.getTitle();
+      r["success"]["data"] = 1;
+  
+      this->response().out() << r;
+    }
+    __APP_TRY_CATCH_END__
   }
 
 } } } }

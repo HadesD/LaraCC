@@ -1,6 +1,8 @@
 #ifndef _APP_CORE_MODEL_HPP_
 #define _APP_CORE_MODEL_HPP_
 
+#include "../config/Constants.hpp"
+
 #define APP_MODEL(table_name) \
   private: \
   std::string m_tableName = table_name; \
@@ -13,10 +15,12 @@
   varType colName; \
   public: \
   varType get##funcName() { \
+    __APP_TRY_CATCH_BEGIN__ \
     colName = m_connector.select<varType>( #colName, \
       m_tableName \
       ); \
     return colName; \
+    __APP_TRY_CATCH_END__ \
   } \
   void set##funcName(const varType& var) { \
     colName = var;\
