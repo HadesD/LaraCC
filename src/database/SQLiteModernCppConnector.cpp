@@ -3,7 +3,7 @@
 namespace app { namespace database {
 
   SQLiteModernCppConnector::SQLiteModernCppConnector() :
-    m_database("db.sqlite3")
+    m_database("storage/database/db.sqlite3")
   {
   }
 

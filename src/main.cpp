@@ -10,21 +10,24 @@
 int main(int argc, char *argv[])
 {
   __APP_TRY_CATCH_BEGIN__
-
+  {
     cppcms::service srv(argc, argv);
-  srv.applications_pool().mount(
+    srv.applications_pool().mount(
     cppcms::applications_factory<app::core::Kernel>()
     );
 
-  std::cout << "*Server running at " << srv.settings().get<std::string>("service.ip") << ":" << srv.settings().get<int>("service.port");
+    std::cout << "*Server running at " 
+      << srv.settings().get<std::string>("service.ip") 
+      << ":" 
+      << srv.settings().get<int>("service.port");
 #ifdef linux
-  std::cout << " PID: " << getpid();
+    std::cout << " PID: " << getpid();
 #endif
-  std::cout << std::endl;
+    std::cout << std::endl;
 
-  srv.run();
-
+    srv.run();
+  }
   __APP_TRY_CATCH_END__
 
-    return 0;
+  return 0;
 }
