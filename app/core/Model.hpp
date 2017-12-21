@@ -17,7 +17,8 @@
   varType get##funcName() { \
     __APP_TRY_CATCH_BEGIN__ \
     colName = m_connector.select<varType>( #colName, \
-      m_tableName \
+      m_tableName, \
+      id \
       ); \
     return colName; \
     __APP_TRY_CATCH_END__ \
@@ -27,7 +28,8 @@
   }
 
 #include "../database/ConnectorInterface.hpp"
-#include "../database/SQLiteModernCppConnector.hpp"
+
+#include "app/database/SQLiteModernCppConnector.hpp"
 
 namespace app { namespace core {
 
@@ -42,11 +44,11 @@ namespace app { namespace core {
       database::ConnectorInterface& getConnector() const;
 
     protected:
-      database::ConnectorInterface& m_connector;
+      app::database::SQLiteModernCppConnector& m_connector;
 
     private:
-      // Default Connector
-      database::SQLiteModernCppConnector m_sqliteModernCpp;
+      app::database::SQLiteModernCppConnector m_sqlite;
+
   };
 
 } }

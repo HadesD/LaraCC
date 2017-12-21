@@ -17,11 +17,11 @@ namespace app { namespace database {
       virtual bool connect() override;
 
     public:
-      template<typename T>
+      template<typename T, typename I>
         T select(
           const std::string& column,
           const std::string& from,
-          const std::string& id
+          const I id
           )
         {
           T ret;

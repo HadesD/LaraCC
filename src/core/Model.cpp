@@ -5,7 +5,7 @@
 
 namespace app { namespace core {
 
-  Model::Model() : m_connector(m_sqliteModernCpp)
+  Model::Model() : m_connector(m_sqlite)
   {
   }
 
@@ -20,7 +20,7 @@ namespace app { namespace core {
 
   void Model::setConnector(const database::ConnectorInterface& connector)
   {
-    m_connector = connector;
+    // m_connector = connector;
   }
 
 } }
