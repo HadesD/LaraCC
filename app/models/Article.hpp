@@ -12,15 +12,7 @@ namespace app { namespace models {
     APP_MODEL("articles");
 
     public:
-      Article(const std::string& slug)
-      {
-        std::pair<std::string, std::string> w("slug", slug);
-        this->id = m_connector.select<int>(
-          "id",
-          m_tableName,
-          w
-        );
-      }
+      Article(const std::string& slug);
 
     private:
       std::string slug;

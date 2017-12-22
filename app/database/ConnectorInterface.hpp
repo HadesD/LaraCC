@@ -18,15 +18,9 @@ namespace app { namespace database {
        *
        * @param {std::string} Column name
        * @param {std::string} Table name
-       * @param {any} Id value
+       * @param {std::pair<std::string, W} Specifial to search
        * @return {T} Value of column want to get
        */
-      template<typename T, typename I>
-        T select(
-          const std::string& column,
-          const std::string& from,
-          const I id
-          );
       template<typename T, typename W>
         T select(
           const std::string& column,
@@ -34,6 +28,9 @@ namespace app { namespace database {
           const std::pair<std::string, W>& where
           );
 
+      /**
+       *
+       */
       template<typename T>
         T getAll(
           const std::string& orderedList
@@ -43,3 +40,4 @@ namespace app { namespace database {
 } }
 
 #endif
+

@@ -16,9 +16,10 @@
   public: \
   varType get##funcName() { \
     __APP_TRY_CATCH_BEGIN__ \
+    std::pair<std::string, int> p(m_primaryKeyName, id); \
     colName = m_connector.select<varType>( #colName, \
       m_tableName, \
-      id \
+      p \
       ); \
     return colName; \
     __APP_TRY_CATCH_END__ \
@@ -26,8 +27,6 @@
   void set##funcName(const varType& var) { \
     colName = var;\
   }
-
-#define APP_MODEL_COLUMN(...) std::string m_allColumn = #__VA_ARGS__;
 
 #include "../database/ConnectorInterface.hpp"
 
@@ -37,22 +36,12 @@ namespace app { namespace core {
 
   class Model
   {
-    public:
-      Model();
-      virtual ~Model() = 0;
-
-    public:
-      // void setConnector(const database::ConnectorInterface& connector);
-      // database::ConnectorInterface getConnector() const;
-
     protected:
+      std::string m_primaryKeyName;
       app::database::SQLiteModernCppConnector m_connector;
-
-    private:
-      // app::database::SQLiteModernCppConnector m_sqlite;
-
   };
 
 } }
 
 #endif
+

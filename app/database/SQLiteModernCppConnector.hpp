@@ -17,34 +17,14 @@ namespace app { namespace database {
       virtual bool connect() override;
 
     public:
-      template<typename T, typename I>
-        T select(
-          const std::string& column,
-          const std::string& from,
-          const I id
-          )
-        {
-          T ret;
-          std::string q =
-            "SELECT "
-            + column
-            + " FROM "
-            + from
-            + " WHERE "
-            + "id=?"
-            + ";";
-          m_database << q << id >> ret;
-
-          return ret;
-        }
       template<typename T, typename W>
         T select(
           const std::string& column,
           const std::string& from,
-          const std::pair<std::string, W> where
+          const std::pair<std::string, W>& where
           )
         {
-          T ret;
+          T val;
           std::string q =
             "SELECT "
             + column
@@ -54,9 +34,8 @@ namespace app { namespace database {
             + where.first
             + "=?"
             + ";";
-          m_database << q << where.second >> ret;
-
-          return ret;
+          m_database << q << where.second >> val;
+          return val;
         }
 
     protected:
