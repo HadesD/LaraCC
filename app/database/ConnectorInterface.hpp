@@ -12,6 +12,15 @@ namespace app { namespace database {
       virtual bool connect() = 0;
 
     public:
+
+      /**
+       * Select one column use Id
+       *
+       * @param {std::string} Column name
+       * @param {std::string} Table name
+       * @param {any} Id value
+       * @return {T} Value of column want to get
+       */
       template<typename T, typename I>
         T select(
           const std::string& column,
@@ -24,6 +33,11 @@ namespace app { namespace database {
           const std::string& from,
           const std::pair<std::string, W>& where
           );
+
+      template<typename T>
+        T getAll(
+
+                );
   };
 
 } }
