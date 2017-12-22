@@ -1,4 +1,5 @@
 import axios from 'axios';
+import site from '../../commons/site.js';
 
 export default {
   update: (doUpdate) => {return (doUpdate ? {} : false)},
@@ -21,21 +22,21 @@ export default {
 
     axios({
       method: 'GET',
-      url: '',
+      url: site.api_url + state.location.pathname,
     })
       .then((response) => {
         // setTimeout(() => {
-          console.log(lastFetchingStatus);
-          state.isFetchingPage = false;
-          state.articlePage.isLoadCalled = true;
-          actions.update(lastFetchingStatus);
+        console.log(response);
+        state.isFetchingPage = false;
+        state.articlePage.isLoadCalled = true;
+        actions.update(lastFetchingStatus);
         // }, 1000);
       })
       .catch((error) => {
         // setTimeout(() => {
-          state.isFetchingPage = false;
-          // state.articlePage.isLoadCalled = false;
-          // actions.update();
+        state.isFetchingPage = false;
+        // state.articlePage.isLoadCalled = false;
+        // actions.update();
         // }, 1000);
       })
     ;

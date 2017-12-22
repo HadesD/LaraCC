@@ -15,7 +15,7 @@ let listPost = [
       name: 'Dark.Hades',
       url: '/authors/sss',
     },
-    permalink: '/articles/sss',
+    permalink: '/articles/ff-ff',
     content: 'sdfsdfsdf',
     tags: [
       {
@@ -27,6 +27,8 @@ let listPost = [
 ];
 
 export default (state) => (location) => (actions) => {
+  console.log(actions);
+  actions.homePage.onload();
   return (
     <Main state={state} actions={actions}>
       {listPost.map(p => {

@@ -9,6 +9,7 @@ export default {
 
   articlePage: {
     isLoadCalled: false,
+    articleInfo: {},
   },
 };
 
