@@ -36,8 +36,8 @@ namespace app { namespace database {
 
       template<typename T>
         T getAll(
-
-                );
+          const std::string& orderedList
+          );
   };
 
 } }

@@ -24,10 +24,10 @@ namespace app { namespace models {
 
     private:
       std::string slug;
-      APP_SYNTHESIZE(int, id, Id);
-      APP_SYNTHESIZE(std::string, title, Title);
-      APP_SYNTHESIZE(std::string, content, Content);
-      APP_SYNTHESIZE(int, author_id, AuthorId);
+      APP_MODEL_SYNTHESIZE(int, id, Id);
+      APP_MODEL_SYNTHESIZE(std::string, title, Title);
+      APP_MODEL_SYNTHESIZE(std::string, content, Content);
+      APP_MODEL_SYNTHESIZE(int, author_id, AuthorId);
   };
 
 } }

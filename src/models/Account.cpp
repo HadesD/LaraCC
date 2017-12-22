@@ -5,5 +5,5 @@ namespace app { namespace models {
   Account::Account()
   {
   }
-    
+
 } }

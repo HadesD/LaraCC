@@ -16,9 +16,9 @@ int main(int argc, char *argv[])
     cppcms::applications_factory<app::core::Kernel>()
     );
 
-    std::cout << "*Server running at " 
-      << srv.settings().get<std::string>("service.ip") 
-      << ":" 
+    std::cout << "*Server running at "
+      << srv.settings().get<std::string>("service.ip")
+      << ":"
       << srv.settings().get<int>("service.port");
 #ifdef linux
     std::cout << " PID: " << getpid();
@@ -31,3 +31,4 @@ int main(int argc, char *argv[])
 
   return 0;
 }
+

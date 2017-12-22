@@ -10,7 +10,7 @@
   const std::string& getTableName() const {return m_tableName;} \
   void setTableName(const std::string& tableName) {m_tableName = tableName;}
 
-#define APP_SYNTHESIZE(varType,colName,funcName) \
+#define APP_MODEL_SYNTHESIZE(varType,colName,funcName) \
   private: \
   varType colName; \
   public: \
@@ -26,6 +26,8 @@
   void set##funcName(const varType& var) { \
     colName = var;\
   }
+
+#define APP_MODEL_COLUMN(...) std::string m_allColumn = #__VA_ARGS__;
 
 #include "../database/ConnectorInterface.hpp"
 
