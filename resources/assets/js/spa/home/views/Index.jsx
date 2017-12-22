@@ -27,8 +27,7 @@ let listPost = [
 ];
 
 export default (state) => (location) => (actions) => {
-  console.log(actions);
-  actions.homePage.onload();
+  actions.homePage.onload(state);
   return (
     <Main state={state} actions={actions}>
       {listPost.map(p => {
