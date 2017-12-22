@@ -17,6 +17,25 @@ namespace app { namespace database {
       virtual bool connect() override;
 
     public:
+        std::vector<int> select(
+          const std::string& column,
+          const std::string& from
+          )
+        {
+          std::vector<int> val;
+          std::string q =
+            "SELECT "
+            + column
+            + " FROM "
+            + from
+            + ";";
+          m_database << q
+            >> [&](const int id){
+              std::cout << id << std::endl;
+              val.push_back(id);
+            };
+          return val;
+        }
       template<typename T, typename W>
         T select(
           const std::string& column,

@@ -2,10 +2,14 @@
 
 namespace app { namespace models {
 
-  Article::Article(const std::string& s) : Model()
+  Article::Article()
   {
-    m_primaryKeyName = "id";
-    this->slug = s;
+    this->id = 0;
+  }
+
+  Article::Article(const std::string& slug)
+  {
+    this->slug = slug;
 
     std::pair<std::string, std::string> w("slug", this->slug);
     this->id = m_connector.select<int>(
@@ -13,6 +17,11 @@ namespace app { namespace models {
       m_tableName,
       w
       );
+  }
+
+  Article::Article(const int id)
+  {
+    this->id = id;
   }
 
 } }

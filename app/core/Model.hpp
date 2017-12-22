@@ -6,6 +6,7 @@
 #define APP_MODEL(table_name) \
   private: \
   std::string m_tableName = table_name; \
+  std::string m_primaryKeyName = "id"; \
   public: \
   const std::string& getTableName() const {return m_tableName;} \
   void setTableName(const std::string& tableName) {m_tableName = tableName;}
@@ -18,9 +19,9 @@
     __APP_TRY_CATCH_BEGIN__ \
     std::pair<std::string, int> p(m_primaryKeyName, id); \
     colName = m_connector.select<varType>( #colName, \
-      m_tableName, \
-      p \
-      ); \
+                                          m_tableName, \
+                                          p \
+                                          ); \
     return colName; \
     __APP_TRY_CATCH_END__ \
   } \
@@ -37,7 +38,6 @@ namespace app { namespace core {
   class Model
   {
     protected:
-      std::string m_primaryKeyName;
       app::database::SQLiteModernCppConnector m_connector;
   };
 

@@ -29,12 +29,15 @@ namespace app { namespace http { namespace controllers { namespace api {
   {
     __APP_TRY_CATCH_BEGIN__
     {
-      app::models::Article a(urlPath);
+      // app::models::Article a(urlPath);
       cppcms::json::value r;
-      r["success"] = 1;
-      r["ss"] = a.getId();
-      r["s"] = a.getTitle();
-      r["success"]["data"] = 1;
+
+      app::models::Article article;
+      for(auto& a : article.getAll())
+      {
+        int id = a.getId();
+        r["ss"] = id;
+      }
 
       this->response().out() << r;
     }

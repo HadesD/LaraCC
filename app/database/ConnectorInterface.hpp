@@ -2,7 +2,7 @@
 #define __APP_DATABASE_CONNECTOR_INTERFACE_HPP_
 
 #include <string>
-#include <utility>
+#include <vector>
 
 namespace app { namespace database {
 
@@ -32,8 +32,10 @@ namespace app { namespace database {
        *
        */
       template<typename T>
-        T getAll(
-          const std::string& orderedList
+        std::vector<T> getAll(
+          const std::string& orderedList,
+          const unsigned int offset,
+          const unsigned int limit
           );
   };
 
