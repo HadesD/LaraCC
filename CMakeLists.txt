@@ -24,10 +24,6 @@ find_program(EXE_TMPL_CC
 
 set(LIST_FILES_COPY_AFTER_BUILD
   ${CMAKE_CURRENT_SOURCE_DIR}/config.json
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1.2.0
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0.2.0
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/database/db.sqlite3
   )
 
@@ -48,7 +44,14 @@ set(INCLUDE_DIR
 set(LINK_DIR)
 
 if(UNIX AND NOT APPLE)
-  set(LINK_DIR "${LINK_DIR}" ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
+  set(LIST_FILES_COPY_AFTER_BUILD "${LIST_FILES_COPY_AFTER_BUILD}"
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1.2.0
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0.2.0
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0
+    )
+  set(LINK_DIR "${LINK_DIR}"
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
     )
@@ -57,8 +60,13 @@ if(UNIX AND NOT APPLE)
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
     )
 elseif(APPLE)
+  set(LIST_FILES_COPY_AFTER_BUILD "${LIST_FILES_COPY_AFTER_BUILD}"
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/libcppcms.1.2.0.dylib
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/libcppcms.1.dylib
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster/libbooster.0.2.0.dylib
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster/libbooster.0.dylib
+    )
   set(LINK_DIR "${LINK_DIR}"
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/osx
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster
     )
