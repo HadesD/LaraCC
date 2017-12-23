@@ -32,33 +32,34 @@ let articleInfo = {
 };
 
 const dangerouslySetInnerHTML = (html) => {
-  return (element) => {
-    element.innerHTML = html;
-  };
+  if (html)
+  {
+    return (element) => {
+      element.innerHTML = html;
+    };
+  }
 };
 
 export default (state) => (location) => (actions) => {
+  console.log(state.articlePage.articleInfo);
   actions.articlePage.loadArticleInfo(state);
   return (
     <Main state={state} actions={actions}>
       <div class="article-wrapper u-cf single">
-        <Link class="bubble" to={articleInfo.permalink}>
+        <Link class="bubble" to={state.articlePage.articleInfo.permalink}>
           <i class="fa fa-fw fa-video-camera"></i>
         </Link>
         <article class="video">
-          {/* <div class="responsive-video youtube"> */}
-            {/*   <iframe src="https://www.youtube-nocookie.com/embed/Yk_BI3ne0Ic?rel=0" frameborder="0" allowfullscreen></iframe> */}
-            {/* </div> */}
           <div class="content">
             <h3>
-              <Link to={articleInfo.permalink}>
-                {articleInfo.title}
+              <Link to={state.articlePage.articleInfo.permalink}>
+                {state.articlePage.articleInfo.title}
               </Link>
             </h3>
             <div class="meta">
-              <span class="date moment">{articleInfo.post_time}</span>
+              <span class="date moment">{state.articlePage.articleInfo.post_time}</span>
               <span class="categories">
-                {articleInfo.categories.map(c => {
+                {state.articlePage.articleInfo.categories.map((c) => {
                   return (
                     <Link to={c.url}>
                       {c.name}
@@ -67,7 +68,14 @@ export default (state) => (location) => (actions) => {
                 })}
               </span>
             </div>
-            <p oncreate={dangerouslySetInnerHTML(snarkdown(articleInfo.content))} />
+            <p
+              oncreate={
+                dangerouslySetInnerHTML(
+                  !state.articlePage.articleInfo.content ||
+                  snarkdown(state.articlePage.articleInfo.content)
+                )
+              }
+            />
           </div>
         </article>
       </div>

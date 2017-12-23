@@ -7,9 +7,15 @@ export default {
 
   isFetchingPage: false,
 
+  homePage: {
+
+  },
+
   articlePage: {
-    isLoadCalled: false,
-    articleInfo: {},
+    articleInfo: {
+      categories: [],
+      content: null,
+    },
   },
 };
 

@@ -1,21 +1,30 @@
+import axios from 'axios';
+import site from '../../commons/site.js';
+
 export default {
   update: (doUpdate) => {return (doUpdate ? {} : false)},
 
   onload: (state) => () => (actions) => {
-    let lastFetchingStatus = state.isFetchingPage;
-    if (state.articlePage.isLoadCalled)
+    if (state.isFetchingPage)
     {
-      state.articlePage.isLoadCalled = false;
       state.isFetchingPage = false;
       return false;
     }
 
-    if (!state.isFetchingPage)
-    {
-      console.log('Set fetching true');
-      state.isFetchingPage = true;
-      return {};
-    }
+    axios({
+      method: 'GET',
+      url: site.api_url + '/articles'
+    })
+      .then((response) => {
+        console.log(response);
+        state.isFetchingPage = false;
+        actions.update(state.isFetchingPage);
+      })
+      .then((error) => {
+        state.isFetchingPage = false;
+        actions.update(state.isFetchingPage);
+      })
+    ;
   }
 }
 
