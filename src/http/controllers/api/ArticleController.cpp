@@ -34,16 +34,19 @@ namespace app { namespace http { namespace controllers { namespace api {
         r["permalink"] = "/articles/" + article.getSlug();
         r["title"] = article.getTitle();
         r["content"] = article.getContent();
-        r["author"]["name"] = article.getAuthorId();
-        r["author"]["url"] = article.getAuthorId();
 
-        // Tag search
-        for (int t = 0; t < 2; t++)
+        // Author
+        auto &rAuthor = r["author"];
+        rAuthor["url"] = "/";
+        rAuthor["name"] = article.getAuthorId();
+
+        // Tags
+        for (int t = 0; t < 1; t++)
         {
-          auto &rtag = r["tags"][t];
+          auto &rTag = r["tags"][t];
 
-          rtag["url"] = "/";
-          rtag["name"] = "none";
+          rTag["url"] = "/";
+          rTag["name"] = "none";
         }
       }
 
@@ -63,23 +66,28 @@ namespace app { namespace http { namespace controllers { namespace api {
       res["permalink"] = "/articles/" + urlPath + article.getSlug();
       res["title"] = article.getTitle();
       res["content"] = article.getContent();
-      res["author"]["name"] = article.getAuthorId();
-      res["author"]["url"] = article.getAuthorId();
 
-      for (int t = 0; t < 2; t++)
+      // Author
+      auto &rAuthor = res["author"];
+      rAuthor["url"] = "/";
+      rAuthor["name"] = article.getAuthorId();
+
+      // Tags
+      for (int t = 0; t < 1; t++)
       {
-        auto &rtag = res["tags"][t];
+        auto &rTag = res["tags"][t];
 
-        rtag["name"] = "";
-        rtag["url"] = "";
+        rTag["url"] = "/";
+        rTag["name"] = "none";
       }
 
-      for (int c = 0; c < 2; c++)
+      // Categories
+      for (int c = 0; c < 1; c++)
       {
-        auto &rcat = res["categories"][c];
+        auto &rCat = res["categories"][c];
 
-        rcat["name"] = "";
-        rcat["url"] = "";
+        rCat["url"] = "/";
+        rCat["name"] = "none";
       }
 
       this->response().out() << res;

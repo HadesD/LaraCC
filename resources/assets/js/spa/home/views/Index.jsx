@@ -5,6 +5,9 @@ import {
 
 import Main from '../components/Main.jsx';
 
+import utils from '../../commons/utils.js';
+import snarkdown from 'snarkdown';
+
 let isCalledFetchData = false;
 
 export default (state) => (location) => (actions) => {
@@ -57,9 +60,17 @@ export default (state) => (location) => (actions) => {
                       </Link>
                     </span>
                   </div>
-                  <div>
-                    {p.content}
-                  </div>
+                  <p
+                    oncreate={
+                      utils.dangerouslySetInnerHTML(
+                        !p.content ||
+                        snarkdown(p.content)
+                      )
+                    }
+                    onupdate={(e) => {
+                      e.oncreate(e)
+                    }}
+                  />
                 </div>
                 <div class="tags">
                   <i class="fa fa-tags"></i> {!p.tags || p.tags.map(t => {

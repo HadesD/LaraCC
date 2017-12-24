@@ -3,18 +3,10 @@ import {
   Link
 } from '@hyperapp/router';
 
-import snarkdown from 'snarkdown';
-
 import Main from '../components/Main.jsx';
 
-const dangerouslySetInnerHTML = (html) => {
-  if (html)
-  {
-    return (element) => {
-      element.innerHTML = html;
-    };
-  }
-};
+import utils from '../../commons/utils.js';
+import snarkdown from 'snarkdown';
 
 let isCalledFetchData = false;
 
@@ -73,7 +65,7 @@ export default (state) => (location) => (actions) => {
             </div>
             <p
               oncreate={
-                dangerouslySetInnerHTML(
+                utils.dangerouslySetInnerHTML(
                   !state.articlePage.articleInfo.content ||
                   snarkdown(state.articlePage.articleInfo.content)
                 )
