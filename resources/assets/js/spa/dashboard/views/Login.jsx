@@ -32,6 +32,8 @@ const CmdInputBox = ({state, actions}) => {
         oninput={actions.loginPage.onInputCmdInput}
         onkeyup={actions.loginPage.onKeyUpCmdInput}
         autofocus="true"
+        oncreate={(e) => {e.focus();console.log("c")}}
+        onupdate={(e) => {e.focus();console.log("u")}}
       />
       <span class={styles.cmdInputShow}>
         {

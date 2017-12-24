@@ -127,13 +127,13 @@ export default {
           execCmd(state, actions, event.target.value) || ''
         );
         state.cmdInputText = event.target.value = null;
+        return ({
+        });
         break;
       default:
         break;
     }
 
-    return ({
-    });
   },
   onInputCmdInput: (event) => (state) => (actions) => {
     state.cmdInputText = event.target.value;
@@ -146,13 +146,13 @@ export default {
     {
       case 13:
         state.cmdInputText = event.target.value = null;
+        return ({
+        });
         break;
       default:
         break;
     }
 
-    return ({
-    });
   },
   update: () => {return ({})},
 };

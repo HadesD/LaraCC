@@ -2,33 +2,21 @@ import axios from 'axios';
 import site from '../../commons/site.js';
 
 export default {
-  update: (doUpdate) => {
-    state.isFetchingPage = false;
-    return (doUpdate);
+  update: (state) => {
+    return ({});
   },
 
   loadArticleInfo: (state) => () => (actions) => {
-    if (state.isfetchingpage)
-    {
-      return false;
-    }
-
-    state.isFetchingPage = true;
-
     axios({
       method: 'GET',
       url: site.api_url + state.location.pathname,
     })
       .then((response) => {
         // setTimeout(() => {
-        console.log(response);
-
-        actions.update({
-          articlePage: {
-            articleInfo: response.data
-          }
-        });
-        console.log(state.articlePage.articleInfo);
+        console.log("Fetched: ", response);
+        state.articlePage.articleInfo = response.data;
+        state.isFetchingPage = false;
+        actions.update(state);
         // }, 1000);
       })
       .catch((error) => {
