@@ -28,9 +28,10 @@ export default (state) => (location) => (actions) => {
           {
             e.oncreate(e);
           }
-        }}
-        onbeforeremove={(e) => (d) => {
-          console.log("remove");
+          else
+          {
+            isCalledFetchData = false;
+          }
         }}
       >
         {!state.homePage.listPost || state.homePage.listPost.map(p => {

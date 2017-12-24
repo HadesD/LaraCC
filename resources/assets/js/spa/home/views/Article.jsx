@@ -30,10 +30,11 @@ export default (state) => (location) => (actions) => {
           if (!isCalledFetchData)
           {
             e.oncreate(e);
-            // actions.articlePage.loadArticleInfo(state);
-            // isCalledFetchData = true;
           }
-          console.log("update")
+          else
+          {
+            isCalledFetchData = false;
+          }
         }}
       >
         <Link class="bubble" to={state.articlePage.articleInfo.permalink}>
