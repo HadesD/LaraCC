@@ -31,7 +31,6 @@ namespace app { namespace database {
             + ";";
           m_database << q
             >> [&](const int id){
-              std::cout << id << std::endl;
               val.push_back(id);
             };
           return val;

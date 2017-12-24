@@ -63,7 +63,7 @@ namespace app { namespace http { namespace controllers { namespace api {
       app::models::Article article(urlPath);
 
       res["id"] = article.getId();
-      res["permalink"] = "/articles/" + urlPath + article.getSlug();
+      res["permalink"] = "/articles/" + article.getSlug();
       res["title"] = article.getTitle();
       res["content"] = article.getContent();
 
