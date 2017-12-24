@@ -65,10 +65,23 @@ namespace app { namespace http { namespace controllers { namespace api {
       res["content"] = article.getContent();
       res["author"]["name"] = article.getAuthorId();
       res["author"]["url"] = article.getAuthorId();
-      res["tags"][0]["name"] = "";
-      res["tags"][0]["url"] = "";
-      res["categories"][0]["name"] = "";
-      res["categories"][0]["url"] = "";
+
+      for (int t = 0; t < 2; t++)
+      {
+        auto &rtag = res["tags"][t];
+
+        rtag["name"] = "";
+        rtag["url"] = "";
+      }
+
+      for (int c = 0; c < 2; c++)
+      {
+        auto &rcat = res["categories"][c];
+
+        rcat["name"] = "";
+        rcat["url"] = "";
+      }
+
       this->response().out() << res;
     }
     __APP_TRY_CATCH_END__

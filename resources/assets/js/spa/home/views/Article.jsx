@@ -59,13 +59,16 @@ export default (state) => (location) => (actions) => {
                 {state.articlePage.articleInfo.post_time}
               </span>
               <span class="categories">
-                {state.articlePage.articleInfo.categories.map((c) => {
-                  return (
-                    <Link to={c.url}>
-                      {c.name}
-                    </Link>
-                  );
-                })}
+                {
+                  !state.articlePage.articleInfo.categories ||
+                    state.articlePage.articleInfo.categories.map((c) => {
+                      return (
+                        <Link to={c.url}>
+                          {c.name}
+                        </Link>
+                      );
+                    })
+                }
               </span>
             </div>
             <p
