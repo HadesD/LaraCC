@@ -37,8 +37,9 @@ export default (state) => (location) => (actions) => {
         onupdate={(e) => {
           if (!isCalledFetchData)
           {
-            actions.articlePage.loadArticleInfo(state);
-            isCalledFetchData = true;
+            e.oncreate(e);
+            // actions.articlePage.loadArticleInfo(state);
+            // isCalledFetchData = true;
           }
           console.log("update")
         }}

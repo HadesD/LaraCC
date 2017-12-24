@@ -8,7 +8,7 @@ export default {
   isFetchingPage: false,
 
   homePage: {
-
+    listPost: [],
   },
 
   articlePage: {

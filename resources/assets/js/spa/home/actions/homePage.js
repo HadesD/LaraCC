@@ -2,15 +2,11 @@ import axios from 'axios';
 import site from '../../commons/site.js';
 
 export default {
-  update: (doUpdate) => {return (doUpdate ? {} : false)},
+  update: (doUpdate) => {
+    return ({})
+  },
 
   onload: (state) => () => (actions) => {
-    if (state.isFetchingPage)
-    {
-      state.isFetchingPage = false;
-      return false;
-    }
-
     axios({
       method: 'GET',
       url: site.api_url + '/articles'
@@ -18,11 +14,11 @@ export default {
       .then((response) => {
         console.log(response);
         state.isFetchingPage = false;
-        actions.update(state.isFetchingPage);
+        actions.update(state);
       })
       .then((error) => {
         state.isFetchingPage = false;
-        actions.update(state.isFetchingPage);
+        actions.update(state);
       })
     ;
   }

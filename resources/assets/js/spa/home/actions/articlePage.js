@@ -21,6 +21,8 @@ export default {
       })
       .catch((error) => {
         // setTimeout(() => {
+        state.isFetchingPage = false;
+        actions.update(state);
         // }, 1000);
       })
     ;
