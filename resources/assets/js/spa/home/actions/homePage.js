@@ -14,6 +14,7 @@ export default {
       .then((response) => {
         console.log(response);
         state.isFetchingPage = false;
+        state.homePage.listPost = response.data;
         actions.update(state);
       })
       .then((error) => {

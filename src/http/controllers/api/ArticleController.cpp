@@ -19,8 +19,35 @@ namespace app { namespace http { namespace controllers { namespace api {
   {
     __APP_TRY_CATCH_BEGIN__
     {
-      cppcms::json::value r;
-      this->response().out() << r;
+      cppcms::json::value res;
+      app::models::Article article;
+
+      auto articles = article.getAll();
+
+      for (int i = 0; i < articles.size(); i++)
+      {
+        auto &article = articles.at(i);
+
+        auto &r = res[i];
+
+        r["id"] = article.getId();
+        r["permalink"] = "/articles/" + article.getSlug();
+        r["title"] = article.getTitle();
+        r["content"] = article.getContent();
+        r["author"]["name"] = article.getAuthorId();
+        r["author"]["url"] = article.getAuthorId();
+
+        // Tag search
+        for (int t = 0; t < 2; t++)
+        {
+          auto &rtag = r["tags"][t];
+
+          rtag["url"] = "/";
+          rtag["name"] = "none";
+        }
+      }
+
+      this->response().out() << res;
     }
     __APP_TRY_CATCH_END__
   }

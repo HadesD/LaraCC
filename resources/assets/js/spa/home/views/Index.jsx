@@ -5,27 +5,6 @@ import {
 
 import Main from '../components/Main.jsx';
 
-
-let listPost = [
-  {
-    title: 'Test 1',
-    type: 'default article',
-    post_time: (new Date()).getDate(),
-    author: {
-      name: 'Dark.Hades',
-      url: '/authors/sss',
-    },
-    permalink: '/articles/ff-ff',
-    content: 'sdfsdfsdf',
-    tags: [
-      {
-        name: 'sfsdf',
-        url: 'fsfsdf',
-      },
-    ],
-  },
-];
-
 let isCalledFetchData = false;
 
 export default (state) => (location) => (actions) => {
@@ -33,6 +12,7 @@ export default (state) => (location) => (actions) => {
   {
     state.isFetchingPage = true;
   }
+
   return (
     <Main state={state} actions={actions}>
       <div
@@ -50,7 +30,7 @@ export default (state) => (location) => (actions) => {
           console.log("remove");
         }}
       >
-        {listPost.map(p => {
+        {!state.homePage.listPost || state.homePage.listPost.map(p => {
           return (
             <div class="article-wrapper u-cf">
               <Link to={p.permalink} class="bubble">
@@ -82,7 +62,7 @@ export default (state) => (location) => (actions) => {
                   </div>
                 </div>
                 <div class="tags">
-                  <i class="fa fa-tags"></i> {p.tags.map(t => {
+                  <i class="fa fa-tags"></i> {!p.tags || p.tags.map(t => {
                     return (
                       <Link to={t.url}>
                         {t.name}

@@ -21,16 +21,23 @@ namespace app { namespace http { namespace controllers { namespace api {
       cppcms::json::value res;
       app::models::Article article;
 
-      res["id"] = article.getId();
-      res["permalink"] = '/' + article.getSlug();
-      res["title"] = article.getTitle();
-      res["content"] = article.getContent();
-      res["author"]["name"] = article.getAuthorId();
-      res["author"]["url"] = article.getAuthorId();
-      res["tags"][0]["name"] = "";
-      res["tags"][0]["url"] = "";
-      res["categories"][0]["name"] = "";
-      res["categories"][0]["url"] = "";
+      auto articles = article.getAll();
+
+      for (int i = 0; i < articles.size(); i++)
+      {
+        res["id"] = i;
+      }
+
+      // res["id"] = article.getId();
+      // res["permalink"] = '/' + article.getSlug();
+      // res["title"] = article.getTitle();
+      // res["content"] = article.getContent();
+      // res["author"]["name"] = article.getAuthorId();
+      // res["author"]["url"] = article.getAuthorId();
+      // res["tags"][0]["name"] = "";
+      // res["tags"][0]["url"] = "";
+      // res["categories"][0]["name"] = "";
+      // res["categories"][0]["url"] = "";
 
       this->response().out() << res;
     }
