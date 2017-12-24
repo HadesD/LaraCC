@@ -55,11 +55,15 @@ export default (state) => (location) => (actions) => {
                   </h3>
                   <div class="meta">
                     <span class="date moment">{p.post_time}</span>
-                    <span class="author">
-                      <Link to={p.author.url}>
-                        {p.author.name}
-                      </Link>
-                    </span>
+                    {!p.author ||
+                        (
+                          <span class="author">
+                            <Link to={p.author.url}>
+                              {p.author.name}
+                            </Link>
+                          </span>
+                        )
+                    }
                   </div>
                   <p
                     oncreate={
@@ -73,15 +77,19 @@ export default (state) => (location) => (actions) => {
                     }}
                   />
                 </div>
-                <div class="tags">
-                  <i class="fa fa-tags"></i> {!p.tags || p.tags.map(t => {
-                    return (
-                      <Link to={t.url}>
-                        {t.name}
-                      </Link>
-                    );
-                  })}
-                </div>
+                {!p.tags ||
+                    (
+                      <div class="tags">
+                        <i class="fa fa-tags"></i> {p.tags.map(t => {
+                          return (
+                            <Link to={t.url}>
+                              {t.name}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )
+                }
               </article>
             </div>
           );

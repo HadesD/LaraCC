@@ -12,18 +12,16 @@ export default {
       url: site.api_url + state.location.pathname,
     })
       .then((response) => {
-        // setTimeout(() => {
         console.log("Fetched: ", response);
         state.articlePage.articleInfo = response.data;
+        document.title = state.articlePage.articleInfo.title
+          + ' | ' + site.title;
         state.isFetchingPage = false;
         actions.update(state);
-        // }, 1000);
       })
       .catch((error) => {
-        // setTimeout(() => {
         state.isFetchingPage = false;
         actions.update(state);
-        // }, 1000);
       })
     ;
 

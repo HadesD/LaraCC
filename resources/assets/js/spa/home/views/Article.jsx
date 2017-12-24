@@ -51,18 +51,19 @@ export default (state) => (location) => (actions) => {
               <span class="date moment">
                 {state.articlePage.articleInfo.post_time}
               </span>
-              <span class="categories">
-                {
-                  !state.articlePage.articleInfo.categories ||
-                    state.articlePage.articleInfo.categories.map((c) => {
-                      return (
-                        <Link to={c.url}>
-                          {c.name}
-                        </Link>
-                      );
-                    })
-                }
-              </span>
+              {!state.articlePage.articleInfo.categories ||
+                  (
+                    <span class="categories">
+                      {state.articlePage.articleInfo.categories.map((c) => {
+                        return (
+                          <Link to={c.url}>
+                            {c.name}
+                          </Link>
+                        );
+                      })}
+                    </span>
+                  )
+              }
             </div>
             <p
               oncreate={

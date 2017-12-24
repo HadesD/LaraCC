@@ -41,7 +41,7 @@ namespace app { namespace http { namespace controllers { namespace api {
         rAuthor["name"] = article.getAuthorId();
 
         // Tags
-        for (int t = 0; t < 1; t++)
+        for (int t = 0; t < 0; t++)
         {
           auto &rTag = r["tags"][t];
 
@@ -73,7 +73,7 @@ namespace app { namespace http { namespace controllers { namespace api {
       rAuthor["name"] = article.getAuthorId();
 
       // Tags
-      for (int t = 0; t < 1; t++)
+      for (int t = 0; t < 0; t++)
       {
         auto &rTag = res["tags"][t];
 
@@ -82,7 +82,7 @@ namespace app { namespace http { namespace controllers { namespace api {
       }
 
       // Categories
-      for (int c = 0; c < 1; c++)
+      for (int c = 0; c < 0; c++)
       {
         auto &rCat = res["categories"][c];
 

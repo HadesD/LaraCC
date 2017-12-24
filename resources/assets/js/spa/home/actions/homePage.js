@@ -7,6 +7,7 @@ export default {
   },
 
   onload: (state) => () => (actions) => {
+    document.title = site.title;
     axios({
       method: 'GET',
       url: site.api_url + '/articles'
