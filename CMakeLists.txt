@@ -24,7 +24,6 @@ find_program(EXE_TMPL_CC
 
 set(LIST_FILES_COPY_AFTER_BUILD
   ${CMAKE_CURRENT_SOURCE_DIR}/config.json
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/database/db.sqlite3
   )
 
 set(APP_REQUIRED_LIB
