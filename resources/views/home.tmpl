@@ -2,7 +2,31 @@
 <% skin bootstrap_skin %>
 <% view home uses app::views::Home extends layouts_home %>
 <% template layouts_home_content() %>
-
+<% foreach article in articles %>
+<% item %>
+<div class="article-wrapper u-cf">
+  <a class="bubble" href="/articles/<%= article.getSlug() %>">
+    <i class="fa fa-fw fa-pencil">
+    </i>
+  </a>
+  <article class={p.type}>
+    <div class="content">
+      <h3>
+        <a href="/articles/<%= article.getSlug() %>">
+          <%= article.getTitle() %>
+        </a>
+      </h3>
+      <div class="meta">
+        <span class="date moment">{p.post_time}</span>
+      </div>
+      <p>
+        <%= article.getContent() %>
+      </p>
+    </div>
+  </article>
+</div>
+<% end %>
+<% end %>
 <% end template %>
 <% end view %>
 <% end skin %>

@@ -37,7 +37,7 @@ export default (state) => (location) => (actions) => {
         {!state.homePage.listPost || state.homePage.listPost.map(p => {
           return (
             <div class="article-wrapper u-cf">
-              <Link to={p.permalink} class="bubble">
+              <Link class="bubble" to={p.permalink}>
                 <i class="fa fa-fw fa-pencil">
                 </i>
               </Link>

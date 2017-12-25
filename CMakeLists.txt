@@ -142,7 +142,10 @@ set(APP_SRC
   src/http/controllers/auth/SignUpController.cpp
 
   # Views
+  src/views/layouts/home.cpp
+  src/views/home.cpp
   src/views/register.cpp
+  src/views/dashboard.cpp
   )
 
 #############################################################################
@@ -171,14 +174,14 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Bin/$<CONFIG>)
 # Views build
 set(VIEW_SKIN bootstrap_skin)
 add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/view.cpp
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${VIEW_SKIN}.cpp
   COMMAND ${PYTHON} ${EXE_TMPL_CC}
   -d views
-  -o ${CMAKE_CURRENT_BINARY_DIR}/view.cpp
+  -o ${CMAKE_CURRENT_BINARY_DIR}/${VIEW_SKIN}.cpp
   ${VIEWS_TMPL}
   DEPENDS ${VIEWS_TMPL}
   )
-add_library(${VIEW_SKIN} SHARED "${CMAKE_CURRENT_BINARY_DIR}/view.cpp" ${APP_SRC})
+add_library(${VIEW_SKIN} SHARED "${CMAKE_CURRENT_BINARY_DIR}/${VIEW_SKIN}.cpp" ${APP_SRC})
 target_link_libraries(${VIEW_SKIN} ${APP_REQUIRED_LIB})
 
 # Application build

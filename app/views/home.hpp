@@ -3,10 +3,15 @@
 
 #include "app/views/layouts/home.hpp"
 
+#include "app/models/Article.hpp"
+
 namespace app { namespace views {
 
   struct Home : public app::views::layouts::Home
   {
+    Home();
+
+    std::vector<app::models::Article> articles;
   };
 
 } }

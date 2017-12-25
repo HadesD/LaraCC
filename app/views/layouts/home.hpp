@@ -3,10 +3,13 @@
 
 #include "app/views/layouts/master.hpp"
 
+#include <ctime>
+
 namespace app { namespace views { namespace layouts {
 
   struct Home : public app::views::layouts::Master
   {
+    std::tm getDate();
   };
 
 } } }
