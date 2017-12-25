@@ -4,7 +4,7 @@
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
-#include "app/views/login.h"
+#include "app/views/login.hpp"
 
 namespace app { namespace http { namespace controllers { namespace auth {
 

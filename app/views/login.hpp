@@ -3,7 +3,7 @@
 
 #include <cppcms/form.h>
 
-#include "app/views/layouts/home.h"
+#include "app/views/layouts/home.hpp"
 
 namespace app { namespace views {
 

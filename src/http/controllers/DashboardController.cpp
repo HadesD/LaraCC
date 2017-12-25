@@ -3,7 +3,7 @@
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/url_mapper.h>
 
-#include "app/views/dashboard.h"
+#include "app/views/dashboard.hpp"
 #include "app/views/dashboard/login.hpp"
 
 namespace app { namespace http { namespace controllers {
