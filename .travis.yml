@@ -10,7 +10,8 @@ before_install:
   - sudo apt install -y build-essential libpcre3-dev libicu-dev libgcrypt11-dev zlib1g-dev cmake
 
 install:
-  - cd build && cmake .. && make && cd ..
+  - make
 
 script:
   - ./WebApp -c config.json
+
