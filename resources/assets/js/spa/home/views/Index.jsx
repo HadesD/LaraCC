@@ -65,7 +65,7 @@ export default (state) => (location) => (actions) => {
                         )
                     }
                   </div>
-                  <p
+                  <div
                     oncreate={
                       utils.dangerouslySetInnerHTML(
                         !p.content ||

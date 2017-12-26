@@ -9,9 +9,13 @@ namespace app { namespace views { namespace layouts {
 
   struct Home : public app::views::layouts::Master
   {
+    Home();
+
     std::tm getDate();
+    std::string description;
   };
 
 } } }
 
 #endif
+

@@ -41,9 +41,17 @@ namespace app { namespace models {
         __APP_TRY_CATCH_END__
       }
 
+      struct TypeText
+      {
+        std::string name;
+        std::string iconClassName;
+      };
+      TypeText getTypeText();
+
     private:
-      APP_MODEL_SYNTHESIZE(std::string, slug, Slug);
       APP_MODEL_SYNTHESIZE(int, id, Id);
+      APP_MODEL_SYNTHESIZE(int, type, Type);
+      APP_MODEL_SYNTHESIZE(std::string, slug, Slug);
       APP_MODEL_SYNTHESIZE(std::string, title, Title);
       APP_MODEL_SYNTHESIZE(std::string, content, Content);
       APP_MODEL_SYNTHESIZE(int, author_id, AuthorId);

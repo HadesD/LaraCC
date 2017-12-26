@@ -17,3 +17,8 @@ body
   }
 }
 
+.bilberry-hugo-theme article .content h1 a
+{
+  font-style: normal;
+}
+

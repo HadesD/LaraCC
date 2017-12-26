@@ -2,6 +2,29 @@
 <% skin bootstrap_skin %>
 <% view article_read uses app::views::Article extends layouts_home %>
 <% template layouts_home_content() %>
+<div class="article-wrapper u-cf single">
+  <a class="bubble" href="/articles/<%= article.getSlug() %>">
+    <i class="<%= article.getTypeText().iconClassName %>"></i>
+  </a>
+  <article class="<%= article.getTypeText().name %>">
+    <div class="content">
+      <h1>
+        <a href="/articles/<%= article.getSlug() %>">
+          <%= article.getTitle() %>
+        </a>
+      </h1>
+      <div class="meta">
+        <!---
+        <span class="date moment">
+        </span>
+        --->
+      </div>
+      <div>
+        <%= article.getContent() %>
+      </div>
+    </div>
+  </article>
+</div>
 <% end template %>
 <% end view %>
 <% end skin %>

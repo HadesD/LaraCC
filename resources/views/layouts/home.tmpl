@@ -3,16 +3,21 @@
 <% view layouts_home uses app::views::layouts::Home extends layouts_master %>
 <% template layouts_home_js() %><% end %>
 <% template layouts_home_css() %><% end %>
+<% template head() %>
+<% if not description.empty() %>
+<meta name="description" content="<%= description %>" />
+<% end if %>
+<% end template %>
 <% template css() %>
 <link rel="stylesheet" href="<%= asset("css/home-theme.css") %>" />
 <link rel="stylesheet" href="<%= asset("home.css") %>" />
 <link rel="stylesheet" href="<%= asset("home.rebase.css") %>" />
 <% include layouts_home_css() %>
-<% end %>
+<% end template %>
 <% template js() %>
 <script type="text/javascript" src="<%= asset("home.js") %>"></script>
 <% include layouts_home_js() %>
-<% end %>
+<% end template %>
 <% template layouts_home_content() %><% end %>
 <% template master_content() %>
 <div class="bilberry-hugo-theme">

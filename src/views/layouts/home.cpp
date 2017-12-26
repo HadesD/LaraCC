@@ -2,6 +2,11 @@
 
 namespace app { namespace views { namespace layouts {
 
+  Home::Home()
+  {
+    description = "ss";
+  }
+
   std::tm Home::getDate()
   {
     std::time_t now = std::time(nullptr);

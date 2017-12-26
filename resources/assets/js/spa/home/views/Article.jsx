@@ -42,11 +42,11 @@ export default (state) => (location) => (actions) => {
         </Link>
         <article class="video">
           <div class="content">
-            <h3>
+            <h1>
               <Link to={state.articlePage.articleInfo.permalink}>
                 {state.articlePage.articleInfo.title}
               </Link>
-            </h3>
+            </h1>
             <div class="meta">
               <span class="date moment">
                 {state.articlePage.articleInfo.post_time}
@@ -65,7 +65,7 @@ export default (state) => (location) => (actions) => {
                   )
               }
             </div>
-            <p
+            <div
               oncreate={
                 utils.dangerouslySetInnerHTML(
                   !state.articlePage.articleInfo.content ||

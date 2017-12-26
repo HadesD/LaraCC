@@ -6,10 +6,10 @@
 <% item %>
 <div class="article-wrapper u-cf">
   <a class="bubble" href="/articles/<%= article.getSlug() %>">
-    <i class="fa fa-fw fa-pencil">
+    <i class="<%= article.getTypeText().iconClassName %>">
     </i>
   </a>
-  <article class={p.type}>
+  <article class="<%= article.getTypeText().name %>">
     <div class="content">
       <h3>
         <a href="/articles/<%= article.getSlug() %>">
@@ -17,11 +17,15 @@
         </a>
       </h3>
       <div class="meta">
-        <span class="date moment">{p.post_time}</span>
+        <!---
+        <span class="date moment">
+          {p.post_time}
+        </span>
+        --->
       </div>
-      <p>
+      <div>
         <%= article.getContent() %>
-      </p>
+      </div>
     </div>
   </article>
 </div>

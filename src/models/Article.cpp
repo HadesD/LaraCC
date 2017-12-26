@@ -24,5 +24,24 @@ namespace app { namespace models {
     this->id = id;
   }
 
+  Article::TypeText Article::getTypeText()
+  {
+    int type = 1;//this->getType();
+
+    Article::TypeText typeText;
+
+    switch (type)
+    {
+      case 1:
+        typeText.iconClassName = "fa fa-fw fa-pencil";
+        break;
+      default:
+        typeText.iconClassName = "fa fa-fw fa-pencil";
+        typeText.name = "video";
+    }
+
+    return typeText;
+  }
+
 } }
 
