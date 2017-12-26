@@ -20,34 +20,41 @@ namespace app { namespace http { namespace controllers { namespace api {
     __APP_TRY_CATCH_BEGIN__
     {
       cppcms::json::value res;
-      app::models::Article article;
-
-      auto articles = article.getAll();
-
-      for (int i = 0; i < articles.size(); i++)
+      try
       {
-        auto &article = articles.at(i);
+        app::models::Article article;
 
-        auto &r = res[i];
+        auto articles = article.getAll();
 
-        r["id"] = article.getId();
-        r["permalink"] = "/articles/" + article.getSlug();
-        r["title"] = article.getTitle();
-        r["content"] = article.getContent();
-
-        // Author
-        auto &rAuthor = r["author"];
-        rAuthor["url"] = "/";
-        rAuthor["name"] = article.getAuthorId();
-
-        // Tags
-        for (int t = 0; t < 0; t++)
+        for (int i = 0; i < articles.size(); i++)
         {
-          auto &rTag = r["tags"][t];
+          auto &article = articles.at(i);
 
-          rTag["url"] = "/";
-          rTag["name"] = "none";
+          auto &r = res[i];
+
+          r["id"] = article.getId();
+          r["permalink"] = "/articles/" + article.getSlug();
+          r["title"] = article.getTitle();
+          r["content"] = article.getContent();
+
+          // Author
+          auto &rAuthor = r["author"];
+          rAuthor["url"] = "/";
+          rAuthor["name"] = article.getAuthorId();
+
+          // Tags
+          for (int t = 0; t < 0; t++)
+          {
+            auto &rTag = r["tags"][t];
+
+            rTag["url"] = "/";
+            rTag["name"] = "none";
+          }
         }
+      }
+      catch (const app::database::ConnectorException&)
+      {
+        res["error"] = "error";
       }
 
       this->response().out() << res;
@@ -60,34 +67,41 @@ namespace app { namespace http { namespace controllers { namespace api {
     __APP_TRY_CATCH_BEGIN__
     {
       cppcms::json::value res;
-      app::models::Article article(urlPath);
-
-      res["id"] = article.getId();
-      res["permalink"] = "/articles/" + article.getSlug();
-      res["title"] = article.getTitle();
-      res["content"] = article.getContent();
-
-      // Author
-      auto &rAuthor = res["author"];
-      rAuthor["url"] = "/";
-      rAuthor["name"] = article.getAuthorId();
-
-      // Tags
-      for (int t = 0; t < 0; t++)
+      try
       {
-        auto &rTag = res["tags"][t];
+        app::models::Article article(urlPath);
 
-        rTag["url"] = "/";
-        rTag["name"] = "none";
+        res["id"] = article.getId();
+        res["permalink"] = "/articles/" + article.getSlug();
+        res["title"] = article.getTitle();
+        res["content"] = article.getContent();
+
+        // Author
+        auto &rAuthor = res["author"];
+        rAuthor["url"] = "/";
+        rAuthor["name"] = article.getAuthorId();
+
+        // Tags
+        for (int t = 0; t < 0; t++)
+        {
+          auto &rTag = res["tags"][t];
+
+          rTag["url"] = "/";
+          rTag["name"] = "none";
+        }
+
+        // Categories
+        for (int c = 0; c < 0; c++)
+        {
+          auto &rCat = res["categories"][c];
+
+          rCat["url"] = "/";
+          rCat["name"] = "none";
+        }
       }
-
-      // Categories
-      for (int c = 0; c < 0; c++)
+      catch (const app::database::ConnectorException&)
       {
-        auto &rCat = res["categories"][c];
-
-        rCat["url"] = "/";
-        rCat["name"] = "none";
+        res["error"] = "error";
       }
 
       this->response().out() << res;

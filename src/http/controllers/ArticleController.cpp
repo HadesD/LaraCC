@@ -41,11 +41,6 @@ namespace app { namespace http { namespace controllers {
 
         const std::string &slug = article.getSlug();
 
-        if (slug.empty())
-        {
-          return;
-        }
-
         v.title = article.getTitle();
 
         this->render("article_read", v);
