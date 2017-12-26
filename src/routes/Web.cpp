@@ -1,6 +1,7 @@
 #include "app/routes/Web.hpp"
 
 #include "app/http/controllers/HomeController.h"
+#include "app/http/controllers/ArticleController.hpp"
 #include "app/http/controllers/DashboardController.h"
 #include "app/http/controllers/auth/LoginController.h"
 #include "app/http/controllers/auth/SignUpController.h"
@@ -22,7 +23,7 @@ namespace app { namespace routes {
 
       // Article
       attach(
-        new app::http::controllers::HomeController(s),
+        new app::http::controllers::ArticleController(s),
         "articles",
         "{1}",
         "/articles((.*))",

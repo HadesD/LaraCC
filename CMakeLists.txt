@@ -91,6 +91,9 @@ set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.tmpl
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home.tmpl
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article.tmpl
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/read.tmpl
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/index.tmpl
   )
 
 #############################################################################
@@ -137,6 +140,7 @@ set(APP_SRC
   src/http/controllers/api/ArticleController.cpp
   src/http/controllers/api/dashboard/Login.cpp
   src/http/controllers/HomeController.cpp
+  src/http/controllers/ArticleController.cpp
   src/http/controllers/DashboardController.cpp
   src/http/controllers/auth/LoginController.cpp
   src/http/controllers/auth/SignUpController.cpp
@@ -144,6 +148,7 @@ set(APP_SRC
   # Views
   src/views/layouts/home.cpp
   src/views/home.cpp
+  src/views/article.cpp
   src/views/register.cpp
   src/views/dashboard.cpp
   )

@@ -10,7 +10,7 @@ build:
 	make && \
 	cd Bin && \
 	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
-	./WebApp -c config.json
+	./WebApp -c config.json --service-port=9081
 
 dev:
 	npm run dev

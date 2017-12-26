@@ -24,7 +24,6 @@ namespace app { namespace models {
         __APP_TRY_CATCH_BEGIN__
         {
           std::vector<Article> articles;
-          std::pair<int, int> p(1, 1);
 
           std::vector<int>
             ids = m_connector.select(
