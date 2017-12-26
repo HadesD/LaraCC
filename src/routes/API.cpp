@@ -1,5 +1,9 @@
 #include "app/routes/API.hpp"
 
+#include <cppcms/url_dispatcher.h>
+#include <cppcms/http_response.h>
+#include <cppcms/json.h>
+
 #include "app/http/controllers/api/dashboard/Login.hpp"
 #include "app/http/controllers/api/ArticleController.hpp"
 
@@ -26,6 +30,19 @@ namespace app { namespace routes {
         );
     }
     __APP_TRY_CATCH_END__
+  }
+
+  void API::main(const std::string url)
+  {
+    if (!this->dispatcher().dispatch(url))
+    {
+      this->response().status(cppcms::http::response::not_found);
+      cppcms::json::value res;
+
+      res["error"] = "API not found";
+
+      this->response().out() << res;
+    }
   }
 
 } }

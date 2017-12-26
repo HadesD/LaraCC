@@ -1,5 +1,9 @@
 #include "app/routes/Web.hpp"
 
+#include <cppcms/url_dispatcher.h>
+#include <cppcms/http_response.h>
+#include <cppcms/json.h>
+
 #include "app/http/controllers/HomeController.h"
 #include "app/http/controllers/ArticleController.hpp"
 #include "app/http/controllers/DashboardController.h"
@@ -82,6 +86,14 @@ namespace app { namespace routes {
         );
     }
     __APP_TRY_CATCH_END__
+  }
+
+  void Web::main(const std::string url)
+  {
+    if (!this->dispatcher().dispatch(url))
+    {
+      this->response().status(cppcms::http::response::not_found);
+    }
   }
 
 } }

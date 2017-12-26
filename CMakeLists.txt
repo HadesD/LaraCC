@@ -106,7 +106,6 @@ set(APP_SRC
   ###############################################
   # Core
   ###############################################
-
   src/main.cpp
   src/core/Kernel.cpp
   src/core/ServiceProvider.cpp

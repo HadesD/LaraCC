@@ -9,6 +9,9 @@ namespace app { namespace routes {
   {
     public:
       API(cppcms::service &s);
+
+    public:
+      virtual void main(const std::string url) override;
   };
 
 } }
