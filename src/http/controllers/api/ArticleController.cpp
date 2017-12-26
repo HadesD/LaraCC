@@ -54,6 +54,7 @@ namespace app { namespace http { namespace controllers { namespace api {
       }
       catch (const app::database::ConnectorException&)
       {
+        this->response().status(cppcms::http::response::not_found);
         res["error"] = "error";
       }
 
@@ -101,6 +102,7 @@ namespace app { namespace http { namespace controllers { namespace api {
       }
       catch (const app::database::ConnectorException&)
       {
+        this->response().status(cppcms::http::response::not_found);
         res["error"] = "error";
       }
 

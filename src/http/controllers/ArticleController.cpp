@@ -2,6 +2,7 @@
 
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
+#include <cppcms/http_response.h>
 
 #include "app/views/article.hpp"
 
@@ -24,6 +25,7 @@ namespace app { namespace http { namespace controllers {
       }
       catch (const app::database::ConnectorException&)
       {
+        this->response().status(cppcms::http::response::not_found);
         this->response().out() << "Empty";
       }
     }
@@ -47,6 +49,7 @@ namespace app { namespace http { namespace controllers {
       }
       catch (const app::database::ConnectorException&)
       {
+        this->response().status(cppcms::http::response::not_found);
         this->response().out() << "404";
       }
     }
