@@ -11,7 +11,7 @@ namespace app { namespace views { namespace layouts {
   {
     Home();
 
-    std::tm getDate();
+    std::tm* getDate();
     std::string description;
   };
 

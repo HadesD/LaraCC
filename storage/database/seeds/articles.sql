@@ -7,7 +7,7 @@ INSERT INTO articles(
   'post-1',
   'Test 1',
   '# head 1
-```
+```cpp
 Block 1
 ```
 Test
@@ -42,7 +42,7 @@ INSERT INTO articles(
   'post-3',
   'Test 3',
   '### HEAD 3
-```
+```python
 Block 3
 TESTSTST
 ```
