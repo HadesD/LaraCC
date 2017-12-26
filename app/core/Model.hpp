@@ -1,6 +1,8 @@
 #ifndef _APP_CORE_MODEL_HPP_
 #define _APP_CORE_MODEL_HPP_
 
+#include "../database/ConnectorInterface.hpp"
+
 #include "../config/Constants.hpp"
 
 #define APP_MODEL(table_name) \
@@ -16,20 +18,16 @@
   varType colName; \
   public: \
   varType get##funcName() { \
-    __APP_TRY_CATCH_BEGIN__ \
     std::pair<std::string, int> p(m_primaryKeyName, id); \
     colName = m_connector.select<varType>( #colName, \
                                           m_tableName, \
                                           p \
                                           ); \
     return colName; \
-    __APP_TRY_CATCH_END__ \
   } \
   void set##funcName(const varType& var) { \
     colName = var;\
   }
-
-#include "../database/ConnectorInterface.hpp"
 
 #include "app/database/SQLiteModernCppConnector.hpp"
 

@@ -3,8 +3,16 @@
 
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 namespace app { namespace database {
+
+  class ConnectorException : public std::runtime_error
+  {
+    public:
+      ConnectorException() : std::runtime_error("Connector exception"){}
+      ConnectorException(const std::string& msg) : std::runtime_error(msg){}
+  };
 
   class ConnectorInterface
   {

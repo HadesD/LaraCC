@@ -17,10 +17,12 @@ namespace app { namespace database {
       virtual bool connect() override;
 
     public:
-        std::vector<int> select(
-          const std::string& column,
-          const std::string& from
-          )
+      std::vector<int> select(
+        const std::string& column,
+        const std::string& from
+        )
+      {
+        try
         {
           std::vector<int> val;
           std::string q =
@@ -35,6 +37,11 @@ namespace app { namespace database {
             };
           return val;
         }
+        catch (const sqlite::sqlite_exception& e)
+        {
+          throw app::database::ConnectorException(e.what());
+        }
+      }
       template<typename T, typename W>
         T select(
           const std::string& column,
@@ -42,18 +49,25 @@ namespace app { namespace database {
           const std::pair<std::string, W>& where
           )
         {
-          T val;
-          std::string q =
-            "SELECT "
-            + column
-            + " FROM "
-            + from
-            + " WHERE "
-            + where.first
-            + "=?"
-            + ";";
-          m_database << q << where.second >> val;
-          return val;
+          try
+          {
+            T val;
+            std::string q =
+              "SELECT "
+              + column
+              + " FROM "
+              + from
+              + " WHERE "
+              + where.first
+              + "=?"
+              + ";";
+            m_database << q << where.second >> val;
+            return val;
+          }
+          catch (const sqlite::sqlite_exception& e)
+          {
+            throw app::database::ConnectorException(e.what());
+          }
         }
 
     protected:
