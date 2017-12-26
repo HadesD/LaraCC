@@ -48,6 +48,8 @@ namespace app { namespace models {
       };
       TypeText getTypeText();
 
+      std::string getContentHtml();
+
     private:
       APP_MODEL_SYNTHESIZE(int, id, Id);
       APP_MODEL_SYNTHESIZE(int, type, Type);
@@ -55,6 +57,9 @@ namespace app { namespace models {
       APP_MODEL_SYNTHESIZE(std::string, title, Title);
       APP_MODEL_SYNTHESIZE(std::string, content, Content);
       APP_MODEL_SYNTHESIZE(int, author_id, AuthorId);
+
+    private:
+      std::string m_contentHtml;
   };
 
 } }

@@ -5,9 +5,10 @@
 
 namespace app { namespace views { namespace layouts {
 
-  struct Master : public app::core::View
+  class Master : public app::core::View
   {
-    std::string title;
+    public:
+      std::string title;
   };
 
 } } }

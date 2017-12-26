@@ -6,7 +6,7 @@
   <a class="bubble" href="/articles/<%= article.getSlug() %>">
     <i class="<%= article.getTypeText().iconClassName %>"></i>
   </a>
-  <article class="<%= article.getTypeText().name %>">
+  <article<% if not article.getTypeText().name.empty() %> class="<%= article.getTypeText().name %>"<% end %>>
     <div class="content">
       <h1>
         <a href="/articles/<%= article.getSlug() %>">
@@ -20,7 +20,7 @@
         --->
       </div>
       <div>
-        <%= article.getContent() %>
+        <% c++ out() << content.article.getContentHtml(); %>
       </div>
     </div>
   </article>

@@ -30,14 +30,19 @@ set(APP_REQUIRED_LIB
   booster
   cppcms
   sqlite3
+  hoedown
   )
 
 set(INCLUDE_DIR
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/include
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/include/booster
+
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/include
+
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite_modern_cpp/include/hdr
+
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/include/src
   )
 
 set(LINK_DIR)
@@ -48,11 +53,17 @@ if(UNIX AND NOT APPLE)
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0.2.0
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0
-    )
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/libhoedown.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/libhoedown.so.3
+  )
   set(LINK_DIR "${LINK_DIR}"
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
+
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt
     )
   set(INCLUDE_DIR "${INCLUDE_DIR}"
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64

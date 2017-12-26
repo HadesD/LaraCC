@@ -9,7 +9,7 @@
     <i class="<%= article.getTypeText().iconClassName %>">
     </i>
   </a>
-  <article class="<%= article.getTypeText().name %>">
+  <article<% if not article.getTypeText().name.empty() %> class="<%= article.getTypeText().name %>"<% end %>>
     <div class="content">
       <h3>
         <a href="/articles/<%= article.getSlug() %>">
