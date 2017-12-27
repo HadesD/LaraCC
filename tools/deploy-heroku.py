@@ -12,6 +12,12 @@ CWD = os.getcwd()
 
 BUILD_DIR = os.getcwd() + '/Build'
 
+subprocess.Popen([
+  'make'
+], cwd=CWD)
+
+time.sleep(2)
+
 f = open(BUILD_DIR + '/.gitignore', 'r')
 r = f.read()
 f.close()
