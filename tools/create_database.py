@@ -11,25 +11,36 @@ print(os.getcwd())
 
 CWD = os.getcwd()
 
-DIST = 'Build/Bin/db.sqlite3'
+DIST = 'db.sqlite3'
+
+DIST_DIRS = [
+  'Build/Bin/Release',
+  'Build/Bin/Debug'
+]
+
 sqlScripts = [
   'storage/database/sqls/db.sql', # Create database
   'storage/database/seeds/articles.sql',
 ]
 
-print('Deleting ' + DIST)
-if os.path.isfile(DIST):
-  os.remove(DIST)
+for df in DIST_DIRS:
+  if not os.path.isdir(df):
+    continue
 
-con = sqlite3.connect(DIST)
-cur = con.cursor()
+  db_fname = df + '/' + DIST
+  if os.path.isfile(db_fname):
+    print('Deleting ' + db_fname)
+    os.remove(db_fname)
 
-for src in sqlScripts:
-  print('Importing ' + src)
-  f = open(src)
-  str = f.read()
-  cur.executescript(str)
-  f.close()
+  con = sqlite3.connect(db_fname)
+  cur = con.cursor()
 
-con.close()
+  for src in sqlScripts:
+    print('Importing ' + src)
+    f = open(src)
+    str = f.read()
+    cur.executescript(str)
+    f.close()
+
+  con.close()
 

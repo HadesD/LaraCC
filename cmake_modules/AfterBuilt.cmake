@@ -31,7 +31,7 @@ if (UNIX)
       TARGET ${APP_NAME} PRE_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy
       ${file_i}
-      ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+      ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/
       )
   endforeach( file_i )
 endif()
