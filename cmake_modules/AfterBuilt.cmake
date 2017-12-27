@@ -9,21 +9,21 @@ if (UNIX)
   add_custom_command(
     TARGET ${APP_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E remove_directory
-    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/public
     )
   add_custom_command(
     TARGET ${APP_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     # ${file_i}
     ${CMAKE_CURRENT_SOURCE_DIR}/public
-    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/public
     )
   add_custom_command(
     TARGET ${APP_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     # ${file_i}
     ${CMAKE_CURRENT_SOURCE_DIR}/storage
-    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/storage
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/storage
     )
   # endforeach( file_i )
   foreach( file_i ${LIST_FILES_COPY_AFTER_BUILD})
