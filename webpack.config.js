@@ -5,6 +5,8 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const combineLoaders = require('webpack-combine-loaders');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -25,6 +27,9 @@ const plugins = [
     // 'process.env': {
     //   'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     // },
+  }),
+  new ScriptExtHtmlWebpackPlugin({
+    defaultAttribute: 'defer'
   }),
 ];
 
@@ -85,13 +90,33 @@ module.exports = () => {
         uglifyOptions: {
           comments: false,
           compress: {
-            warnings: false,
             drop_console: true,
+            warnings: false,
+            conditionals: true,
+            unused: true,
+            comparisons: true,
+            sequences: true,
+            dead_code: true,
+            evaluate: true,
+            if_return: true,
+            join_vars: true,
           },
           output: {
             beautify: false,
           },
         },
+      })
+    );
+
+    config.plugins.push(
+      new webpack.LoaderOptionsPlugin({
+        minimize: true,
+      })
+    );
+
+    config.plugins.push(
+      new StyleExtHtmlWebpackPlugin({
+        minify: true
       })
     );
   }
