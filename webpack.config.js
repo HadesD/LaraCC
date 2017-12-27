@@ -28,7 +28,7 @@ const plugins = [
   }),
 ];
 
-const config = {
+let config = {
   context: path.resolve(__dirname, 'resources/assets'),
   entry: {
     'app': [
@@ -78,6 +78,24 @@ const config = {
 }
 
 module.exports = () => {
+  if (isProduction)
+  {
+    config.plugins.push(
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          comments: false,
+          compress: {
+            warnings: false,
+            drop_console: true,
+          },
+          output: {
+            beautify: false,
+          },
+        },
+      })
+    );
+  }
+
   return config;
 };
 
