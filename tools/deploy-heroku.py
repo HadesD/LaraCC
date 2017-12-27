@@ -26,8 +26,9 @@ f = open(BUILD_DIR + '/.gitignore', 'w')
 f.write(
   r
   + '\n'
+  + '!/Bin\n'
   + '!/Bin/Release\n'
-  + '!/Bin/Release/**'
+  + '!/Bin/Release/**\n'
 )
 f.close()
 
