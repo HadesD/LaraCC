@@ -21,7 +21,6 @@ const plugins = [
   }),
 ];
 
-
 module.exports = function (env) {
   return {
     context: path.resolve(__dirname, 'resources/assets'),
