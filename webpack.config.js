@@ -6,7 +6,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const combineLoaders = require('webpack-combine-loaders');
 
-const publicPath = 'Build/Bin/public'
+const isProduction = process.env.NODE_ENV === 'production'
+
+const publicPath = 'Build/Bin/'
+  + (isProduction ? 'Release' : 'Debug')
+  + '/public';
 
 const plugins = [
   new ExtractTextPlugin({
@@ -70,7 +74,7 @@ const config = {
     ],
   },
   plugins: plugins,
-  watch: process.env.NODE_ENV !== 'production',
+  watch: !isProduction,
 }
 
 module.exports = () => {
