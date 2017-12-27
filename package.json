@@ -2,7 +2,7 @@
   "author": "Dark.Hades",
   "scripts": {
     "dev": "./node_modules/webpack/bin/webpack.js -d",
-    "prd": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js -p"
+    "build": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js -p"
   },
   "license": "MIT",
   "devDependencies": {
