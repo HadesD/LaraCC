@@ -1,20 +1,13 @@
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
-#include(${CMAKE_CURRENT_SOURCE_DIR}/cppcms/CMakeLists.txt)
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "limited configs" FORCE)
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules)
 
 set(APP_NAME WebApp)
 project(${APP_NAME})
 
 include(CheckCXXSourceCompiles)
 
-find_program(PYTHON NAMES python2 python python3)
-if(NOT PYTHON)
-  message(FATAL_ERROR "Can't build without Python interpreter")
-endif()
-
-find_program(EXE_TMPL_CC
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/include/bin/cppcms_tmpl_cc
-  )
+include(FindProgram)
 
 #############################################################################
 #
@@ -163,81 +156,9 @@ set(APP_SRC
   src/views/dashboard.cpp
   )
 
-#############################################################################
-#
-# Setup various build flags for different supported compilers and systems
-#
-#############################################################################
-set(CXX_FLAGS "${CXX_FLAGS} -std=c++14")
+include(SetupCompiler)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_FLAGS}")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_FLAGS}")
+include(BuildProject)
 
-include_directories(${INCLUDE_DIR})
-
-link_directories(${LINK_DIR})
-
-#############################################################################
-#
-# Build project
-#
-#############################################################################
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Bin/$<CONFIG>)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Bin/$<CONFIG>)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Bin/$<CONFIG>)
-
-# Views build
-set(VIEW_SKIN bootstrap_skin)
-add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${VIEW_SKIN}.cpp
-  COMMAND ${PYTHON} ${EXE_TMPL_CC}
-  -d views
-  -o ${CMAKE_CURRENT_BINARY_DIR}/${VIEW_SKIN}.cpp
-  ${VIEWS_TMPL}
-  DEPENDS ${VIEWS_TMPL}
-  )
-add_library(${VIEW_SKIN} SHARED "${CMAKE_CURRENT_BINARY_DIR}/${VIEW_SKIN}.cpp" ${APP_SRC})
-target_link_libraries(${VIEW_SKIN} ${APP_REQUIRED_LIB})
-
-# Application build
-add_executable(${APP_NAME} ${APP_SRC})
-target_link_libraries(${APP_NAME} ${APP_REQUIRED_LIB})
-
-###############################################################################
-#
-# Copy file
-#
-###############################################################################
-
-if (UNIX)
-  # foreach( file_i ${LIST_FOLDERS_COPY_AFTER_BUILD})
-  add_custom_command(
-    TARGET ${APP_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E remove_directory
-    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
-    )
-  add_custom_command(
-    TARGET ${APP_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    # ${file_i}
-    ${CMAKE_CURRENT_SOURCE_DIR}/public
-    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/public
-    )
-  add_custom_command(
-    TARGET ${APP_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    # ${file_i}
-    ${CMAKE_CURRENT_SOURCE_DIR}/storage
-    $<TARGET_FILE_DIR:${APP_NAME}>${RES_PREFIX}/storage
-    )
-  # endforeach( file_i )
-  foreach( file_i ${LIST_FILES_COPY_AFTER_BUILD})
-    add_custom_command(
-      TARGET ${APP_NAME} PRE_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy
-      ${file_i}
-      ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-      )
-  endforeach( file_i )
-endif()
+include(AfterBuilt)
 
