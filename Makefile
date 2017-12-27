@@ -13,11 +13,13 @@ dev:
 	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
 	./WebApp -c config.json --service-port=9081
 
-build: np
+build: prd np db
+	echo 'Successed'
+
+prd:
 	cd Build && \
 	cmake .. -DCMAKE_BUILD_TYPE=Release && \
-	make && \
-	cd .. && make db
+	make
 
 nd:
 	npm run dev
