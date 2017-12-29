@@ -87,17 +87,17 @@ endif()
 #############################################################################
 
 set(VIEWS_TMPL
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/master.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/home.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/dashboard.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/login.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/read.tmpl
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/index.tmpl
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/master.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/home.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/dashboard.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/login.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/read.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/index.blade.chtml
   )
 
 #############################################################################
