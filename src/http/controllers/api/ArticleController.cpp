@@ -35,6 +35,8 @@ namespace app { namespace http { namespace controllers { namespace api {
           r["id"] = article.getId();
           r["permalink"] = "/articles/" + article.getSlug();
           r["title"] = article.getTitle();
+          r["type"] = article.getType();
+          r["featured"] = article.getFeatured();
           r["content"] = article.getContent();
 
           // Author
@@ -74,6 +76,8 @@ namespace app { namespace http { namespace controllers { namespace api {
 
         res["id"] = article.getId();
         res["permalink"] = "/articles/" + article.getSlug();
+        res["type"] = article.getType();
+        res["featured"] = article.getFeatured();
         res["title"] = article.getTitle();
         res["content"] = article.getContent();
 

@@ -95,7 +95,6 @@ set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/read.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/index.blade.chtml
   )

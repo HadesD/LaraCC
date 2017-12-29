@@ -29,17 +29,23 @@ namespace app { namespace models {
 
   Article::TypeText Article::getTypeText()
   {
-    int type = 1;//this->getType();
+    int type = this->getType();
 
     Article::TypeText typeText;
 
     switch (type)
     {
+      case 0:
+        typeText.iconClassName = "fa fa-fw fa-pencil";
+        typeText.featuredClassName = "featured-image";
+        break;
       case 1:
         typeText.iconClassName = "fa fa-fw fa-pencil";
+        typeText.featuredClassName = "featured-image";
         break;
       default:
         typeText.iconClassName = "fa fa-fw fa-video";
+        typeText.featuredClassName = "featured-video";
         typeText.name = "video";
     }
 

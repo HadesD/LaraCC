@@ -45,6 +45,7 @@ namespace app { namespace models {
       {
         std::string name;
         std::string iconClassName;
+        std::string featuredClassName;
       };
       TypeText getTypeText();
 
@@ -54,6 +55,7 @@ namespace app { namespace models {
       APP_MODEL_SYNTHESIZE(int, id, Id);
       APP_MODEL_SYNTHESIZE(int, type, Type);
       APP_MODEL_SYNTHESIZE(std::string, slug, Slug);
+      APP_MODEL_SYNTHESIZE(std::string, featured, Featured);
       APP_MODEL_SYNTHESIZE(std::string, title, Title);
       APP_MODEL_SYNTHESIZE(std::string, content, Content);
       APP_MODEL_SYNTHESIZE(int, author_id, AuthorId);
