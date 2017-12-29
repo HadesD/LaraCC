@@ -20,6 +20,7 @@ DIST_DIRS = [
 
 sqlScripts = [
   'storage/database/sqls/db.sql', # Create database
+  'storage/database/seeds/accounts.sql',
   'storage/database/seeds/articles.sql',
 ]
 

@@ -9,11 +9,21 @@ body
 
 @media (max-width: 834px)
 {
-  .bilberry-hugo-theme .main article{
-    margin: 0 5px;
+  .bilberry-hugo-theme .main .article-wrapper
+  {
+    padding-top: .5em;
   }
-  .bilberry-hugo-theme .main article .content{
-    padding: 1em;
+  .container
+  {
+    padding: 0 .5em;
+  }
+  .bilberry-hugo-theme .main article
+  {
+    margin: 0;
+  }
+  .bilberry-hugo-theme .main article .content
+  {
+    padding: .5em;
   }
 }
 
