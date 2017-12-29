@@ -12,19 +12,45 @@ namespace app { namespace models {
 
   Article::Article(const std::string& slug)
   {
-    std::pair<std::string, std::string> w("slug", slug);
-    this->id = m_connector.select<int>(
-      m_primaryKeyName,
-      m_tableName,
-      w
-      );
+    __APP_TRY_CATCH_BEGIN__
+    {
+      std::pair<std::string, std::string> w("slug", slug);
+      this->id = m_connector.select<int>(
+        m_primaryKeyName,
+        m_tableName,
+        w
+        );
 
-    this->slug = slug;
+      this->slug = slug;
+    }
+    __APP_TRY_CATCH_END__
   }
 
   Article::Article(const int id)
   {
     this->id = id;
+  }
+
+  std::vector<Article> Article::getAll()
+  {
+    __APP_TRY_CATCH_BEGIN__
+    {
+      std::vector<Article> articles;
+
+      std::vector<int>
+        ids = m_connector.select(
+          m_primaryKeyName,
+          m_tableName
+          );
+
+      for (const auto& id : ids)
+      {
+        articles.push_back(Article(id));
+      }
+
+      return articles;
+    }
+    __APP_TRY_CATCH_END__
   }
 
   Article::TypeText Article::getTypeText()

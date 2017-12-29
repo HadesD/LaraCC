@@ -19,27 +19,7 @@ namespace app { namespace models {
       Article(const int id);
 
     public:
-      std::vector<Article> getAll()
-      {
-        __APP_TRY_CATCH_BEGIN__
-        {
-          std::vector<Article> articles;
-
-          std::vector<int>
-            ids = m_connector.select(
-              m_primaryKeyName,
-              m_tableName
-              );
-
-          for (const auto& id : ids)
-          {
-            articles.push_back(Article(id));
-          }
-
-          return articles;
-        }
-        __APP_TRY_CATCH_END__
-      }
+      std::vector<Article> getAll();
 
       struct TypeText
       {

@@ -37,9 +37,9 @@ namespace app { namespace routes {
       // Authors
       attach(
         new app::http::controllers::HomeController(s),
-        "authors",
+        "accounts",
         "{1}",
-        "/authors((/?.*))",
+        "/accounts((/?.*))",
         1
         );
 
