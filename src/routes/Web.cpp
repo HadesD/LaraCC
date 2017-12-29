@@ -4,11 +4,11 @@
 #include <cppcms/http_response.h>
 #include <cppcms/json.h>
 
-#include "app/http/controllers/HomeController.h"
+#include "app/http/controllers/HomeController.hpp"
 #include "app/http/controllers/ArticleController.hpp"
-#include "app/http/controllers/DashboardController.h"
-#include "app/http/controllers/auth/LoginController.h"
-#include "app/http/controllers/auth/SignUpController.h"
+#include "app/http/controllers/DashboardController.hpp"
+#include "app/http/controllers/auth/LoginController.hpp"
+#include "app/http/controllers/auth/SignUpController.hpp"
 
 namespace app { namespace routes {
 

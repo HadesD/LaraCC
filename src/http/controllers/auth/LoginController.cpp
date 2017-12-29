@@ -1,4 +1,4 @@
-#include "app/http/controllers/auth/LoginController.h"
+#include "app/http/controllers/auth/LoginController.hpp"
 
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>

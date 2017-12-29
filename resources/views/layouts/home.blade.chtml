@@ -54,7 +54,7 @@
       <div class="titles">
         <h3 class="title">
           <a href="/">
-          {site.title}
+            {site.title}
           </a>
         </h3>
         <span class="subtitle">

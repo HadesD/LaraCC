@@ -7,21 +7,21 @@
 <% template js() %><% end %>
 <% template render() %><!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title><%= title %></title>
-  <% include head() %>
-  <% include css() %>
-  <link rel="stylesheet" href="<%= asset("app.css") %>" />
-</head>
-<body>
-  <div id="app">
-    <noscript><% include master_content() %></noscript>
-  </div>
-  <% include js() %>
-  <script type="text/javascript" src="<%= asset("app.js") %>"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title><%= title %></title>
+    <% include head() %>
+    <% include css() %>
+    <link rel="stylesheet" href="<%= asset("app.css") %>" />
+  </head>
+  <body>
+    <div id="app">
+      <noscript><% include master_content() %></noscript>
+    </div>
+    <% include js() %>
+    <script type="text/javascript" src="<%= asset("app.js") %>"></script>
+  </body>
 </html><% end template %>
 <% end view %>
 <% end skin %>

@@ -17,6 +17,9 @@ namespace app { namespace models {
       Account(const int id);
       Account(const std::string& email);
 
+    public:
+      std::vector<Account> getAll();
+
     private:
       APP_MODEL_SYNTHESIZE(int, id, Id);
       APP_MODEL_SYNTHESIZE(int, role, Role);

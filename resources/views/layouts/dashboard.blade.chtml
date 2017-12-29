@@ -4,17 +4,17 @@
 <% template dashboard_js() %><% end %>
 <% template dashboard_css() %><% end %>
 <% template css() %>
-  <link rel="stylesheet" href="<%= asset("dashboard.css") %>" />
-  <% include dashboard_css() %>
+<link rel="stylesheet" href="<%= asset("dashboard.css") %>" />
+<% include dashboard_css() %>
 <% end %>
 <% template js() %>
-  <script type="text/javascript" src="<%= asset("dashboard.js") %>"></script>
-  <% include dashboard_js() %>
+<script type="text/javascript" src="<%= asset("dashboard.js") %>"></script>
+<% include dashboard_js() %>
 <% end %>
 <% template layouts_dashboard_content() %><% end %>
 <% template master_content() %>
 
-  <% include layouts_dashboard_content() %>
+<% include layouts_dashboard_content() %>
 <% end template %>
 <% end view %>
 <% end skin %>

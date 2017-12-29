@@ -1,4 +1,4 @@
-#include "app/http/controllers/auth/SignUpController.h"
+#include "app/http/controllers/auth/SignUpController.hpp"
 
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
@@ -28,3 +28,4 @@ namespace app { namespace http { namespace controllers { namespace auth {
   }
 
 } } } }
+

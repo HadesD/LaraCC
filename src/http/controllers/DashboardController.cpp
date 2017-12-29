@@ -1,4 +1,4 @@
-#include "app/http/controllers/DashboardController.h"
+#include "app/http/controllers/DashboardController.hpp"
 
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/url_mapper.h>

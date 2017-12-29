@@ -1,4 +1,4 @@
-#include "app/http/controllers/HomeController.h"
+#include "app/http/controllers/HomeController.hpp"
 
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
