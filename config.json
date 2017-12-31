@@ -1,5 +1,9 @@
 {
   "app" : {
+    "site": {
+      "title": "The Fake Life of Someone",
+      "sub_title": "a.k.a Dark.Hades"
+    },
     "root" : "",
     "host" : "localhost:80",
     "locdomain" : "localhost",

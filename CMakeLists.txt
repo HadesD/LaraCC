@@ -134,7 +134,7 @@ set(APP_SRC
 
   # Routes
   src/routes/Web.cpp
-  src/routes/API.cpp
+  src/routes/Api.cpp
 
   # Controllers
   src/http/controllers/api/ApiController.cpp
@@ -148,11 +148,12 @@ set(APP_SRC
   src/http/controllers/auth/SignUpController.cpp
 
   # Views
-  src/views/layouts/home.cpp
-  src/views/home.cpp
-  src/views/article.cpp
-  src/views/register.cpp
-  src/views/dashboard.cpp
+  src/views/layouts/Home.cpp
+  src/views/layouts/Master.cpp
+  src/views/Home.cpp
+  src/views/Article.cpp
+  src/views/Register.cpp
+  src/views/Dashboard.cpp
   )
 
 include(SetupCompiler)

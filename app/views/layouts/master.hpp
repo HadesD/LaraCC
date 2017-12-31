@@ -8,9 +8,13 @@ namespace app { namespace views { namespace layouts {
   class Master : public app::core::View
   {
     public:
+      Master();
+
+    public:
       std::string title;
   };
 
 } } }
 
 #endif
+

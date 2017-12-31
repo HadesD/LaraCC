@@ -5,7 +5,7 @@
 #include <cppcms/http_request.h>
 
 #include "app/routes/Web.hpp"
-#include "app/routes/API.hpp"
+#include "app/routes/Api.hpp"
 
 namespace app { namespace core {
 
@@ -14,7 +14,7 @@ namespace app { namespace core {
     __APP_TRY_CATCH_BEGIN__
     {
       attach(
-        new routes::API(s),
+        new routes::Api(s),
         "api",
         "/api{1}",
         "/api((/?.*))",

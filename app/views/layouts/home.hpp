@@ -7,12 +7,22 @@
 
 namespace app { namespace views { namespace layouts {
 
-  struct Home : public app::views::layouts::Master
+  class Home : public app::views::layouts::Master
   {
-    Home();
+    public:
+      Home();
 
-    std::tm* getDate();
-    std::string description;
+    public:
+      struct Site
+      {
+        std::string title;
+        std::string sub_title;
+      };
+      Site site;
+
+    public:
+      std::tm* getDate();
+      std::string description;
   };
 
 } } }

@@ -71,7 +71,7 @@ const Header = ({state, actions}) => {
             </Link>
           </h3>
           <span class="subtitle">
-            {site.subtitle}
+            {site.sub_title}
           </span>
         </div>
         <div class="toggler permanentTopNav">

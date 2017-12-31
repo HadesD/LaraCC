@@ -1,4 +1,4 @@
-#include "app/routes/API.hpp"
+#include "app/routes/Api.hpp"
 
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
@@ -9,7 +9,7 @@
 
 namespace app { namespace routes {
 
-  API::API(cppcms::service &s) : app::core::ServiceProvider(s)
+  Api::Api(cppcms::service &s) : app::core::ServiceProvider(s)
   {
     __APP_TRY_CATCH_BEGIN__
     {
@@ -32,7 +32,7 @@ namespace app { namespace routes {
     __APP_TRY_CATCH_END__
   }
 
-  void API::main(const std::string url)
+  void Api::main(const std::string url)
   {
     if (!this->dispatcher().dispatch(url))
     {

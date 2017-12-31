@@ -3,8 +3,6 @@
 
 #include <cppcms/application.h>
 
-#include "../config/Constants.hpp"
-
 namespace app { namespace core {
 
   class Kernel : public cppcms::application

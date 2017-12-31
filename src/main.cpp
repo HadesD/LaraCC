@@ -6,6 +6,7 @@
 #endif
 
 #include "app/core/Kernel.hpp"
+#include "app/config/Constants.hpp"
 
 int main(int argc, char *argv[])
 {

@@ -5,10 +5,10 @@
 
 namespace app { namespace routes {
 
-  class API : public app::core::ServiceProvider
+  class Api : public app::core::ServiceProvider
   {
     public:
-      API(cppcms::service &s);
+      Api(cppcms::service &s);
 
     public:
       virtual void main(const std::string url) override;
