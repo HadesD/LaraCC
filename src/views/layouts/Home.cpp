@@ -1,19 +1,16 @@
 #include "app/views/home.hpp"
 
-#include <cppcms/application.h>
 #include <cppcms/json.h>
 
 namespace app { namespace views { namespace layouts {
 
   Home::Home()
   {
-    description = "ss";
-
-    cppcms::json::value site = this->app().settings();
-    this->site = Site({
-      site.get<std::string>("app.site.title"),
-        site.get<std::string>("app.site.sub_title")
-    });
+    __APP_TRY_CATCH_BEGIN__
+    {
+      description = "ss";
+    }
+    __APP_TRY_CATCH_END__
   }
 
   std::tm* Home::getDate()
@@ -24,6 +21,11 @@ namespace app { namespace views { namespace layouts {
 
     return ltm;
   }
+
+  // cppcms::json::value Home::getSettings()
+  // {
+  //   return this->app().settings();
+  // }
 
 } } }
 

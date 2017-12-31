@@ -3,6 +3,8 @@
 
 #include "app/views/layouts/master.hpp"
 
+#include <cppcms/json.h>
+
 #include <ctime>
 
 namespace app { namespace views { namespace layouts {
@@ -13,15 +15,14 @@ namespace app { namespace views { namespace layouts {
       Home();
 
     public:
-      struct Site
-      {
-        std::string title;
-        std::string sub_title;
-      };
-      Site site;
+      std::tm* getDate();
+      template<typename T>
+        T getSettings(const std::string& setting)
+        {
+          return this->app().settings().get<T>(setting);
+        }
 
     public:
-      std::tm* getDate();
       std::string description;
   };
 

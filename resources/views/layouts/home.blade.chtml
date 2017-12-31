@@ -54,11 +54,11 @@
       <div class="titles">
         <h3 class="title">
           <a href="/">
-            <%= site.title %>
+            <%= getSettings("app.site.title") %>
           </a>
         </h3>
         <span class="subtitle">
-          <%= site.sub_title %>
+            <%= getSettings("app.site.title") %>
         </span>
       </div>
       <div class="toggler permanentTopNav">
