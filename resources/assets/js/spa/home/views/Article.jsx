@@ -8,13 +8,19 @@ import Main from '../components/Main.jsx';
 import utils from '../../commons/utils.js';
 import snarkdown from 'snarkdown';
 
+// import * as config from '../../../../../../config.json';
+
 let isCalledFetchData = false;
+let articleInfo = {};
 
 export default (state) => (location) => (actions) => {
   if (!isCalledFetchData)
   {
     state.isFetchingPage = true;
   }
+
+  articleInfo = state.articlePage.articleInfo;
+
   return (
     <Main
       state={state}
@@ -37,24 +43,30 @@ export default (state) => (location) => (actions) => {
           }
         }}
       >
-        <Link class="bubble" to={state.articlePage.articleInfo.permalink}>
-          <i class="fa fa-fw fa-video-camera"></i>
+        <Link class="bubble" to={articleInfo.permalink}>
+          <i
+            class={
+              !articleInfo.type_text ||
+                articleInfo.type_text.icon_class_name
+            }
+          >
+          </i>
         </Link>
-        <article class="video">
+        <article class={!articleInfo.type_text || articleInfo.type_text.name}>
           <div class="content">
             <h1>
-              <Link to={state.articlePage.articleInfo.permalink}>
-                {state.articlePage.articleInfo.title}
+              <Link to={articleInfo.permalink}>
+                {articleInfo.title}
               </Link>
             </h1>
             <div class="meta">
               <span class="date moment">
-                {state.articlePage.articleInfo.post_time}
+                {articleInfo.post_time}
               </span>
-              {!state.articlePage.articleInfo.categories ||
+              {!articleInfo.categories ||
                   (
                     <span class="categories">
-                      {state.articlePage.articleInfo.categories.map((c) => {
+                      {articleInfo.categories.map((c) => {
                         return (
                           <Link to={c.url}>
                             {c.name}
@@ -68,8 +80,7 @@ export default (state) => (location) => (actions) => {
             <div
               oncreate={
                 utils.dangerouslySetInnerHTML(
-                  !state.articlePage.articleInfo.content ||
-                  snarkdown(state.articlePage.articleInfo.content)
+                  !articleInfo.content || snarkdown(articleInfo.content)
                 )
               }
               onupdate={(e) => {

@@ -16,11 +16,7 @@ namespace app { namespace views { namespace layouts {
 
     public:
       std::tm* getDate();
-      template<typename T>
-        T getSettings(const std::string& setting)
-        {
-          return this->app().settings().get<T>(setting);
-        }
+      cppcms::json::value getSettings();
 
     public:
       std::string description;

@@ -22,10 +22,10 @@ namespace app { namespace views { namespace layouts {
     return ltm;
   }
 
-  // cppcms::json::value Home::getSettings()
-  // {
-  //   return this->app().settings();
-  // }
+  cppcms::json::value Home::getSettings()
+  {
+    return this->app().settings();
+  }
 
 } } }
 

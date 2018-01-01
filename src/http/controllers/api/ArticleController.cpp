@@ -39,6 +39,14 @@ namespace app { namespace http { namespace controllers { namespace api {
           r["featured"] = article.getFeatured();
           r["content"] = article.getContent();
 
+          // TypeText
+          auto &rTypeText = r["type_text"];
+          auto typeText = article.getTypeText();
+          rTypeText["name"] = typeText.name;
+          rTypeText["icon_class_name"] = typeText.iconClassName;
+          rTypeText["featured_class_name"] = typeText.featuredClassName;
+          rTypeText["icon_class_name"] = typeText.iconClassName;
+
           // Author
           auto &rAuthor = r["author"];
           rAuthor["url"] = "/";
@@ -80,6 +88,14 @@ namespace app { namespace http { namespace controllers { namespace api {
         res["featured"] = article.getFeatured();
         res["title"] = article.getTitle();
         res["content"] = article.getContent();
+
+        // TypeText
+        auto &rTypeText = res["type_text"];
+        auto typeText = article.getTypeText();
+        rTypeText["name"] = typeText.name;
+        rTypeText["icon_class_name"] = typeText.iconClassName;
+        rTypeText["featured_class_name"] = typeText.featuredClassName;
+        rTypeText["icon_class_name"] = typeText.iconClassName;
 
         // Author
         auto &rAuthor = res["author"];

@@ -34,32 +34,40 @@ export default (state) => (location) => (actions) => {
           }
         }}
       >
-        {!state.homePage.listPost || state.homePage.listPost.map(p => {
+        {!state.homePage.listPost || state.homePage.listPost.map(articleInfo => {
           return (
             <div class="article-wrapper u-cf">
-              <Link class="bubble" to={p.permalink}>
-                <i class="fa fa-fw fa-pencil">
+              <Link class="bubble" to={articleInfo.permalink}>
+                <i
+                  class={
+                    !articleInfo.type_text
+                      || articleInfo.type_text.icon_class_name
+                  }
+                >
                 </i>
               </Link>
-              <article class={p.type}>
+              <article
+                class={!articleInfo.type_text || articleInfo.type_text.name }
+              >
                 {/* <div class="featured-image"> */}
-                  {/*   <Link to={p.permalink}> */}
+                  {/*   <Link to={articleInfo.permalink}> */}
                     {/*     <img src="/bilberry-hugo-theme/images/patreon.png" alt="" /> */}
                     {/*   </Link> */}
                   {/* </div> */}
                 <div class="content">
                   <h3>
-                    <Link to={p.permalink}>
-                      {p.title}
+                    <Link to={articleInfo.permalink}>
+                      {articleInfo.title}
                     </Link>
                   </h3>
                   <div class="meta">
-                    <span class="date moment">{p.post_time}</span>
-                    {!p.author ||
-                        (
+                    <span class="date moment">{articleInfo.post_time}</span>
+                    {
+                      !articleInfo.author
+                        || (
                           <span class="author">
-                            <Link to={p.author.url}>
-                              {p.author.name}
+                            <Link to={articleInfo.author.url}>
+                              {articleInfo.author.name}
                             </Link>
                           </span>
                         )
@@ -68,8 +76,8 @@ export default (state) => (location) => (actions) => {
                   <div
                     oncreate={
                       utils.dangerouslySetInnerHTML(
-                        !p.content ||
-                        snarkdown(p.content)
+                        !articleInfo.content
+                        || snarkdown(articleInfo.content)
                       )
                     }
                     onupdate={(e) => {
@@ -77,10 +85,11 @@ export default (state) => (location) => (actions) => {
                     }}
                   />
                 </div>
-                {!p.tags ||
+                {
+                  !articleInfo.tags ||
                     (
                       <div class="tags">
-                        <i class="fa fa-tags"></i> {p.tags.map(t => {
+                        <i class="fa fa-tags"></i> {articleInfo.tags.map(t => {
                           return (
                             <Link to={t.url}>
                               {t.name}
