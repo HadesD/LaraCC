@@ -88,16 +88,13 @@ endif()
 
 set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/master.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/home.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/dashboard.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/login.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/read.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/index.blade.chtml
-  )
+)
+
+file(GLOB_RECURSE tmpl_files resources/views/layouts/*.blade.chtml)
+list(REMOVE_ITEM tmpl_files ${VIEWS_TMPL})
+foreach(tmpl_file ${tmpl_files})
+  set(VIEWS_TMPL ${VIEWS_TMPL} ${tmpl_file})
+endforeach()
 
 #############################################################################
 #
@@ -105,60 +102,14 @@ set(VIEWS_TMPL
 #
 #############################################################################
 
-set(APP_SRC
-  ###############################################
-  # Core
-  ###############################################
-  src/main.cpp
-  src/core/Kernel.cpp
-  src/core/ServiceProvider.cpp
-  src/core/Controller.cpp
-  src/core/Model.cpp
-  src/core/View.cpp
-
-  ###############################################
-  # Database
-  ###############################################
-  src/database/CppDbConnector.cpp
-  src/database/SQLiteModernCppConnector.cpp
-
-  ###############################################
-  # Models
-  ###############################################
-  src/models/Account.cpp
-  src/models/Article.cpp
-
-  ###############################################
-  # Application
-  ###############################################
-
-  # Routes
-  src/routes/Web.cpp
-  src/routes/Api.cpp
-
-  # Controllers
-  src/http/controllers/api/ApiController.cpp
-  src/http/controllers/api/HomeController.cpp
-  src/http/controllers/api/ArticleController.cpp
-  src/http/controllers/api/dashboard/Login.cpp
-  src/http/controllers/HomeController.cpp
-  src/http/controllers/ArticleController.cpp
-  src/http/controllers/DashboardController.cpp
-  src/http/controllers/auth/LoginController.cpp
-  src/http/controllers/auth/SignUpController.cpp
-
-  # Views
-  src/views/layouts/Home.cpp
-  src/views/layouts/Master.cpp
-  src/views/Home.cpp
-  src/views/Article.cpp
-  src/views/Register.cpp
-  src/views/Dashboard.cpp
-  )
+set(APP_SRC)
+file(GLOB_RECURSE src_files src/*.cpp)
+foreach(src ${src_files})
+  set(APP_SRC ${APP_SRC} ${src})
+endforeach()
 
 include(SetupCompiler)
 
 include(BuildProject)
 
 include(AfterBuilt)
-
