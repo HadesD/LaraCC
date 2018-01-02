@@ -1,78 +1,69 @@
 {
-  "app" : {
+  "app": {
     "site": {
-      "title": "The Life of Someone",
+      "title": "Stories of someone",
       "sub_title": "-- a.k.a Dark.Hades --"
-    },
-    "root" : "",
-    "host" : "localhost:80",
-    "locdomain" : "localhost",
-    "db": {
-      "web" : {
-        "connection_string" : "mysql:host=127.0.0.1;database=web;user=root;password=;@pool_size=16"
-      }
     }
   },
-  "service" : {
-    "ip"  : "0.0.0.0",
-    "api" : "http",
-    "port" : 8080
+  "service": {
+    "ip": "0.0.0.0",
+    "api": "http",
+    "port": 8080
   },
-  "http" : {
-    "script" : "/mb.fcgi",
-    "rewrite" : [
+  "http": {
+    "script": "/mb.fcgi",
+    "rewrite": [
       {
-        "regex" : "/media(/.+)",
-        "pattern" : "$1"
+        "regex": "/media(/.+)",
+        "pattern": "$1"
       },
       {
-        "regex" : "/favicon\\.ico",
-        "pattern" : "$0"
+        "regex": "/favicon\\.ico",
+        "pattern": "$0"
       },
       {
-        "regex" : "/robots\\.txt",
-        "pattern" : "$0"
+        "regex": "/robots\\.txt",
+        "pattern": "$0"
       },
       {
-        "regex" : ".*" ,
-        "pattern" : "/mb.fcgi$0"
+        "regex": ".*" ,
+        "pattern": "/mb.fcgi$0"
       }
     ]
   },
-  "file_server" : {
-    "enable" : true,
-    "listing" : true,
-    "document_root" : "./public"
+  "file_server": {
+    "enable": true,
+    "listing": true,
+    "document_root": "./public"
   },
-  "views" : {
-    "paths" : ["."],
-    "skins" : ["bootstrap_skin"],
-    "default_skins" : ["bootstrap_skin"],
-    "autoreload":true
+  "views": {
+    "paths": ["."],
+    "skins": ["bootstrap_skin"],
+    "default_skins": ["bootstrap_skin"],
+    "autoreload": true
   },
-  "security" : {
-    "csrf" : {
+  "security": {
+    "csrf": {
       "enable" : true
     }
   },
-  "session" : {
-    "expire" : "renew",
-    "timeout" : 604800,
-    "location" : "client",
-    "client" : {
-      "hmac" : "sha1",
-      "hmac_key" : "3891bbf7f845fd4277008a63d72640fc13bb9a31"
+  "session": {
+    "expire": "renew",
+    "timeout": 604800,
+    "location": "client",
+    "client": {
+      "hmac": "sha1",
+      "hmac_key": "3891bbf7f845fd4277008a63d72640fc13bb9a31"
     }
   },
   "localization":{
     "locales": ["en_US.UTF-8"]
   },
-  "logging":{
-    "level":"debug",
+  "logging": {
+    "level": "debug",
     "file": {
-      "name":"./storage/logs/logs.log",
+      "name": "./storage/logs/logs.log",
       "append": true
     }
   }
 }
-

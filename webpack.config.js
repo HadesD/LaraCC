@@ -33,7 +33,7 @@ const plugins = [
   }),
 ];
 
-let config = {
+const config = {
   context: path.resolve(__dirname, 'resources/assets'),
   entry: {
     'app': [
