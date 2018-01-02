@@ -79,7 +79,6 @@ elseif(APPLE)
     )
 endif()
 
-
 #############################################################################
 #
 # List views template
@@ -88,13 +87,18 @@ endif()
 
 set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/master.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/home.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/dashboard.blade.chtml
 )
 
-file(GLOB_RECURSE tmpl_files resources/views/layouts/*.blade.chtml)
+file(GLOB_RECURSE tmpl_files resources/views/*.blade.chtml)
 list(REMOVE_ITEM tmpl_files ${VIEWS_TMPL})
+list(REVERSE tmpl_files)
 foreach(tmpl_file ${tmpl_files})
   set(VIEWS_TMPL ${VIEWS_TMPL} ${tmpl_file})
 endforeach()
+
+message(STATUS ${VIEWS_TMPL})
 
 #############################################################################
 #

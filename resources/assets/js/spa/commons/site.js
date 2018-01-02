@@ -1,5 +1,7 @@
+import * as commons from '../../../../../app/config/Commons.json';
+
 export default {
-  title: 'The Life of Someone',
-  sub_title: '-- a.k.a Dark.Hades --',
+  title: commons.site.title,
+  sub_title: commons.site.sub_title,
   api_url: '/api',
 };
