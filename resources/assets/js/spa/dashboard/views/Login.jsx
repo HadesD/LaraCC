@@ -48,9 +48,14 @@ const CmdInputBox = ({state, actions}) => {
 };
 
 export default (state) => (location) => (actions) => {
+  if (state.isLoggedIn)
+  {
+    return (
+      <Redirect to={state.constants.root} />
+    );
+  }
+  
   state.loginPage.cmdInputId = styles.cmdInput;
-
-  // console.log(state, actions);
 
   { window.scrollTo(0, document.body.scrollHeight) }
   return (
@@ -85,7 +90,6 @@ export default (state) => (location) => (actions) => {
           actions={actions}
         />
       </pre>
-      <Link to="/root">Root</Link>
     </main>
   );
 };

@@ -2,13 +2,22 @@ import {
   h
 } from 'hyperapp';
 import {
-  Link
+  Link,
+  Redirect
 } from '@hyperapp/router';
 
+import Main from '../components/Main.jsx'
+
 export default (state) => (actions) => (props) => {
+  if (!state.isLoggedIn)
+  {
+    return (
+      <Redirect to={state.constants.root + '/login'} />
+    );
+  }
+  
   return (
     <main>
-      <button onclick={actions.indexPage.changeI}>ROOT</button>
       {state.title}
       <Link to="/root/login">Login</Link>
     </main>
