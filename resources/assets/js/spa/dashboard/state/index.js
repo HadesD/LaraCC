@@ -11,7 +11,7 @@ export default {
 
   title: null,
 
-  isLoggedIn: ,//false,
+  isLoggedIn: true,//false,
 
   loginPage: {
     isCmdInputPassword: false, // Input is a password
