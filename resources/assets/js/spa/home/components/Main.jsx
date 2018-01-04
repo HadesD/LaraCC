@@ -10,9 +10,6 @@ import site from '../../commons/site.js';
 
 const mY = 2013;
 
-let mainState = {
-};
-
 const Loading = ({state, actions}) => {
   if (!state.isFetchingPage)
   {

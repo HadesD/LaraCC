@@ -15,12 +15,11 @@ export default (state) => (actions) => (props) => {
       <Redirect to={state.constants.root + '/login'} />
     );
   }
-  
+
   return (
-    <main>
+    <Main state={state} actions={actions}>
       {state.title}
-      <Link to="/root/login">Login</Link>
-    </main>
+    </Main>
   );
 }
 
