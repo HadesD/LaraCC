@@ -3,6 +3,8 @@ import {
   Link
 } from '@hyperapp/router';
 
+import utils from '../../commons/utils.js';
+
 const Header = ({state, actions}) => {
   return (
     <header class="header">
@@ -24,7 +26,9 @@ const Header = ({state, actions}) => {
               <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
               <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div>
             </a>
-            <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
+            <button class="sidebar-toggle" onclick={(e) => (s) => {console.log(s)}}>
+              <i class="fa fa-long-arrow-left"></i>
+            </button>
           </div>
           <ul class="right-menu list-inline no-margin-bottom">
             <li class="list-inline-item"><a href="#" class="search-open nav-link"><i class="icon-magnifying-glass-browser"></i></a></li>
@@ -33,7 +37,7 @@ const Header = ({state, actions}) => {
                 <li>
                   <a href="#" class="dropdown-item message d-flex align-items-center">
                     <div class="profile">
-                      <img src="img/avatar-3.jpg" alt="..." class="img-fluid" />
+                      <img src={utils.asset("dashboard/img/avatar-3.jpg")} alt="..." class="img-fluid" />
                       <div class="status online"></div>
                     </div>
                     <div class="content">   <strong class="d-block">Nadia Halsey</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">9:30am</small></div>
@@ -42,7 +46,7 @@ const Header = ({state, actions}) => {
                 <li>
                   <a href="#" class="dropdown-item message d-flex align-items-center">
                     <div class="profile">
-                      <img src="img/avatar-2.jpg" alt="..." class="img-fluid" />
+                      <img src={utils.asset("dashboard/img/avatar-2.jpg")} alt="..." class="img-fluid" />
                       <div class="status away"></div>
                     </div>
                     <div class="content">
@@ -55,7 +59,7 @@ const Header = ({state, actions}) => {
                 <li>
                   <a href="#" class="dropdown-item message d-flex align-items-center">
                     <div class="profile">
-                      <img src="img/avatar-1.jpg" alt="..." class="img-fluid" />
+                      <img src={utils.asset("dashboard/img/avatar-1.jpg")} alt="..." class="img-fluid" />
                       <div class="status busy"></div>
                     </div>
                     <div class="content">   <strong class="d-block">Sam Kaheil</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">6:55am</small></div>
@@ -64,7 +68,7 @@ const Header = ({state, actions}) => {
                 <li>
                   <a href="#" class="dropdown-item message d-flex align-items-center">
                     <div class="profile">
-                      <img src="img/avatar-5.jpg" alt="..." class="img-fluid" />
+                      <img src={utils.asset("dashboard/img/avatar-5.jpg")} alt="..." class="img-fluid" />
                       <div class="status offline"></div>
                     </div>
                     <div class="content">   <strong class="d-block">Sara Wood</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">10:30pm</small></div>
@@ -200,10 +204,10 @@ const Header = ({state, actions}) => {
 
 const Sidebar = ({state, actions}) => {
   return (
-    <nav id="sidebar">
+    <nav id="sidebar" class={state.isSidebarOpenned ? 'shrinked' : ''}>
       <div class="sidebar-header d-flex align-items-center">
         <div class="avatar">
-          <img src="img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle" />
+          <img src={utils.asset("dashboard/img/avatar-6.jpg")} alt="..." class="img-fluid rounded-circle" />
         </div>
         <div class="title">
           <h1 class="h5">Mark Stephen</h1>

@@ -54,7 +54,7 @@ export default (state) => (location) => (actions) => {
       <Redirect to={state.constants.root} />
     );
   }
-  
+
   state.loginPage.cmdInputId = styles.cmdInput;
 
   { window.scrollTo(0, document.body.scrollHeight) }
