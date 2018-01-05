@@ -26,7 +26,7 @@ const Header = ({state, actions}) => {
               <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
               <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div>
             </a>
-            <button class="sidebar-toggle" onclick={(e) => (s) => {console.log(s)}}>
+            <button class="sidebar-toggle" onclick={(e) => {console.log(actions)}}>
               <i class="fa fa-long-arrow-left"></i>
             </button>
           </div>

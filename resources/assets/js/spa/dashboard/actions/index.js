@@ -9,7 +9,7 @@ export default {
   location: location.actions,
   loginPage: loginPage,
   indexPage: indexPage,
-  sidebarToggle: (event) => (state) => (actions) => {
+  sidebarToggle: (event) => {
     console.log(event);
     console.log(state);
     console.log(actions);
