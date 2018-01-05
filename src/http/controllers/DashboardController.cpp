@@ -4,7 +4,8 @@
 #include <cppcms/url_mapper.h>
 
 #include "app/views/dashboard.hpp"
-#include "app/views/dashboard/login.hpp"
+#include "app/views/dashboard/Login.hpp"
+#include "app/views/dashboard/Index.hpp"
 
 namespace app { namespace http { namespace controllers {
 
@@ -25,11 +26,10 @@ namespace app { namespace http { namespace controllers {
 
   void DashboardController::index()
   {
-    // response().set_redirect_header(url("login"), 301);
-    app::views::Dashboard v;
-    v.title = _("Root :: Login");
+    app::views::dashboard::Index v;
+    v.title = _("Root :: Index");
 
-    this->render("dashboard", v);
+    this->render("dashboard_index", v);
   }
 
   void DashboardController::login()
