@@ -25,5 +25,9 @@ export default {
     cmdInputText: null,
     usernameInput: null,
   },
+
+  articlePage: {
+    articlesInfo: [],
+  },
 };
 

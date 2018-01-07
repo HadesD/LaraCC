@@ -5,17 +5,16 @@ export default {
   update: (state) => {
     return {};
   },
-
-  onload: (state) => () => (actions) => {
-    document.title = site.title;
+  loadArticlesInfo: (state) => () => (actions) => {
+    // document.title = site.title;
     axios({
       method: 'GET',
-      url: site.api_url + '/articles'
+      url: site.api_url + state.constants.root + '/articles'
     })
       .then((response) => {
         console.log(response);
         state.isFetchingPage = false;
-        state.homePage.listPost = response.data;
+        state.articlePage.articlesInfo = response.data;
         actions.update(state);
       })
       .then((error) => {
@@ -23,6 +22,6 @@ export default {
         actions.update(state);
       })
     ;
-  }
+  },
 }
 

@@ -17,7 +17,7 @@ export default ({state, actions}) => {
         },
         {
           url: state.constants.root + '/articles',
-          icon: 'icon-article',
+          icon: 'icon-paper-and-pencil',
           text: 'Articles',
         },
       ]

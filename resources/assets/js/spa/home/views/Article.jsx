@@ -8,8 +8,6 @@ import Main from '../components/Main.jsx';
 import utils from '../../commons/utils.js';
 import snarkdown from 'snarkdown';
 
-// import * as config from '../../../../../../config.json';
-
 let isCalledFetchData = false;
 let articleInfo = {};
 
