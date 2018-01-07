@@ -16,6 +16,8 @@ export default (state) => (location) => (actions) => {
     );
   }
 
+  document.title = "Root :: Index";
+
   return (
     <Main state={state} actions={actions}>
       {state.title}

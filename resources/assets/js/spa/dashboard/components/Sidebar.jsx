@@ -5,6 +5,27 @@ import {
 
 import utils from '../../commons/utils.js';
 
+const isActiveLink = (locPathName, locUrl) => {
+  let locPnArr = locPathName.split('/');
+  let locUrlArr = locUrl.split('/');
+
+  // Compare Article
+  if (locPnArr[2] === 'articles')
+  {
+    if (locUrlArr[2] === locPnArr[2])
+    {
+      return true;
+    }
+  }
+
+  if (locPathName === locUrl)
+  {
+    return true;
+  }
+
+  return false;
+};
+
 export default ({state, actions}) => {
   const sidebarLinkList = [
     {
@@ -48,7 +69,7 @@ export default ({state, actions}) => {
                 {list.links.map((link) => {
                   return (
                     <li class={
-                      state.location.pathname == link.url ? 'active' : ''
+                      isActiveLink(state.location.pathname, link.url) ? 'active' : ''
                     }
                     >
                       <Link to={link.url}>

@@ -22,6 +22,10 @@ export default (state) => {
         render={ArticleIndex(state)}
       />
       <Route
+        path={state.constants.root + '/articles/new'}
+        render={ArticleEdit(state)}
+      />
+      <Route
         path={state.constants.root + '/articles/:slug/edit'}
         render={ArticleEdit(state)}
       />

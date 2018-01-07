@@ -12,7 +12,9 @@ export default ({state, actions}) => {
             Home
           </Link>
         </li>
-        <li class="breadcrumb-item active">Charts</li>
+        <li class="breadcrumb-item active">
+          {document.title}
+        </li>
       </ul>
     </div>
   );

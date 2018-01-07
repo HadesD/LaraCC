@@ -8,6 +8,7 @@ import {
 
 import styles from '../../../../sass/dashboard/login.scss';
 
+
 const HistoryCmd = ({state, actions}) => {
   return (
     <div>
@@ -54,6 +55,8 @@ export default (state) => (location) => (actions) => {
       <Redirect to={state.constants.root} />
     );
   }
+
+  document.title = "Root :: Index";
 
   state.loginPage.cmdInputId = styles.cmdInput;
 

@@ -6,7 +6,7 @@ export default {
     return {};
   },
   loadArticlesInfo: (state) => () => (actions) => {
-    // document.title = site.title;
+    document.title = "Root :: Articles";
     axios({
       method: 'GET',
       url: site.api_url + state.constants.root + '/articles'

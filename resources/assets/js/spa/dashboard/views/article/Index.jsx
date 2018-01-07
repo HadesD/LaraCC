@@ -1,4 +1,8 @@
 import {h} from 'hyperapp';
+import {
+  Link,
+  Redirect
+} from '@hyperapp/router';
 
 import Main from '../../components/Main.jsx'
 
@@ -33,6 +37,14 @@ export default (state) => (location) => (actions) => {
       >
         <div class="container-fluid">
           <div class="block">
+            <div class="float-right">
+              <Link
+                to={state.constants.root + '/articles/new'}
+                class="btn btn-sm btn-primary"
+              >
+                + New
+              </Link>
+            </div>
             <div class="title">
               <strong>Articles</strong>
             </div>
@@ -42,6 +54,12 @@ export default (state) => (location) => (actions) => {
                   <td>
                     #
                   </td>
+                  <td>
+                    Title
+                  </td>
+                  <td>
+                    Author
+                  </td>
                 </tr>
               </thead>
               <tbody>
@@ -50,6 +68,16 @@ export default (state) => (location) => (actions) => {
                     <tr>
                       <td>
                         {articleInfo.id}
+                      </td>
+                      <td>
+                        <Link to={articleInfo.permalink + '/edit'}>
+                          {articleInfo.title}
+                        </Link>
+                      </td>
+                      <td>
+                        <Link to={articleInfo.author.url}>
+                          {articleInfo.author.name}
+                        </Link>
                       </td>
                     </tr>
                   );
