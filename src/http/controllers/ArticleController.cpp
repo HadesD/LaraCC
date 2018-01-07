@@ -11,8 +11,12 @@ namespace app { namespace http { namespace controllers {
   ArticleController::ArticleController(cppcms::service& s) :
     app::core::Controller(s)
   {
-    this->dispatcher().map("GET", "/?", &ArticleController::index, this);
-    this->dispatcher().map("GET", "/(.*)", &ArticleController::read, this, 1);
+    __APP_TRY_CATCH_BEGIN__
+    {
+      this->dispatcher().map("GET", "/?", &ArticleController::index, this);
+      this->dispatcher().map("GET", "/(.*)", &ArticleController::read, this, 1);
+    }
+    __APP_TRY_CATCH_END__
   }
 
   void ArticleController::index()

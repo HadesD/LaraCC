@@ -18,14 +18,14 @@ namespace app { namespace http { namespace controllers {
       dispatcher().assign("/login", &DashboardController::login, this);
       mapper().assign("login","/login");
 
-      dispatcher().assign("", &DashboardController::index, this);
-      mapper().assign("root", "");
+      dispatcher().assign("/?", &DashboardController::index, this);
+      mapper().assign("root", "/");
 
       attach(
         new app::http::controllers::dashboard::ArticleController(s),
         "articles",
         "{1}",
-        "/articles((.*))",
+        "/articles(/?.*)",
         1
         );
 

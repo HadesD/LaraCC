@@ -1,0 +1,11 @@
+<% c++ #include "app/views/dashboard/Article.hpp" %>
+<% skin bootstrap_skin %>
+<% view dashboard_article_index uses app::views::dashboard::Article extends dashboard %>
+<% template dashboard_css() %>
+<% end %>
+<% template dashboard_content() %>
+<% end %>
+<% template dashboard_js() %>
+<% end %>
+<% end view %>
+<% end skin %>

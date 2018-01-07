@@ -4,8 +4,9 @@
 #include <cppcms/http_response.h>
 #include <cppcms/json.h>
 
-#include "app/http/controllers/api/dashboard/Login.hpp"
 #include "app/http/controllers/api/ArticleController.hpp"
+#include "app/http/controllers/api/dashboard/LoginController.hpp"
+#include "app/http/controllers/api/dashboard/ArticleController.hpp"
 
 namespace app { namespace routes {
 
@@ -13,11 +14,20 @@ namespace app { namespace routes {
   {
     __APP_TRY_CATCH_BEGIN__
     {
+      std::string dashboard_root = "/root";
       attach(
         new app::http::controllers::api::dashboard::Login(s),
         "dashboard_login",
         "{1}",
-        "/root/login",
+        dashboard_root + "/login",
+        1
+        );
+
+      attach(
+        new app::http::controllers::api::dashboard::ArticleController(s),
+        "dashboard_article",
+        "{1}",
+        dashboard_root + "/articles(/?.*)",
         1
         );
 
@@ -25,7 +35,7 @@ namespace app { namespace routes {
         new app::http::controllers::api::ArticleController(s),
         "articles",
         "{1}",
-        "/articles((/?).*)",
+        "/articles(/?.*)",
         1
         );
     }

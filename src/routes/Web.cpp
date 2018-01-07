@@ -30,7 +30,7 @@ namespace app { namespace routes {
         new app::http::controllers::ArticleController(s),
         "articles",
         "{1}",
-        "/articles((.*))",
+        "/articles(/?.*)",
         1
         );
 
@@ -39,7 +39,7 @@ namespace app { namespace routes {
         new app::http::controllers::HomeController(s),
         "accounts",
         "{1}",
-        "/accounts((/?.*))",
+        "/accounts(/?.*)",
         1
         );
 
@@ -48,7 +48,7 @@ namespace app { namespace routes {
         new app::http::controllers::HomeController(s),
         "categories",
         "{1}",
-        "/categories((/?.*))",
+        "/categories(/?.*)",
         1
         );
 
@@ -57,7 +57,7 @@ namespace app { namespace routes {
         new app::http::controllers::HomeController(s),
         "tags",
         "{1}",
-        "/tags((/?.*))",
+        "/tags(/?.*)",
         1
         );
 
@@ -66,7 +66,7 @@ namespace app { namespace routes {
         new app::http::controllers::DashboardController(s),
         "root",
         "/root{1}",
-        "/root((/?.*))",
+        "/root(/?.*)",
         1
         );
 

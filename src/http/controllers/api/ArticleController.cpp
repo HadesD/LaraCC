@@ -11,7 +11,7 @@ namespace app { namespace http { namespace controllers { namespace api {
 
   ArticleController::ArticleController(cppcms::service &s) : ApiController(s)
   {
-    this->dispatcher().map("GET", "", &ArticleController::index, this);
+    this->dispatcher().map("GET", "/?", &ArticleController::index, this);
     this->dispatcher().map("GET", "/(.*)", &ArticleController::read, this, 1);
   }
 
