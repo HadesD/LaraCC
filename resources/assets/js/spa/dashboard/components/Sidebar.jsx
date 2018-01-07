@@ -15,6 +15,11 @@ export default ({state, actions}) => {
           icon: 'icon-home',
           text: 'Home',
         },
+        {
+          url: state.constants.root + '/articles/f',
+          icon: 'icon-article',
+          text: 'Articles',
+        },
       ]
     },
   ];
@@ -42,7 +47,10 @@ export default ({state, actions}) => {
               <ul class="list-unstyled">
                 {list.links.map((link) => {
                   return (
-                    <li class="active">
+                    <li class={
+                      state.location.pathname == link.url ? 'active' : ''
+                    }
+                    >
                       <Link to={link.url}>
                         <i class={link.icon}></i>
                         {link.text}
@@ -57,3 +65,4 @@ export default ({state, actions}) => {
       </nav>
   );
 };
+

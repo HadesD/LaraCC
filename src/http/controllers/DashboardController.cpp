@@ -7,6 +7,8 @@
 #include "app/views/dashboard/Login.hpp"
 #include "app/views/dashboard/Index.hpp"
 
+#include "app/http/controllers/dashboard/ArticleController.hpp"
+
 namespace app { namespace http { namespace controllers {
 
   DashboardController::DashboardController(cppcms::service &s) : Controller(s)
@@ -18,6 +20,14 @@ namespace app { namespace http { namespace controllers {
 
       dispatcher().assign("", &DashboardController::index, this);
       mapper().assign("root", "");
+
+      attach(
+        new app::http::controllers::dashboard::ArticleController(s),
+        "articles",
+        "{1}",
+        "/articles((.*))",
+        1
+        );
 
       mapper().root("/root");
     }

@@ -38,9 +38,22 @@ export default ({state, actions}) => {
                 <strong class="text-primary">D</strong><strong>A</strong>
               </div>
             </Link>
-            <button class="sidebar-toggle" onclick={actions.sidebarToggle}>
-              <i class="fa fa-long-arrow-left"></i>
+            <button
+              class={'sidebar-toggle' + (state.isSidebarOpenned?' active':'')}
+              onclick={actions.sidebarToggle}
+            >
+              <i
+                class={
+                  'fa ' + (state.isSidebarOpenned
+                    ?'fa-long-arrow-right'
+                    :'fa-long-arrow-left')
+                }
+              >
+              </i>
             </button>
+            <a href="/">
+              <i class="fa fa-home"></i>
+            </a>
           </div>
           <ul class="right-menu list-inline no-margin-bottom">
             <li class="list-inline-item">
@@ -53,7 +66,7 @@ export default ({state, actions}) => {
               </a>
             </li>
             <li class="list-inline-item dropdown">
-              <a id="navbarDropdownMenuLink1" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link messages-toggle">
+              <a id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link messages-toggle">
                 <i class="icon-email"></i>
                 <span class="badge dashbg-1">5</span>
               </a>
@@ -118,7 +131,7 @@ export default ({state, actions}) => {
               </ul>
             </li>
             <li class="list-inline-item dropdown">
-              <a id="navbarDropdownMenuLink2" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link tasks-toggle">
+              <a id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link tasks-toggle">
                 <i class="icon-new-file"></i>
                 <span class="badge dashbg-3">9</span>
               </a>
@@ -236,7 +249,9 @@ export default ({state, actions}) => {
               </ul>
             </li>
             <li class="list-inline-item logout">
-              <a id="logout" href="login.html" class="nav-link">Logout <i class="icon-logout"></i></a>
+              <a id="logout" class="nav-link">
+                Logout <i class="icon-logout"></i>
+              </a>
             </li>
           </ul>
         </div>

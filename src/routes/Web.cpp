@@ -61,6 +61,7 @@ namespace app { namespace routes {
         1
         );
 
+      // Dashboard
       attach(
         new app::http::controllers::DashboardController(s),
         "root",
