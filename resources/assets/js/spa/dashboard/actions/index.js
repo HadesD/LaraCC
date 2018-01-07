@@ -9,10 +9,10 @@ export default {
   location: location.actions,
   loginPage: loginPage,
   indexPage: indexPage,
-  sidebarToggle: (event) => {
-    console.log(event);
-    console.log(state);
-    console.log(actions);
+  sidebarToggle: (event) => (state) => {
+    return {
+      isSidebarOpenned: !state.isSidebarOpenned
+    };
   },
 };
 

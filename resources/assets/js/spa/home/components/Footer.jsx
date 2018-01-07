@@ -9,12 +9,17 @@ export default ({state, actions}) => {
     <footer class="credits">
       <div class="container">
         <div class="copyright">
-          &copy; {(new Date().getFullYear() > mY) ? mY+' - ' : ''}{(new Date().getFullYear())} by <a href="https://github.com/HadesD" target="_blank">Dark.Hades</a>
+          &copy; {
+            (new Date().getFullYear() > mY) ? mY+' - ' : ''
+          }
+          {
+            (new Date().getFullYear())
+          } by <a href="https://github.com/HadesD" target="_blank">
+            Dark.Hades
+          </a>
         </div>
         <div class="author">
-          Theme with <i class="fa fa-heart"></i> by <a href="https://github.com/Lednerb" target="_blank">
-            Lednerb
-          </a>
+          Theme with <i class="fa fa-heart"></i> by <a href="https://github.com/Lednerb" target="_blank">Lednerb</a>
         </div>
       </div>
     </footer>

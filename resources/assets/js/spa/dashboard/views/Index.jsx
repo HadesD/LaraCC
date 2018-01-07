@@ -8,7 +8,7 @@ import {
 
 import Main from '../components/Main.jsx'
 
-export default (state) => (actions) => (props) => {
+export default (state) => (location) => (actions) => {
   if (!state.isLoggedIn)
   {
     return (

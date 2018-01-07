@@ -14,7 +14,7 @@ export default ({state, actions}, children) => {
       <Header state={state} actions={actions} />
       <div class="d-flex align-items-stretch">
         <Sidebar state={state} actions={actions} />
-        <div class="page-content">
+        <div class={'page-content' + (state.isSidebarOpenned ? ' active' : '')}>
           <div class="page-header no-margin-bottom">
             <div class="container-fluid">
               <h2 class="h5 no-margin-bottom">Dashboard</h2>
