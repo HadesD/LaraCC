@@ -6,42 +6,54 @@ import {
 import utils from '../../commons/utils.js';
 
 export default ({state, actions}) => {
+  const sidebarLinkList = [
+    {
+      header_text: 'Main',
+      links: [
+        {
+          url: state.constants.root,
+          icon: 'icon-home',
+          text: 'Home',
+        },
+      ]
+    },
+  ];
+
   return (
     <nav id="sidebar" class={state.isSidebarOpenned ? 'shrinked' : ''}>
       <div class="sidebar-header d-flex align-items-center">
         <div class="avatar">
-          <img src={utils.asset("dashboard/img/avatar-6.jpg")} alt="..." class="img-fluid rounded-circle" />
+          <img
+            src={utils.asset("images/rem-chibi.jpg")}
+            class="img-fluid rounded-circle"
+          />
         </div>
         <div class="title">
-          <h1 class="h5">Mark Stephen</h1>
-          <p>Web Designer</p>
+          <h1 class="h5">Dark.Hades</h1>
+          <p>Programmer</p>
         </div>
       </div>
-      <span class="heading">Main</span>
-      <ul class="list-unstyled">
-        <li class="active">
-          <a href="index.html">
-            <i class="icon-home"></i>
-            Home
-          </a>
-        </li>
-        <li><a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>
-        <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
-        <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
-        <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
-          <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-            <li><a href="#">Page</a></li>
-            <li><a href="#">Page</a></li>
-            <li><a href="#">Page</a></li>
-          </ul>
-        </li>
-        <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>
-      </ul><span class="heading">Extras</span>
-      <ul class="list-unstyled">
-        <li> <a href="#"> <i class="icon-settings"></i>Demo </a></li>
-        <li> <a href="#"> <i class="icon-writing-whiteboard"></i>Demo </a></li>
-        <li> <a href="#"> <i class="icon-chart"></i>Demo </a></li>
-      </ul>
-    </nav>
+        {sidebarLinkList.map((list) => {
+          return (
+            <div>
+              <span class="heading">
+                {list.header_text}
+              </span>
+              <ul class="list-unstyled">
+                {list.links.map((link) => {
+                  return (
+                    <li class="active">
+                      <Link to={link.url}>
+                        <i class={link.icon}></i>
+                        {link.text}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })}
+      </nav>
   );
 };

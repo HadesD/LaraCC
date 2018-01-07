@@ -14,5 +14,10 @@ export default {
       isSidebarOpenned: !state.isSidebarOpenned
     };
   },
+  searchPanelToggle: (event) => (state) => {
+    return {
+      isSearchPanelOpenned: !state.isSearchPanelOpenned
+    }
+  },
 };
 

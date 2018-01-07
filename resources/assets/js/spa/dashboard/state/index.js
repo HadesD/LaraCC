@@ -16,6 +16,8 @@ export default {
 
   isSidebarOpenned: true,
 
+  isSearchPanelOpenned: false,
+
   loginPage: {
     isCmdInputPassword: false, // Input is a password
     cmdInputId: null,
