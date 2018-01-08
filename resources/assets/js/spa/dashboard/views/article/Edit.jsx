@@ -1,7 +1,5 @@
 import {h} from 'hyperapp';
 
-import Main from '../../components/Main.jsx'
-
 export default (state) => (pState) => (location) => (actions) => {
   const isNewArticle = (
     state.location.pathname === state.constants.root + '/articles/new'
@@ -18,11 +16,9 @@ export default (state) => (pState) => (location) => (actions) => {
   }
 
   return (
-    <Main state={state} actions={actions}>
       <section>
 
       </section>
-    </Main>
   );
 };
 

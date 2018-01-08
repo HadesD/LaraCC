@@ -7,6 +7,8 @@ import {
 import Login from './Login.jsx';
 import Index from './Index.jsx';
 
+import Main from '../components/Main.jsx'
+
 import ArticleRoute from './article';
 
 export default (state, actions) => {
@@ -22,19 +24,19 @@ export default (state, actions) => {
               <Route
                 parent
                 path={state.constants.root}
-                render={Login(state)}
+                render={Login}
               />
             );
           }
           return (
-            <Switch>
+            <Main state={state} actions={actions}>
               <Route path={state.constants.root} render={Index(state)} />
               <Route
                 parent
                 path={`${state.constants.root}/articles`}
                 render={ArticleRoute(state)}
               />
-            </Switch>
+            </Main>
           );
         }}
       />

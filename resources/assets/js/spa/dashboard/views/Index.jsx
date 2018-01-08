@@ -6,15 +6,13 @@ import {
   Redirect
 } from '@hyperapp/router';
 
-import Main from '../components/Main.jsx'
-
 export default (state) => (location) => (actions) => {
   document.title = "Root :: Index";
 
   return (
-    <Main state={state} actions={actions}>
+    <div>
       {state.title}
-    </Main>
+    </div>
   );
 }
 

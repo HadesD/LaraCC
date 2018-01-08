@@ -4,8 +4,6 @@ import {
   Redirect
 } from '@hyperapp/router';
 
-import Main from '../../components/Main.jsx'
-
 let isCalledFetchData = false;
 
 export default (state) => (pState) => (location) => (actions) => {
@@ -17,7 +15,6 @@ export default (state) => (pState) => (location) => (actions) => {
   const articlesInfo = state.articlePage.articlesInfo;
 
   return (
-    <Main state={state} actions={actions}>
       <section
         class="no-padding-top"
         oncreate={(e) => {
@@ -89,7 +86,6 @@ export default (state) => (pState) => (location) => (actions) => {
           </div>
         </div>
       </section>
-    </Main>
   );
 };
 
