@@ -8,7 +8,7 @@ import Main from '../../components/Main.jsx'
 
 let isCalledFetchData = false;
 
-export default (state) => (location) => (actions) => {
+export default (state) => (pState) => (location) => (actions) => {
   if (!isCalledFetchData)
   {
     state.isFetchingPage = true;
@@ -71,7 +71,7 @@ export default (state) => (location) => (actions) => {
                       </td>
                       <td>
                         <Link
-                          to={`${location.match.url}/${articleInfo.id}/edit`}
+                          to={`${location.match.url}/${articleInfo.id}`}
                         >
                           {articleInfo.title}
                         </Link>

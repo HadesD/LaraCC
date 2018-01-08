@@ -11,8 +11,9 @@ export default {
 
   title: null,
 
-  isLoggedIn: true,
-  //false,
+  isLoggedIn:
+  true,
+  // false,
 
   isSidebarOpenned: true,
 

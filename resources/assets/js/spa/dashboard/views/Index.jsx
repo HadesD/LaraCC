@@ -9,13 +9,6 @@ import {
 import Main from '../components/Main.jsx'
 
 export default (state) => (location) => (actions) => {
-  if (!state.isLoggedIn)
-  {
-    return (
-      <Redirect to={state.constants.root + '/login'} />
-    );
-  }
-
   document.title = "Root :: Index";
 
   return (

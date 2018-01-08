@@ -16,7 +16,7 @@ namespace app { namespace http { namespace controllers { namespace dashboard {
       this->dispatcher().map("GET", "/?", &ArticleController::index, this);
       this->dispatcher().map("GET", "/new", &ArticleController::createNew, this);
       this->dispatcher().map(
-        "GET", "/(\\d)/edit",
+        "GET", "/(\\d)",
         &ArticleController::edit, this, 1
         );
     }
