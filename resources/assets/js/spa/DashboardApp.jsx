@@ -10,14 +10,12 @@ import state from './dashboard/state';
 import actions from './dashboard/actions';
 import views from './dashboard/views';
 
-const appActions = app(
-  {
-    state,
-    actions,
-    view: views,
-  },
+const main = app(
+  state,
+  actions,
+  views,
   document.getElementById('app')
 );
 
-location.subscribe(appActions.location);
+const unsubscribe = location.subscribe(main.location);
 

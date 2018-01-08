@@ -24,7 +24,7 @@ export default (state, actions) => {
               <Route
                 parent
                 path={state.constants.root}
-                render={Login}
+                render={Login(state, actions)}
               />
             );
           }

@@ -47,7 +47,7 @@ const CmdInputBox = ({state, actions}) => {
   );
 };
 
-export default (state, actions) => {
+export default (state, actions) => (location) => {
   document.title = "Root :: Index";
 
   state.loginPage.cmdInputId = styles.cmdInput;
