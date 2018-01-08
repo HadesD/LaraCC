@@ -11,7 +11,7 @@ import Index from './Index.jsx';
 import Article from './Article.jsx';
 import Login from './Login.jsx';
 
-export default (state) => {
+export default (state, actions) => {
   return (
     <Switch>
       <Route path="/" render={Index(state)} />

@@ -13,20 +13,20 @@ import {
   Edit as ArticleEdit
 } from './article/*';
 
-export default (state) => {
+export default (state, actions) => {
   return (
     <Switch>
-      <Route path={state.constants.root + '/login'} render={Login(state)} />
+      <Route path={`${state.constants.root}/login`} render={Login(state)} />
       <Route
-        path={state.constants.root + '/articles'}
+        path={`${state.constants.root}/articles`}
         render={ArticleIndex(state)}
       />
       <Route
-        path={state.constants.root + '/articles/new'}
+        path={`${state.constants.root}/articles/new`}
         render={ArticleEdit(state)}
       />
       <Route
-        path={state.constants.root + '/articles/:slug/edit'}
+        path={`${state.constants.root}/articles/:id/edit`}
         render={ArticleEdit(state)}
       />
       <Route path={state.constants.root} render={Index(state)} />

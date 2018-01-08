@@ -12,7 +12,8 @@ namespace app { namespace http { namespace controllers { namespace dashboard {
 
     public:
       void index();
-      void edit();
+      void edit(const int id);
+      void createNew();
   };
 
 } } } }

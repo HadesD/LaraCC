@@ -39,7 +39,7 @@ export default (state) => (location) => (actions) => {
           <div class="block">
             <div class="float-right">
               <Link
-                to={state.constants.root + '/articles/new'}
+                to={`${location.match.url}/new`}
                 class="btn btn-sm btn-primary"
               >
                 + New
@@ -70,7 +70,9 @@ export default (state) => (location) => (actions) => {
                         {articleInfo.id}
                       </td>
                       <td>
-                        <Link to={articleInfo.permalink + '/edit'}>
+                        <Link
+                          to={`${location.match.url}/${articleInfo.id}/edit`}
+                        >
                           {articleInfo.title}
                         </Link>
                       </td>

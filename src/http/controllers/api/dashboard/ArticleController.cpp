@@ -32,10 +32,9 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
           auto &article = articles.at(i);
 
           auto &r = res[i];
-          std::string dashboard_root = "/root";
 
           r["id"] = article.getId();
-          r["permalink"] = dashboard_root + "/articles/" + article.getSlug();
+          r["permalink"] = "/articles/" + article.getSlug();
           r["title"] = article.getTitle();
           r["type"] = article.getType();
           r["featured"] = article.getFeatured();
@@ -51,6 +50,7 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
 
           // Author
           auto &rAuthor = r["author"];
+          rAuthor["id"] = article.getAuthorId();
           rAuthor["url"] = "/";
           rAuthor["name"] = article.getAuthorId();
 
@@ -58,7 +58,7 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
           for (int t = 0; t < 0; t++)
           {
             auto &rTag = r["tags"][t];
-
+            rTag["id"] = "/";
             rTag["url"] = "/";
             rTag["name"] = "none";
           }

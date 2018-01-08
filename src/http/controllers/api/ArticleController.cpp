@@ -49,6 +49,7 @@ namespace app { namespace http { namespace controllers { namespace api {
 
           // Author
           auto &rAuthor = r["author"];
+          rAuthor["id"] = article.getAuthorId();
           rAuthor["url"] = "/";
           rAuthor["name"] = article.getAuthorId();
 
@@ -56,7 +57,7 @@ namespace app { namespace http { namespace controllers { namespace api {
           for (int t = 0; t < 0; t++)
           {
             auto &rTag = r["tags"][t];
-
+            rTag["id"] = "/";
             rTag["url"] = "/";
             rTag["name"] = "none";
           }
