@@ -72,6 +72,8 @@ elseif(APPLE)
   set(LINK_DIR "${LINK_DIR}"
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/macos
     )
   set(INCLUDE_DIR "${INCLUDE_DIR}"
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx
@@ -89,16 +91,28 @@ set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/master.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/home.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/dashboard.blade.chtml
+
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.blade.chtml
+
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/login.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/article.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/index.blade.chtml
+
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/index.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/read.blade.chtml
 )
 
-file(GLOB_RECURSE tmpl_files resources/views/*.blade.chtml)
-list(REMOVE_ITEM tmpl_files ${VIEWS_TMPL})
-list(REVERSE tmpl_files)
-foreach(tmpl_file ${tmpl_files})
-  set(VIEWS_TMPL ${VIEWS_TMPL} ${tmpl_file})
-endforeach()
-
-message(STATUS ${VIEWS_TMPL})
+# file(GLOB_RECURSE tmpl_files resources/views/*.blade.chtml)
+# list(REMOVE_ITEM tmpl_files ${VIEWS_TMPL})
+# list(REVERSE tmpl_files)
+# foreach(tmpl_file ${tmpl_files})
+#   set(VIEWS_TMPL ${VIEWS_TMPL} ${tmpl_file})
+# endforeach()
+#
+# message(STATUS ${VIEWS_TMPL})
 
 #############################################################################
 #
