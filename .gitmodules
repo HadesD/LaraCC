@@ -1,4 +1,0 @@
-[submodule "Dependencies"]
-	path = Dependencies
-	url = https://gitlab.com/HadesD-Resources/LaraCC-Dependencies.git
-	ignore = dirty
