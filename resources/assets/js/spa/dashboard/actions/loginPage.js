@@ -1,7 +1,7 @@
 import axios from 'axios';
 import constants from '../state/constants.js';
 
-const execCmd = (state, actions, cmd) => {
+const execCmd = (cmd) => (state, actions) => {
   let trimCmd = cmd.trim();
 
   let cmdArr = trimCmd.split(' ');
@@ -114,34 +114,30 @@ const execCmd = (state, actions, cmd) => {
 };
 
 export default {
-  onMainClick: (event) => (state) => (actions) => {
-    // console.log(state);
-    // console.log(actions);
+  onMainClick: (event) => (state) => {
     document.getElementById(state.cmdInputId).focus();
   },
-  onKeyDownCmdInput: (event) => (state) => (actions) => {
+  onKeyDownCmdInput: (event) => (state, actions) => {
     switch (event.keyCode)
     {
       case 13:
         state.historyCmd.push(
-          execCmd(state, actions, event.target.value) || ''
+          execCmd(event.target.value)(state, actions) || ''
         );
         state.cmdInputText = event.target.value = null;
-        return ({
-        });
+        return {};
         break;
       default:
         break;
     }
 
   },
-  onInputCmdInput: (event) => (state) => (actions) => {
+  onInputCmdInput: (event) => (state) => {
     state.cmdInputText = event.target.value;
 
-    return ({
-    });
+    return {};
   },
-  onKeyUpCmdInput: (event) => (state) => (actions) => {
+  onKeyUpCmdInput: (event) => (state) => {
     switch(event.keyCode)
     {
       case 13:
@@ -152,7 +148,6 @@ export default {
       default:
         break;
     }
-
   },
   update: () => {return ({})},
 };
