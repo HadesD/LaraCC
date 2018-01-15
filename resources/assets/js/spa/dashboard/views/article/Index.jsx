@@ -6,7 +6,8 @@ import {
 
 let isCalledFetchData = false;
 
-export default (state) => (pState) => (location) => (actions) => {
+export default (state, actions) => (pState) => (location) => {
+  console.log(state)
   if (!isCalledFetchData)
   {
     state.isFetchingPage = true;

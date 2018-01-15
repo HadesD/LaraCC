@@ -1,6 +1,6 @@
 import {h} from 'hyperapp';
 
-export default (state) => (pState) => (location) => (actions) => {
+export default (state, actions) => (pState) => (location) => {
   const isNewArticle = (
     state.location.pathname === state.constants.root + '/articles/new'
   );

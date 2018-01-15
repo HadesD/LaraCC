@@ -6,7 +6,7 @@ import {
   Redirect
 } from '@hyperapp/router';
 
-export default (state) => (location) => (actions) => {
+export default (state, actions) => (location) => {
   document.title = "Root :: Index";
 
   return (
