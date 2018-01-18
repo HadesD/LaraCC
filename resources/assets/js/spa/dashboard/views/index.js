@@ -18,25 +18,25 @@ export default (state, actions) => {
         parent
         path={state.constants.root}
         render={() => {
-          if (!state.isLoggedIn)
+          if (state.isLoggedIn)
           {
             return (
+              <Main state={state} actions={actions}>
+                <Route path={state.constants.root} render={Index(state)} />
+                <Route
+                  parent
+                  path={`${state.constants.root}/articles`}
+                  render={ArticleRoute(state, actions)}
+                />
+              </Main>
+            );
+          }
+          return (
               <Route
                 parent
                 path={state.constants.root}
                 render={Login(state, actions)}
               />
-            );
-          }
-          return (
-            <Main state={state} actions={actions}>
-              <Route path={state.constants.root} render={Index(state)} />
-              <Route
-                parent
-                path={`${state.constants.root}/articles`}
-                render={ArticleRoute(state, actions)}
-              />
-            </Main>
           );
         }}
       />

@@ -3,7 +3,8 @@ import {
 } from 'hyperapp';
 import {
   Link,
-  Redirect
+  Switch,
+  Route
 } from '@hyperapp/router';
 
 import styles from '../../../../sass/dashboard/login.scss';
@@ -47,11 +48,7 @@ const CmdInputBox = ({state, actions}) => {
   );
 };
 
-export default (state, actions) => (pState) => (location) => {
-
-  state.loginPage.cmdInputId = styles.cmdInput;
-
-  { window.scrollTo(0, document.body.scrollHeight) }
+const Login = (state, actions) => (pState) => (location) =>{
   return (
     <main
       class={styles.loginMain}
@@ -85,6 +82,19 @@ export default (state, actions) => (pState) => (location) => {
         />
       </pre>
     </main>
+  )
+}
+
+export default (state, actions) => {
+
+  state.loginPage.cmdInputId = styles.cmdInput;
+
+  { window.scrollTo(0, document.body.scrollHeight) }
+  return (
+    <Switch>
+      <Route path={`${state.constants.root}/:all`} render={Login(state, actions)} />
+      <Route path={`${state.constants.root}`} render={Login(state, actions)} />
+    </Switch>
   );
 };
 
