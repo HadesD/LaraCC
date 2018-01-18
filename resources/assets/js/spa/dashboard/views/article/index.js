@@ -7,7 +7,7 @@ import {
 import Index from './Index.jsx';
 import Edit from './Edit.jsx';
 
-const ArticleRoute = (state) => {
+const ArticleRoute = (state, actions) => {
   return (
     <Switch>
       <Route
@@ -16,11 +16,11 @@ const ArticleRoute = (state) => {
       />
       <Route
         path={`${state.constants.root}/articles/new`}
-        render={Edit(state)}
+        render={Edit(state, actions)}
       />
       <Route
         path={`${state.constants.root}/articles/:id`}
-        render={Edit(state)}
+        render={Edit(state, actions)}
       />
     </Switch>
   );

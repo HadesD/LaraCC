@@ -30,11 +30,11 @@ export default (state, actions) => {
           }
           return (
             <Main state={state} actions={actions}>
-              <Route path={state.constants.root} render={Index} />
+              <Route path={state.constants.root} render={Index(state)} />
               <Route
                 parent
                 path={`${state.constants.root}/articles`}
-                render={ArticleRoute(state)}
+                render={ArticleRoute(state, actions)}
               />
             </Main>
           );

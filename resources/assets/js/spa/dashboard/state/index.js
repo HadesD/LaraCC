@@ -13,7 +13,7 @@ export default {
 
   isLoggedIn:
   true,
-  // false,
+//   false,
 
   isSidebarOpenned: true,
 
