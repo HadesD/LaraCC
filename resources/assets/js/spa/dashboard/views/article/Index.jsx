@@ -7,7 +7,6 @@ import {
 let isCalledFetchData = false;
 
 export default (state, actions) => (pState) => (location) => {
-  console.log(state)
   if (!isCalledFetchData)
   {
     state.isFetchingPage = true;
@@ -15,78 +14,80 @@ export default (state, actions) => (pState) => (location) => {
 
   const articlesInfo = state.articlePage.articlesInfo;
 
+  console.log(actions)
+
   return (
-      <section
-        class="no-padding-top"
-        oncreate={(e) => {
-          actions.articlePage.loadArticlesInfo(state);
-          isCalledFetchData = true;
-        }}
-        onupdate={(e) => {
-          if (!isCalledFetchData)
-          {
-            e.oncreate(e);
-          }
-          else
-          {
-            isCalledFetchData = false;
-          }
-        }}
-      >
-        <div class="container-fluid">
-          <div class="block">
-            <div class="float-right">
-              <Link
-                to={`${location.match.url}/new`}
-                class="btn btn-sm btn-primary"
-              >
-                + New
-              </Link>
-            </div>
-            <div class="title">
-              <strong>Articles</strong>
-            </div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <td>
-                    #
-                  </td>
-                  <td>
-                    Title
-                  </td>
-                  <td>
-                    Author
-                  </td>
-                </tr>
-              </thead>
-              <tbody>
-                {articlesInfo.map((articleInfo) => {
-                  return (
-                    <tr>
-                      <td>
-                        {articleInfo.id}
-                      </td>
-                      <td>
-                        <Link
-                          to={`${location.match.url}/${articleInfo.id}`}
-                        >
-                          {articleInfo.title}
-                        </Link>
-                      </td>
-                      <td>
-                        <Link to={articleInfo.author.url}>
-                          {articleInfo.author.name}
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+    <section
+      class="no-padding-top"
+      oncreate={(e) => {
+        actions.articlePage.loadArticlesInfo(state, actions);
+        isCalledFetchData = true;
+      }}
+      onupdate={(e) => {
+        if (!isCalledFetchData)
+        {
+          e.oncreate(e);
+        }
+        else
+        {
+          isCalledFetchData = false;
+        }
+      }}
+    >
+      <div class="container-fluid">
+        <div class="block">
+          <div class="float-right">
+            <Link
+              to={`${location.match.url}/new`}
+              class="btn btn-sm btn-primary"
+            >
+              + New
+            </Link>
           </div>
+          <div class="title">
+            <strong>Articles</strong>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <td>
+                  #
+                </td>
+                <td>
+                  Title
+                </td>
+                <td>
+                  Author
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              {articlesInfo.map((articleInfo) => {
+                return (
+                  <tr>
+                    <td>
+                      {articleInfo.id}
+                    </td>
+                    <td>
+                      <Link
+                        to={`${location.match.url}/${articleInfo.id}`}
+                      >
+                        {articleInfo.title}
+                      </Link>
+                    </td>
+                    <td>
+                      <Link to={articleInfo.author.url}>
+                        {articleInfo.author.name}
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
-      </section>
+      </div>
+    </section>
   );
 };
 

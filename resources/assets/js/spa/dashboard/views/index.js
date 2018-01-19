@@ -22,7 +22,6 @@ export default (state, actions) => {
           {
             return (
               <Main state={state} actions={actions}>
-                <Route path={state.constants.root} render={Index(state)} />
                 <Route
                   parent
                   path={`${state.constants.root}/articles`}
@@ -32,13 +31,17 @@ export default (state, actions) => {
             );
           }
           return (
-              <Route
-                parent
-                path={state.constants.root}
-                render={Login(state, actions)}
-              />
+            <Route
+              parent
+              path={state.constants.root}
+              render={Login(state, actions)}
+            />
           );
         }}
+      />
+      <Route
+        path={state.constants.root}
+        render={Index(state, actions)}
       />
     </Switch>
   );

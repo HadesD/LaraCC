@@ -12,13 +12,12 @@ export default (state, actions) => (pState) => (location) => {
   else
   {
     document.title = 'Root :: Articles :: Edit';
-    console.log(location)
   }
 
   return (
-      <section>
+    <section>
 
-      </section>
+    </section>
   );
 };
 

@@ -10,7 +10,7 @@ import snarkdown from 'snarkdown';
 
 let isCalledFetchData = false;
 
-export default (state) => (location) => (actions) => {
+export default (state, actions) => (pState) => (location) => {
   if (!isCalledFetchData)
   {
     state.isFetchingPage = true;

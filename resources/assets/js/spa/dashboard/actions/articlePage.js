@@ -2,10 +2,11 @@ import axios from 'axios';
 import site from '../../commons/site.js';
 
 export default {
-  update: (state) => {
+  update: () => {
     return {};
   },
-  loadArticlesInfo: (state) => () => (actions) => {
+  loadArticlesInfo: (state, actions) => (pState) => {
+    console.log(state)
     document.title = "Root :: Articles";
     axios({
       method: 'GET',
@@ -15,11 +16,11 @@ export default {
         console.log(response);
         state.isFetchingPage = false;
         state.articlePage.articlesInfo = response.data;
-        actions.update(state);
+        // actions.update(state);
       })
       .then((error) => {
         state.isFetchingPage = false;
-        actions.update(state);
+        // actions.update(state);
       })
     ;
   },

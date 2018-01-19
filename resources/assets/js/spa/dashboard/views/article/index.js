@@ -12,7 +12,7 @@ const ArticleRoute = (state, actions) => {
     <Switch>
       <Route
         path={`${state.constants.root}/articles`}
-        render={Index(state)}
+        render={Index(state, actions)}
       />
       <Route
         path={`${state.constants.root}/articles/new`}
