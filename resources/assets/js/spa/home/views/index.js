@@ -15,7 +15,7 @@ export default (state, actions) => {
     <Switch>
       <Main state={state} actions={actions}>
         <Route path="/" render={Index(state, actions)} />
-        <Route path="/articles/:" render={Article(state, actions)} />
+        <Route path="/articles/:slug" render={Article(state, actions)} />
       </Main>
     </Switch>
   );
