@@ -11,6 +11,7 @@ import snarkdown from 'snarkdown';
 let isCalledFetchData = false;
 
 export default (state, actions) => (pState) => (location) => {
+  console.log(111)
   if (!isCalledFetchData)
   {
     state.isFetchingPage = true;

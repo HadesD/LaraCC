@@ -48,7 +48,10 @@ const CmdInputBox = ({state, actions}) => {
   );
 };
 
-const Login = (state, actions) => (pState) => (location) =>{
+export default (state, actions) => ({match}) => {
+  state.loginPage.cmdInputId = styles.cmdInput;
+  { window.scrollTo(0, document.body.scrollHeight) }
+
   return (
     <main
       class={styles.loginMain}
@@ -82,19 +85,6 @@ const Login = (state, actions) => (pState) => (location) =>{
         />
       </pre>
     </main>
-  )
-}
-
-export default (state, actions) => {
-
-  state.loginPage.cmdInputId = styles.cmdInput;
-
-  { window.scrollTo(0, document.body.scrollHeight) }
-  return (
-    <Switch>
-      <Route path={`${state.constants.root}/:all`} render={Login(state, actions)} />
-      <Route path={`${state.constants.root}`} render={Login(state, actions)} />
-    </Switch>
   );
 };
 

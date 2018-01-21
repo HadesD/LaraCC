@@ -7,19 +7,19 @@ import {
 import Index from './Index.jsx';
 import Edit from './Edit.jsx';
 
-const ArticleRoute = (state, actions) => {
+const ArticleRoute = (state, actions) => ({match}) => {
   return (
     <Switch>
       <Route
-        path={`${state.constants.root}/articles`}
+        path={`${match.path}/articles`}
         render={Index(state, actions)}
       />
       <Route
-        path={`${state.constants.root}/articles/new`}
+        path={`${match.path}/articles/new`}
         render={Edit(state, actions)}
       />
       <Route
-        path={`${state.constants.root}/articles/:id`}
+        path={`${match.path}/articles/:id`}
         render={Edit(state, actions)}
       />
     </Switch>

@@ -11,38 +11,42 @@ import Main from '../components/Main.jsx'
 
 import ArticleRoute from './article';
 
+const MainRoute = (state, actions) => ({match}) => {
+  console.log(match)
+  return (
+    <Main state={state} actions={actions}>
+      <Route
+        parent
+        path={`${match.path}/articles`}
+        render={ArticleRoute(state, actions)}
+      />
+    </Main>
+  );
+};
+
 export default (state, actions) => {
+  if (!state.isLoggedIn)
+  {
+    return (
+      <Route
+        parent
+        path={state.constants.root}
+        render={Login(state, actions)}
+      />
+    );
+  }
+
   return (
     <Switch>
       <Route
         parent
         path={state.constants.root}
-        render={() => {
-          if (state.isLoggedIn)
-          {
-            return (
-              <Main state={state} actions={actions}>
-                <Route
-                  parent
-                  path={`${state.constants.root}/articles`}
-                  render={ArticleRoute(state, actions)}
-                />
-              </Main>
-            );
-          }
-          return (
-            <Route
-              parent
-              path={state.constants.root}
-              render={Login(state, actions)}
-            />
-          );
-        }}
+        render={MainRoute(state, actions)}
       />
-      <Route
-        path={state.constants.root}
-        render={Index(state, actions)}
-      />
+      {/* <Route */}
+        {/*   path={state.constants.root} */}
+        {/*   render={Index(state, actions)} */}
+        {/* /> */}
     </Switch>
   );
 };

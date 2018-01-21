@@ -9,11 +9,10 @@ import Article from './Article.jsx';
 import Login from './Login.jsx';
 
 export default (state, actions) => {
+  console.log(Index)
   return (
     <Switch>
-      <Route path="/articles/:slug" render={Article(state, actions)} />
-      <Route path="/" render={Index(state, actions)} />
-      {/* <Route path="/login" render={Login(state)} /> */}
+      <Route path="/" render={Index} />
     </Switch>
   );
 };

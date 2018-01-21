@@ -14,7 +14,7 @@ export default (state, actions) => (pState) => (location) => {
 
   const articlesInfo = state.articlePage.articlesInfo;
 
-  console.log(actions)
+  // console.log(actions)
 
   return (
     <section
