@@ -12,7 +12,6 @@ import Main from '../components/Main.jsx'
 import ArticleRoute from './article';
 
 const MainRoute = (state, actions) => ({match}) => {
-  console.log(match)
   return (
     <Main state={state} actions={actions}>
       <Route
@@ -37,17 +36,11 @@ export default (state, actions) => {
   }
 
   return (
-    <Switch>
-      <Route
-        parent
-        path={state.constants.root}
-        render={MainRoute(state, actions)}
-      />
-      {/* <Route */}
-        {/*   path={state.constants.root} */}
-        {/*   render={Index(state, actions)} */}
-        {/* /> */}
-    </Switch>
+    <Route
+      parent
+      path={state.constants.root}
+      render={MainRoute(state, actions)}
+    />
   );
 };
 

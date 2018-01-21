@@ -8,10 +8,11 @@ import Index from './Index.jsx';
 import Edit from './Edit.jsx';
 
 const ArticleRoute = (state, actions) => ({match}) => {
+  console.log(match)
   return (
     <Switch>
       <Route
-        path={`${match.path}/articles`}
+        path={`${match.path}/`}
         render={Index(state, actions)}
       />
       <Route

@@ -6,7 +6,7 @@ import {
 
 let isCalledFetchData = false;
 
-export default (state, actions) => (pState) => (location) => {
+export default (state, actions) => ({match}) => {
   if (!isCalledFetchData)
   {
     state.isFetchingPage = true;
@@ -14,13 +14,11 @@ export default (state, actions) => (pState) => (location) => {
 
   const articlesInfo = state.articlePage.articlesInfo;
 
-  // console.log(actions)
-
   return (
     <section
       class="no-padding-top"
       oncreate={(e) => {
-        actions.articlePage.loadArticlesInfo(state, actions);
+        actions.articlePage.loadArticlesInfo({state, actions});
         isCalledFetchData = true;
       }}
       onupdate={(e) => {
@@ -38,7 +36,7 @@ export default (state, actions) => (pState) => (location) => {
         <div class="block">
           <div class="float-right">
             <Link
-              to={`${location.match.url}/new`}
+              to={`${match.url}/new`}
               class="btn btn-sm btn-primary"
             >
               + New
@@ -70,7 +68,7 @@ export default (state, actions) => (pState) => (location) => {
                     </td>
                     <td>
                       <Link
-                        to={`${location.match.url}/${articleInfo.id}`}
+                        to={`${match.url}/${articleInfo.id}`}
                       >
                         {articleInfo.title}
                       </Link>

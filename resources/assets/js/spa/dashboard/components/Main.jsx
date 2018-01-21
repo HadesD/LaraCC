@@ -25,7 +25,6 @@ export default ({state, actions}, children) => {
           <Footer state={state} actions={actions} />
         </div>
       </div>
-      {console.log(state)}
     </div>
   );
 };

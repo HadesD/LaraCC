@@ -5,22 +5,22 @@ export default {
   update: () => {
     return {};
   },
-  loadArticlesInfo: (state, actions) => (pState) => {
-    console.log(state)
+  loadArticlesInfo: ({state, actions}) => (pState, pActions) => {
+    console.log(pActions)
     document.title = "Root :: Articles";
     axios({
       method: 'GET',
       url: site.api_url + state.constants.root + '/articles'
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         state.isFetchingPage = false;
         state.articlePage.articlesInfo = response.data;
-        // actions.update(state);
+        pActions.update();
       })
       .then((error) => {
         state.isFetchingPage = false;
-        // actions.update(state);
+        pActions.update();
       })
     ;
   },
