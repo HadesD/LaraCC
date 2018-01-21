@@ -4,10 +4,12 @@ import {
   Switch
 } from '@hyperapp/router';
 
+import dashboard from '../commons/dashboard.js';
+
 import Login from './Login.jsx';
 import Index from './Index.jsx';
 
-import Main from '../components/Main.jsx'
+import Main from '../components/Main.jsx';
 
 import ArticleRoute from './article';
 
@@ -29,7 +31,7 @@ export default (state, actions) => {
     return (
       <Route
         parent
-        path={state.constants.root}
+        path={dashboard.root_url}
         render={Login(state, actions)}
       />
     );
@@ -38,7 +40,7 @@ export default (state, actions) => {
   return (
     <Route
       parent
-      path={state.constants.root}
+      path={dashboard.root_url}
       render={MainRoute(state, actions)}
     />
   );

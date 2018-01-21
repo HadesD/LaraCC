@@ -1,5 +1,7 @@
 import axios from 'axios';
-import constants from '../state/constants.js';
+
+import site from '../../commons/site.js';
+import dashboard from '../commons/dashboard.js';
 
 const execCmd = (cmd) => (state, actions) => {
   let trimCmd = cmd.trim();
@@ -49,7 +51,7 @@ const execCmd = (cmd) => (state, actions) => {
 
             axios({
               method: 'POST',
-              url: constants.api + '/root/login',
+              url: `${site.api_url}${dashboard.root_url}/login`,
               params: {
                 username: state.usernameInput,
                 password: cmdArr[0],
@@ -59,7 +61,7 @@ const execCmd = (cmd) => (state, actions) => {
                 setTimeout(
                   () => {
                     state.historyCmd.push(
-                      "sdfsdf"
+                      "Logged In"
                       // response.data
                     );
                     actions.update();

@@ -4,6 +4,8 @@ import {
 } from '@hyperapp/router';
 
 import utils from '../../commons/utils.js';
+import site from '../../commons/site.js';
+import dashboard from '../commons/dashboard.js';
 
 const isActiveLink = (locPathName, locUrl) => {
   let locPnArr = locPathName.split('/');
@@ -32,12 +34,12 @@ export default ({state, actions}) => {
       header_text: 'Main',
       links: [
         {
-          url: state.constants.root,
+          url: dashboard.root_url,
           icon: 'icon-home',
           text: 'Home',
         },
         {
-          url: state.constants.root + '/articles',
+          url: `${dashboard.root_url}/articles`,
           icon: 'icon-paper-and-pencil',
           text: 'Articles',
         },

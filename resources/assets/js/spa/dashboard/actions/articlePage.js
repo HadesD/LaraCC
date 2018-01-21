@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 import site from '../../commons/site.js';
+import dashboard from '../commons/dashboard.js';
 
 export default {
   update: () => {
@@ -10,7 +12,7 @@ export default {
     document.title = "Root :: Articles";
     axios({
       method: 'GET',
-      url: site.api_url + state.constants.root + '/articles'
+      url: `${site.api_url}${dashboard.root_url}/articles`
     })
       .then((response) => {
         // console.log(response);

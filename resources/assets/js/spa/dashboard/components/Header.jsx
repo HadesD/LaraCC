@@ -4,6 +4,7 @@ import {
 } from '@hyperapp/router';
 
 import utils from '../../commons/utils.js';
+import dashboard from '../commons/dashboard.js';
 
 export default ({state, actions}) => {
   return (
@@ -29,7 +30,7 @@ export default ({state, actions}) => {
         </div>
         <div class="container-fluid d-flex align-items-center justify-content-between">
           <div class="navbar-header">
-            <Link to={state.constants.root} class="navbar-brand">
+            <Link to={dashboard.root_url} class="navbar-brand">
               <div class="brand-text brand-big visible text-uppercase">
                 <strong class="text-primary">Dark</strong>
                 <strong>Admin</strong>
