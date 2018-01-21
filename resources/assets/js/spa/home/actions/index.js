@@ -7,7 +7,7 @@ import articlePage from './articlePage.js';
 
 export default {
   location: location.actions,
-  homePage: homePage,
-  articlePage: articlePage,
+  homePage,
+  articlePage,
 };
 

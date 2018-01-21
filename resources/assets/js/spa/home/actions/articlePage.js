@@ -2,26 +2,24 @@ import axios from 'axios';
 import site from '../../commons/site.js';
 
 export default {
-  update: (state) => {
-    return ({});
+  update: () => {
+    return {};
   },
 
-  loadArticleInfo: (state) => () => (actions) => {
+  loadArticleInfo: ({state, actions}) => (pState, pActions) => {
     axios({
       method: 'GET',
-      url: site.api_url + state.location.pathname,
+      url: `${site.api_url}${state.location.pathname}`,
     })
       .then((response) => {
-        console.log("Fetched: ", response);
-        state.articlePage.articleInfo = response.data;
-        document.title = state.articlePage.articleInfo.title
-          + ' | ' + site.title;
+        pState.articleInfo = response.data;
+        document.title = `${pState.articleInfo.title} | ${site.title}`;
         state.isFetchingPage = false;
-        actions.update(state);
+        pActions.update();
       })
       .catch((error) => {
         state.isFetchingPage = false;
-        actions.update(state);
+        pActions.update();
       })
     ;
 

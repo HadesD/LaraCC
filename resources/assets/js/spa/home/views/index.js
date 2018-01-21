@@ -8,11 +8,15 @@ import Index from './Index.jsx';
 import Article from './Article.jsx';
 import Login from './Login.jsx';
 
+import Main from '../components/Main.jsx';
+
 export default (state, actions) => {
-  console.log(Index)
   return (
     <Switch>
-      <Route path="/" render={Index} />
+      <Main state={state} actions={actions}>
+        <Route path="/" render={Index(state, actions)} />
+        <Route path="/articles/:" render={Article(state, actions)} />
+      </Main>
     </Switch>
   );
 };
