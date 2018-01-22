@@ -17,6 +17,10 @@ const MainRoute = (state, actions) => ({match}) => {
   return (
     <Main state={state} actions={actions}>
       <Route
+        path={match.path}
+        render={Index(state, actions)}
+      />
+      <Route
         parent
         path={`${match.path}/articles`}
         render={ArticleRoute(state, actions)}

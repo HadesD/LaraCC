@@ -5,3 +5,4 @@ export default {
   sub_title: commons.site.sub_title,
   api_url: '/api',
 };
+

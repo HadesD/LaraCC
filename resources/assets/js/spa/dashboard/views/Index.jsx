@@ -1,8 +1,7 @@
 import { h } from 'hyperapp';
 
-export default (state, actions) => (pState) => (location) => {
+export default (state, actions) => ({match}) => {
   document.title = "Root :: Index";
-  console.log(111)
 
   return (
     <div>
