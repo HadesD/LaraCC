@@ -18,7 +18,7 @@ export default (state, actions) => ({match}) => {
     <section
       class="no-padding-top"
       oncreate={(e) => {
-        actions.articlePage.loadArticlesInfo({state, actions});
+        actions.articlePage.indexPage.loadArticlesInfo({state, actions});
         isCalledFetchData = true;
       }}
       onupdate={(e) => {

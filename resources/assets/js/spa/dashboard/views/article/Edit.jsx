@@ -3,7 +3,14 @@ import { h } from 'hyperapp';
 import site from '../../../commons/site.js';
 import dashboard from '../../commons/dashboard.js';
 
+let isCalledFetchData = false;
+
 export default (state, actions) => ({match}) => {
+  if (!isCalledFetchData)
+  {
+    state.isFetchingPage = true;
+  }
+
   const isNewArticle = (
     match.path === `${dashboard.root_url}/articles/new`
   );
@@ -18,7 +25,23 @@ export default (state, actions) => ({match}) => {
   }
 
   return (
-    <section class="no-padding-top">
+    <section
+      class="no-padding-top"
+      oncreate={(e) => {
+        actions.articlePage.editPage.loadArticleInfo({state, actions});
+        isCalledFetchData = true;
+      }}
+      onupdate={(e) => {
+        if (!isCalledFetchData)
+        {
+          e.oncreate(e);
+        }
+        else
+        {
+          isCalledFetchData = false;
+        }
+      }}
+    >
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-9">
@@ -46,7 +69,9 @@ export default (state, actions) => ({match}) => {
                   />
                 </div>
                 <div class="form-group">
-                  <label class="form-control-label">Content</label>
+                  <label class="form-control-label" for="content">
+                    Content
+                  </label>
                   <textarea
                     placeholder="Article content"
                     class="form-control"

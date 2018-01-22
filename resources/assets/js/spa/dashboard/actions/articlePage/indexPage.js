@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import site from '../../commons/site.js';
-import dashboard from '../commons/dashboard.js';
+import site from '../../../commons/site.js';
+import dashboard from '../../commons/dashboard.js';
 
 export default {
   update: () => {

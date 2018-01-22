@@ -4,13 +4,13 @@ import {
 
 import indexPage from './indexPage.js';
 import loginPage from './loginPage.js';
-import articlePage from './articlePage.js';
+import articlePage from './articlePage';
 
 export default {
   location: location.actions,
-  loginPage: loginPage,
-  indexPage: indexPage,
-  articlePage: articlePage,
+  loginPage,
+  indexPage,
+  articlePage,
   sidebarToggle: (event) => (state) => {
     return {
       isSidebarOpenned: !state.isSidebarOpenned
