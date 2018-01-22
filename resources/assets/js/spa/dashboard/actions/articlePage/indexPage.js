@@ -8,7 +8,6 @@ export default {
     return {};
   },
   loadArticlesInfo: ({state, actions}) => (pState, pActions) => {
-    console.log(pActions)
     document.title = "Root :: Articles";
     axios({
       method: 'GET',

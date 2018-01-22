@@ -12,7 +12,7 @@ export default (state, actions) => ({match}) => {
   }
 
   const isNewArticle = (
-    match.path === `${dashboard.root_url}/articles/new`
+    match.url === `${dashboard.root_url}/articles/new`
   );
 
   if (isNewArticle)
@@ -28,10 +28,18 @@ export default (state, actions) => ({match}) => {
     <section
       class="no-padding-top"
       oncreate={(e) => {
+        if (isNewArticle)
+        {
+          return;
+        }
         actions.articlePage.editPage.loadArticleInfo({state, actions});
         isCalledFetchData = true;
       }}
       onupdate={(e) => {
+        if (isNewArticle)
+        {
+          return;
+        }
         if (!isCalledFetchData)
         {
           e.oncreate(e);

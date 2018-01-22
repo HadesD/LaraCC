@@ -13,6 +13,8 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
     app::http::controllers::api::ApiController(s)
   {
     this->dispatcher().map("GET", "/?", &ArticleController::index, this);
+    this->dispatcher().map("GET", "/(\\d)", &ArticleController::read, this, 1);
+    this->dispatcher().map("POST", "/?", &ArticleController::create, this);
   }
 
   void ArticleController::index()
@@ -73,6 +75,15 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
       this->response().out() << res;
     }
     __APP_TRY_CATCH_END__
+  }
+
+  void ArticleController::read(const int id)
+  {
+    this->response().out() << "sss";
+  }
+
+  void ArticleController::create()
+  {
   }
 
 } } } } }
