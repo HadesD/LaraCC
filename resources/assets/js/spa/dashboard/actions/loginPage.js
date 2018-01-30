@@ -39,9 +39,7 @@ const execCmd = (cmd) => (state, actions) => {
       },
       {
         exec: 'su',
-        callBack: (cmdArr) => {
-          let rs = null;
-
+        callBack: async (cmdArr) => {
           if (state.isCmdInputPassword)
           {
             state.isCmdInputPassword = false;
@@ -49,31 +47,17 @@ const execCmd = (cmd) => (state, actions) => {
               'Trying to login...'
             );
 
-            axios({
-              method: 'POST',
-              url: `${site.api_url}${dashboard.root_url}/login`,
-              params: {
+            const response = await axios.post(
+              `${site.api_url}${dashboard.root_url}/login`, 
+              {
                 username: state.usernameInput,
                 password: cmdArr[0],
               }
-            })
-              .then((response) => {
-                setTimeout(
-                  () => {
-                    state.historyCmd.push(
-                      "Logged In"
-                      // response.data
-                    );
-                    actions.update();
-                  }
-                  ,1000);
-              })
-              .catch((error) => {
-                state.historyCmd.push(
-                  error.message
-                );
-              })
-            ;
+            );
+            state.historyCmd.push(
+              "Logged In"
+              // response.data
+            );
           }
           else
           {
@@ -86,7 +70,7 @@ const execCmd = (cmd) => (state, actions) => {
             state.isCmdInputPassword = true;
           }
 
-          return rs;
+          actions.update();
         },
       },
       {
