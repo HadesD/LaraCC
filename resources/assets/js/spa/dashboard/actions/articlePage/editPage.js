@@ -15,7 +15,7 @@ export default {
     );
 
     state.isFetchingPage = false;
-    state.articlePage.articlesInfo = response.data;
+    state.articlePage.articleInfo = response.data;
 
     pActions.update();
   },

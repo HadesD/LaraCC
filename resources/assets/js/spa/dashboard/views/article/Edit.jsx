@@ -24,6 +24,8 @@ export default (state, actions) => ({match}) => {
     document.title = 'Root :: Articles :: Edit';
   }
 
+  const articleInfo = state.articlePage.articleInfo;
+
   return (
     <section
       class="no-padding-top"
@@ -73,7 +75,7 @@ export default (state, actions) => ({match}) => {
                     class="form-control"
                     id="title"
                     name="title"
-                    value={''}
+                    value={articleInfo.get('title')}
                   />
                 </div>
                 <div class="form-group">
@@ -85,7 +87,7 @@ export default (state, actions) => ({match}) => {
                     class="form-control"
                     id="content"
                     name="content"
-                    value={''}
+                    value={articleInfo.content}
                   />
                 </div>
               </div>
