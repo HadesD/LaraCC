@@ -91,7 +91,8 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
           auto &r = res;
 
           r["id"] = article.getId();
-          r["permalink"] = "/articles/" + article.getSlug();
+          r["slug"] = article.getSlug();
+          r["permalink"] = "/articles/" + r["slug"].str();
           r["title"] = article.getTitle();
           r["type"] = article.getType();
           r["featured"] = article.getFeatured();

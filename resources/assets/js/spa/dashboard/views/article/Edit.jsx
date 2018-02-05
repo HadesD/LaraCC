@@ -5,6 +5,24 @@ import dashboard from '../../commons/dashboard.js';
 
 let isCalledFetchData = false;
 
+class ArticleInfo
+{
+  constructor(data)
+  {
+    this.data = data;
+  }
+
+  get(key)
+  {
+    if (this.data && (undefined !== this.data[key]))
+    {
+      return this.data[key];
+    }
+
+    return null;
+  }
+}
+
 export default (state, actions) => ({match}) => {
   if (!isCalledFetchData)
   {
@@ -15,16 +33,20 @@ export default (state, actions) => ({match}) => {
     match.url === `${dashboard.root_url}/articles/new`
   );
 
+  let articleData;
+
   if (isNewArticle)
   {
     document.title = 'Root :: Articles :: New';
+    articleData = null;
   }
   else
   {
     document.title = 'Root :: Articles :: Edit';
+    articleData = state.articlePage.articleInfo;
   }
 
-  const articleInfo = state.articlePage.articleInfo;
+  const articleInfo = new ArticleInfo(articleData);
 
   return (
     <section
@@ -79,15 +101,44 @@ export default (state, actions) => ({match}) => {
                   />
                 </div>
                 <div class="form-group">
+                  <label
+                    class="form-control-label"
+                    for="slug"
+                  >
+                    Slug
+                  </label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <a
+                        class="btn btn-primary"
+                        href={articleInfo.get('permalink')}
+                        target="_blank"
+                        disabled={isNewArticle ? true : false}
+                      >
+                        View
+                      </a>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Enter slug here"
+                      class="form-control"
+                      id="slug"
+                      name="slug"
+                      value={articleInfo.get('slug')}
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="form-control-label" for="content">
                     Content
                   </label>
                   <textarea
+                    rows="15"
                     placeholder="Article content"
                     class="form-control"
                     id="content"
                     name="content"
-                    value={articleInfo.content}
+                    value={articleInfo.get('content')}
                   />
                 </div>
               </div>
@@ -97,12 +148,16 @@ export default (state, actions) => ({match}) => {
             <div class="block">
               <div class="title">
                 <strong class="d-block">
-                  Publish
+                  Actions
                 </strong>
               </div>
               <div class="block-body">
                 <div class="form-group">
-                  <input type="submit" value="Signin" class="btn btn-primary" />
+                  <button
+                    class="btn btn-primary btn-lg btn-block"
+                  >
+                    {isNewArticle ? 'Publish' : 'Save'}
+                  </button>
                 </div>
               </div>
             </div>
