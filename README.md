@@ -4,6 +4,12 @@ My Blog source - Powered by CppCMS
 
 [![Build Status](https://travis-ci.org/HadesD/CppCMS.svg?branch=master)](https://travis-ci.org/HadesD/CppCMS)
 
+*Dashboard*
+[![Dashboard](https://i.imgur.com/Uvq35Id.png)](https://i.imgur.com/Uvq35Id.png)
+
+*HomePage*
+[![Dashboard](https://i.imgur.com/vdvkvh0.png)](https://i.imgur.com/vdvkvh0.png)
+
 ## Feature
 
 - Single Page Application (HyperApp)
