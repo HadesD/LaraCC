@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "limited configs" FORCE)
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules)
 
