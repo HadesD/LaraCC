@@ -23,10 +23,19 @@ export default {
     const isNewArticle = pState.isNewArticle;
     const articleInfo = pState.articleInfo;
 
+    let data = {};
+
     for (let key in articleInfo)
     {
-      console.log(articleInfo[key]);
+      if (typeof articleInfo[key] == 'object')
+      {
+        continue;
+      }
+
+      data[key] = articleInfo[key];
     }
+
+    console.log(data);
   },
 }
 
