@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import site from '../../commons/site.js';
-import dashboard from '../commons/dashboard.js';
+import site from '../../../commons/site.js';
+import dashboard from '../../commons/dashboard.js';
 
-const execCmd = (cmd) => (state, actions) => {
+export default (cmd) => (state, actions) => {
   let trimCmd = cmd.trim();
 
   let cmdArr = trimCmd.split(' ');
@@ -48,7 +48,7 @@ const execCmd = (cmd) => (state, actions) => {
             );
 
             const response = await axios.post(
-              `${site.api_url}${dashboard.root_url}/login`, 
+              `${site.api_url}${dashboard.root_url}/login`,
               {
                 username: state.usernameInput,
                 password: cmdArr[0],
@@ -98,43 +98,3 @@ const execCmd = (cmd) => (state, actions) => {
     return result;
   }
 };
-
-export default {
-  onMainClick: (event) => (state) => {
-    document.getElementById(state.cmdInputId).focus();
-  },
-  onKeyDownCmdInput: (event) => (state, actions) => {
-    switch (event.keyCode)
-    {
-      case 13:
-        state.historyCmd.push(
-          execCmd(event.target.value)(state, actions) || ''
-        );
-        state.cmdInputText = event.target.value = null;
-        return {};
-        break;
-      default:
-        break;
-    }
-
-  },
-  onInputCmdInput: (event) => (state) => {
-    state.cmdInputText = event.target.value;
-
-    return {};
-  },
-  onKeyUpCmdInput: (event) => (state) => {
-    switch(event.keyCode)
-    {
-      case 13:
-        state.cmdInputText = event.target.value = null;
-        return ({
-        });
-        break;
-      default:
-        break;
-    }
-  },
-  update: () => {return ({})},
-};
-

@@ -4,9 +4,8 @@ import site from '../../../commons/site.js';
 import dashboard from '../../commons/dashboard.js';
 
 export default {
-  update: () => {
-    return {};
-  },
+  update: () => ({}),
+
   loadArticleInfo: ({state, actions}) => async (pState, pActions) => {
     document.title = "Root :: Articles";
 
@@ -15,9 +14,19 @@ export default {
     );
 
     state.isFetchingPage = false;
-    state.articlePage.articleInfo = response.data;
+    pState.articleInfo = response.data;
 
     pActions.update();
+  },
+
+  saveOrPublishArticle: (event) => async (pState, pActions) => {
+    const isNewArticle = pState.isNewArticle;
+    const articleInfo = pState.articleInfo;
+
+    for (let key in articleInfo)
+    {
+      console.log(articleInfo[key]);
+    }
   },
 }
 

@@ -1,5 +1,4 @@
-
 export default {
-  articlesInfo: [],
+  title: null,
 };
 

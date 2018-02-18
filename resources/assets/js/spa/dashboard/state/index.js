@@ -2,7 +2,7 @@ import {
   location
 } from '@hyperapp/router';
 
-import articlePage from './articlePage.js';
+import articlePage from './articlePage';
 import loginPage from './loginPage.js';
 
 export default {
@@ -11,8 +11,8 @@ export default {
   title: null,
 
   isLoggedIn:
-   true,
-   // false,
+  true,
+  // false,
 
   isSidebarOpenned: true,
 

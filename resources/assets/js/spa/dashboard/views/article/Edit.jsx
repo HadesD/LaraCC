@@ -24,6 +24,9 @@ class ArticleInfo
 }
 
 export default (state, actions) => ({match}) => {
+  let pState = state.articlePage.editPage;
+  let pActions = actions.articlePage.editPage;
+
   if (!isCalledFetchData)
   {
     state.isFetchingPage = true;
@@ -32,6 +35,8 @@ export default (state, actions) => ({match}) => {
   const isNewArticle = (
     match.url === `${dashboard.root_url}/articles/new`
   );
+
+  pState.isNewArticle = isNewArticle;
 
   let articleData;
 
@@ -43,7 +48,7 @@ export default (state, actions) => ({match}) => {
   else
   {
     document.title = 'Root :: Articles :: Edit';
-    articleData = state.articlePage.articleInfo;
+    articleData = pState.articleInfo;
   }
 
   const articleInfo = new ArticleInfo(articleData);
@@ -56,7 +61,7 @@ export default (state, actions) => ({match}) => {
         {
           return;
         }
-        actions.articlePage.editPage.loadArticleInfo({state, actions});
+        pActions.loadArticleInfo({state, actions});
         isCalledFetchData = true;
       }}
       onupdate={(e) => {
@@ -98,6 +103,9 @@ export default (state, actions) => ({match}) => {
                     id="title"
                     name="title"
                     value={articleInfo.get('title')}
+                    oninput={(e) => {
+                      pState.articleInfo[e.target.name] = e.target.value;
+                    }}
                   />
                 </div>
                 <div class="form-group">
@@ -125,6 +133,9 @@ export default (state, actions) => ({match}) => {
                       id="slug"
                       name="slug"
                       value={articleInfo.get('slug')}
+                      oninput={(e) => {
+                        pState.articleInfo[e.target.name] = e.target.value;
+                      }}
                     />
                   </div>
                 </div>
@@ -139,6 +150,9 @@ export default (state, actions) => ({match}) => {
                     id="content"
                     name="content"
                     value={articleInfo.get('content')}
+                    oninput={(e) => {
+                      pState.articleInfo[e.target.name] = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -155,6 +169,7 @@ export default (state, actions) => ({match}) => {
                 <div class="form-group">
                   <button
                     class="btn btn-primary btn-lg btn-block"
+                    onclick={pActions.saveOrPublishArticle}
                   >
                     {isNewArticle ? 'Publish' : 'Save'}
                   </button>

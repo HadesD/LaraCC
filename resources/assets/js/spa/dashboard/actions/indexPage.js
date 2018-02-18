@@ -1,5 +1,5 @@
 export default {
-  changeI: (event) => {
+  changeI: (event) => (state, actions) => {
     return ({
       isLoggedIn: '111'
     });

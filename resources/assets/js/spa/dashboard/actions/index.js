@@ -2,8 +2,8 @@ import {
   location
 } from '@hyperapp/router';
 
-import indexPage from './indexPage.js';
-import loginPage from './loginPage.js';
+import indexPage from './indexPage';
+import loginPage from './loginPage';
 import articlePage from './articlePage';
 
 export default {
