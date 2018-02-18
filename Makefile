@@ -13,7 +13,7 @@ dev:
 	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
 	./WebApp -c config.json --service-port=9081
 
-build: prd nprd db
+build: prd npm.prd db
 	cd Build/Bin/Release && \
 	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
 	./WebApp -c config.json --service-port=9081
@@ -23,11 +23,11 @@ prd:
 	cmake .. -DCMAKE_BUILD_TYPE=Release && \
 	make
 
-ndev:
-	npm run dev
+npm.dev:
+	npm run dev --report
 
-nprd:
-	npm run build
+npm.prd:
+	npm run build --report
 
 db:
 	python tools/create_database.py

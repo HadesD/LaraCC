@@ -1,8 +1,7 @@
 {
   "presets":[
     [
-      "env",
-      {
+      "env", {
         "modules": false,
         "targets": {
           "node": "current"
@@ -12,13 +11,20 @@
   ],
   "plugins": [
     [
-      "transform-react-jsx",
-      {
+      "transform-react-jsx", {
         "pragma": "h"
       }
     ],
     [
       "wildcard"
+    ],
+    [
+      "transform-runtime", {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
     ]
   ]
 }
