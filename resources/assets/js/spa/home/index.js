@@ -2,18 +2,19 @@ import {
   app
 } from 'hyperapp';
 import {
-  router
+  location
 } from '@hyperapp/router';
 
 import state from './state';
 import actions from './actions';
 import views from './views';
 
-app({
+const main = app(
   state,
   actions,
-  view: views,
-  mixins: [router()],
-  root: document.getElementById('app')
-});
+  views,
+  document.getElementById('app')
+);
+
+const unsubscribe = location.subscribe(main.location);
 

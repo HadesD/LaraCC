@@ -43,13 +43,13 @@ const config = {
       './js/dashboard.js',
 
       // JSX
-      './js/spa/DashboardApp.jsx'
+      './js/spa/dashboard/index.js'
     ],
     'home': [
       './js/home.js',
 
       // JSX
-      './js/spa/HomeApp.jsx'
+      './js/spa/home/index.js'
     ],
     'home.rebase': [
       './css/home.css',
