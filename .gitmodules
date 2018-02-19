@@ -1,0 +1,3 @@
+[submodule "LaraCC-Dependencies"]
+	path = Dependencies
+	url = https://gitlab.com/HadesD-Resources/LaraCC-Dependencies.git
