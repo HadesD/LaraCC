@@ -35,7 +35,9 @@ export default {
       data[key] = articleInfo[key];
     }
 
-    console.log(data);
+    const request = await axios.patch('/api/root/articles/1');
+
+    console.log(request);
   },
 }
 

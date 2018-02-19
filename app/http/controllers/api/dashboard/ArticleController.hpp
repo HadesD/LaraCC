@@ -14,6 +14,7 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
       void index();
       void read(const int id);
       void create();
+      void update(const int id);
   };
 
 } } } } }
