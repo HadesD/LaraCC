@@ -140,7 +140,28 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
 
   void ArticleController::update(const int id)
   {
-    std::cout << id << std::endl;
+    __APP_TRY_CATCH_BEGIN__
+    {
+      cppcms::json::value res;
+      
+      try
+      {
+        app::models::Article article(id);
+        
+        {
+          
+        }
+      }
+      catch (const app::database::ConnectorException&)
+      {
+        this->response().status(cppcms::http::response::not_found);
+        res["error"] = "error DB";
+      }
+      
+      this->response().out() << res;
+    }
+    __APP_TRY_CATCH_END__
+
   }
 
 } } } } }
