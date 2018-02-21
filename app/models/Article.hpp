@@ -19,6 +19,9 @@ namespace app { namespace models {
       Article(const int id);
 
     public:
+      virtual void save();
+
+    public:
       std::vector<Article> getAll();
 
       struct TypeText

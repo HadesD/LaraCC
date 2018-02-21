@@ -143,13 +143,17 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
     __APP_TRY_CATCH_BEGIN__
     {
       cppcms::json::value res;
-      
+
+      auto &success = res["success"];
+
+      success = false;
+
       try
       {
         app::models::Article article(id);
-        
+
         {
-          
+          success = true;
         }
       }
       catch (const app::database::ConnectorException&)
@@ -157,11 +161,10 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
         this->response().status(cppcms::http::response::not_found);
         res["error"] = "error DB";
       }
-      
+
       this->response().out() << res;
     }
     __APP_TRY_CATCH_END__
-
   }
 
 } } } } }

@@ -110,5 +110,9 @@ namespace app { namespace models {
     __APP_TRY_CATCH_END__
   }
 
+  void Article::save()
+  {
+  }
+
 } }
 

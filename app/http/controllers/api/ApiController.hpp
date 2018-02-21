@@ -3,6 +3,8 @@
 
 #include "../../../core/Controller.hpp"
 
+#include <cppcms/json.h>
+
 namespace app { namespace http { namespace controllers { namespace api {
 
   class ApiController : public app::core::Controller
@@ -10,6 +12,9 @@ namespace app { namespace http { namespace controllers { namespace api {
     public:
       ApiController(cppcms::service& s);
       virtual ~ApiController() = 0;
+
+    protected:
+      cppcms::json::value m_response;
   };
 
 } } } }

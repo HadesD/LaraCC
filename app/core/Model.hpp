@@ -37,6 +37,9 @@ namespace app { namespace core {
   {
     protected:
       app::database::SQLiteModernCppConnector m_connector;
+
+    public:
+      virtual void save() = 0;
   };
 
 } }
