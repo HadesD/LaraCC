@@ -19,7 +19,8 @@ namespace app { namespace models {
       Article(const int id);
 
     public:
-      virtual bool save();
+      virtual bool save() override;
+      virtual bool save(const std::vector<std::string>& listToSave) override;
 
     public:
       std::vector<Article> getAll();

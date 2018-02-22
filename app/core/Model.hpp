@@ -40,6 +40,7 @@ namespace app { namespace core {
 
     public:
       virtual bool save() = 0;
+      virtual bool save(const std::vector<std::string>& listToSave) = 0;
   };
 
 } }

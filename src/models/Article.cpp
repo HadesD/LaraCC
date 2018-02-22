@@ -112,6 +112,18 @@ namespace app { namespace models {
 
   bool Article::save()
   {
+
+    return false;
+  }
+
+  bool Article::save(const std::vector<std::string>& listToSave)
+  {
+    __APP_TRY_CATCH_BEGIN__
+    {
+    }
+    __APP_TRY_CATCH_END__
+
+      return false;
   }
 
 } }

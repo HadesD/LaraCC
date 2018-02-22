@@ -45,6 +45,8 @@ namespace app { namespace database {
           const unsigned int offset,
           const unsigned int limit
           );
+
+      bool update(const std::vector<std::string>& listColumn);
   };
 
 } }
