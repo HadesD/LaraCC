@@ -5,6 +5,9 @@
 
 #include "../config/Constants.hpp"
 
+#include <unordered_map>
+#include <unordered_set>
+
 #define APP_MODEL(table_name) \
   private: \
   std::string m_tableName = table_name; \
@@ -17,9 +20,9 @@
   private: \
   varType colName; \
   public: \
-  varType get##funcName() { \
+  varType& get##funcName() { \
     std::pair<std::string, int> p(m_primaryKeyName, id); \
-    colName = m_connector.select<varType>( #colName, \
+    colName = m_connector.select<varType>(#colName, \
                                           m_tableName, \
                                           p \
                                           ); \
@@ -27,6 +30,7 @@
   } \
   void set##funcName(const varType& var) { \
     colName = var;\
+    m_queueSaveColumns.insert(#colName); \
   }
 
 #include "app/database/SQLiteModernCppConnector.hpp"
@@ -40,7 +44,10 @@ namespace app { namespace core {
 
     public:
       virtual bool save() = 0;
-      virtual bool save(const std::vector<std::string>& listToSave) = 0;
+
+    protected:
+      std::unordered_set<std::string> m_queueSaveColumns;
+      // std::unordered_map<std::string> m_
   };
 
 } }

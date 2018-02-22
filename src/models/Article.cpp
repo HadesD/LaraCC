@@ -112,17 +112,19 @@ namespace app { namespace models {
 
   bool Article::save()
   {
-
-    return false;
-  }
-
-  bool Article::save(const std::vector<std::string>& listToSave)
-  {
     __APP_TRY_CATCH_BEGIN__
     {
+      if (m_queueSaveColumns.empty())
+      {
+        return false;
+      }
+
+      for (const auto& col : m_queueSaveColumns)
+      {
+        std::cout << col << std::endl;
+      }
     }
     __APP_TRY_CATCH_END__
-
       return false;
   }
 

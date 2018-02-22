@@ -20,7 +20,6 @@ namespace app { namespace models {
 
     public:
       virtual bool save() override;
-      virtual bool save(const std::vector<std::string>& listToSave) override;
 
     public:
       std::vector<Article> getAll();
