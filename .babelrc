@@ -4,10 +4,15 @@
       "env", {
         "modules": false,
         "targets": {
-          "node": "current"
+          "node": "current",
+          "browsers": [
+            "last 2 versions",
+            "IE >= 9"
+          ]
         }
       }
-    ]
+    ],
+    ["es2017"]
   ],
   "plugins": [
     [
@@ -16,15 +21,16 @@
       }
     ],
     [
-      "wildcard"
+      "transform-es2015-arrow-functions"
     ],
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }],
     [
-      "transform-runtime", {
-        "helpers": false,
-        "polyfill": false,
-        "regenerator": true,
-        "moduleName": "babel-runtime"
-      }
+      "wildcard"
     ]
   ]
 }
