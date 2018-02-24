@@ -37,6 +37,7 @@ export default (state, actions) => ({match}) => {
         }
       }}
     >
+      <link href={utils.asset('libs/prism/prism.css')} rel="stylesheet" />
       <Link class="bubble" to={articleInfo.permalink}>
         <i
           class={
@@ -83,6 +84,7 @@ export default (state, actions) => ({match}) => {
           />
         </div>
       </article>
+      <script type="text/javascript" src={utils.asset('libs/prism/prism.js')}></script>
     </div>
   );
 };

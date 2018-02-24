@@ -30,6 +30,7 @@
     "axios": "^0.17.1",
     "babel-runtime": "^6.26.0",
     "hyperapp": "^1.0.2",
+    "prismjs": "^1.11.0",
     "snarkdown": "^1.2.2"
   }
 }
