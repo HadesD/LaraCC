@@ -4,6 +4,7 @@
 # Vim files
 .ycm_extra_conf.py
 .editorconfig
+.eslintrc.json
 
 !/Makefile
 WebApp
