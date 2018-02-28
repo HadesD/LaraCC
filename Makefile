@@ -31,3 +31,4 @@ npm.prd:
 
 db:
 	python tools/create_database.py
+
