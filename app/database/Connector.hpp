@@ -29,7 +29,7 @@ namespace app::database {
           {
             __APP_TRY_CATCH_BEGIN__
             {
-              return m_resolver->template select<D>(
+              return this->template select<D>(
                 column, from, where
                 );
             }
@@ -53,7 +53,7 @@ namespace app::database {
           {
             __APP_TRY_CATCH_BEGIN__
             {
-              return m_resolver->template getAll< std::vector<D> >(
+              return this->template getAll< std::vector<D> >(
                 orderedList, offset, limit
                 );
             }
@@ -66,9 +66,6 @@ namespace app::database {
         virtual bool beginTransaction() = 0;
         virtual bool commit() = 0;
         virtual bool rollBack() = 0;
-
-      protected:
-        T* m_resolver;
     };
 
 }
