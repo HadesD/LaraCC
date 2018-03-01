@@ -33,7 +33,7 @@
     m_queueSaveColumns.insert(#colName); \
   }
 
-#include "app/database/SQLiteModernCppConnector.hpp"
+#include "../database/SQLiteModernCppConnector.hpp"
 
 namespace app { namespace core {
 

@@ -1,13 +1,14 @@
 #ifndef __APP_DATABASE_SQLITE_MODERN_CPP_CONNECTOR_HPP__
 #define __APP_DATABASE_SQLITE_MODERN_CPP_CONNECTOR_HPP__
 
-#include "ConnectorInterface.hpp"
+#include "Connector.hpp"
+#include "ConnectorException.hpp"
 
 #include <sqlite_modern_cpp.h>
 
-namespace app { namespace database {
+namespace app::database {
 
-  class SQLiteModernCppConnector : public ConnectorInterface
+  class SQLiteModernCppConnector : public Connector<SQLiteModernCppConnector>
   {
     public:
       SQLiteModernCppConnector();
@@ -20,28 +21,8 @@ namespace app { namespace database {
       std::vector<int> select(
         const std::string& column,
         const std::string& from
-        )
-      {
-        try
-        {
-          std::vector<int> val;
-          std::string q =
-            "SELECT "
-            + column
-            + " FROM "
-            + from
-            + ";";
-          m_database << q
-            >> [&](const int id){
-              val.push_back(id);
-            };
-          return val;
-        }
-        catch (const sqlite::sqlite_exception& e)
-        {
-          throw app::database::ConnectorException(e.what());
-        }
-      }
+        );
+
       template<typename T, typename W>
         T select(
           const std::string& column,
@@ -70,12 +51,18 @@ namespace app { namespace database {
           }
         }
 
+    public:
+      virtual bool exec(const std::string& /* statement */) override;
+      virtual bool beginTransaction() override;
+      virtual bool commit() override;
+      virtual bool rollBack() override;
+
     protected:
       // Connection string
       sqlite::database m_database;
   };
 
-} }
+}
 
 #endif
 
