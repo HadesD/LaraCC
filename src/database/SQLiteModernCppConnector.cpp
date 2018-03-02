@@ -27,13 +27,13 @@ namespace app::database
     try
     {
       std::vector<int> val;
-      m_statement =
+      std::string statement =
         "SELECT "
         + column
         + " FROM "
         + from
         + ";";
-      m_database << m_statement
+      m_database << statement
         >> [&](const int id){
           val.push_back(id);
         };
@@ -67,7 +67,7 @@ namespace app::database
   {
     try
     {
-      m_statement = "BEGIN;";
+      m_database << "BEGIN;";
 
       return true;
     }
@@ -83,13 +83,7 @@ namespace app::database
   {
     try
     {
-      if (m_statement.empty())
-      {
-        return false;
-      }
-
-      m_statement += "COMMIT;";
-      m_database << m_statement;
+      m_database << "COMMIT;";
 
       return true;
     }
@@ -105,12 +99,7 @@ namespace app::database
   {
     try
     {
-      if (m_statement.empty())
-      {
-        return false;
-      }
-
-      m_statement += "ROLLBACK;";
+      m_database << "ROLLBACK;";
       return true;
     }
     catch (const sqlite::sqlite_exception& e)

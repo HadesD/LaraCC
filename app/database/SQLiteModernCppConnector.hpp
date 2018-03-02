@@ -30,7 +30,7 @@ namespace app::database {
           try
           {
             T val;
-            m_statement = "SELECT "
+            std::string statement = "SELECT "
               + column
               + " FROM "
               + from
@@ -38,7 +38,7 @@ namespace app::database {
               + where.first
               + "=?"
               + ";";
-            m_database << m_statement << where.second >> val;
+            m_database << statement << where.second >> val;
             return val;
           }
           catch (const sqlite::sqlite_exception& e)
@@ -63,7 +63,6 @@ namespace app::database {
     protected:
       // Connection string
       sqlite::database m_database;
-      std::string m_statement;
   };
 
 }

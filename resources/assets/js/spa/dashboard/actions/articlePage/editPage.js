@@ -38,7 +38,7 @@ export default {
 
     console.log(data);
 
-    const request = await axios.patch(
+    const request = await axios.post(
       `${site.api_url}${dashboard.root_url}/articles/${articleInfo['id']}`,
       data
     );

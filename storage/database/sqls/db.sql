@@ -28,7 +28,7 @@ CREATE TABLE articles
   -- 1: Video
   -- 2: Image
   -- 3: Quote
-  type SMALLINT DEFAULT 0 NOT NULL,
+  type SMALLINT DEFAULT 0,
 
   title TEXT,
 

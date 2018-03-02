@@ -7,6 +7,7 @@
 // #include <cppcms/http_request.h>
 
 #include "app/models/Article.hpp"
+#include "app/views/dashboard/article/EditForm.hpp"
 
 namespace app { namespace http { namespace controllers { namespace api { namespace dashboard {
 
@@ -16,7 +17,9 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
     this->dispatcher().map("GET", "/?", &ArticleController::index, this);
     this->dispatcher().map("GET", "/(\\d)", &ArticleController::read, this, 1);
     this->dispatcher().map("POST", "/?", &ArticleController::create, this);
-    this->dispatcher().map("PATCH", "/(\\d)", &ArticleController::update, this, 1);
+
+    // Change from PATCH to POST
+    this->dispatcher().map("POST", "/(\\d)", &ArticleController::update, this, 1);
   }
 
   void ArticleController::index()
@@ -152,11 +155,22 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
       try
       {
         app::models::Article article(id);
+        auto c = new views::dashboard::article::EditForm();
+        c->load(this->context());
 
+        if (c->validate())
         {
-          // cppcms::http::request &req = this->request();
+          // std::cout << c->title.value() << std::endl;
+          // std::cout << c->content.value() << std::endl;
+          // std::cout << c->slug.value() << std::endl;
+
+          article.setTitle(c->title.value());
+          article.setSlug(c->slug.value());
+          article.setContent(c->content.value());
+
           success = true;
         }
+
       }
       catch (const app::database::ConnectorException&)
       {
