@@ -16,8 +16,8 @@ namespace app::database {
 
     public:
       std::vector<int> select(
-        const std::string& column,
-        const std::string& from
+        const std::string& /* column */,
+        const std::string& /* from */
         );
 
       template<typename T, typename W>
@@ -47,9 +47,15 @@ namespace app::database {
           }
         }
 
+      sqlite::database& exec(const std::string& statement)
+      {
+        m_database << statement;
+        return m_database;
+      }
+
     public:
       virtual bool connect() override;
-      virtual bool exec(const std::string& /* statement */) override;
+      // virtual bool exec<bool>(const std::string& #<{(| statement |)}>#) override;
       virtual bool beginTransaction() override;
       virtual bool commit() override;
       virtual bool rollBack() override;

@@ -119,9 +119,49 @@ namespace app { namespace models {
         return false;
       }
 
-      for (const auto& col : m_queueSaveColumns)
+      std::string statement;
+
+      if (this->id == 0)
       {
-        std::cout << col << std::endl;
+        std::string cols;
+        std::string vals;
+        std::size_t i = 0;
+        for (const auto& col : m_queueSaveColumns)
+        {
+          if ((i > 0) && (i < (m_queueSaveColumns.size() - 1)))
+          {
+            cols += ",";
+            vals += ",";
+          }
+          cols += col;
+          vals += "?";
+          i++;
+        }
+        statement = "INSERT INTO "
+          + m_tableName
+          + " ("
+          + cols
+          + ") "
+          + " VALUES("
+          + vals
+          + ");"
+          ;
+      }
+      else
+      {
+        statement = "UPDATE " + m_tableName + " SET ";
+        std::size_t i = 0;
+        for (const auto& col : m_queueSaveColumns)
+        {
+          if ((i > 0) && (i < (m_queueSaveColumns.size() - 1)))
+          {
+            statement += ",";
+          }
+          statement += col + "=? ";
+          i++;
+        }
+
+        statement += " WHERE " + m_primaryKeyName + "=?;";
       }
     }
     __APP_TRY_CATCH_END__

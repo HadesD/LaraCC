@@ -8,7 +8,7 @@
 
 namespace app::database {
 
-  template<typename T>
+  template<typename Derived>
     class Connector
     {
       public:
@@ -20,8 +20,8 @@ namespace app::database {
          * @param {std::pair<std::string, W} Specifial to search
          * @return {T} Value of column want to get
          */
-        template<typename D, typename W>
-          D select(
+        template<typename T, typename W>
+          T select(
             const std::string& column,
             const std::string& from,
             const std::pair<std::string, W>& where
@@ -29,35 +29,19 @@ namespace app::database {
           {
             __APP_TRY_CATCH_BEGIN__
             {
-              return static_cast<T*>(this)->template select<D>(
-                column, from, where
-                );
-            }
-            __APP_TRY_CATCH_END__
-          }
-
-        template<typename D>
-          std::vector<D> getAll(
-            const std::string& orderedList,
-            const unsigned int offset,
-            const unsigned int limit
-            )
-          {
-            __APP_TRY_CATCH_BEGIN__
-            {
-              return static_cast<T*>(this)->template getAll< std::vector<D> >(
-                orderedList, offset, limit
-                );
+              return static_cast<Derived*>(this)->template
+                select<T>(
+                  column, from, where
+                  );
             }
             __APP_TRY_CATCH_END__
           }
 
       public:
-        virtual bool connect() = 0;
-        virtual bool exec(const std::string& /* statement */) = 0;
-        virtual bool beginTransaction() = 0;
-        virtual bool commit() = 0;
-        virtual bool rollBack() = 0;
+          virtual bool connect() = 0;
+          virtual bool beginTransaction() = 0;
+          virtual bool commit() = 0;
+          virtual bool rollBack() = 0;
     };
 
 }

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import URLSearchParams from 'url-search-params';
 
 import site from '../../../commons/site.js';
 import dashboard from '../../commons/dashboard.js';
@@ -23,7 +24,7 @@ export default {
     const isNewArticle = pState.isNewArticle;
     const articleInfo = pState.articleInfo;
 
-    let data = {};
+    let data = new URLSearchParams();
 
     for (let key in articleInfo)
     {
@@ -32,15 +33,15 @@ export default {
         continue;
       }
 
-      data[key] = articleInfo[key];
+      data.append(key, articleInfo[key]);
     }
-    
-    console.log(data);    
-    
-    const request = await axios.patch(
-      `${site.api_url}${dashboard.root_url}/articles/${data.id}`
-    );
 
+    console.log(data);
+
+    const request = await axios.patch(
+      `${site.api_url}${dashboard.root_url}/articles/${articleInfo['id']}`,
+      data
+    );
     console.log(request);
   },
 }

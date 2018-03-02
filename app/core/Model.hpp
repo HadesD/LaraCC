@@ -35,7 +35,8 @@
 
 #include "../database/SQLiteModernCppConnector.hpp"
 
-namespace app { namespace core {
+namespace app::core
+{
 
   class Model
   {
@@ -47,10 +48,9 @@ namespace app { namespace core {
 
     protected:
       std::unordered_set<std::string> m_queueSaveColumns;
-      // std::unordered_map<std::string> m_
   };
 
-} }
+}
 
 #endif
 

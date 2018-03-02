@@ -4,6 +4,7 @@
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
+// #include <cppcms/http_request.h>
 
 #include "app/models/Article.hpp"
 
@@ -153,6 +154,7 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
         app::models::Article article(id);
 
         {
+          // cppcms::http::request &req = this->request();
           success = true;
         }
       }
@@ -161,6 +163,7 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
         this->response().status(cppcms::http::response::not_found);
         res["error"] = "error DB";
       }
+
 
       this->response().out() << res;
     }

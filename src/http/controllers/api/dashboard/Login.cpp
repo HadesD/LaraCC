@@ -5,7 +5,8 @@
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
-namespace app { namespace http { namespace controllers { namespace api { namespace dashboard {
+namespace app::http::controllers::api::dashboard
+{
 
   Login::Login(cppcms::service &s) :
     app::http::controllers::api::ApiController(s)
@@ -22,5 +23,5 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
     this->response().out() << r;
   }
 
-} } } } }
+}
 

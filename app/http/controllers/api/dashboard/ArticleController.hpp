@@ -7,6 +7,11 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
 
   class ArticleController : public app::http::controllers::api::ApiController
   {
+    struct ArticleForm
+    {
+
+    };
+
     public:
       ArticleController(cppcms::service &s);
 

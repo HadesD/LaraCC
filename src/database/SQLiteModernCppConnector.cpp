@@ -45,6 +45,7 @@ namespace app::database
     }
   }
 
+  /*
   bool SQLiteModernCppConnector::exec(const std::string& statement)
   {
     try
@@ -60,6 +61,7 @@ namespace app::database
 
     return false;
   }
+  */
 
   bool SQLiteModernCppConnector::beginTransaction()
   {

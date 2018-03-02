@@ -5,7 +5,8 @@
 
 #include "../config/Constants.hpp"
 
-namespace app { namespace core {
+namespace app::core
+{
 
   class ServiceProvider : public cppcms::application
   {
@@ -13,7 +14,7 @@ namespace app { namespace core {
       ServiceProvider(cppcms::service &s);
   };
 
-} }
+}
 
 #endif
 
