@@ -1,6 +1,7 @@
 #include "app/database/SQLiteModernCppConnector.hpp"
 
-namespace app { namespace database {
+namespace app::database
+{
 
   SQLiteModernCppConnector::SQLiteModernCppConnector() :
     m_database("db.sqlite3")
@@ -26,13 +27,13 @@ namespace app { namespace database {
     try
     {
       std::vector<int> val;
-      std::string q =
+      m_statement =
         "SELECT "
         + column
         + " FROM "
         + from
         + ";";
-      m_database << q
+      m_database << m_statement
         >> [&](const int id){
           val.push_back(id);
         };
@@ -46,27 +47,77 @@ namespace app { namespace database {
 
   bool SQLiteModernCppConnector::exec(const std::string& statement)
   {
+    try
+    {
+      m_database << statement;
 
-    return true;
+      return true;
+    }
+    catch (const sqlite::sqlite_exception& e)
+    {
+      throw app::database::ConnectorException(e.what());
+    }
+
+    return false;
   }
 
   bool SQLiteModernCppConnector::beginTransaction()
   {
+    try
+    {
+      m_statement = "BEGIN;";
 
-    return true;
+      return true;
+    }
+    catch (const sqlite::sqlite_exception& e)
+    {
+      throw app::database::ConnectorException(e.what());
+    }
+
+    return false;
   }
 
   bool SQLiteModernCppConnector::commit()
   {
+    try
+    {
+      if (m_statement.empty())
+      {
+        return false;
+      }
 
-    return true;
+      m_statement += "COMMIT;";
+      m_database << m_statement;
+
+      return true;
+    }
+    catch (const sqlite::sqlite_exception& e)
+    {
+      throw app::database::ConnectorException(e.what());
+    }
+
+    return false;
   }
 
   bool SQLiteModernCppConnector::rollBack()
   {
+    try
+    {
+      if (m_statement.empty())
+      {
+        return false;
+      }
 
-    return true;
+      m_statement += "ROLLBACK;";
+      return true;
+    }
+    catch (const sqlite::sqlite_exception& e)
+    {
+      throw app::database::ConnectorException(e.what());
+    }
+
+    return false;
   }
 
-} }
+}
 

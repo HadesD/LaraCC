@@ -29,20 +29,12 @@ namespace app::database {
           {
             __APP_TRY_CATCH_BEGIN__
             {
-              return this->template select<D>(
+              return static_cast<T*>(this)->template select<D>(
                 column, from, where
                 );
             }
             __APP_TRY_CATCH_END__
           }
-
-        std::vector<int> select(
-          const std::string& column,
-          const std::string& from
-          )
-        {
-
-        }
 
         template<typename D>
           std::vector<D> getAll(
@@ -53,7 +45,7 @@ namespace app::database {
           {
             __APP_TRY_CATCH_BEGIN__
             {
-              return this->template getAll< std::vector<D> >(
+              return static_cast<T*>(this)->template getAll< std::vector<D> >(
                 orderedList, offset, limit
                 );
             }

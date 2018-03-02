@@ -15,9 +15,6 @@ namespace app::database {
       SQLiteModernCppConnector(const std::string& database);
 
     public:
-      virtual bool connect() override;
-
-    public:
       std::vector<int> select(
         const std::string& column,
         const std::string& from
@@ -33,8 +30,7 @@ namespace app::database {
           try
           {
             T val;
-            std::string q =
-              "SELECT "
+            m_statement = "SELECT "
               + column
               + " FROM "
               + from
@@ -42,7 +38,7 @@ namespace app::database {
               + where.first
               + "=?"
               + ";";
-            m_database << q << where.second >> val;
+            m_database << m_statement << where.second >> val;
             return val;
           }
           catch (const sqlite::sqlite_exception& e)
@@ -52,6 +48,7 @@ namespace app::database {
         }
 
     public:
+      virtual bool connect() override;
       virtual bool exec(const std::string& /* statement */) override;
       virtual bool beginTransaction() override;
       virtual bool commit() override;
@@ -60,6 +57,7 @@ namespace app::database {
     protected:
       // Connection string
       sqlite::database m_database;
+      std::string m_statement;
   };
 
 }
