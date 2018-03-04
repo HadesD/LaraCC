@@ -64,7 +64,9 @@ export default (state, actions) => ({match}) => {
                 return (
                   <tr>
                     <td>
-                      {articleInfo.id}
+                      <Link to={`${match.url}/${articleInfo.id}`}>
+                        {articleInfo.id}
+                      </Link>
                     </td>
                     <td>
                       <Link

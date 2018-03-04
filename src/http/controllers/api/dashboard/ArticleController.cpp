@@ -25,9 +25,12 @@ namespace app::http::controllers::api::dashboard
 
   void ArticleController::index()
   {
+    cppcms::json::value res;
+    auto &error = res["error"];
+    error = false;
+
     __APP_TRY_CATCH_BEGIN__
     {
-      cppcms::json::value res;
 
       try
       {
@@ -75,20 +78,24 @@ namespace app::http::controllers::api::dashboard
       catch (const app::database::ConnectorException&)
       {
         this->response().status(cppcms::http::response::not_found);
-        res["error"] = "error";
+        error = "error";
       }
 
-      this->response().out() << res;
     }
     __APP_TRY_CATCH_END__
+
+      this->response().out() << res;
   }
 
   void ArticleController::read(const int id)
   {
+    cppcms::json::value res;
+
+    auto &error = res["error"];
+    error = false;
+
     __APP_TRY_CATCH_BEGIN__
     {
-      cppcms::json::value res;
-
       try
       {
         app::models::Article article(id);
@@ -128,30 +135,97 @@ namespace app::http::controllers::api::dashboard
           }
         }
       }
-      catch (const app::database::ConnectorException&)
+      catch (const app::database::ConnectorException& e)
       {
         this->response().status(cppcms::http::response::not_found);
-        res["error"] = "error";
+        error = e.what();
       }
 
-      this->response().out() << res;
     }
     __APP_TRY_CATCH_END__
+
+      this->response().out() << res;
   }
 
   void ArticleController::create()
   {
+    cppcms::json::value res;
+    auto &error = res["error"];
+    error = false;
+
+    __APP_TRY_CATCH_BEGIN__
+    {
+      try
+      {
+        app::models::Article article;
+        auto c = new views::dashboard::article::EditForm();
+        c->load(this->context());
+
+        if (c->validate())
+        {
+          // std::cout << c->title.value() << std::endl;
+          // std::cout << c->content.value() << std::endl;
+          // std::cout << c->slug.value() << std::endl;
+
+          // article.setTitle(c->title.value());
+          // article.setSlug(c->slug.value());
+          // article.setContent(c->content.value());
+
+          std::string select_statement =
+            "SELECT MAX("
+            "id"
+            ") FROM "
+            + app::models::getTableName<app::models::Article>()
+            ;
+          int id;
+          article.getConnector()->exec()
+            << select_statement
+            >> id
+            ;
+          id++;
+
+          std::string statement =
+            "INSERT INTO "
+            + app::models::getTableName<app::models::Article>()
+            + "(id, type, slug, title, content)"
+            + " VALUES(?,?,?,?,?)"
+            + ";"
+            ;
+          article.getConnector()->beginTransaction();
+          article.getConnector()->exec()
+            << statement
+            << id
+            << 0
+            << c->slug.value()
+            << c->title.value()
+            << c->content.value()
+            ;
+          article.getConnector()->commit();
+
+          error = true;
+        }
+        delete c;
+      }
+      catch (const app::database::ConnectorException& e)
+      {
+        this->response().status(cppcms::http::response::not_found);
+        res["error"] = e.what();
+      }
+
+    }
+    __APP_TRY_CATCH_END__
+
+      this->response().out() << res;
   }
 
   void ArticleController::update(const int id)
   {
+    cppcms::json::value res;
+    auto &error = res["error"];
+    error = true;
+
     __APP_TRY_CATCH_BEGIN__
     {
-      cppcms::json::value res;
-
-      auto &success = res["success"];
-
-      success = false;
 
       try
       {
@@ -172,36 +246,38 @@ namespace app::http::controllers::api::dashboard
           std::string statement =
             "UPDATE "
             + article.getTableName()
-            + " SET title=?"
+            + " SET slug=?"
+            + ",title=?"
             + ",content=?"
-            + ",slug=?"
             + " WHERE "
             + article.getPrimaryKeyName()
             + "=?"
+            + ";"
             ;
-          // article.getConnector()->beginTransaction();
+          article.getConnector()->beginTransaction();
           article.getConnector()->exec()
             << statement
+            << c->slug.value()
             << c->title.value()
             << c->content.value()
-            << c->slug.value()
             << id
             ;
-          // article.getConnector()->commit();
+          article.getConnector()->commit();
 
-          success = true;
+          error = true;
         }
         delete c;
       }
       catch (const app::database::ConnectorException&)
       {
         this->response().status(cppcms::http::response::not_found);
-        res["error"] = "error DB";
+        error = "Error DB";
       }
 
-      this->response().out() << res;
     }
     __APP_TRY_CATCH_END__
+
+      this->response().out() << res;
   }
 
 }

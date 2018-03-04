@@ -38,10 +38,14 @@ export default {
 
     console.log(data);
 
-    const request = await axios.post(
-      `${site.api_url}${dashboard.root_url}/articles/${articleInfo['id']}`,
-      data
-    );
+    let url = `${site.api_url}${dashboard.root_url}/articles`;
+
+    if (!isNewArticle)
+    {
+      url += `/${articleInfo['id']}`;
+    }
+
+    const request = await axios.post(url, data);
     console.log(request);
   },
 }

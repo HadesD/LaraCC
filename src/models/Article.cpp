@@ -3,6 +3,8 @@
 #include <html.h>
 #include <document.h>
 
+APP_EXPORT_MODEL(Article)
+
 namespace app::models {
 
   Article::Article()
@@ -33,9 +35,10 @@ namespace app::models {
 
   std::vector<Article> Article::getAll()
   {
+    std::vector<Article> articles;
+
     __APP_TRY_CATCH_BEGIN__
     {
-      std::vector<Article> articles;
 
       std::vector<int>
         ids = m_connector.select(
@@ -48,9 +51,10 @@ namespace app::models {
         articles.push_back(Article(id));
       }
 
-      return articles;
     }
     __APP_TRY_CATCH_END__
+
+      return articles;
   }
 
   Article::TypeText Article::getTypeText()
@@ -86,28 +90,42 @@ namespace app::models {
       {
         std::string content = this->getContent();
 
-        hoedown_html_flags html_flags;
+        if (content.empty())
+        {
+          return std::string("");
+        }
+
+        hoedown_html_flags html_flags = HOEDOWN_HTML_SKIP_HTML;
         hoedown_renderer *renderer = hoedown_html_renderer_new(
           html_flags, 0
           );
 
-        hoedown_extensions extensions;
+        auto extensions = static_cast<hoedown_extensions>(
+          HOEDOWN_EXT_TABLES
+          | HOEDOWN_EXT_UNDERLINE
+          );
         hoedown_document *document = hoedown_document_new(
           renderer, extensions, 16
           );
 
-        hoedown_buffer *ob = hoedown_buffer_new(content.size());
+        hoedown_buffer *html = hoedown_buffer_new(content.size());
 
         hoedown_document_render(
-          document, ob, (uint8_t*)(content.c_str()), content.size()
+          document, html,
+          reinterpret_cast<const uint8_t*>(content.c_str()),
+          content.size()
           );
 
-        m_contentHtml = std::string((char*)(ob->data));
-      }
+        m_contentHtml = std::string(/* reinterpret_cast<char*> */(char*)(html->data));
 
-      return m_contentHtml;
+        hoedown_buffer_free(html);
+        hoedown_document_free(document);
+        hoedown_html_renderer_free(renderer);
+      }
     }
     __APP_TRY_CATCH_END__
+
+      return m_contentHtml;
   }
 
   bool Article::save()

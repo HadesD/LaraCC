@@ -16,11 +16,19 @@
   const std::string& getTableName() const { \
     return m_tableName; \
   } \
-  void setTableName(const std::string& tableName) { \
-    m_tableName = tableName; \
-  } \
   const std::string& getPrimaryKeyName() const { \
     return m_primaryKeyName; \
+  }
+
+#define APP_EXPORT_MODEL(table_name) \
+  namespace app::models { \
+    template<> \
+    std::string getTableName<table_name>() \
+    { \
+      static std::string tableName = #table_name \
+      "s"; \
+      return tableName; \
+    } \
   }
 
 #define APP_MODEL_SYNTHESIZE(varType,colName,funcName) \
@@ -42,6 +50,15 @@
 
 #include "../database/SQLiteModernCppConnector.hpp"
 
+namespace app::models
+{
+  template<typename T>
+    std::string getTableName()
+    {
+      return "NOT_FOUND";
+    }
+}
+
 namespace app::core
 {
 
@@ -53,8 +70,9 @@ namespace app::core
     public:
       virtual bool save() = 0;
 
-      inline decltype(m_connector)* getConnector() // const
-      {return &m_connector;}
+      [[deprecated("Will be deleted soon")]]
+        inline decltype(m_connector)* getConnector() // const
+        {return &m_connector;}
 
     protected:
       std::unordered_set<std::string> m_queueSaveColumns;

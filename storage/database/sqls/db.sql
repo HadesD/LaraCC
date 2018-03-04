@@ -22,7 +22,7 @@ CREATE TABLE articles
 (
   id INTEGER PRIMARY KEY,
 
-  slug TEXT UNIQUE,
+  slug TEXT UNIQUE NOT NULL,
 
   -- 0/NULL: Normal Article
   -- 1: Video
@@ -30,11 +30,11 @@ CREATE TABLE articles
   -- 3: Quote
   type SMALLINT DEFAULT 0,
 
-  title TEXT,
+  title TEXT NOT NULL,
 
   featured TEXT,
 
-  content TEXT,
+  content TEXT NOT NULL,
 
   author_id INTEGER,
 
