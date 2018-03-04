@@ -53,6 +53,11 @@ namespace app::database {
         return m_database;
       }
 
+      sqlite::database& exec()
+      {
+        return m_database;
+      }
+
     public:
       virtual bool connect() override;
       // virtual bool exec<bool>(const std::string& #<{(| statement |)}>#) override;

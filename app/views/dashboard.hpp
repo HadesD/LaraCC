@@ -5,10 +5,11 @@
 
 namespace app { namespace views {
 
-  struct Dashboard : public app::views::layouts::Dashboard
+  class Dashboard : public app::views::layouts::Dashboard
   {
   };
 
 } }
 
 #endif
+

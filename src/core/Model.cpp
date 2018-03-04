@@ -2,5 +2,7 @@
 
 namespace app { namespace core {
 
+  // decltype() Model::getConnector() const
+
 } }
 

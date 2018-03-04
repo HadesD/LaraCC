@@ -3,7 +3,7 @@
 #include <html.h>
 #include <document.h>
 
-namespace app { namespace models {
+namespace app::models {
 
   Article::Article()
   {
@@ -82,16 +82,6 @@ namespace app { namespace models {
   {
     __APP_TRY_CATCH_BEGIN__
     {
-      // this->m_connector.beginTransaction();
-      std::string statement = "INSERT INTO"
-        " articles(title,content,slug,id)"
-        " VALUES(?,?,?,?)"
-        ;
-
-      this->m_connector.exec(statement) << "sdfsdf1" << "sdfsdf" << "sdfsdf" << 9;
-
-      // this->m_connector.commit();
-
       if (m_contentHtml.empty())
       {
         std::string content = this->getContent();
@@ -178,5 +168,5 @@ namespace app { namespace models {
       return false;
   }
 
-} }
+}
 

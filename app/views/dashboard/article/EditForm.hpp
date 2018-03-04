@@ -5,13 +5,15 @@
 
 namespace app::views::dashboard::article
 {
-  struct EditForm : public cppcms::form
+  class EditForm : public cppcms::form
   {
-    EditForm();
+    public:
+      EditForm();
 
-    cppcms::widgets::text title;
-    cppcms::widgets::text slug;
-    cppcms::widgets::textarea content;
+    public:
+      cppcms::widgets::text title;
+      cppcms::widgets::text slug;
+      cppcms::widgets::textarea content;
   };
 }
 

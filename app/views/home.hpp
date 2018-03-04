@@ -5,16 +5,19 @@
 
 #include "app/models/Article.hpp"
 
-namespace app { namespace views {
+namespace app::views
+{
 
-  struct Home : public app::views::layouts::Home
+  class Home : public app::views::layouts::Home
   {
-    Home();
+    public:
+      Home();
 
-    std::vector<app::models::Article> articles;
+    public:
+      std::vector<app::models::Article> articles;
   };
 
-} }
+}
 
 #endif
 

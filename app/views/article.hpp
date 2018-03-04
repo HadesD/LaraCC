@@ -7,12 +7,14 @@
 
 namespace app { namespace views {
 
-  struct Article : public app::views::layouts::Home
+  class Article : public app::views::layouts::Home
   {
-    Article();
-    Article(const std::string& slug);
+    public:
+      Article();
+      Article(const std::string& slug);
 
-    app::models::Article article;
+    public:
+      app::models::Article article;
   };
 
 } }

@@ -13,14 +13,21 @@
   std::string m_tableName = table_name; \
   std::string m_primaryKeyName = "id"; \
   public: \
-  const std::string& getTableName() const {return m_tableName;} \
-  void setTableName(const std::string& tableName) {m_tableName = tableName;}
+  const std::string& getTableName() const { \
+    return m_tableName; \
+  } \
+  void setTableName(const std::string& tableName) { \
+    m_tableName = tableName; \
+  } \
+  const std::string& getPrimaryKeyName() const { \
+    return m_primaryKeyName; \
+  }
 
 #define APP_MODEL_SYNTHESIZE(varType,colName,funcName) \
   private: \
   varType colName; \
   public: \
-  varType& get##funcName() { \
+  const varType& get##funcName() { \
     std::pair<std::string, int> p(m_primaryKeyName, id); \
     colName = m_connector.select<varType>(#colName, \
                                           m_tableName, \
@@ -45,6 +52,9 @@ namespace app::core
 
     public:
       virtual bool save() = 0;
+
+      inline decltype(m_connector)* getConnector() // const
+      {return &m_connector;}
 
     protected:
       std::unordered_set<std::string> m_queueSaveColumns;

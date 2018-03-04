@@ -6,11 +6,13 @@
 
 if (UNIX)
   # foreach( file_i ${LIST_FOLDERS_COPY_AFTER_BUILD})
-  add_custom_command(
-    TARGET ${APP_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E remove_directory
-    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/public
-    )
+  if (CMAKE_BUILD_TYPE EQUAL "RELEASE")
+    add_custom_command(
+      TARGET ${APP_NAME} POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E remove_directory
+      ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/public
+      )
+  endif()
   add_custom_command(
     TARGET ${APP_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory

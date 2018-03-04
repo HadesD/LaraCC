@@ -7,7 +7,7 @@
 
 namespace app { namespace views {
 
-  struct Login : public app::views::layouts::Home
+  class Login : public app::views::layouts::Home
   {
   };
 

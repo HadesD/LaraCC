@@ -5,7 +5,7 @@
 
 namespace app { namespace views { namespace dashboard {
 
-  struct Login : public app::views::Dashboard
+  class Login : public app::views::Dashboard
   {
   };
 

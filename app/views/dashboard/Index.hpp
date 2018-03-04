@@ -5,7 +5,7 @@
 
 namespace app { namespace views { namespace dashboard {
 
-  struct Index : public app::views::Dashboard
+  class Index : public app::views::Dashboard
   {
   };
 

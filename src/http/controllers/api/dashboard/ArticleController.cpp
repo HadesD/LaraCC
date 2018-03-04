@@ -9,7 +9,8 @@
 #include "app/models/Article.hpp"
 #include "app/views/dashboard/article/EditForm.hpp"
 
-namespace app { namespace http { namespace controllers { namespace api { namespace dashboard {
+namespace app::http::controllers::api::dashboard
+{
 
   ArticleController::ArticleController(cppcms::service& s) :
     app::http::controllers::api::ApiController(s)
@@ -164,13 +165,33 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
           // std::cout << c->content.value() << std::endl;
           // std::cout << c->slug.value() << std::endl;
 
-          article.setTitle(c->title.value());
-          article.setSlug(c->slug.value());
-          article.setContent(c->content.value());
+          // article.setTitle(c->title.value());
+          // article.setSlug(c->slug.value());
+          // article.setContent(c->content.value());
+
+          std::string statement =
+            "UPDATE "
+            + article.getTableName()
+            + " SET title=?"
+            + ",content=?"
+            + ",slug=?"
+            + " WHERE "
+            + article.getPrimaryKeyName()
+            + "=?"
+            ;
+          // article.getConnector()->beginTransaction();
+          article.getConnector()->exec()
+            << statement
+            << c->title.value()
+            << c->content.value()
+            << c->slug.value()
+            << id
+            ;
+          // article.getConnector()->commit();
 
           success = true;
         }
-
+        delete c;
       }
       catch (const app::database::ConnectorException&)
       {
@@ -178,11 +199,10 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
         res["error"] = "error DB";
       }
 
-
       this->response().out() << res;
     }
     __APP_TRY_CATCH_END__
   }
 
-} } } } }
+}
 
