@@ -1,4 +1,4 @@
 *
 *.*
 !.gitignore
-/Bin/Bin/**/Bin/Bin/**
+!/cmake_modules
