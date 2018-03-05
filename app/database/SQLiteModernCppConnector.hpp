@@ -1,14 +1,15 @@
 #ifndef __APP_DATABASE_SQLITE_MODERN_CPP_CONNECTOR_HPP__
 #define __APP_DATABASE_SQLITE_MODERN_CPP_CONNECTOR_HPP__
 
-#include "Connector.hpp"
+#include "../core/DatabaseConnector.hpp"
 #include "ConnectorException.hpp"
 
 #include <sqlite_modern_cpp.h>
 
 namespace app::database {
 
-  class SQLiteModernCppConnector : public Connector<SQLiteModernCppConnector>
+  class SQLiteModernCppConnector :
+    public app::core::DatabaseConnector<SQLiteModernCppConnector>
   {
     public:
       SQLiteModernCppConnector();

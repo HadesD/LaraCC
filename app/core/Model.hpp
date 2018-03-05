@@ -1,24 +1,22 @@
 #ifndef _APP_CORE_MODEL_HPP_
 #define _APP_CORE_MODEL_HPP_
 
-#include "../database/ConnectorInterface.hpp"
-
 #include "../config/Constants.hpp"
 
 #include <unordered_set>
 
-#define APP_MODEL() \
+#define APP_MODEL(ModelName) \
 private: \
 std::string m_primaryKeyName = "id"; \
+using self = ModelName; \
 public: \
-static const std::string TableName; \
+static const std::string getTableName() { \
+  return #ModelName "s"; \
+} \
 public: \
 const std::string& getPrimaryKeyName() const { \
   return m_primaryKeyName; \
 }
-
-#define APP_MODEL_EXPORT(ModelName) \
-const std::string app::models::ModelName::TableName = #ModelName "s";
 
 #define APP_MODEL_SYNTHESIZE(varType,colName,funcName) \
 private: \
@@ -27,7 +25,7 @@ public: \
 const varType& get##funcName() { \
   std::pair<std::string, int> p(m_primaryKeyName, id); \
   colName = m_connector.select<varType>(#colName, \
-                                        TableName, \
+                                        self::getTableName(), \
                                         p \
                                         ); \
   return colName; \

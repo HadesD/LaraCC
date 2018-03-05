@@ -11,7 +11,7 @@ namespace app::models
   class Account : public app::core::Model
   {
     public:
-      APP_MODEL();
+      APP_MODEL(Account);
 
     public:
       Account();

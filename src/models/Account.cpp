@@ -1,7 +1,5 @@
 #include "../../app/models/Account.hpp"
 
-APP_MODEL_EXPORT(Account);
-
 namespace app::models
 {
 
@@ -22,7 +20,7 @@ namespace app::models
       std::pair<std::string, std::string> w("email", email);
       this->id = m_connector.select<int>(
         m_primaryKeyName,
-        TableName,
+        self::getTableName(),
         w
         );
 

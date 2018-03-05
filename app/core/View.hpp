@@ -6,7 +6,8 @@
 
 #define _(X) ::cppcms::locale::translate(X)
 
-namespace app { namespace core {
+namespace app::core
+{
 
   class View : public cppcms::base_content
   {
@@ -17,7 +18,7 @@ namespace app { namespace core {
       std::string asset(const std::string& urlPath);
   };
 
-} }
+}
 
 #endif
 

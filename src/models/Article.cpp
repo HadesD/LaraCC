@@ -3,9 +3,8 @@
 #include <html.h>
 #include <document.h>
 
-APP_MODEL_EXPORT(Article);
-
-namespace app::models {
+namespace app::models
+{
 
   Article::Article()
   {
@@ -19,7 +18,7 @@ namespace app::models {
       std::pair<std::string, std::string> w("slug", slug);
       this->id = m_connector.select<int>(
         m_primaryKeyName,
-        TableName,
+        self::getTableName(),
         w
         );
 
@@ -37,13 +36,11 @@ namespace app::models {
   {
     std::vector<Article> articles;
 
-    ;
-
     __APP_TRY_CATCH_BEGIN__
     {
       std::vector<int> ids = m_connector.select(
         m_primaryKeyName,
-        TableName
+        self::getTableName()
         );
 
       for (const auto& id : ids)
@@ -155,7 +152,7 @@ namespace app::models {
           i++;
         }
         statement = "INSERT INTO "
-        + TableName
+        + self::getTableName()
         + " ("
         + cols
         + ") "
@@ -167,7 +164,7 @@ namespace app::models {
       else
       {
         statement = "UPDATE "
-        + TableName
+        + self::getTableName()
         + " SET "
         ;
         std::size_t i = 0;

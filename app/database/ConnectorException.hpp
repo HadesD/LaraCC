@@ -4,7 +4,8 @@
 #include <string>
 #include <stdexcept>
 
-namespace app::database {
+namespace app::database
+{
 
   class ConnectorException : public std::runtime_error
   {

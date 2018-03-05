@@ -3,7 +3,8 @@
 
 #include "ServiceProvider.hpp"
 
-namespace app { namespace core {
+namespace app::core
+{
 
   class Controller : public ServiceProvider
   {
@@ -11,7 +12,7 @@ namespace app { namespace core {
       Controller(cppcms::service &s);
   };
 
-} }
+}
 
 #endif
 

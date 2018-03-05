@@ -7,7 +7,8 @@
 #include "app/routes/Web.hpp"
 #include "app/routes/Api.hpp"
 
-namespace app { namespace core {
+namespace app::core
+{
 
   Kernel::Kernel(cppcms::service& s) : cppcms::application(s)
   {
@@ -42,4 +43,5 @@ namespace app { namespace core {
     __APP_TRY_CATCH_END__
   }
 
-} }
+}
+

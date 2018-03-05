@@ -4,7 +4,6 @@
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
-// #include <cppcms/http_request.h>
 
 #include "app/models/Article.hpp"
 #include "app/views/dashboard/article/EditForm.hpp"
@@ -16,7 +15,18 @@ namespace app::http::controllers::api::dashboard
     app::http::controllers::api::ApiController(s)
   {
     this->dispatcher().map("GET", "/?", &ArticleController::index, this);
-    this->dispatcher().map("GET", "/(\\d)", &ArticleController::read, this, 1);
+    this->dispatcher().map(
+      "GET", "/(\\d)",
+      (void(ArticleController::*)(const int))
+      &ArticleController::read,
+      this, 1
+      );
+    this->dispatcher().map(
+      "GET", "/(\\s+)",
+      (void(ArticleController::*)(const std::string&))
+      &ArticleController::read,
+      this, 1
+      );
     this->dispatcher().map("POST", "/?", &ArticleController::create, this);
 
     // Change from PATCH to POST
@@ -85,6 +95,21 @@ namespace app::http::controllers::api::dashboard
     __APP_TRY_CATCH_END__
 
     this->response().out() << res;
+  }
+
+  void ArticleController::read(const std::string& slug)
+  {
+    __APP_TRY_CATCH_BEGIN__
+
+    std::cout << slug << std::endl;
+
+    app::models::Article article(slug);
+
+    this->response().set_redirect_header(
+      "/root/articles/" + std::to_string(article.getId())
+      );
+
+    __APP_TRY_CATCH_END__
   }
 
   void ArticleController::read(const int id)
@@ -175,7 +200,7 @@ namespace app::http::controllers::api::dashboard
           "SELECT MAX("
           "id"
           ") FROM "
-          + app::models::Article::TableName
+          + app::models::Article::getTableName()
           ;
           int id;
           article.getConnector()->exec()
@@ -186,7 +211,7 @@ namespace app::http::controllers::api::dashboard
 
           std::string statement =
           "INSERT INTO "
-          + app::models::Article::TableName
+          + app::models::Article::getTableName()
           + "(id, type, slug, title, content)"
           + " VALUES(?,?,?,?,?)"
           + ";"
@@ -245,7 +270,7 @@ namespace app::http::controllers::api::dashboard
 
           std::string statement =
           "UPDATE "
-          + app::models::Article::TableName
+          + app::models::Article::getTableName()
           + " SET slug=?"
           + ",title=?"
           + ",content=?"

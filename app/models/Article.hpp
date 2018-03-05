@@ -1,7 +1,7 @@
 #ifndef __APP_MODELS_ARTICLE_HPP__
 #define __APP_MODELS_ARTICLE_HPP__
 
-#include "app/core/Model.hpp"
+#include "../core/Model.hpp"
 
 #include <string>
 #include <vector>
@@ -11,7 +11,7 @@ namespace app { namespace models {
   class Article : public app::core::Model
   {
     public:
-      APP_MODEL();
+      APP_MODEL(Article);
 
     public:
       Article();
