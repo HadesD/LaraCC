@@ -36,8 +36,6 @@ export default {
       data.append(key, articleInfo[key]);
     }
 
-    console.log(data);
-
     let url = `${site.api_url}${dashboard.root_url}/articles`;
 
     if (!isNewArticle)
@@ -46,7 +44,6 @@ export default {
     }
 
     const request = await axios.post(url, data);
-    console.log(request);
   },
 }
 

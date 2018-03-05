@@ -3,8 +3,6 @@ import {
   Link
 } from '@hyperapp/router';
 
-import Main from '../components/Main.jsx';
-
 import utils from '../../commons/utils.js';
 import snarkdown from 'snarkdown';
 

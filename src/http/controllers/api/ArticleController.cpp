@@ -38,7 +38,9 @@ namespace app::http::controllers::api
           r["title"] = article.getTitle();
           r["type"] = article.getType();
           r["featured"] = article.getFeatured();
-          r["content"] = article.getContent();
+          auto content = article.getContent();
+          content.resize(150);
+          r["content"] = content;
 
           // TypeText
           auto &rTypeText = r["type_text"];

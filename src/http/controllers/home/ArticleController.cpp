@@ -52,10 +52,10 @@ namespace app::http::controllers::home
 
         this->render("article_read", v);
       }
-      catch (const app::database::ConnectorException&)
+      catch (const app::database::ConnectorException& e)
       {
         this->response().status(cppcms::http::response::not_found);
-        this->response().out() << "404";
+        this->response().out() << e.what();
       }
     }
     __APP_TRY_CATCH_END__
