@@ -1,6 +1,9 @@
-#include "app/models/Account.hpp"
+#include "../../app/models/Account.hpp"
 
-namespace app { namespace models {
+APP_MODEL_EXPORT(Account);
+
+namespace app::models
+{
 
   Account::Account()
   {
@@ -19,7 +22,7 @@ namespace app { namespace models {
       std::pair<std::string, std::string> w("email", email);
       this->id = m_connector.select<int>(
         m_primaryKeyName,
-        m_tableName,
+        TableName,
         w
         );
 
@@ -28,5 +31,5 @@ namespace app { namespace models {
     __APP_TRY_CATCH_END__
   }
 
-} }
+}
 

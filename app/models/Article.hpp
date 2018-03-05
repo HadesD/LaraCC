@@ -11,7 +11,7 @@ namespace app { namespace models {
   class Article : public app::core::Model
   {
     public:
-      APP_MODEL("articles");
+      APP_MODEL();
 
     public:
       Article();

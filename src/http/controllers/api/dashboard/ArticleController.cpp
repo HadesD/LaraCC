@@ -84,7 +84,7 @@ namespace app::http::controllers::api::dashboard
     }
     __APP_TRY_CATCH_END__
 
-      this->response().out() << res;
+    this->response().out() << res;
   }
 
   void ArticleController::read(const int id)
@@ -144,7 +144,7 @@ namespace app::http::controllers::api::dashboard
     }
     __APP_TRY_CATCH_END__
 
-      this->response().out() << res;
+    this->response().out() << res;
   }
 
   void ArticleController::create()
@@ -172,34 +172,34 @@ namespace app::http::controllers::api::dashboard
           // article.setContent(c->content.value());
 
           std::string select_statement =
-            "SELECT MAX("
-            "id"
-            ") FROM "
-            + app::models::getTableName<app::models::Article>()
-            ;
+          "SELECT MAX("
+          "id"
+          ") FROM "
+          + app::models::Article::TableName
+          ;
           int id;
           article.getConnector()->exec()
-            << select_statement
-            >> id
-            ;
+          << select_statement
+          >> id
+          ;
           id++;
 
           std::string statement =
-            "INSERT INTO "
-            + app::models::getTableName<app::models::Article>()
-            + "(id, type, slug, title, content)"
-            + " VALUES(?,?,?,?,?)"
-            + ";"
-            ;
+          "INSERT INTO "
+          + app::models::Article::TableName
+          + "(id, type, slug, title, content)"
+          + " VALUES(?,?,?,?,?)"
+          + ";"
+          ;
           article.getConnector()->beginTransaction();
           article.getConnector()->exec()
-            << statement
-            << id
-            << 0
-            << c->slug.value()
-            << c->title.value()
-            << c->content.value()
-            ;
+          << statement
+          << id
+          << 0
+          << c->slug.value()
+          << c->title.value()
+          << c->content.value()
+          ;
           article.getConnector()->commit();
 
           error = true;
@@ -215,7 +215,7 @@ namespace app::http::controllers::api::dashboard
     }
     __APP_TRY_CATCH_END__
 
-      this->response().out() << res;
+    this->response().out() << res;
   }
 
   void ArticleController::update(const int id)
@@ -244,24 +244,24 @@ namespace app::http::controllers::api::dashboard
           // article.setContent(c->content.value());
 
           std::string statement =
-            "UPDATE "
-            + article.getTableName()
-            + " SET slug=?"
-            + ",title=?"
-            + ",content=?"
-            + " WHERE "
-            + article.getPrimaryKeyName()
-            + "=?"
-            + ";"
-            ;
+          "UPDATE "
+          + app::models::Article::TableName
+          + " SET slug=?"
+          + ",title=?"
+          + ",content=?"
+          + " WHERE "
+          + article.getPrimaryKeyName()
+          + "=?"
+          + ";"
+          ;
           article.getConnector()->beginTransaction();
           article.getConnector()->exec()
-            << statement
-            << c->slug.value()
-            << c->title.value()
-            << c->content.value()
-            << id
-            ;
+          << statement
+          << c->slug.value()
+          << c->title.value()
+          << c->content.value()
+          << id
+          ;
           article.getConnector()->commit();
 
           error = true;
@@ -277,7 +277,7 @@ namespace app::http::controllers::api::dashboard
     }
     __APP_TRY_CATCH_END__
 
-      this->response().out() << res;
+    this->response().out() << res;
   }
 
 }

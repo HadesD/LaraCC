@@ -3,7 +3,7 @@
 #include <html.h>
 #include <document.h>
 
-APP_EXPORT_MODEL(Article)
+APP_MODEL_EXPORT(Article);
 
 namespace app::models {
 
@@ -19,7 +19,7 @@ namespace app::models {
       std::pair<std::string, std::string> w("slug", slug);
       this->id = m_connector.select<int>(
         m_primaryKeyName,
-        m_tableName,
+        TableName,
         w
         );
 
@@ -37,24 +37,23 @@ namespace app::models {
   {
     std::vector<Article> articles;
 
+    ;
+
     __APP_TRY_CATCH_BEGIN__
     {
-
-      std::vector<int>
-        ids = m_connector.select(
-          m_primaryKeyName,
-          m_tableName
-          );
+      std::vector<int> ids = m_connector.select(
+        m_primaryKeyName,
+        TableName
+        );
 
       for (const auto& id : ids)
       {
         articles.push_back(Article(id));
       }
-
     }
     __APP_TRY_CATCH_END__
 
-      return articles;
+    return articles;
   }
 
   Article::TypeText Article::getTypeText()
@@ -125,7 +124,7 @@ namespace app::models {
     }
     __APP_TRY_CATCH_END__
 
-      return m_contentHtml;
+    return m_contentHtml;
   }
 
   bool Article::save()
@@ -156,18 +155,21 @@ namespace app::models {
           i++;
         }
         statement = "INSERT INTO "
-          + m_tableName
-          + " ("
-          + cols
-          + ") "
-          + " VALUES("
-          + vals
-          + ");"
-          ;
+        + TableName
+        + " ("
+        + cols
+        + ") "
+        + " VALUES("
+        + vals
+        + ");"
+        ;
       }
       else
       {
-        statement = "UPDATE " + m_tableName + " SET ";
+        statement = "UPDATE "
+        + TableName
+        + " SET "
+        ;
         std::size_t i = 0;
         for (const auto& col : m_queueSaveColumns)
         {
@@ -183,7 +185,8 @@ namespace app::models {
       }
     }
     __APP_TRY_CATCH_END__
-      return false;
+
+    return false;
   }
 
 }

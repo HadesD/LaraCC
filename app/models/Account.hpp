@@ -1,16 +1,17 @@
 #ifndef __APP_MODELS_ACCOUNT_HPP__
 #define __APP_MODELS_ACCOUNT_HPP__
 
-#include "app/core/Model.hpp"
+#include "../core/Model.hpp"
 
 #include <string>
 
-namespace app { namespace models {
+namespace app::models
+{
 
   class Account : public app::core::Model
   {
     public:
-      APP_MODEL("accounts");
+      APP_MODEL();
 
     public:
       Account();
@@ -28,7 +29,7 @@ namespace app { namespace models {
       APP_MODEL_SYNTHESIZE(std::string, password, Password);
   };
 
-} }
+}
 
 #endif
 

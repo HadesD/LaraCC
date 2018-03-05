@@ -6,7 +6,8 @@
 
 #include "app/views/article.hpp"
 
-namespace app { namespace http { namespace controllers {
+namespace app::http::controllers
+{
 
   ArticleController::ArticleController(cppcms::service& s) :
     app::core::Controller(s)
@@ -60,5 +61,5 @@ namespace app { namespace http { namespace controllers {
     __APP_TRY_CATCH_END__
   }
 
-} } }
+}
 
