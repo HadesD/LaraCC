@@ -2,3 +2,5 @@
 *.*
 !.gitignore
 !/cmake_modules
+!/cmake_modules/*
+
