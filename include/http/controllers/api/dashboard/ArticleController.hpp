@@ -14,7 +14,6 @@ namespace app::http::controllers::api::dashboard
     public:
       void index();
       void read(const int id);
-      void read(const std::string& slug);
       void create();
       void update(const int id);
   };

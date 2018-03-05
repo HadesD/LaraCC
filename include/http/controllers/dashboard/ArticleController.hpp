@@ -3,7 +3,8 @@
 
 #include "../../../core/Controller.hpp"
 
-namespace app::http::controllers::dashboard {
+namespace app::http::controllers::dashboard
+{
 
   class ArticleController : public app::core::Controller
   {
@@ -12,7 +13,8 @@ namespace app::http::controllers::dashboard {
 
     public:
       void index();
-      void edit(const int id);
+      void update(const int id);
+      void update(const std::string& slug);
       void createNew();
   };
 

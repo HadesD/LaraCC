@@ -5,6 +5,7 @@
 #include <cppcms/url_mapper.h>
 
 #include "views/dashboard/Article.hpp"
+#include "models/Article.hpp"
 
 namespace app::http::controllers::dashboard
 {
@@ -18,7 +19,15 @@ namespace app::http::controllers::dashboard
       this->dispatcher().map("GET", "/new", &ArticleController::createNew, this);
       this->dispatcher().map(
         "GET", "/(\\d)",
-        &ArticleController::edit, this, 1
+        (void(ArticleController::*)(const int))
+        &ArticleController::update,
+        this, 1
+        );
+      this->dispatcher().map(
+        "GET", "/(\\s+)",
+        (void(ArticleController::*)(const std::string&))
+        &ArticleController::update,
+        this, 1
         );
     }
     __APP_TRY_CATCH_END__
@@ -36,7 +45,21 @@ namespace app::http::controllers::dashboard
     __APP_TRY_CATCH_END__
   }
 
-  void ArticleController::edit(const int id)
+  void ArticleController::update(const std::string& slug)
+  {
+    __APP_TRY_CATCH_BEGIN__
+    {
+      app::models::Article article(slug);
+
+      this->response().set_redirect_header(
+        "/root/articles/"
+        + std::to_string(article.getId())
+        );
+    }
+    __APP_TRY_CATCH_END__
+  }
+
+  void ArticleController::update(const int id)
   {
     __APP_TRY_CATCH_BEGIN__
     {
