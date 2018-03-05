@@ -1,12 +1,12 @@
-#include "app/http/controllers/api/dashboard/ArticleController.hpp"
+#include "http/controllers/api/dashboard/ArticleController.hpp"
 
 #include <cppcms/json.h>
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
-#include "app/models/Article.hpp"
-#include "app/views/dashboard/article/EditForm.hpp"
+#include "models/Article.hpp"
+#include "views/dashboard/article/EditForm.hpp"
 
 namespace app::http::controllers::api::dashboard
 {

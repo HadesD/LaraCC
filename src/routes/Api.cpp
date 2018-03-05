@@ -1,14 +1,15 @@
-#include "app/routes/Api.hpp"
+#include "routes/Api.hpp"
 
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 #include <cppcms/json.h>
 
-#include "app/http/controllers/api/ArticleController.hpp"
-#include "app/http/controllers/api/dashboard/LoginController.hpp"
-#include "app/http/controllers/api/dashboard/ArticleController.hpp"
+#include "http/controllers/api/ArticleController.hpp"
+#include "http/controllers/api/dashboard/LoginController.hpp"
+#include "http/controllers/api/dashboard/ArticleController.hpp"
 
-namespace app { namespace routes {
+namespace app::routes
+{
 
   Api::Api(cppcms::service &s) : app::core::ServiceProvider(s)
   {
@@ -55,5 +56,5 @@ namespace app { namespace routes {
     }
   }
 
-} }
+}
 

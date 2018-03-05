@@ -1,6 +1,7 @@
-#include "app//views/home.hpp"
+#include "views/home.hpp"
 
-namespace app { namespace views {
+namespace app::views
+{
 
   Home::Home()
   {
@@ -8,5 +9,5 @@ namespace app { namespace views {
     articles = a.getAll();
   }
 
-} }
+}
 

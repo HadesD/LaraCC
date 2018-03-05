@@ -1,4 +1,4 @@
-#include "../../app/views/RegisterForm.hpp"
+#include "views/RegisterForm.hpp"
 
 namespace app::views
 {

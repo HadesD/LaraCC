@@ -1,16 +1,17 @@
-#include "app/routes/Web.hpp"
+#include "routes/Web.hpp"
 
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 #include <cppcms/json.h>
 
-#include "app/http/controllers/HomeController.hpp"
-#include "app/http/controllers/ArticleController.hpp"
-#include "app/http/controllers/DashboardController.hpp"
-#include "app/http/controllers/auth/LoginController.hpp"
-#include "app/http/controllers/auth/SignUpController.hpp"
+#include "http/controllers/HomeController.hpp"
+#include "http/controllers/ArticleController.hpp"
+#include "http/controllers/DashboardController.hpp"
+#include "http/controllers/auth/LoginController.hpp"
+#include "http/controllers/auth/SignUpController.hpp"
 
-namespace app { namespace routes {
+namespace app::routes
+{
 
   Web::Web(cppcms::service &s) : app::core::ServiceProvider(s)
   {
@@ -97,5 +98,5 @@ namespace app { namespace routes {
     }
   }
 
-} }
+}
 

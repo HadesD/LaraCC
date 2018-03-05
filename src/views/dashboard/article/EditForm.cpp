@@ -1,4 +1,4 @@
-#include "app/views/dashboard/article/EditForm.hpp"
+#include "views/dashboard/article/EditForm.hpp"
 
 namespace app::views::dashboard::article
 {

@@ -1,11 +1,12 @@
-#include "app/core/View.hpp"
+#include "core/View.hpp"
 
 #include <cppcms/json.h>
 #include <fstream>
 
-#include "app/helpers/json.hpp"
+#include "helpers/json.hpp"
 
-namespace app { namespace core {
+namespace app::core
+{
 
   View::View()
   {
@@ -32,5 +33,5 @@ namespace app { namespace core {
     return "/media/" + fPath;
   }
 
-} }
+}
 

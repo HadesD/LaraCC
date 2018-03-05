@@ -6,20 +6,20 @@ default: dev
 
 # Dev
 dev:
-	cd Build && \
+	cd build && \
 	cmake .. -DCMAKE_BUILD_TYPE=Debug && \
 	make && \
-	cd Bin/Debug && \
+	cd ../bin/Debug && \
 	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
 	./WebApp -c config.json --service-port=9081
 
 build: prd npm.prd db
-	cd Build/Bin/Release && \
+	cd bin/Release && \
 	LD_LIBRARY_PATH=${LD_LIB_PATH} && \
 	./WebApp -c config.json --service-port=9081
 
 prd:
-	cd Build && \
+	cd build && \
 	cmake .. -DCMAKE_BUILD_TYPE=Release && \
 	make
 

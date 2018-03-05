@@ -1,4 +1,4 @@
-#include "app/http/controllers/api/dashboard/LoginController.hpp"
+#include "http/controllers/api/dashboard/LoginController.hpp"
 
 #include <cppcms/json.h>
 #include <cppcms/url_mapper.h>

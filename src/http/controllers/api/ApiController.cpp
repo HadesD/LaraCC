@@ -1,6 +1,7 @@
-#include "app/http/controllers/api/ApiController.hpp"
+#include "http/controllers/api/ApiController.hpp"
 
-namespace app { namespace http { namespace controllers { namespace api {
+namespace app::http::controllers::api
+{
 
   ApiController::ApiController(cppcms::service &s) : app::core::Controller(s)
   {
@@ -11,5 +12,5 @@ namespace app { namespace http { namespace controllers { namespace api {
   {
   }
 
-} } } }
+}
 

@@ -5,8 +5,8 @@
 # include <unistd.h>
 #endif
 
-#include "app/core/Kernel.hpp"
-#include "app/config/Constants.hpp"
+#include "core/Kernel.hpp"
+#include "config/Constants.hpp"
 
 int main(int argc, char *argv[])
 {

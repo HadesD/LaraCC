@@ -1,11 +1,12 @@
-#include "app/core/ServiceProvider.hpp"
+#include "core/ServiceProvider.hpp"
 
-namespace app { namespace core {
+namespace app::core
+{
 
   ServiceProvider::ServiceProvider(cppcms::service &s)
     : cppcms::application(s)
   {
   }
 
-} }
+}
 

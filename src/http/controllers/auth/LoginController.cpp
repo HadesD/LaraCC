@@ -1,12 +1,12 @@
-#include "app/http/controllers/auth/LoginController.hpp"
+#include "http/controllers/auth/LoginController.hpp"
 
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
-#include "app/views/login.hpp"
+#include "views/login.hpp"
 
-namespace app { namespace http { namespace controllers { namespace auth {
+namespace app::http::controllers::auth {
 
   LoginController::LoginController(cppcms::service &s) :
     app::core::Controller(s)
@@ -23,4 +23,5 @@ namespace app { namespace http { namespace controllers { namespace auth {
     render("login", v);
   }
 
-} } } }
+}
+

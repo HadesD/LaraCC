@@ -1,8 +1,9 @@
-#include "app/views/home.hpp"
+#include "views/home.hpp"
 
 #include <cppcms/json.h>
 
-namespace app { namespace views { namespace layouts {
+namespace app::views::layouts
+{
 
   Home::Home()
   {
@@ -27,5 +28,5 @@ namespace app { namespace views { namespace layouts {
     return this->app().settings();
   }
 
-} } }
+}
 

@@ -1,4 +1,4 @@
-#include "app/database/SQLiteModernCppConnector.hpp"
+#include "database/SQLiteModernCppConnector.hpp"
 
 namespace app::database
 {

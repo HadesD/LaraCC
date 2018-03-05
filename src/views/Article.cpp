@@ -1,6 +1,7 @@
-#include "app/views/article.hpp"
+#include "views/article.hpp"
 
-namespace app { namespace views {
+namespace app::views
+{
 
   Article::Article() : Home(), article()
   {
@@ -10,5 +11,5 @@ namespace app { namespace views {
   {
   }
 
-} }
+}
 

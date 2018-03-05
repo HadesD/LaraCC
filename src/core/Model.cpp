@@ -1,8 +1,9 @@
-#include "app/core/Model.hpp"
+#include "core/Model.hpp"
 
-namespace app { namespace core {
+namespace app::core
+{
 
   // decltype() Model::getConnector() const
 
-} }
+}
 

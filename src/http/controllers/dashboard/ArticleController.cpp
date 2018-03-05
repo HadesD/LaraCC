@@ -1,10 +1,10 @@
-#include "app/http/controllers/dashboard/ArticleController.hpp"
+#include "http/controllers/dashboard/ArticleController.hpp"
 
 #include <cppcms/http_response.h>
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/url_mapper.h>
 
-#include "app/views/dashboard/Article.hpp"
+#include "views/dashboard/Article.hpp"
 
 namespace app { namespace http { namespace controllers { namespace dashboard {
 

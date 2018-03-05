@@ -1,7 +1,7 @@
 #ifndef _APP_VIEWS_LAYOUTS_APP_HOME_H_
 #define _APP_VIEWS_LAYOUTS_APP_HOME_H_
 
-#include "app/views/layouts/master.hpp"
+#include "views/layouts/master.hpp"
 
 #include <cppcms/json.h>
 

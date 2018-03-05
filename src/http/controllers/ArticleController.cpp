@@ -1,10 +1,10 @@
-#include "app/http/controllers/ArticleController.hpp"
+#include "http/controllers/ArticleController.hpp"
 
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
-#include "app/views/article.hpp"
+#include "views/article.hpp"
 
 namespace app::http::controllers
 {

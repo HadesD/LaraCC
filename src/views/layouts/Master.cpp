@@ -1,10 +1,11 @@
-#include "app/views/layouts/master.hpp"
+#include "views/layouts/master.hpp"
 
-namespace app { namespace views { namespace layouts {
+namespace app::views::layouts
+{
 
   Master::Master()
   {
   }
 
-} } }
+}
 

@@ -1,11 +1,12 @@
-#include "app/http/controllers/HomeController.hpp"
+#include "http/controllers/HomeController.hpp"
 
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/url_mapper.h>
 
-#include "app/views/home.hpp"
+#include "views/home.hpp"
 
-namespace app { namespace http { namespace controllers {
+namespace app::http::controllers
+{
 
   HomeController::HomeController(cppcms::service &s) :
     app::core::Controller(s)
@@ -29,5 +30,5 @@ namespace app { namespace http { namespace controllers {
     __APP_TRY_CATCH_END__
   }
 
-} } }
+}
 

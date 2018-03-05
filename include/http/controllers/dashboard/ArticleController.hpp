@@ -1,9 +1,9 @@
 #ifndef __APP_HTTP_CONTROLLERS_DASHBOARD_ARTICLE_CONTROLLER_HPP__
 #define __APP_HTTP_CONTROLLERS_DASHBOARD_ARTICLE_CONTROLLER_HPP__
 
-#include "app/core/Controller.hpp"
+#include "core/Controller.hpp"
 
-namespace app { namespace http { namespace controllers { namespace dashboard {
+namespace app::http::controllers::dashboard {
 
   class ArticleController : public app::core::Controller
   {
@@ -16,7 +16,7 @@ namespace app { namespace http { namespace controllers { namespace dashboard {
       void createNew();
   };
 
-} } } }
+}
 
 #endif
 

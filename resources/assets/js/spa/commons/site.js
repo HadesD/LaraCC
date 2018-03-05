@@ -1,4 +1,4 @@
-import * as commons from '../../../../../app/config/Commons.json';
+import * as commons from '../../../../../include/config/Commons.json';
 
 export default {
   title: commons.site.title,

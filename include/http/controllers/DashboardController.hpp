@@ -1,9 +1,9 @@
 #ifndef __APP_HTTP_CONTROLLERS_DASHBOARD_CONTROLLER_HPP__
 #define __APP_HTTP_CONTROLLERS_DASHBOARD_CONTROLLER_HPP__
 
-#include "app/core/Controller.hpp"
+#include "core/Controller.hpp"
 
-namespace app { namespace http { namespace controllers {
+namespace app::http::controllers {
 
   class DashboardController : public app::core::Controller
   {
@@ -15,7 +15,7 @@ namespace app { namespace http { namespace controllers {
       void login();
   };
 
-} } }
+}
 
 #endif
 

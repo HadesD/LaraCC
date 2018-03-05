@@ -28,7 +28,7 @@ set(APP_REQUIRED_LIB
   )
 
 set(INCLUDE_DIR
-  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/include
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/include/booster
 

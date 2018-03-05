@@ -14,8 +14,8 @@ CWD = os.getcwd()
 DIST = 'db.sqlite3'
 
 DIST_DIRS = [
-  'Build/Bin/Release',
-  'Build/Bin/Debug'
+  'bin/Release',
+  'bin/Debug'
 ]
 
 sqlScripts = [

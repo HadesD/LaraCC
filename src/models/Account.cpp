@@ -1,4 +1,4 @@
-#include "../../app/models/Account.hpp"
+#include "models/Account.hpp"
 
 namespace app::models
 {

@@ -10,7 +10,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-const publicPath = 'Build/Bin/'
+const publicPath = 'bin/'
   + (isProduction ? 'Release' : 'Debug')
   + '/public';
 

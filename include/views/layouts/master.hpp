@@ -1,7 +1,7 @@
 #ifndef __APP_VIEWS_LAYOUTS_MASTER_HPP__
 #define __APP_VIEWS_LAYOUTS_MASTER_HPP__
 
-#include "app/core/View.hpp"
+#include "core/View.hpp"
 
 namespace app { namespace views { namespace layouts {
 

@@ -1,4 +1,4 @@
-#include "../../app/core/Controller.hpp"
+#include "core/Controller.hpp"
 
 namespace app::core
 {

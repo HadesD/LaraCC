@@ -1,13 +1,13 @@
-#include "app/http/controllers/DashboardController.hpp"
+#include "http/controllers/DashboardController.hpp"
 
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/url_mapper.h>
 
-#include "app/views/dashboard.hpp"
-#include "app/views/dashboard/Login.hpp"
-#include "app/views/dashboard/Index.hpp"
+#include "views/dashboard.hpp"
+#include "views/dashboard/Login.hpp"
+#include "views/dashboard/Index.hpp"
 
-#include "app/http/controllers/dashboard/ArticleController.hpp"
+#include "http/controllers/dashboard/ArticleController.hpp"
 
 namespace app { namespace http { namespace controllers {
 

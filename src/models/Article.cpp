@@ -1,4 +1,4 @@
-#include "app/models/Article.hpp"
+#include "models/Article.hpp"
 
 #include <html.h>
 #include <document.h>

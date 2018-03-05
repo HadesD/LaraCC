@@ -1,6 +1,7 @@
-#include "app/views/register.hpp"
+#include "views/register.hpp"
 
-namespace app { namespace views {
+namespace app::views
+{
 
-} }
+}
 

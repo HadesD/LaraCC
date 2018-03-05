@@ -1,7 +1,7 @@
 #ifndef __APP_VIEWS_REGISTER_HPP__
 #define __APP_VIEWS_REGISTER_HPP__
 
-#include "app/views/layouts/home.hpp"
+#include "views/layouts/home.hpp"
 
 #include "RegisterForm.hpp"
 

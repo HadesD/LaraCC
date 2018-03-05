@@ -1,11 +1,11 @@
-#include "app/core/Kernel.hpp"
+#include "core/Kernel.hpp"
 
 #include <iostream>
 
 #include <cppcms/http_request.h>
 
-#include "app/routes/Web.hpp"
-#include "app/routes/Api.hpp"
+#include "routes/Web.hpp"
+#include "routes/Api.hpp"
 
 namespace app::core
 {
