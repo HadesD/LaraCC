@@ -3,13 +3,14 @@
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/url_mapper.h>
 
-#include "views/dashboard.hpp"
+#include "views/Dashboard.hpp"
 #include "views/dashboard/Login.hpp"
 #include "views/dashboard/Index.hpp"
 
 #include "http/controllers/dashboard/ArticleController.hpp"
 
-namespace app { namespace http { namespace controllers {
+namespace app::http::controllers
+{
 
   DashboardController::DashboardController(cppcms::service &s) : Controller(s)
   {
@@ -50,5 +51,5 @@ namespace app { namespace http { namespace controllers {
     this->render("dashboard_login", v);
   }
 
-} } }
+}
 

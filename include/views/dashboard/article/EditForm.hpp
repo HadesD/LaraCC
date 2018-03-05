@@ -5,6 +5,7 @@
 
 namespace app::views::dashboard::article
 {
+
   class EditForm : public cppcms::form
   {
     public:
@@ -15,6 +16,7 @@ namespace app::views::dashboard::article
       cppcms::widgets::text slug;
       cppcms::widgets::textarea content;
   };
+
 }
 
 #endif

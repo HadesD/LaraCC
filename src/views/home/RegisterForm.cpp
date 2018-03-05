@@ -1,6 +1,6 @@
-#include "views/RegisterForm.hpp"
+#include "views/home/RegisterForm.hpp"
 
-namespace app::views
+namespace app::views::home
 {
 
   RegisterForm::RegisterForm()

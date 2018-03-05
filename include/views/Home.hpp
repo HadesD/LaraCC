@@ -1,7 +1,7 @@
 #ifndef __APP_VIEWS_HOME_HPP__
 #define __APP_VIEWS_HOME_HPP__
 
-#include "views/layouts/home.hpp"
+#include "layouts/Home.hpp"
 
 #include "models/Article.hpp"
 

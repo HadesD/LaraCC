@@ -4,6 +4,8 @@
 #include <cppcms/view.h>
 #include <string>
 
+#include "../config/Constants.hpp"
+
 #define _(X) ::cppcms::locale::translate(X)
 
 namespace app::core

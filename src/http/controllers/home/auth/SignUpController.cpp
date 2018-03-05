@@ -1,12 +1,12 @@
-#include "http/controllers/auth/SignUpController.hpp"
+#include "http/controllers/home/auth/SignUpController.hpp"
 
 #include <cppcms/url_mapper.h>
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/http_response.h>
 
-#include "views/register.hpp"
+#include "views/home/Register.hpp"
 
-namespace app::http::controllers::auth
+namespace app::http::controllers::home::auth
 {
 
   SignUpController::SignUpController(cppcms::service &s) :
@@ -22,7 +22,7 @@ namespace app::http::controllers::auth
 
   void SignUpController::index()
   {
-    app::views::Register v;
+    app::views::home::Register v;
     v.title = _("Register new account");
 
     render("sign_up", v);

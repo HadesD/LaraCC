@@ -1,9 +1,10 @@
 #ifndef __APP_VIEWS_LAYOUTS_MASTER_HPP__
 #define __APP_VIEWS_LAYOUTS_MASTER_HPP__
 
-#include "core/View.hpp"
+#include "../../core/View.hpp"
 
-namespace app { namespace views { namespace layouts {
+namespace app::views::layouts
+{
 
   class Master : public app::core::View
   {
@@ -14,7 +15,7 @@ namespace app { namespace views { namespace layouts {
       std::string title;
   };
 
-} } }
+}
 
 #endif
 

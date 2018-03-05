@@ -1,6 +1,6 @@
-<% c++ #include "views/article.hpp" %>
+<% c++ #include "views/home/Article.hpp" %>
 <% skin bootstrap_skin %>
-<% view article_read uses app::views::Article extends layouts_home %>
+<% view article_read uses app::views::home::Article extends layouts_home %>
 <% template layouts_home_content() %>
 <div class="article-wrapper u-cf single">
   <a class="bubble" href="/articles/<%= article.getSlug() %>">

@@ -1,15 +1,16 @@
 #ifndef __APP_VIEWS_DASHBOARD_LOGIN_HPP__
 #define __APP_VIEWS_DASHBOARD_LOGIN_HPP__
 
-#include "../dashboard.hpp"
+#include "../Dashboard.hpp"
 
-namespace app { namespace views { namespace dashboard {
+namespace app::views::dashboard
+{
 
   class Login : public app::views::Dashboard
   {
   };
 
-} } }
+}
 
 #endif
 

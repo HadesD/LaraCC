@@ -1,4 +1,4 @@
-<% c++ #include "views/home.hpp" %>
+<% c++ #include "views/Home.hpp" %>
 <% skin bootstrap_skin %>
 <% view home uses app::views::Home extends layouts_home %>
 <% template layouts_home_content() %>

@@ -1,13 +1,14 @@
-#ifndef _APP_VIEWS_LAYOUTS_APP_HOME_H_
-#define _APP_VIEWS_LAYOUTS_APP_HOME_H_
+#ifndef __APP_VIEWS_LAYOUTS_HOME_HPP__
+#define __APP_VIEWS_LAYOUTS_HOME_HPP__
 
-#include "views/layouts/master.hpp"
+#include "Master.hpp"
 
 #include <cppcms/json.h>
 
 #include <ctime>
 
-namespace app { namespace views { namespace layouts {
+namespace app::views::layouts
+{
 
   class Home : public app::views::layouts::Master
   {
@@ -22,7 +23,7 @@ namespace app { namespace views { namespace layouts {
       std::string description;
   };
 
-} } }
+}
 
 #endif
 

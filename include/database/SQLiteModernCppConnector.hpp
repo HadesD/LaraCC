@@ -6,7 +6,8 @@
 
 #include <sqlite_modern_cpp.h>
 
-namespace app::database {
+namespace app::database
+{
 
   class SQLiteModernCppConnector :
     public app::core::DatabaseConnector<SQLiteModernCppConnector>

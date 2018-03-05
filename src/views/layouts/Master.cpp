@@ -1,4 +1,4 @@
-#include "views/layouts/master.hpp"
+#include "views/layouts/Master.hpp"
 
 namespace app::views::layouts
 {

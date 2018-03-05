@@ -6,7 +6,8 @@
 
 #include "views/dashboard/Article.hpp"
 
-namespace app { namespace http { namespace controllers { namespace dashboard {
+namespace app::http::controllers::dashboard
+{
 
   ArticleController::ArticleController(cppcms::service& s) :
     Controller(s)
@@ -59,5 +60,5 @@ namespace app { namespace http { namespace controllers { namespace dashboard {
     __APP_TRY_CATCH_END__
   }
 
-} } } }
+}
 

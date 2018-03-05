@@ -1,4 +1,4 @@
-#include "views/home.hpp"
+#include "views/Home.hpp"
 
 namespace app::views
 {

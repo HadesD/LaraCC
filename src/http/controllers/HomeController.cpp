@@ -3,7 +3,7 @@
 #include <cppcms/url_dispatcher.h>
 #include <cppcms/url_mapper.h>
 
-#include "views/home.hpp"
+#include "views/Home.hpp"
 
 namespace app::http::controllers
 {

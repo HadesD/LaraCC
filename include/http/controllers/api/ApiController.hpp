@@ -5,7 +5,8 @@
 
 #include <cppcms/json.h>
 
-namespace app { namespace http { namespace controllers { namespace api {
+namespace app::http::controllers::api
+{
 
   class ApiController : public app::core::Controller
   {
@@ -17,7 +18,7 @@ namespace app { namespace http { namespace controllers { namespace api {
       cppcms::json::value m_response;
   };
 
-} } } }
+}
 
 #endif
 

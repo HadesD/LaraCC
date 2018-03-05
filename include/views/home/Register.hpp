@@ -1,11 +1,11 @@
-#ifndef __APP_VIEWS_REGISTER_HPP__
-#define __APP_VIEWS_REGISTER_HPP__
+#ifndef __APP_VIEWS_HOME_REGISTER_HPP__
+#define __APP_VIEWS_HOME_REGISTER_HPP__
 
-#include "views/layouts/home.hpp"
+#include "../layouts/Home.hpp"
 
 #include "RegisterForm.hpp"
 
-namespace app::views
+namespace app::views::home
 {
 
   class Register : public app::views::layouts::Home

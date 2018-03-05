@@ -1,6 +1,6 @@
-#include "views/article.hpp"
+#include "views/home/Article.hpp"
 
-namespace app::views
+namespace app::views::home
 {
 
   Article::Article() : Home(), article()

@@ -1,9 +1,10 @@
 #ifndef __APP_HTTP_CONTROLLERS_ARTICLE_CONTROLLER_HPP_
 #define __APP_HTTP_CONTROLLERS_ARTICLE_CONTROLLER_HPP_
 
-#include "../../core/Controller.hpp"
+#include "../../../core/Controller.hpp"
 
-namespace app { namespace http { namespace controllers {
+namespace app::http::controllers::home
+{
 
   class ArticleController : public app::core::Controller
   {
@@ -15,7 +16,7 @@ namespace app { namespace http { namespace controllers {
       void read(const std::string& urlPath);
   };
 
-} } }
+}
 
 #endif
 

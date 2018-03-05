@@ -1,11 +1,12 @@
-#ifndef __APP_VIEWS_ARTICLE_HPP__
-#define __APP_VIEWS_ARTICLE_HPP__
+#ifndef __APP_VIEWS_HOME_ARTICLE_HPP__
+#define __APP_VIEWS_HOME_ARTICLE_HPP__
 
-#include "views/layouts/home.hpp"
+#include "../layouts/Home.hpp"
 
-#include "models/Article.hpp"
+#include "../../models/Article.hpp"
 
-namespace app { namespace views {
+namespace app::views::home
+{
 
   class Article : public app::views::layouts::Home
   {
@@ -17,7 +18,7 @@ namespace app { namespace views {
       app::models::Article article;
   };
 
-} }
+}
 
 #endif
 

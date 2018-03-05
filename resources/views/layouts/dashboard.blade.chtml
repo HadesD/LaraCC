@@ -1,4 +1,4 @@
-<% c++ #include "views/layouts/dashboard.hpp" %>
+<% c++ #include "views/layouts/Dashboard.hpp" %>
 <% skin bootstrap_skin %>
 <% view layouts_dashboard uses app::views::layouts::Dashboard extends layouts_master %>
 <% template dashboard_js() %><% end %>

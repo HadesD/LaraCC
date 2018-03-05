@@ -5,10 +5,10 @@
 #include <cppcms/json.h>
 
 #include "http/controllers/HomeController.hpp"
-#include "http/controllers/ArticleController.hpp"
+#include "http/controllers/home/ArticleController.hpp"
 #include "http/controllers/DashboardController.hpp"
-#include "http/controllers/auth/LoginController.hpp"
-#include "http/controllers/auth/SignUpController.hpp"
+#include "http/controllers/home/auth/LoginController.hpp"
+#include "http/controllers/home/auth/SignUpController.hpp"
 
 namespace app::routes
 {
@@ -28,7 +28,7 @@ namespace app::routes
 
       // Article
       attach(
-        new app::http::controllers::ArticleController(s),
+        new app::http::controllers::home::ArticleController(s),
         "articles",
         "{1}",
         "/articles(/?.*)",
@@ -72,7 +72,7 @@ namespace app::routes
         );
 
       attach(
-        new app::http::controllers::auth::LoginController(s),
+        new app::http::controllers::home::auth::LoginController(s),
         "login",
         "{1}",
         "/login",
@@ -80,7 +80,7 @@ namespace app::routes
         );
 
       attach(
-        new app::http::controllers::auth::SignUpController(s),
+        new app::http::controllers::home::auth::SignUpController(s),
         "sign_up",
         "{1}",
         "/signup",

@@ -1,11 +1,11 @@
-#ifndef __APP_VIEWS_REGISTER_FORM_HPP__
-#define __APP_VIEWS_REGISTER_FORM_HPP__
+#ifndef __APP_VIEWS_HOME_REGISTER_FORM_HPP__
+#define __APP_VIEWS_HOME_REGISTER_FORM_HPP__
 
 #include <cppcms/form.h>
 
 #define _(X) ::cppcms::locale::translate(X)
 
-namespace app::views
+namespace app::views::home
 {
 
   class RegisterForm : public cppcms::form

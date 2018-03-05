@@ -1,6 +1,6 @@
-<% c++ #include "views/login.hpp" %>
+<% c++ #include "views/home/Login.hpp" %>
 <% skin bootstrap_skin %>
-<% view login uses app::views::Login extends layouts_home %>
+<% view login uses app::views::home::Login extends layouts_home %>
 <% template layouts_home_content() %>
 
 <% end template %>

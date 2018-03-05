@@ -1,4 +1,4 @@
-<% c++ #include "views/layouts/master.hpp" %>
+<% c++ #include "views/layouts/Master.hpp" %>
 <% skin bootstrap_skin %>
 <% view layouts_master uses app::views::layouts::Master %>
 <% template css() %><% end %>

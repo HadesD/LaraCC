@@ -1,5 +1,5 @@
-#ifndef __APP_DATABASE_CONNECTOR_HPP__
-#define __APP_DATABASE_CONNECTOR_HPP__
+#ifndef __APP_CORE_DATABASE_CONNECTOR_HPP__
+#define __APP_CORE_DATABASE_CONNECTOR_HPP__
 
 #include "../config/Constants.hpp"
 

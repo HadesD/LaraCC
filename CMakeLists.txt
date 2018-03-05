@@ -93,17 +93,17 @@ set(VIEWS_TMPL
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/home.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/layouts/dashboard.blade.chtml
 
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/login.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/sign_up.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home/login.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home/sign_up.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home/article/index.blade.chtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/home/article/read.blade.chtml
 
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/login.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/article.blade.chtml
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/dashboard/index.blade.chtml
 
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/index.blade.chtml
-  ${CMAKE_CURRENT_SOURCE_DIR}/resources/views/article/read.blade.chtml
 )
 
 # file(GLOB_RECURSE tmpl_files resources/views/*.blade.chtml)

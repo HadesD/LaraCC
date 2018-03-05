@@ -3,7 +3,8 @@
 
 #include "ApiController.hpp"
 
-namespace app { namespace http { namespace controllers { namespace api {
+namespace app::http::controllers::api
+{
 
   class HomeController : public ApiController
   {
@@ -18,7 +19,7 @@ namespace app { namespace http { namespace controllers { namespace api {
       // virtual void del(const std::string& urlPath) override{};
   };
 
-} } } }
+}
 
 #endif
 

@@ -1,4 +1,4 @@
-#include "views/home.hpp"
+#include "views/layouts/Home.hpp"
 
 #include <cppcms/json.h>
 

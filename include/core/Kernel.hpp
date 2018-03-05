@@ -3,7 +3,8 @@
 
 #include <cppcms/application.h>
 
-namespace app { namespace core {
+namespace app::core
+{
 
   class Kernel : public cppcms::application
   {
@@ -13,7 +14,7 @@ namespace app { namespace core {
       virtual void main(const std::string urlPath) override;
   };
 
-} }
+}
 
 #endif
 

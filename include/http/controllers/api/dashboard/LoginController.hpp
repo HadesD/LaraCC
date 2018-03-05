@@ -3,7 +3,8 @@
 
 #include "../ApiController.hpp"
 
-namespace app { namespace http { namespace controllers { namespace api { namespace dashboard {
+namespace app::http::controllers::api::dashboard
+{
 
   class Login : public app::http::controllers::api::ApiController
   {
@@ -14,7 +15,7 @@ namespace app { namespace http { namespace controllers { namespace api { namespa
       void index();
   };
 
-} } } } }
+}
 
 #endif
 
