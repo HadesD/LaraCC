@@ -1,5 +1,5 @@
-#ifndef _APP_CORE_MODEL_HPP_
-#define _APP_CORE_MODEL_HPP_
+#ifndef __APP_CORE_MODEL_HPP__
+#define __APP_CORE_MODEL_HPP__
 
 #include "../config/Constants.hpp"
 

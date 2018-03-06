@@ -1,11 +1,11 @@
-#ifndef __APP_HTTP_CONTROLLERS_API_API_CONTROLLER__
-#define __APP_HTTP_CONTROLLERS_API_API_CONTROLLER__
+#ifndef __APP_HTTP_CONTROLLERS_API_CONTROLLER__
+#define __APP_HTTP_CONTROLLERS_API_CONTROLLER__
 
-#include "../../../core/Controller.hpp"
+#include "../../core/Controller.hpp"
 
 #include <cppcms/json.h>
 
-namespace app::http::controllers::api
+namespace app::http::controllers
 {
 
   class ApiController : public app::core::Controller

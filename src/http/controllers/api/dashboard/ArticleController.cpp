@@ -12,7 +12,7 @@ namespace app::http::controllers::api::dashboard
 {
 
   ArticleController::ArticleController(cppcms::service& s) :
-    app::http::controllers::api::ApiController(s)
+    app::http::controllers::ApiController(s)
   {
     this->dispatcher().map("GET", "/?", &ArticleController::index, this);
     this->dispatcher().map("GET", "/(\\d)", &ArticleController::read, this, 1);

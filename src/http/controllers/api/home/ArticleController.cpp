@@ -1,4 +1,4 @@
-#include "http/controllers/api/ArticleController.hpp"
+#include "http/controllers/api/home/ArticleController.hpp"
 
 #include <cppcms/json.h>
 #include <cppcms/url_dispatcher.h>
@@ -7,10 +7,11 @@
 
 #include "models/Article.hpp"
 
-namespace app::http::controllers::api
+namespace app::http::controllers::api::home
 {
 
-  ArticleController::ArticleController(cppcms::service &s) : ApiController(s)
+  ArticleController::ArticleController(cppcms::service &s) :
+    app::http::controllers::ApiController(s)
   {
     this->dispatcher().map("GET", "/?", &ArticleController::index, this);
     this->dispatcher().map("GET", "/(.*)", &ArticleController::read, this, 1);
@@ -18,68 +19,73 @@ namespace app::http::controllers::api
 
   void ArticleController::index()
   {
+    cppcms::json::value res;
+
+    auto &error = res["error"];
+    error = true;
+
     __APP_TRY_CATCH_BEGIN__
+
+    try
     {
-      cppcms::json::value res;
-      try
+      app::models::Article article;
+
+      auto articles = article.getAll();
+
+      for (int i = 0; i < articles.size(); i++)
       {
-        app::models::Article article;
+        auto &article = articles.at(i);
 
-        auto articles = article.getAll();
+        auto &r = res[i];
 
-        for (int i = 0; i < articles.size(); i++)
+        r["id"] = article.getId();
+        r["permalink"] = "/articles/" + article.getSlug();
+        r["title"] = article.getTitle();
+        r["type"] = article.getType();
+        r["featured"] = article.getFeatured();
+        auto content = article.getContent();
+        std::size_t _maxContentChar = 150;
+        if (content.size() > _maxContentChar)
         {
-          auto &article = articles.at(i);
+          content.resize(_maxContentChar);
+          content += "&lsqb;...&rsqb;";
+        }
+        r["content"] = content;
 
-          auto &r = res[i];
+        // TypeText
+        auto &rTypeText = r["type_text"];
+        auto typeText = article.getTypeText();
+        rTypeText["name"] = typeText.name;
+        rTypeText["icon_class_name"] = typeText.iconClassName;
+        rTypeText["featured_class_name"] = typeText.featuredClassName;
+        rTypeText["icon_class_name"] = typeText.iconClassName;
 
-          r["id"] = article.getId();
-          r["permalink"] = "/articles/" + article.getSlug();
-          r["title"] = article.getTitle();
-          r["type"] = article.getType();
-          r["featured"] = article.getFeatured();
-          auto content = article.getContent();
-          std::size_t _maxContentChar = 150;
-          if (content.size() > _maxContentChar)
-          {
-            content.resize(_maxContentChar);
-            content += "&lsqb;...&rsqb;";
-          }
-          r["content"] = content;
+        // Author
+        auto &rAuthor = r["author"];
+        rAuthor["id"] = article.getAuthorId();
+        rAuthor["url"] = "/";
+        rAuthor["name"] = article.getAuthorId();
 
-          // TypeText
-          auto &rTypeText = r["type_text"];
-          auto typeText = article.getTypeText();
-          rTypeText["name"] = typeText.name;
-          rTypeText["icon_class_name"] = typeText.iconClassName;
-          rTypeText["featured_class_name"] = typeText.featuredClassName;
-          rTypeText["icon_class_name"] = typeText.iconClassName;
-
-          // Author
-          auto &rAuthor = r["author"];
-          rAuthor["id"] = article.getAuthorId();
-          rAuthor["url"] = "/";
-          rAuthor["name"] = article.getAuthorId();
-
-          // Tags
-          for (int t = 0; t < 0; t++)
-          {
-            auto &rTag = r["tags"][t];
-            rTag["id"] = "/";
-            rTag["url"] = "/";
-            rTag["name"] = "none";
-          }
+        // Tags
+        for (int t = 0; t < 0; t++)
+        {
+          auto &rTag = r["tags"][t];
+          rTag["id"] = "/";
+          rTag["url"] = "/";
+          rTag["name"] = "none";
         }
       }
-      catch (const app::database::ConnectorException&)
-      {
-        this->response().status(cppcms::http::response::not_found);
-        res["error"] = "error";
-      }
 
-      this->response().out() << res;
+      error = false;
+    }
+    catch (const app::database::ConnectorException& e)
+    {
+      this->response().status(cppcms::http::response::not_found);
+      error = e.what();
     }
     __APP_TRY_CATCH_END__
+
+    this->response().out() << res;
   }
 
   void ArticleController::read(const std::string& urlPath)

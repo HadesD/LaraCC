@@ -1,5 +1,5 @@
-#ifndef _APP_CORE_CONTROLLER_HPP_
-#define _APP_CORE_CONTROLLER_HPP_
+#ifndef __APP_CORE_CONTROLLER_HPP__
+#define __APP_CORE_CONTROLLER_HPP__
 
 #include "ServiceProvider.hpp"
 

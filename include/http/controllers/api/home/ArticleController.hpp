@@ -1,12 +1,12 @@
-#ifndef __APP_HTTP_CONTROLLERS_API_ARTICLE_
-#define __APP_HTTP_CONTROLLERS_API_ARTICLE_
+#ifndef __APP_HTTP_CONTROLLERS_API_HOME_ARTICLE__
+#define __APP_HTTP_CONTROLLERS_API_HOME_ARTICLE__
 
-#include "ApiController.hpp"
+#include "../../ApiController.hpp"
 
-namespace app::http::controllers::api
+namespace app::http::controllers::api::home
 {
 
-  class ArticleController : public ApiController
+  class ArticleController : public app::http::controllers::ApiController
   {
     public:
       ArticleController(cppcms::service &s);

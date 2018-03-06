@@ -9,7 +9,7 @@ namespace app::http::controllers::api::dashboard
 {
 
   Login::Login(cppcms::service &s) :
-    app::http::controllers::api::ApiController(s)
+    app::http::controllers::ApiController(s)
   {
     this->dispatcher().assign(".*", &Login::index, this);
   }

@@ -4,7 +4,7 @@
 #include <cppcms/http_response.h>
 #include <cppcms/json.h>
 
-#include "http/controllers/api/ArticleController.hpp"
+#include "http/controllers/api/home/ArticleController.hpp"
 #include "http/controllers/api/dashboard/LoginController.hpp"
 #include "http/controllers/api/dashboard/ArticleController.hpp"
 
@@ -33,7 +33,7 @@ namespace app::routes
         );
 
       attach(
-        new app::http::controllers::api::ArticleController(s),
+        new app::http::controllers::api::home::ArticleController(s),
         "articles",
         "{1}",
         "/articles(/?.*)",
