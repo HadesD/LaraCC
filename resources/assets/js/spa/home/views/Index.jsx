@@ -4,7 +4,7 @@ import {
 } from '@hyperapp/router';
 
 import utils from '../../commons/utils.js';
-import snarkdown from 'snarkdown';
+import ParseMarkdownJs from 'parse-markdown-js';
 
 let isCalledFetchData = false;
 
@@ -74,7 +74,7 @@ export default (state, actions) => ({match}) => {
                   oncreate={
                     utils.dangerouslySetInnerHTML(
                       !articleInfo.content
-                      || snarkdown(articleInfo.content)
+                      || ParseMarkdownJs(articleInfo.content)
                     )
                   }
                   onupdate={(e) => {

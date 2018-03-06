@@ -62,7 +62,6 @@ namespace app::database
 
     public:
       virtual bool connect() override;
-      // virtual bool exec<bool>(const std::string& #<{(| statement |)}>#) override;
       virtual bool beginTransaction() override;
       virtual bool commit() override;
       virtual bool rollBack() override;

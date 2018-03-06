@@ -39,7 +39,12 @@ namespace app::http::controllers::api
           r["type"] = article.getType();
           r["featured"] = article.getFeatured();
           auto content = article.getContent();
-          content.resize(150);
+          std::size_t _maxContentChar = 150;
+          if (content.size() > _maxContentChar)
+          {
+            content.resize(_maxContentChar);
+            content += "&lsqb;...&rsqb;";
+          }
           r["content"] = content;
 
           // TypeText
