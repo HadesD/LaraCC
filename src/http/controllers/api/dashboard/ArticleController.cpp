@@ -25,63 +25,62 @@ namespace app::http::controllers::api::dashboard
   void ArticleController::index()
   {
     cppcms::json::value res;
-    auto &error = res["error"];
-    error = false;
 
-    __APP_TRY_CATCH_BEGIN__
+    try
     {
+      app::models::Article article;
 
-      try
+      auto articles = article.getAll();
+
+      for (int i = 0; i < articles.size(); i++)
       {
-        app::models::Article article;
+        auto &article = articles.at(i);
 
-        auto articles = article.getAll();
+        auto &r = res[i];
 
-        for (int i = 0; i < articles.size(); i++)
+        r["id"] = article.getId();
+        r["permalink"] = "/articles/" + article.getSlug();
+        r["title"] = article.getTitle();
+        r["type"] = article.getType();
+        r["featured"] = article.getFeatured();
+        r["content"] = article.getContent();
+
+        // TypeText
+        auto &rTypeText = r["type_text"];
+        auto typeText = article.getTypeText();
+        rTypeText["name"] = typeText.name;
+        rTypeText["icon_class_name"] = typeText.iconClassName;
+        rTypeText["featured_class_name"] = typeText.featuredClassName;
+        rTypeText["icon_class_name"] = typeText.iconClassName;
+
+        // Author
+        auto &rAuthor = r["author"];
+        rAuthor["id"] = article.getAuthorId();
+        rAuthor["url"] = "/";
+        rAuthor["name"] = article.getAuthorId();
+
+        // Tags
+        for (int t = 0; t < 0; t++)
         {
-          auto &article = articles.at(i);
-
-          auto &r = res[i];
-
-          r["id"] = article.getId();
-          r["permalink"] = "/articles/" + article.getSlug();
-          r["title"] = article.getTitle();
-          r["type"] = article.getType();
-          r["featured"] = article.getFeatured();
-          r["content"] = article.getContent();
-
-          // TypeText
-          auto &rTypeText = r["type_text"];
-          auto typeText = article.getTypeText();
-          rTypeText["name"] = typeText.name;
-          rTypeText["icon_class_name"] = typeText.iconClassName;
-          rTypeText["featured_class_name"] = typeText.featuredClassName;
-          rTypeText["icon_class_name"] = typeText.iconClassName;
-
-          // Author
-          auto &rAuthor = r["author"];
-          rAuthor["id"] = article.getAuthorId();
-          rAuthor["url"] = "/";
-          rAuthor["name"] = article.getAuthorId();
-
-          // Tags
-          for (int t = 0; t < 0; t++)
-          {
-            auto &rTag = r["tags"][t];
-            rTag["id"] = "/";
-            rTag["url"] = "/";
-            rTag["name"] = "none";
-          }
+          auto &rTag = r["tags"][t];
+          rTag["id"] = "/";
+          rTag["url"] = "/";
+          rTag["name"] = "none";
         }
       }
-      catch (const app::database::ConnectorException&)
-      {
-        this->response().status(cppcms::http::response::not_found);
-        error = "error";
-      }
-
     }
-    __APP_TRY_CATCH_END__
+    catch (const app::database::ConnectorException& e)
+    {
+      this->response().status(cppcms::http::response::internal_server_error);
+      res.null();
+      res["error"] = e.what();
+    }
+
+    if (res.is_null())
+    {
+      this->response().status(cppcms::http::response::not_found);
+      res["error"] = true;
+    }
 
     this->response().out() << res;
   }
@@ -90,58 +89,56 @@ namespace app::http::controllers::api::dashboard
   {
     cppcms::json::value res;
 
-    auto &error = res["error"];
-    error = false;
-
-    __APP_TRY_CATCH_BEGIN__
+    try
     {
-      try
+      app::models::Article article(id);
+
       {
-        app::models::Article article(id);
+        auto &r = res;
 
+        r["id"] = article.getId();
+        r["slug"] = article.getSlug();
+        r["permalink"] = "/articles/" + r["slug"].str();
+        r["title"] = article.getTitle();
+        r["type"] = article.getType();
+        r["featured"] = article.getFeatured();
+        r["content"] = article.getContent();
+
+        // TypeText
+        auto &rTypeText = r["type_text"];
+        auto typeText = article.getTypeText();
+        rTypeText["name"] = typeText.name;
+        rTypeText["icon_class_name"] = typeText.iconClassName;
+        rTypeText["featured_class_name"] = typeText.featuredClassName;
+        rTypeText["icon_class_name"] = typeText.iconClassName;
+
+        // Author
+        auto &rAuthor = r["author"];
+        rAuthor["id"] = article.getAuthorId();
+        rAuthor["url"] = "/";
+        rAuthor["name"] = article.getAuthorId();
+
+        // Tags
+        for (int t = 0; t < 0; t++)
         {
-          auto &r = res;
-
-          r["id"] = article.getId();
-          r["slug"] = article.getSlug();
-          r["permalink"] = "/articles/" + r["slug"].str();
-          r["title"] = article.getTitle();
-          r["type"] = article.getType();
-          r["featured"] = article.getFeatured();
-          r["content"] = article.getContent();
-
-          // TypeText
-          auto &rTypeText = r["type_text"];
-          auto typeText = article.getTypeText();
-          rTypeText["name"] = typeText.name;
-          rTypeText["icon_class_name"] = typeText.iconClassName;
-          rTypeText["featured_class_name"] = typeText.featuredClassName;
-          rTypeText["icon_class_name"] = typeText.iconClassName;
-
-          // Author
-          auto &rAuthor = r["author"];
-          rAuthor["id"] = article.getAuthorId();
-          rAuthor["url"] = "/";
-          rAuthor["name"] = article.getAuthorId();
-
-          // Tags
-          for (int t = 0; t < 0; t++)
-          {
-            auto &rTag = r["tags"][t];
-            rTag["id"] = "/";
-            rTag["url"] = "/";
-            rTag["name"] = "none";
-          }
+          auto &rTag = r["tags"][t];
+          rTag["id"] = "/";
+          rTag["url"] = "/";
+          rTag["name"] = "none";
         }
       }
-      catch (const app::database::ConnectorException& e)
-      {
-        this->response().status(cppcms::http::response::not_found);
-        error = e.what();
-      }
-
     }
-    __APP_TRY_CATCH_END__
+    catch (const app::database::ConnectorException& e)
+    {
+      this->response().status(cppcms::http::response::internal_server_error);
+      res["error"] = e.what();
+    }
+
+    if (res.is_null())
+    {
+      this->response().status(cppcms::http::response::not_found);
+      res["error"] = true;
+    }
 
     this->response().out() << res;
   }
@@ -150,69 +147,67 @@ namespace app::http::controllers::api::dashboard
   {
     cppcms::json::value res;
     auto &error = res["error"];
-    error = false;
 
-    __APP_TRY_CATCH_BEGIN__
+    try
     {
-      try
+      app::models::Article article;
+      auto c = new views::dashboard::article::EditForm();
+      c->load(this->context());
+
+      if (c->validate())
       {
-        app::models::Article article;
-        auto c = new views::dashboard::article::EditForm();
-        c->load(this->context());
+        // std::cout << c->title.value() << std::endl;
+        // std::cout << c->content.value() << std::endl;
+        // std::cout << c->slug.value() << std::endl;
 
-        if (c->validate())
-        {
-          // std::cout << c->title.value() << std::endl;
-          // std::cout << c->content.value() << std::endl;
-          // std::cout << c->slug.value() << std::endl;
+        // article.setTitle(c->title.value());
+        // article.setSlug(c->slug.value());
+        // article.setContent(c->content.value());
 
-          // article.setTitle(c->title.value());
-          // article.setSlug(c->slug.value());
-          // article.setContent(c->content.value());
+        std::string select_statement =
+        "SELECT MAX("
+        "id"
+        ") FROM "
+        + app::models::Article::getTableName()
+        ;
+        int id;
+        article.getConnector()->exec()
+        << select_statement
+        >> id
+        ;
+        id++;
 
-          std::string select_statement =
-          "SELECT MAX("
-          "id"
-          ") FROM "
-          + app::models::Article::getTableName()
-          ;
-          int id;
-          article.getConnector()->exec()
-          << select_statement
-          >> id
-          ;
-          id++;
-
-          std::string statement =
-          "INSERT INTO "
-          + app::models::Article::getTableName()
-          + "(id, type, slug, title, content)"
-          + " VALUES(?,?,?,?,?)"
-          + ";"
-          ;
-          article.getConnector()->beginTransaction();
-          article.getConnector()->exec()
-          << statement
-          << id
-          << 0
-          << c->slug.value()
-          << c->title.value()
-          << c->content.value()
-          ;
-          article.getConnector()->commit();
-
-          error = true;
-        }
-        delete c;
+        std::string statement =
+        "INSERT INTO "
+        + app::models::Article::getTableName()
+        + "(id, type, slug, title, content)"
+        + " VALUES(?,?,?,?,?)"
+        + ";"
+        ;
+        article.getConnector()->beginTransaction();
+        article.getConnector()->exec()
+        << statement
+        << id
+        << 0
+        << c->slug.value()
+        << c->title.value()
+        << c->content.value()
+        ;
+        article.getConnector()->commit();
       }
-      catch (const app::database::ConnectorException& e)
-      {
-        this->response().status(cppcms::http::response::not_found);
-        res["error"] = e.what();
-      }
-
+      delete c;
     }
-    __APP_TRY_CATCH_END__
+    catch (const app::database::ConnectorException& e)
+    {
+      this->response().status(cppcms::http::response::internal_server_error);
+      res.null();
+      error = e.what();
+    }
+
+    if (res.is_null())
+    {
+      error = false;
+    }
 
     this->response().out() << res;
   }
@@ -221,60 +216,57 @@ namespace app::http::controllers::api::dashboard
   {
     cppcms::json::value res;
     auto &error = res["error"];
-    error = true;
 
-    __APP_TRY_CATCH_BEGIN__
+    try
     {
+      app::models::Article article(id);
+      auto c = new views::dashboard::article::EditForm();
+      c->load(this->context());
 
-      try
+      if (c->validate())
       {
-        app::models::Article article(id);
-        auto c = new views::dashboard::article::EditForm();
-        c->load(this->context());
+        // std::cout << c->title.value() << std::endl;
+        // std::cout << c->content.value() << std::endl;
+        // std::cout << c->slug.value() << std::endl;
 
-        if (c->validate())
-        {
-          // std::cout << c->title.value() << std::endl;
-          // std::cout << c->content.value() << std::endl;
-          // std::cout << c->slug.value() << std::endl;
+        // article.setTitle(c->title.value());
+        // article.setSlug(c->slug.value());
+        // article.setContent(c->content.value());
 
-          // article.setTitle(c->title.value());
-          // article.setSlug(c->slug.value());
-          // article.setContent(c->content.value());
-
-          std::string statement =
-          "UPDATE "
-          + app::models::Article::getTableName()
-          + " SET slug=?"
-          + ",title=?"
-          + ",content=?"
-          + " WHERE "
-          + article.getPrimaryKeyName()
-          + "=?"
-          + ";"
-          ;
-          article.getConnector()->beginTransaction();
-          article.getConnector()->exec()
-          << statement
-          << c->slug.value()
-          << c->title.value()
-          << c->content.value()
-          << id
-          ;
-          article.getConnector()->commit();
-
-          error = true;
-        }
-        delete c;
+        std::string statement =
+        "UPDATE "
+        + app::models::Article::getTableName()
+        + " SET slug=?"
+        + ",title=?"
+        + ",content=?"
+        + " WHERE "
+        + article.getPrimaryKeyName()
+        + "=?"
+        + ";"
+        ;
+        article.getConnector()->beginTransaction();
+        article.getConnector()->exec()
+        << statement
+        << c->slug.value()
+        << c->title.value()
+        << c->content.value()
+        << id
+        ;
+        article.getConnector()->commit();
       }
-      catch (const app::database::ConnectorException&)
-      {
-        this->response().status(cppcms::http::response::not_found);
-        error = "Error DB";
-      }
-
+      delete c;
     }
-    __APP_TRY_CATCH_END__
+    catch (const app::database::ConnectorException& e)
+    {
+      this->response().status(cppcms::http::response::internal_server_error);
+      res.null();
+      error = e.what();
+    }
+
+    if (res.is_null())
+    {
+      error = false;
+    }
 
     this->response().out() << res;
   }

@@ -80,6 +80,7 @@ namespace app::http::controllers::api::home
 
     if (res.is_null())
     {
+      this->response().status(cppcms::http::response::not_found);
       res["error"] = true;
     }
 
@@ -89,6 +90,7 @@ namespace app::http::controllers::api::home
   void ArticleController::read(const std::string& urlPath)
   {
     cppcms::json::value res;
+
     try
     {
       app::models::Article article(urlPath);
@@ -131,10 +133,16 @@ namespace app::http::controllers::api::home
         rCat["name"] = "none";
       }
     }
-    catch (const app::database::ConnectorException&)
+    catch (const app::database::ConnectorException& e)
+    {
+      this->response().status(cppcms::http::response::internal_server_error);
+      res["error"] = e.what();
+    }
+
+    if (res.is_null())
     {
       this->response().status(cppcms::http::response::not_found);
-      res["error"] = "error";
+      res["error"] = true;
     }
 
     this->response().out() << res;
