@@ -6,7 +6,8 @@
 #include <string>
 #include <vector>
 
-namespace app { namespace models {
+namespace app::models
+{
 
   class Article : public app::core::Model
   {
@@ -47,7 +48,7 @@ namespace app { namespace models {
       std::string m_contentHtml;
   };
 
-} }
+}
 
 #endif
 

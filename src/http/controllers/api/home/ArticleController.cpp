@@ -21,11 +21,6 @@ namespace app::http::controllers::api::home
   {
     cppcms::json::value res;
 
-    auto &error = res["error"];
-    error = true;
-
-    __APP_TRY_CATCH_BEGIN__
-
     try
     {
       app::models::Article article;
@@ -75,75 +70,74 @@ namespace app::http::controllers::api::home
           rTag["name"] = "none";
         }
       }
-
-      error = false;
     }
     catch (const app::database::ConnectorException& e)
     {
-      this->response().status(cppcms::http::response::not_found);
-      error = e.what();
+      this->response().status(cppcms::http::response::internal_server_error);
+      res.null();
+      res["error"] = e.what();
     }
-    __APP_TRY_CATCH_END__
+
+    if (res.is_null())
+    {
+      res["error"] = true;
+    }
 
     this->response().out() << res;
   }
 
   void ArticleController::read(const std::string& urlPath)
   {
-    __APP_TRY_CATCH_BEGIN__
+    cppcms::json::value res;
+    try
     {
-      cppcms::json::value res;
-      try
+      app::models::Article article(urlPath);
+
+      res["id"] = article.getId();
+      res["permalink"] = "/articles/" + article.getSlug();
+      res["type"] = article.getType();
+      res["featured"] = article.getFeatured();
+      res["title"] = article.getTitle();
+      res["content"] = article.getContent();
+
+      // TypeText
+      auto &rTypeText = res["type_text"];
+      auto typeText = article.getTypeText();
+      rTypeText["name"] = typeText.name;
+      rTypeText["icon_class_name"] = typeText.iconClassName;
+      rTypeText["featured_class_name"] = typeText.featuredClassName;
+      rTypeText["icon_class_name"] = typeText.iconClassName;
+
+      // Author
+      auto &rAuthor = res["author"];
+      rAuthor["url"] = "/";
+      rAuthor["name"] = article.getAuthorId();
+
+      // Tags
+      for (int t = 0; t < 0; t++)
       {
-        app::models::Article article(urlPath);
+        auto &rTag = res["tags"][t];
 
-        res["id"] = article.getId();
-        res["permalink"] = "/articles/" + article.getSlug();
-        res["type"] = article.getType();
-        res["featured"] = article.getFeatured();
-        res["title"] = article.getTitle();
-        res["content"] = article.getContent();
-
-        // TypeText
-        auto &rTypeText = res["type_text"];
-        auto typeText = article.getTypeText();
-        rTypeText["name"] = typeText.name;
-        rTypeText["icon_class_name"] = typeText.iconClassName;
-        rTypeText["featured_class_name"] = typeText.featuredClassName;
-        rTypeText["icon_class_name"] = typeText.iconClassName;
-
-        // Author
-        auto &rAuthor = res["author"];
-        rAuthor["url"] = "/";
-        rAuthor["name"] = article.getAuthorId();
-
-        // Tags
-        for (int t = 0; t < 0; t++)
-        {
-          auto &rTag = res["tags"][t];
-
-          rTag["url"] = "/";
-          rTag["name"] = "none";
-        }
-
-        // Categories
-        for (int c = 0; c < 0; c++)
-        {
-          auto &rCat = res["categories"][c];
-
-          rCat["url"] = "/";
-          rCat["name"] = "none";
-        }
-      }
-      catch (const app::database::ConnectorException&)
-      {
-        this->response().status(cppcms::http::response::not_found);
-        res["error"] = "error";
+        rTag["url"] = "/";
+        rTag["name"] = "none";
       }
 
-      this->response().out() << res;
+      // Categories
+      for (int c = 0; c < 0; c++)
+      {
+        auto &rCat = res["categories"][c];
+
+        rCat["url"] = "/";
+        rCat["name"] = "none";
+      }
     }
-    __APP_TRY_CATCH_END__
+    catch (const app::database::ConnectorException&)
+    {
+      this->response().status(cppcms::http::response::not_found);
+      res["error"] = "error";
+    }
+
+    this->response().out() << res;
   }
 
 }

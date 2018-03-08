@@ -13,18 +13,14 @@ namespace app::models
 
   Article::Article(const std::string& slug)
   {
-    __APP_TRY_CATCH_BEGIN__
-    {
-      std::pair<std::string, std::string> w("slug", slug);
-      this->id = m_connector.select<int>(
-        m_primaryKeyName,
-        self::getTableName(),
-        w
-        );
+    std::pair<std::string, std::string> w("slug", slug);
+    this->id = m_connector.select<int>(
+      m_primaryKeyName,
+      self::getTableName(),
+      w
+      );
 
-      this->slug = slug;
-    }
-    __APP_TRY_CATCH_END__
+    this->slug = slug;
   }
 
   Article::Article(const int id)
@@ -36,19 +32,15 @@ namespace app::models
   {
     std::vector<Article> articles;
 
-    __APP_TRY_CATCH_BEGIN__
-    {
-      std::vector<int> ids = m_connector.select(
-        m_primaryKeyName,
-        self::getTableName()
-        );
+    std::vector<int> ids = m_connector.select(
+      m_primaryKeyName,
+      self::getTableName()
+      );
 
-      for (const auto& id : ids)
-      {
-        articles.push_back(Article(id));
-      }
+    for (const auto& id : ids)
+    {
+      articles.push_back(Article(id));
     }
-    __APP_TRY_CATCH_END__
 
     return articles;
   }
@@ -80,108 +72,100 @@ namespace app::models
 
   std::string Article::getContentHtml()
   {
-    __APP_TRY_CATCH_BEGIN__
+    if (m_contentHtml.empty())
     {
-      if (m_contentHtml.empty())
+      std::string content = this->getContent();
+
+      if (content.empty())
       {
-        std::string content = this->getContent();
-
-        if (content.empty())
-        {
-          return std::string("");
-        }
-
-        hoedown_html_flags html_flags = HOEDOWN_HTML_SKIP_HTML;
-        hoedown_renderer *renderer = hoedown_html_renderer_new(
-          html_flags, 0
-          );
-
-        auto extensions = static_cast<hoedown_extensions>(
-          HOEDOWN_EXT_TABLES
-          | HOEDOWN_EXT_UNDERLINE
-          );
-        hoedown_document *document = hoedown_document_new(
-          renderer, extensions, 16
-          );
-
-        hoedown_buffer *html = hoedown_buffer_new(content.size());
-
-        hoedown_document_render(
-          document, html,
-          reinterpret_cast<const uint8_t*>(content.c_str()),
-          content.size()
-          );
-
-        m_contentHtml = std::string(/* reinterpret_cast<char*> */(char*)(html->data));
-
-        hoedown_buffer_free(html);
-        hoedown_document_free(document);
-        hoedown_html_renderer_free(renderer);
+        content = "Empty";
       }
+
+      hoedown_html_flags html_flags = HOEDOWN_HTML_SKIP_HTML;
+      hoedown_renderer *renderer = hoedown_html_renderer_new(
+        html_flags, 0
+        );
+
+      auto extensions = static_cast<hoedown_extensions>(
+        HOEDOWN_EXT_TABLES
+        | HOEDOWN_EXT_UNDERLINE
+        );
+      hoedown_document *document = hoedown_document_new(
+        renderer, extensions, 16
+        );
+
+      hoedown_buffer *html = hoedown_buffer_new(content.size());
+
+      hoedown_document_render(
+        document, html,
+        reinterpret_cast<const uint8_t*>(content.c_str()),
+        content.size()
+        );
+
+      m_contentHtml = std::string(/* reinterpret_cast<char*> */(char*)(html->data));
+
+      hoedown_buffer_free(html);
+      hoedown_document_free(document);
+      hoedown_html_renderer_free(renderer);
     }
-    __APP_TRY_CATCH_END__
 
     return m_contentHtml;
   }
 
   bool Article::save()
   {
-    __APP_TRY_CATCH_BEGIN__
+    if (m_queueSaveColumns.empty())
     {
-      if (m_queueSaveColumns.empty())
-      {
-        return false;
-      }
-
-      std::string statement;
-
-      if (this->id == 0)
-      {
-        std::string cols;
-        std::string vals;
-        std::size_t i = 0;
-        for (const auto& col : m_queueSaveColumns)
-        {
-          if ((i > 0) && (i < (m_queueSaveColumns.size() - 1)))
-          {
-            cols += ",";
-            vals += ",";
-          }
-          cols += col;
-          vals += "?";
-          i++;
-        }
-        statement = "INSERT INTO "
-        + self::getTableName()
-        + " ("
-        + cols
-        + ") "
-        + " VALUES("
-        + vals
-        + ");"
-        ;
-      }
-      else
-      {
-        statement = "UPDATE "
-        + self::getTableName()
-        + " SET "
-        ;
-        std::size_t i = 0;
-        for (const auto& col : m_queueSaveColumns)
-        {
-          if ((i > 0) && (i < (m_queueSaveColumns.size() - 1)))
-          {
-            statement += ",";
-          }
-          statement += col + "=? ";
-          i++;
-        }
-
-        statement += " WHERE " + m_primaryKeyName + "=?;";
-      }
+      return false;
     }
-    __APP_TRY_CATCH_END__
+
+    std::string statement;
+
+    if (this->id == 0)
+    {
+      std::string cols;
+      std::string vals;
+      std::size_t i = 0;
+      for (const auto& col : m_queueSaveColumns)
+      {
+        if ((i > 0) && (i < (m_queueSaveColumns.size() - 1)))
+        {
+          cols += ",";
+          vals += ",";
+        }
+        cols += col;
+        vals += "?";
+        i++;
+      }
+      statement = "INSERT INTO "
+      + self::getTableName()
+      + " ("
+      + cols
+      + ") "
+      + " VALUES("
+      + vals
+      + ");"
+      ;
+    }
+    else
+    {
+      statement = "UPDATE "
+      + self::getTableName()
+      + " SET "
+      ;
+      std::size_t i = 0;
+      for (const auto& col : m_queueSaveColumns)
+      {
+        if ((i > 0) && (i < (m_queueSaveColumns.size() - 1)))
+        {
+          statement += ",";
+        }
+        statement += col + "=? ";
+        i++;
+      }
+
+      statement += " WHERE " + m_primaryKeyName + "=?;";
+    }
 
     return false;
   }
