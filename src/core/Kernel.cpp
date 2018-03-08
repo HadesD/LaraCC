@@ -14,7 +14,7 @@ namespace app::core
   {
     __APP_TRY_CATCH_BEGIN__
     {
-      attach(
+      this->attach(
         new routes::Api(s),
         "api",
         "/api{1}",
@@ -23,7 +23,7 @@ namespace app::core
         );
 
       // Web Route must be set at last of Router Lists.
-      attach(
+      this->attach(
         new routes::Web(s),
         "web",
         "{1}",

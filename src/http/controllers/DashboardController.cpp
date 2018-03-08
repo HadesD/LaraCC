@@ -14,25 +14,21 @@ namespace app::http::controllers
 
   DashboardController::DashboardController(cppcms::service &s) : Controller(s)
   {
-    __APP_TRY_CATCH_BEGIN__
-    {
-      dispatcher().assign("/login", &DashboardController::login, this);
-      mapper().assign("login","/login");
+    dispatcher().assign("/login", &DashboardController::login, this);
+    mapper().assign("login","/login");
 
-      dispatcher().assign("/?", &DashboardController::index, this);
-      mapper().assign("root", "/");
+    dispatcher().assign("/?", &DashboardController::index, this);
+    mapper().assign("root", "/");
 
-      attach(
-        new app::http::controllers::dashboard::ArticleController(s),
-        "articles",
-        "{1}",
-        "/articles(/?.*)",
-        1
-        );
+    attach(
+      new app::http::controllers::dashboard::ArticleController(s),
+      "articles",
+      "{1}",
+      "/articles(/?.*)",
+      1
+      );
 
-      mapper().root("/root");
-    }
-    __APP_TRY_CATCH_END__
+    mapper().root("/root");
   }
 
   void DashboardController::index()

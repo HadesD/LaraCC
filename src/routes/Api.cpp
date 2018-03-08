@@ -13,34 +13,30 @@ namespace app::routes
 
   Api::Api(cppcms::service &s) : app::core::ServiceProvider(s)
   {
-    __APP_TRY_CATCH_BEGIN__
-    {
-      std::string dashboard_root = "/root";
-      attach(
-        new app::http::controllers::api::dashboard::Login(s),
-        "dashboard_login",
-        "{1}",
-        dashboard_root + "/login",
-        1
-        );
+    std::string dashboard_root = "/root";
+    this->attach(
+      new app::http::controllers::api::dashboard::Login(s),
+      "dashboard_login",
+      "{1}",
+      dashboard_root + "/login",
+      1
+      );
 
-      attach(
-        new app::http::controllers::api::dashboard::ArticleController(s),
-        "dashboard_article",
-        "{1}",
-        dashboard_root + "/articles(/?.*)",
-        1
-        );
+    this->attach(
+      new app::http::controllers::api::dashboard::ArticleController(s),
+      "dashboard_article",
+      "{1}",
+      dashboard_root + "/articles(/?.*)",
+      1
+      );
 
-      attach(
-        new app::http::controllers::api::home::ArticleController(s),
-        "articles",
-        "{1}",
-        "/articles(/?.*)",
-        1
-        );
-    }
-    __APP_TRY_CATCH_END__
+    this->attach(
+      new app::http::controllers::api::home::ArticleController(s),
+      "articles",
+      "{1}",
+      "/articles(/?.*)",
+      1
+      );
   }
 
   void Api::main(const std::string url)

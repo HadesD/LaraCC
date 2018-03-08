@@ -5,6 +5,7 @@ import {
 
 import utils from '../../commons/utils.js';
 import ParseMarkdownJs from 'parse-markdown-js';
+import loadScript from 'load-script';
 
 let isCalledFetchData = false;
 let articleInfo = {};
@@ -77,12 +78,12 @@ export default (state, actions) => ({match}) => {
               )
             }
             onupdate={(e) => {
-              e.oncreate(e)
+              e.oncreate(e);
             }}
           />
         </div>
       </article>
-      <script type="text/javascript" src={utils.asset('libs/prism/prism.js')}></script>
+      {loadScript(utils.asset('libs/prism/prism.js'))}
     </div>
   );
 };

@@ -12,53 +12,41 @@ namespace app::http::controllers::home
   ArticleController::ArticleController(cppcms::service& s) :
     app::core::Controller(s)
   {
-    __APP_TRY_CATCH_BEGIN__
-    {
-      this->dispatcher().map("GET", "/?", &ArticleController::index, this);
-      this->dispatcher().map("GET", "/(.*)", &ArticleController::read, this, 1);
-    }
-    __APP_TRY_CATCH_END__
+    this->dispatcher().map("GET", "/?", &ArticleController::index, this);
+    this->dispatcher().map("GET", "/(.*)", &ArticleController::read, this, 1);
   }
 
   void ArticleController::index()
   {
-    __APP_TRY_CATCH_BEGIN__
+    try
     {
-      try
-      {
-        app::views::home::Article articles;
-      }
-      catch (const app::database::ConnectorException&)
-      {
-        this->response().status(cppcms::http::response::not_found);
-        this->response().out() << "Empty";
-      }
+      app::views::home::Article articles;
     }
-    __APP_TRY_CATCH_END__
+    catch (const app::database::ConnectorException&)
+    {
+      this->response().status(cppcms::http::response::not_found);
+      this->response().out() << "Empty";
+    }
   }
 
   void ArticleController::read(const std::string& urlPath)
   {
-    __APP_TRY_CATCH_BEGIN__
+    try
     {
-      try
-      {
-        app::views::home::Article v(urlPath);
-        auto &article = v.article;
+      app::views::home::Article v(urlPath);
+      auto &article = v.article;
 
-        const std::string &slug = article.getSlug();
+      const std::string &slug = article.getSlug();
 
-        v.title = article.getTitle();
+      v.title = article.getTitle();
 
-        this->render("article_read", v);
-      }
-      catch (const app::database::ConnectorException& e)
-      {
-        this->response().status(cppcms::http::response::not_found);
-        this->response().out() << e.what();
-      }
+      this->render("article_read", v);
     }
-    __APP_TRY_CATCH_END__
+    catch (const app::database::ConnectorException& e)
+    {
+      this->response().status(cppcms::http::response::not_found);
+      this->response().out() << e.what();
+    }
   }
 
 }

@@ -15,18 +15,14 @@ namespace app::models
 
   Account::Account(const std::string& email)
   {
-    __APP_TRY_CATCH_BEGIN__
-    {
-      std::pair<std::string, std::string> w("email", email);
-      this->id = m_connector.select<int>(
-        m_primaryKeyName,
-        self::getTableName(),
-        w
-        );
+    std::pair<std::string, std::string> w("email", email);
+    this->id = m_connector.select<int>(
+      m_primaryKeyName,
+      self::getTableName(),
+      w
+      );
 
-      this->email = email;
-    }
-    __APP_TRY_CATCH_END__
+    this->email = email;
   }
 
 }
