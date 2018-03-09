@@ -9,23 +9,23 @@ export default {
       type: [
         {
           value: 0,
-          label: 'Article',
+          label: 'Normal',
         },
         {
           value: 1,
-          label: 'Article',
+          label: 'Today I Learned',
         },
         {
           value: 2,
-          label: 'Article',
+          label: 'Quote',
         },
         {
           value: 3,
-          label: 'Article',
+          label: 'Video',
         },
         {
-          value: 3,
-          label: 'Article',
+          value: 4,
+          label: 'Image',
         },
       ],
     },

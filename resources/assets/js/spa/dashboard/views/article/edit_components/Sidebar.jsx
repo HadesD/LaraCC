@@ -30,11 +30,21 @@ export default ({pActions, isNewArticle}) => {
         </div>
         <div class="block-body">
           {site.models.article.type.map((t, i) => {
-            console.log(t);
+            let id = `type-${t.value}`;
             return (
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" />
-                <label class="custom-control-label" for="customCheck1">{t.label}</label>
+              <div class="custom-control custom-radio">
+                <input
+                  name="type"
+                  type="radio"
+                  class="custom-control-input"
+                  id={id}
+                />
+                <label
+                  class="custom-control-label"
+                  for={id}
+                >
+                  {t.label}
+                </label>
               </div>
             );
           })}
