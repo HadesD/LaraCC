@@ -3,9 +3,9 @@ import {
   Link
 } from '@hyperapp/router';
 
-import utils from '../../commons/utils.js';
-import site from '../../commons/site.js';
-import dashboard from '../commons/dashboard.js';
+import utils from '../../../commons/utils.js';
+import site from '../../../commons/site.js';
+import dashboard from '../../commons/dashboard.js';
 
 const isActiveLink = (locPathName, locUrl) => {
   let locPnArr = locPathName.split('/');

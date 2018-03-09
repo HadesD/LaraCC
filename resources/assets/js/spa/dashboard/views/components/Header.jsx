@@ -3,8 +3,8 @@ import {
   Link
 } from '@hyperapp/router';
 
-import utils from '../../commons/utils.js';
-import dashboard from '../commons/dashboard.js';
+import utils from '../../../commons/utils.js';
+import dashboard from '../../commons/dashboard.js';
 
 export default ({state, actions}) => {
   return (

@@ -9,7 +9,7 @@ import dashboard from '../commons/dashboard.js';
 import Login from './Login.jsx';
 import Index from './Index.jsx';
 
-import Main from '../components/Main.jsx';
+import Main from './components/Main.jsx';
 
 import ArticleRoute from './article';
 

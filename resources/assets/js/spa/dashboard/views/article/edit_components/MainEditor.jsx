@@ -11,6 +11,7 @@ let contentElmt = null;
 export default ({articleInfo, pState, pActions, isNewArticle}) => {
   previewContent = document.getElementById('previewContent');
   contentElmt = document.getElementById('content');
+
   return (
     <div class="col-lg-9">
       <div class="block">
@@ -89,7 +90,7 @@ export default ({articleInfo, pState, pActions, isNewArticle}) => {
                     {
                       previewContent.innerHTML = ParseMarkdownJs(articleInfo.get('content'));
                     }
-                    // loadScript(utils.asset('libs/prism/prism.js'));
+                    loadScript(utils.asset('libs/prism/prism.js'));
                   }}
                   onupdate={(e) => {
                     if (previewContent)
@@ -98,25 +99,26 @@ export default ({articleInfo, pState, pActions, isNewArticle}) => {
                     }
                   }}
                   onscroll={(e) => {
-                    let scrollToN =
-                      previewContent.scrollHeight
-                      /
-                      contentElmt.scrollHeight
-                      *
-                      contentElmt.scrollTop
-                    ;
+                    let realH = contentElmt.scrollHeight - contentElmt.offsetHeight;
+                    let realT = contentElmt.scrollTop;
+
+                    let previewH = previewContent.scrollHeight - previewContent.offsetHeight;
+
+                    let scrollToN = realT / realH * previewH;
                     previewContent.scrollTo(0, scrollToN);
                   }}
                 />
               </div>
-              <div
-                class="col-md text-justify"
-                id="previewContent"
-                style={{
-                  maxHeight: (contentElmt) ? contentElmt.offsetHeight + 'px' : '100%',
-                  overflowY: 'scroll',
-                }}
-              >
+              <div class="col-md">
+                <div
+                  class="p-2 border"
+                  id="previewContent"
+                  style={{
+                    maxHeight: (contentElmt) ? contentElmt.offsetHeight + 'px' : '100%',
+                    overflowY: 'auto',
+                  }}
+                >
+                </div>
               </div>
             </div>
           </div>
