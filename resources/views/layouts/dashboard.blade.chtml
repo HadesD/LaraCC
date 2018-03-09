@@ -4,8 +4,8 @@
 <% template dashboard_js() %><% end %>
 <% template dashboard_css() %><% end %>
 <% template css() %>
-<link rel="stylesheet" href="<%= asset("dashboard/vendor/bootstrap/css/bootstrap.min.css") %>" />
-<link rel="stylesheet" href="<%= asset("dashboard/vendor/font-awesome/css/font-awesome.min.css") %>" />
+<link rel="stylesheet" href="<%= asset("libs/bootstrap/css/bootstrap.min.css") %>" />
+<link rel="stylesheet" href="<%= asset("libs/font-awesome/css/font-awesome.min.css") %>" />
 <link rel="stylesheet" href="<%= asset("dashboard/css/font.css") %>" />
 <link rel="stylesheet" href="<%= asset("dashboard/css/style.default.css") %>" />
 <link rel="stylesheet" href="<%= asset("dashboard/css/custom.css") %>" />
