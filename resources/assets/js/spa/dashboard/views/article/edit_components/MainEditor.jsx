@@ -89,6 +89,7 @@ export default ({articleInfo, pState, pActions, isNewArticle}) => {
                     {
                       previewContent.innerHTML = ParseMarkdownJs(articleInfo.get('content'));
                     }
+                    // loadScript(utils.asset('libs/prism/prism.js'));
                   }}
                   onupdate={(e) => {
                     if (previewContent)
@@ -101,7 +102,8 @@ export default ({articleInfo, pState, pActions, isNewArticle}) => {
                       previewContent.scrollHeight
                       /
                       contentElmt.scrollHeight
-                      * contentElmt.scrollTop
+                      *
+                      contentElmt.scrollTop
                     ;
                     previewContent.scrollTo(0, scrollToN);
                   }}
@@ -111,7 +113,7 @@ export default ({articleInfo, pState, pActions, isNewArticle}) => {
                 class="col-md text-justify"
                 id="previewContent"
                 style={{
-                  maxHeight: (contentElmt) ? contentElmt.clientHeight + 'px' : '100%',
+                  maxHeight: (contentElmt) ? contentElmt.offsetHeight + 'px' : '100%',
                   overflowY: 'scroll',
                 }}
               >
