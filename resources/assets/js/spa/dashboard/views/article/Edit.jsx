@@ -1,7 +1,9 @@
 import { h } from 'hyperapp';
 
-import site from '../../../commons/site.js';
 import dashboard from '../../commons/dashboard.js';
+
+import MainEditor from './edit_components/MainEditor.jsx';
+import Sidebar from './edit_components/Sidebar.jsx';
 
 let isCalledFetchData = false;
 
@@ -81,102 +83,21 @@ export default (state, actions) => ({match}) => {
     >
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-9">
-            <div class="block">
-              <div class="title">
-                <strong class="d-block">
-                  {isNewArticle ? 'Add New Article' : 'Edit Article'}
-                </strong>
-              </div>
-              <div class="block-body">
-                <div class="form-group">
-                  <label
-                    class="form-control-label"
-                    for="title"
-                  >
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Enter title here"
-                    class="form-control"
-                    id="title"
-                    name="title"
-                    value={articleInfo.get('title')}
-                    oninput={(e) => {
-                      pState.articleInfo[e.target.name] = e.target.value;
-                    }}
-                  />
-                </div>
-                <div class="form-group">
-                  <label
-                    class="form-control-label"
-                    for="slug"
-                  >
-                    Slug
-                  </label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <a
-                        class="btn btn-primary"
-                        href={articleInfo.get('permalink')}
-                        target="_blank"
-                        disabled={isNewArticle ? true : false}
-                      >
-                        View
-                      </a>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Enter slug here"
-                      class="form-control"
-                      id="slug"
-                      name="slug"
-                      value={articleInfo.get('slug')}
-                      oninput={(e) => {
-                        pState.articleInfo[e.target.name] = e.target.value;
-                      }}
-                    />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="form-control-label" for="content">
-                    Content
-                  </label>
-                  <textarea
-                    rows="15"
-                    placeholder="Article content"
-                    class="form-control"
-                    id="content"
-                    name="content"
-                    value={articleInfo.get('content')}
-                    oninput={(e) => {
-                      pState.articleInfo[e.target.name] = e.target.value;
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="block">
-              <div class="title">
-                <strong class="d-block">
-                  Actions
-                </strong>
-              </div>
-              <div class="block-body">
-                <div class="form-group">
-                  <button
-                    class="btn btn-primary btn-lg btn-block"
-                    onclick={pActions.saveOrPublishArticle}
-                  >
-                    {isNewArticle ? 'Publish' : 'Save'}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <MainEditor
+            state={state}
+            actions={actions}
+            pState={pState}
+            pActions={pActions}
+            isNewArticle={isNewArticle}
+            articleInfo={articleInfo}
+          />
+          <Sidebar
+            state={state}
+            actions={actions}
+            pState={pState}
+            pActions={pActions}
+            isNewArticle={isNewArticle}
+          />
         </div>
       </div>
     </section>

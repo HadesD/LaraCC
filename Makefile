@@ -1,12 +1,20 @@
-NPROCS:=1
-OS:=$(shell uname -s)
+NPROCS := 1
+OS := $(shell uname -s)
 
-# ifeq($(OS),'Linux')
-NPROCS:=$(shell grep -c ^processor /proc/cpuinfo)
-# endif
-# ifeq($(OS),'Darwin') # Assume Mac OS X
-# NPROCS:=$(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}')
-# endif
+ifeq ($(SERVICE_PORT),)
+  SERVICE_PORT := 9081
+endif
+
+ifeq ($(OS), Linux)
+  NPROCS := $(shell grep -c ^processor /proc/cpuinfo)
+endif
+ifeq ($(OS), Darwin)
+  NPROCS := $(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}')
+endif
+
+$(info Platform ${OS})
+$(info Use TCP/IP Port ${SERVICE_PORT})
+$(info Use ${NPROCS} CPUs)
 
 .PHONY: build
 
@@ -14,21 +22,20 @@ default: dev
 
 # Dev
 dev:
-	echo "Use ${NPROCS} cpus" \
-		&& cd build && \
-		cmake .. -DCMAKE_BUILD_TYPE=Debug && \
-		make -j ${NPROCS} && \
-		cd ../bin/Debug && \
-		./WebApp -c config.json --service-port=9081
+	cd build \
+	  && cmake .. -DCMAKE_BUILD_TYPE=Debug \
+	  && make -j ${NPROCS}
+	cd bin/Debug \
+	  && ./WebApp -c config.json --service-port=${SERVICE_PORT}
 
 build: prd npm.prd db
 	cd bin/Release && \
-		./WebApp -c config.json --service-port=9081
+	  ./WebApp -c config.json --service-port=${SERVICE_PORT}
 
 prd:
 	cd build && \
-		cmake .. -DCMAKE_BUILD_TYPE=Release && \
-		make -j ${NPROCS}
+	  cmake .. -DCMAKE_BUILD_TYPE=Release && \
+	  make -j ${NPROCS}
 
 npm.dev:
 	npm run dev --report

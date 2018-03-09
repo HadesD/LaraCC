@@ -8,9 +8,12 @@ CREATE TABLE accounts
 
   password TEXT,
 
-  -- 0: Banned
-  -- 1: Founder
-  -- 2: Member
+  /**
+   * Role and Permission
+   * 0: Banned
+   * 1: Founder
+   * 2: Member
+   */
   role SMALLINT DEFAULT 2,
 
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -24,10 +27,14 @@ CREATE TABLE articles
 
   slug TEXT UNIQUE NOT NULL,
 
-  -- 0/NULL: Normal Article
-  -- 1: Video
-  -- 2: Image
-  -- 3: Quote
+  /**
+   * Article Type
+   * 0/NULL: Normal
+   * 1: Today I Learn
+   * 2: Quote
+   * 3: Video
+   * 4: Image
+   */
   type SMALLINT DEFAULT 0,
 
   title TEXT NOT NULL,

@@ -1,4 +1,4 @@
-import {h} from 'hyperapp';
+import { h } from 'hyperapp';
 import {
   Link
 } from '@hyperapp/router';
@@ -52,7 +52,7 @@ export default ({state, actions}) => {
       <div class="sidebar-header d-flex align-items-center">
         <div class="avatar">
           <img
-            src={utils.asset("images/rem-chibi.jpg")}
+            src={utils.asset('images/rem-chibi.jpg')}
             class="img-fluid rounded-circle"
           />
         </div>
@@ -61,31 +61,32 @@ export default ({state, actions}) => {
           <p>Programmer</p>
         </div>
       </div>
-        {sidebarLinkList.map((list) => {
-          return (
-            <div>
-              <span class="heading">
-                {list.header_text}
-              </span>
-              <ul class="list-unstyled">
-                {list.links.map((link) => {
-                  return (
-                    <li class={
+      {sidebarLinkList.map((list) => {
+        return (
+          <div>
+            <span class="heading">
+              {list.header_text}
+            </span>
+            <ul class="list-unstyled">
+              {list.links.map((link) => {
+                return (
+                  <li
+                    class={
                       isActiveLink(state.location.pathname, link.url) ? 'active' : ''
                     }
-                    >
-                      <Link to={link.url}>
-                        <i class={link.icon}></i>
-                        {link.text}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          );
-        })}
-      </nav>
+                  >
+                    <Link to={link.url}>
+                      <i class={link.icon}></i>
+                      {link.text}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
+    </nav>
   );
 };
 
