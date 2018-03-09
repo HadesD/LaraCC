@@ -96,6 +96,15 @@ export default ({articleInfo, pState, pActions, isNewArticle}) => {
                       previewContent.innerHTML = ParseMarkdownJs(articleInfo.get('content'));
                     }
                   }}
+                  onscroll={(e) => {
+                    let scrollToN =
+                      previewContent.scrollHeight
+                      /
+                      contentElmt.scrollHeight
+                      * contentElmt.scrollTop
+                    ;
+                    previewContent.scrollTo(0, scrollToN);
+                  }}
                 />
               </div>
               <div
