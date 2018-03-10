@@ -215,7 +215,6 @@ namespace app::http::controllers::api::dashboard
   void ArticleController::update(const int id)
   {
     cppcms::json::value res;
-    auto &error = res["error"];
 
     try
     {
@@ -259,13 +258,12 @@ namespace app::http::controllers::api::dashboard
     catch (const app::database::ConnectorException& e)
     {
       this->response().status(cppcms::http::response::internal_server_error);
-      res.null();
-      error = e.what();
+      res["error"] = true;
     }
 
-    if (res.is_null())
+    if (res.is_undefined())
     {
-      error = false;
+      res["error"] = false;
     }
 
     this->response().out() << res;

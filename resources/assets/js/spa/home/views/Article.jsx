@@ -83,7 +83,7 @@ export default (state, actions) => ({match}) => {
           />
         </div>
       </article>
-      {loadScript(utils.asset('libs/prism/prism.js'))}
+      {(articleInfo.content) ? (loadScript(utils.asset('libs/prism/prism.js'))) : ''}
     </div>
   );
 };

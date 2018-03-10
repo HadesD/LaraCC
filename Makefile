@@ -46,3 +46,9 @@ npm.prd:
 db:
 	python tools/create_database.py
 
+rm:
+	git clean -xdf ./bin
+
+clean:
+	git clean -xdf ./bin ./build
+
