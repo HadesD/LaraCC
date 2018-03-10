@@ -8,10 +8,11 @@ Dark Admin Bootstrap Template by Bootstrapious.com
 ==============================================================
  */
 /*
-* ==========================================================
-*     GENERAL STYLING 
-* ==========================================================
-*/
+ * ==========================================================
+ *     GENERAL STYLING 
+ * ==========================================================
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 body {
   position: relative;
 }
@@ -322,10 +323,10 @@ i[class*='icon-'] {
 }
 
 /*
-* ==========================================================
-*     NAVBAR
-* ==========================================================
-*/
+ * ==========================================================
+ *     NAVBAR
+ * ==========================================================
+ */
 nav.navbar {
   background: #2d3035;
   color: #8a8d93;
@@ -443,19 +444,19 @@ nav.navbar .search-inner input {
 }
 
 nav.navbar .search-inner input::-moz-placeholder {
-  font-family: "Muli", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300 !important;
   color: #585a5f;
 }
 
 nav.navbar .search-inner input::-webkit-input-placeholder {
-  font-family: "Muli", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300 !important;
   color: #585a5f;
 }
 
 nav.navbar .search-inner input:-ms-input-placeholder {
-  font-family: "Muli", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300 !important;
   color: #585a5f;
 }
@@ -642,10 +643,10 @@ nav.navbar .dropdown .dropdown-menu.active {
 }
 
 /*
-* ==========================================================
-*     SIDEBAR
-* ==========================================================
-*/
+ * ==========================================================
+ *     SIDEBAR
+ * ==========================================================
+ */
 nav#sidebar {
   width: 280px;
   background: #2d3035;
@@ -920,10 +921,10 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 /*
-* ==========================================================
-*     STATISTICS SECTION
-* ==========================================================
-*/
+ * ==========================================================
+ *     STATISTICS SECTION
+ * ==========================================================
+ */
 /* Statistic Block */
 .statistic-block {
   padding: 20px;
@@ -981,10 +982,10 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 /*
-* ==========================================================
-*     CARDS SECTION
-* ==========================================================
-*/
+ * ==========================================================
+ *     CARDS SECTION
+ * ==========================================================
+ */
 /* Scans Block */
 .stats-2-block .stats-2 {
   width: 50%;
@@ -1134,10 +1135,10 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 /*
-* ==========================================================
-*     USERS SECTION
-* ==========================================================
-*/
+ * ==========================================================
+ *     USERS SECTION
+ * ==========================================================
+ */
 /* user block */
 .user-block .avatar {
   width: 70px;
@@ -1273,10 +1274,10 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 /*
-* ==========================================================
-*     SALES SECTION
-* ==========================================================
-*/
+ * ==========================================================
+ *     SALES SECTION
+ * ==========================================================
+ */
 /* Sale Block */
 .stats-with-chart-2 .title {
   margin-bottom: 30px;
@@ -1346,10 +1347,10 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 /*
-* ==========================================================
-*     FEEDS SECTION
-* ==========================================================
-*/
+ * ==========================================================
+ *     FEEDS SECTION
+ * ==========================================================
+ */
 /* Checklist Media Query */
 .checklist-block .title {
   margin-bottom: 20px;
@@ -1489,10 +1490,10 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 /*
-* ==========================================================
-*     LOGIN PAGE
-* ==========================================================
-*/
+ * ==========================================================
+ *     LOGIN PAGE
+ * ==========================================================
+ */
 .login-page {
   position: relative;
 }
@@ -1608,10 +1609,10 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 /*
-* ==========================================================
-*     FORMS 
-* ==========================================================
-*/
+ * ==========================================================
+ *     FORMS 
+ * ==========================================================
+ */
 .form-control {
   border: 1px solid #444951;
   background: transparent;
@@ -1621,19 +1622,19 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 
 .form-control::-moz-placeholder {
   font-size: 0.9rem;
-  font-family: "Muli", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #787b82;
 }
 
 .form-control::-webkit-input-placeholder {
   font-size: 0.9rem;
-  font-family: "Muli", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #787b82;
 }
 
 .form-control:-ms-input-placeholder {
   font-size: 0.9rem;
-  font-family: "Muli", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #787b82;
 }
 
@@ -1860,10 +1861,10 @@ input.input-material ~ label.active {
 }
 
 /*
-* ==========================================================
-*     CHARTS
-* ==========================================================
-*/
+ * ==========================================================
+ *     CHARTS
+ * ==========================================================
+ */
 .gauge-container {
   position: relative;
 }
@@ -1891,10 +1892,10 @@ input.input-material ~ label.active {
 }
 
 /*
-* ==========================================================
-*     TABLES
-* ==========================================================
-*/
+ * ==========================================================
+ *     TABLES
+ * ==========================================================
+ */
 .table {
   margin-bottom: 0;
 }
@@ -1938,7 +1939,7 @@ input.input-material ~ label.active {
 STYLE SWITCHER FOR DEMO
 =====================
 
-*/
+ */
 #style-switch-button {
   position: fixed;
   top: 120px;
@@ -1959,8 +1960,8 @@ STYLE SWITCHER FOR DEMO
 }
 
 /* ========================================= 
-   THEMING OF BOOTSTRAP COMPONENTS           
-   ========================================= */
+THEMING OF BOOTSTRAP COMPONENTS           
+========================================= */
 /*
  * 1. NAVBAR
  */
@@ -2616,7 +2617,7 @@ STYLE SWITCHER FOR DEMO
  * 3. TYPE  
  */
 body {
-  font-family: "Muli", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -2824,8 +2825,8 @@ a.text-primary:focus, a.text-primary:hover {
 }
 
 /*
-* 5. UTILITIES
-*/
+ * 5. UTILITIES
+ */
 .bg-primary {
   background-color: #DB6574 !important;
 }
@@ -3075,8 +3076,8 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 /*
-* 6.CODE
-*/
+ * 6.CODE
+ */
 code {
   padding: 0.2rem 0.4rem;
   font-size: 90%;
@@ -3092,8 +3093,8 @@ a > code {
 }
 
 /*
-* 7. CARD
-*/
+ * 7. CARD
+ */
 .card {
   background-color: #2d3035;
   border: 1px solid #34373d;
