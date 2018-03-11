@@ -2,7 +2,7 @@ import {h} from 'hyperapp';
 
 import site from '../../../../commons/site.js';
 
-export default ({pActions, isNewArticle}) => {
+export default ({pState, pActions, articleInfo, isNewArticle}) => {
   return (
     <div class="col-lg-3">
       <div class="block">
@@ -25,7 +25,43 @@ export default ({pActions, isNewArticle}) => {
       <div class="block">
         <div class="title">
           <strong class="d-block">
-            Article Informations
+            Article Type
+          </strong>
+        </div>
+        <div class="block-body">
+          {site.models.article.type.map((t, i) => {
+            let id = `type-${t.value}`;
+            return (
+              <div class="custom-control custom-radio">
+                <input
+                  name="type"
+                  type="radio"
+                  class="custom-control-input"
+                  value={t.value}
+                  id={id}
+                  checked={
+                    (articleInfo.get('type') == t.value) ? true : false
+                  }
+                  onchange={(e) => {
+                    pState.articleInfo[e.target.name] = e.target.value;
+
+                  }}
+                />
+                <label
+                  class="custom-control-label"
+                  for={id}
+                >
+                  {t.label}
+                </label>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div class="block">
+        <div class="title">
+          <strong class="d-block">
+            Tags
           </strong>
         </div>
         <div class="block-body">

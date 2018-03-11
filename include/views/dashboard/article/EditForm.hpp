@@ -14,6 +14,7 @@ namespace app::views::dashboard::article
     public:
       cppcms::widgets::text title;
       cppcms::widgets::text slug;
+      cppcms::widgets::radio type;
       cppcms::widgets::textarea content;
   };
 

@@ -184,16 +184,21 @@ namespace app::http::controllers::api::dashboard
         + " VALUES(?,?,?,?,?)"
         + ";"
         ;
+        std::cout << c->type.selected_id() << std::endl;
         article.getConnector()->beginTransaction();
         article.getConnector()->exec()
         << statement
         << id
-        << 0
+        << c->type.selected_id()
         << c->slug.value()
         << c->title.value()
         << c->content.value()
         ;
         article.getConnector()->commit();
+      }
+      else
+      {
+        error = true;
       }
       delete c;
     }
@@ -224,10 +229,6 @@ namespace app::http::controllers::api::dashboard
 
       if (c->validate())
       {
-        // std::cout << c->title.value() << std::endl;
-        // std::cout << c->content.value() << std::endl;
-        // std::cout << c->slug.value() << std::endl;
-
         // article.setTitle(c->title.value());
         // article.setSlug(c->slug.value());
         // article.setContent(c->content.value());
@@ -238,6 +239,7 @@ namespace app::http::controllers::api::dashboard
         + " SET slug=?"
         + ",title=?"
         + ",content=?"
+        + ",type=?"
         + " WHERE "
         + article.getPrimaryKeyName()
         + "=?"
@@ -249,9 +251,14 @@ namespace app::http::controllers::api::dashboard
         << c->slug.value()
         << c->title.value()
         << c->content.value()
+        << c->type.selected_id()
         << id
         ;
         article.getConnector()->commit();
+      }
+      else
+      {
+        res["error"] = true;
       }
       delete c;
     }

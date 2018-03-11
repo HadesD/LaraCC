@@ -88,14 +88,15 @@ export default (state, actions) => ({match}) => {
             actions={actions}
             pState={pState}
             pActions={pActions}
-            isNewArticle={isNewArticle}
             articleInfo={articleInfo}
+            isNewArticle={isNewArticle}
           />
           <Sidebar
             state={state}
             actions={actions}
             pState={pState}
             pActions={pActions}
+            articleInfo={articleInfo}
             isNewArticle={isNewArticle}
           />
         </div>

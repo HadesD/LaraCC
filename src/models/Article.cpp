@@ -45,13 +45,11 @@ namespace app::models
     return articles;
   }
 
-  Article::TypeText Article::getTypeText()
+  Article::TypeText Article::getTypeText(const Type type)
   {
-    int type = this->getType();
-
     Article::TypeText typeText;
 
-    switch (type)
+    switch (static_cast<int>(type))
     {
       case 0:
         typeText.iconClassName = "fa fa-fw fa-pencil";
@@ -68,6 +66,13 @@ namespace app::models
     }
 
     return typeText;
+  }
+
+  Article::TypeText Article::getTypeText()
+  {
+    return Article::getTypeText(
+      static_cast<Article::Type>(this->type)
+      );
   }
 
   std::string Article::getContentHtml()

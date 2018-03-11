@@ -12,6 +12,17 @@ namespace app::models
   class Article : public app::core::Model
   {
     public:
+      enum class Type
+      {
+        NORMAL = 0,
+        TIL,
+        QUOTE,
+        VIDEO,
+        IMAGE,
+        COUNT // Alway at last
+      };
+
+    public:
       APP_MODEL(Article);
 
     public:
@@ -31,6 +42,7 @@ namespace app::models
         std::string iconClassName;
         std::string featuredClassName;
       };
+      static TypeText getTypeText(const Type type);
       TypeText getTypeText();
 
       std::string getContentHtml();
