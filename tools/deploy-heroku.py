@@ -10,7 +10,7 @@ print(os.getcwd())
 
 CWD = os.getcwd()
 
-BUILD_DIR = os.getcwd() + '/Build'
+BUILD_DIR = os.getcwd() + '/bin'
 
 # subprocess.Popen([
 #   'make',
@@ -26,22 +26,21 @@ f = open(BUILD_DIR + '/.gitignore', 'w')
 f.write(
   r
   + '\n'
-  + '!/Bin\n'
-  + '!/Bin/Release\n'
-  + '!/Bin/Release/**\n'
+  + '!/Release\n'
+  + '!/Release/**\n'
 )
 f.close()
 
 time.sleep(2)
 
-subprocess.Popen([
+subprocess.call([
   'git',
   'status'
 ], cwd=CWD)
 
 time.sleep(5)
 
-subprocess.Popen([
+subprocess.call([
   'git',
   'add',
   '.'
@@ -49,14 +48,14 @@ subprocess.Popen([
 
 time.sleep(5)
 
-subprocess.Popen([
+subprocess.call([
   'git',
   'commit',
   '-m',
   '"Deploy Heroku"'
 ], cwd=CWD)
 
-time.sleep(2)
+time.sleep(5)
 
 subprocess.call([
   'git',
