@@ -39,6 +39,7 @@ namespace app::models
       struct TypeText
       {
         std::string name;
+        std::string format;
         std::string iconClassName;
         std::string featuredClassName;
       };

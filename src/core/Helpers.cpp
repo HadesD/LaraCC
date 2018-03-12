@@ -9,7 +9,6 @@ namespace app::core::Helpers
     )
   {
     char datetime[30];
-    // std::string datetime;
     std::strftime(
       datetime, sizeof(datetime),
       __format.data(),

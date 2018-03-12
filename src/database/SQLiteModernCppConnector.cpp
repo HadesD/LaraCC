@@ -32,6 +32,7 @@ namespace app::database
         + column
         + " FROM "
         + from
+        + " ORDER BY updated_at DESC"
         + ";";
       m_database << statement
         >> [&](const int id){

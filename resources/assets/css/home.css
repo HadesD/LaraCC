@@ -37,4 +37,37 @@ pre > code
   border: 0;
   padding: 0;
 }
+.format-quote .content { background-color: #2D3642;  }
+
+.format-quote .content:before,
+.format-quote .content:after
+{
+    border-right-color: #2D3642;
+}
+
+.format-quote .content {
+	padding: 0;
+	text-align: center;
+	color: #FFF;
+	font-size: 1.25em;
+}
+
+.format-quote .content p { text-align: center; }
+
+.format-quote .content cite {
+	font-weight: 400;
+	font-size: 0.725em;
+	text-align: center;
+	letter-spacing: 1px;
+}
+
+.format-quote .content cite,
+.format-quote .content cite a  {
+	color: #FFF;
+}
+
+.format-quote .content cite a:hover {
+	color: #FF706C;
+	text-decoration: none;
+}
 

@@ -33,7 +33,14 @@ export default (state, actions) => ({match}) => {
     >
       {!state.homePage.listPost || state.homePage.listPost.map(articleInfo => {
         return (
-          <div class="article-wrapper u-cf">
+          <div
+            class={
+              'article-wrapper u-cf'
+                + (articleInfo.type_text ?
+                  ' ' + articleInfo.type_text.format :
+                  '')
+            }
+          >
             <Link class="bubble" to={articleInfo.permalink}>
               <i
                 class={
@@ -58,7 +65,7 @@ export default (state, actions) => ({match}) => {
                   </Link>
                 </h3>
                 <div class="meta">
-                  <span class="date moment">{articleInfo.post_time}</span>
+                  <span class="date moment">{articleInfo.updated_at}</span>
                   {
                     !articleInfo.author
                       || (
@@ -78,7 +85,7 @@ export default (state, actions) => ({match}) => {
                     )
                   }
                   onupdate={(e) => {
-                    e.oncreate(e)
+                    e.oncreate(e);
                   }}
                 />
               </div>
@@ -102,5 +109,5 @@ export default (state, actions) => ({match}) => {
       })}
     </div>
   );
-}
+};
 

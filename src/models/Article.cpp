@@ -49,20 +49,41 @@ namespace app::models
   {
     Article::TypeText typeText;
 
+    /**
+     * Article Type
+     * 0/NULL: Normal
+     * 1: Today I Learn
+     * 2: Quote
+     * 3: Video
+     * 4: Image
+     */
     switch (static_cast<int>(type))
     {
-      case 0:
-        typeText.iconClassName = "fa fa-fw fa-pencil";
-        typeText.featuredClassName = "featured-image";
-        break;
       case 1:
-        typeText.iconClassName = "fa fa-fw fa-pencil";
+        typeText.iconClassName = "fa fa-fw fa-leanpub";
         typeText.featuredClassName = "featured-image";
+        typeText.format = "format-til";
         break;
-      default:
+      case 2:
+        typeText.iconClassName = "fa fa-fw fa-quote-left";
+        typeText.featuredClassName = "featured-image";
+        typeText.format = "format-quote";
+        break;
+      case 3:
         typeText.iconClassName = "fa fa-fw fa-video";
         typeText.featuredClassName = "featured-video";
-        typeText.name = "video";
+        typeText.format = "format-video";
+        break;
+      case 4:
+        typeText.iconClassName = "fa fa-fw fa-image";
+        typeText.featuredClassName = "featured-image";
+        typeText.format = "format-image";
+        break;
+      case 0:
+      default:
+        typeText.iconClassName = "fa fa-fw fa-pencil";
+        typeText.featuredClassName = "featured-image";
+        typeText.format = "format-normal";
     }
 
     return typeText;
