@@ -44,6 +44,8 @@ namespace app::http::controllers::api::dashboard
         r["type"] = article.getType();
         r["featured"] = article.getFeatured();
         r["content"] = article.getContent();
+        r["created_at"] = article.getCreatedAt();
+        r["updated_at"] = article.getUpdatedAt();
 
         // TypeText
         auto &rTypeText = r["type_text"];
@@ -103,6 +105,8 @@ namespace app::http::controllers::api::dashboard
         r["type"] = article.getType();
         r["featured"] = article.getFeatured();
         r["content"] = article.getContent();
+        r["created_at"] = article.getCreatedAt();
+        r["updated_at"] = article.getUpdatedAt();
 
         // TypeText
         auto &rTypeText = r["type_text"];
@@ -180,11 +184,11 @@ namespace app::http::controllers::api::dashboard
         std::string statement =
         "INSERT INTO "
         + app::models::Article::getTableName()
-        + "(id, type, slug, title, content)"
-        + " VALUES(?,?,?,?,?)"
+        + "(id, type, slug, title, content, created_at, updated_at)"
+        + " VALUES(?,?,?,?,?,?,?)"
         + ";"
         ;
-        std::cout << c->type.selected_id() << std::endl;
+
         article.getConnector()->beginTransaction();
         article.getConnector()->exec()
         << statement
@@ -193,6 +197,8 @@ namespace app::http::controllers::api::dashboard
         << c->slug.value()
         << c->title.value()
         << c->content.value()
+        << std::time_t(0)
+        << std::time_t(0)
         ;
         article.getConnector()->commit();
       }
@@ -240,6 +246,7 @@ namespace app::http::controllers::api::dashboard
         + ",title=?"
         + ",content=?"
         + ",type=?"
+        + ",updated_at=?"
         + " WHERE "
         + article.getPrimaryKeyName()
         + "=?"
@@ -252,6 +259,7 @@ namespace app::http::controllers::api::dashboard
         << c->title.value()
         << c->content.value()
         << c->type.selected_id()
+        << "2018-12-10"
         << id
         ;
         article.getConnector()->commit();
