@@ -7,6 +7,7 @@
 
 #include "models/Article.hpp"
 #include "views/dashboard/article/EditForm.hpp"
+#include "core/Helpers.hpp"
 
 namespace app::http::controllers::api::dashboard
 {
@@ -150,7 +151,6 @@ namespace app::http::controllers::api::dashboard
   void ArticleController::create()
   {
     cppcms::json::value res;
-    auto &error = res["error"];
 
     try
     {
@@ -189,6 +189,8 @@ namespace app::http::controllers::api::dashboard
         + ";"
         ;
 
+        std::string datetime = app::core::Helpers::strftime("%Y/%m/%d %H:%M:%S");
+
         article.getConnector()->beginTransaction();
         article.getConnector()->exec()
         << statement
@@ -197,27 +199,26 @@ namespace app::http::controllers::api::dashboard
         << c->slug.value()
         << c->title.value()
         << c->content.value()
-        << std::time_t(0)
-        << std::time_t(0)
+        << datetime
+        << datetime
         ;
         article.getConnector()->commit();
       }
       else
       {
-        error = true;
+        res["error"] = true;
       }
       delete c;
     }
     catch (const app::database::ConnectorException& e)
     {
       this->response().status(cppcms::http::response::internal_server_error);
-      res.null();
-      error = e.what();
+      res["error"] = true;
     }
 
-    if (res.is_null())
+    if (res.is_undefined())
     {
-      error = false;
+      res["error"] = false;
     }
 
     this->response().out() << res;
@@ -252,6 +253,9 @@ namespace app::http::controllers::api::dashboard
         + "=?"
         + ";"
         ;
+
+        std::string datetime = app::core::Helpers::strftime("%Y/%m/%d %H:%M:%S");
+
         article.getConnector()->beginTransaction();
         article.getConnector()->exec()
         << statement
@@ -259,7 +263,7 @@ namespace app::http::controllers::api::dashboard
         << c->title.value()
         << c->content.value()
         << c->type.selected_id()
-        << "2018-12-10"
+        << datetime
         << id
         ;
         article.getConnector()->commit();

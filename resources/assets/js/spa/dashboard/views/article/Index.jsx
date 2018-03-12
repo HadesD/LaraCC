@@ -57,6 +57,12 @@ export default (state, actions) => ({match}) => {
                 <td>
                   Author
                 </td>
+                <td>
+                  Created At
+                </td>
+                <td>
+                  Updated At
+                </td>
               </tr>
             </thead>
             <tbody>
@@ -79,6 +85,12 @@ export default (state, actions) => ({match}) => {
                       <Link to={articleInfo.author.url}>
                         {articleInfo.author.name}
                       </Link>
+                    </td>
+                    <td>
+                      {articleInfo.created_at}
+                    </td>
+                    <td>
+                      {articleInfo.updated_at}
                     </td>
                   </tr>
                 );
