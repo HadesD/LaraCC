@@ -1,8 +1,8 @@
 NPROCS := 1
 OS := $(shell uname -s)
 
-ifeq ($(SERVICE_PORT),)
-  SERVICE_PORT := 9081
+ifeq ($(PORT),)
+  PORT := 9081
 endif
 
 ifeq ($(OS), Linux)
@@ -13,7 +13,7 @@ ifeq ($(OS), Darwin)
 endif
 
 $(info Platform ${OS})
-$(info Use TCP/IP Port ${SERVICE_PORT})
+$(info Use TCP/IP Port ${PORT})
 $(info Use ${NPROCS} CPUs)
 
 .PHONY: build
@@ -26,11 +26,11 @@ dev:
 	  && cmake .. -DCMAKE_BUILD_TYPE=Debug \
 	  && make -j ${NPROCS}
 	cd bin/Debug \
-	  && ./WebApp -c config.json --service-port=${SERVICE_PORT}
+	  && PORT=${PORT} ./WebApp
 
 build: prd npm.prd db
 	cd bin/Release && \
-	  ./WebApp -c config.json --service-port=${SERVICE_PORT}
+	  PORT=${PORT} ./WebApp
 
 prd:
 	cd build && \
