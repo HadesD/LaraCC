@@ -41,11 +41,14 @@ namespace app::http::controllers::api::home
         r["created_at"] = article.getCreatedAt();
         r["updated_at"] = article.getUpdatedAt();
         auto content = article.getContent();
-        std::size_t _maxContentChar = 150;
-        if (content.size() > _maxContentChar)
+        if (static_cast<int>(r["type"].number()) != 2)
         {
-          content.resize(_maxContentChar);
-          content += "&lsqb;...&rsqb;";
+          std::size_t _maxContentChar = 150;
+          if (content.size() > _maxContentChar)
+          {
+            content.resize(_maxContentChar);
+            content += "&lsqb;...&rsqb;";
+          }
         }
         r["content"] = content;
 

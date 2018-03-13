@@ -12,17 +12,24 @@ export default ({state, actions, articleInfo}) => {
       class={!articleInfo.type_text || articleInfo.type_text.name }
     >
       <div class="content">
-        <div
-          oncreate={
-            utils.dangerouslySetInnerHTML(
-              !articleInfo.content
-              || ParseMarkdownJs(articleInfo.content)
-            )
+        <h3>
+          <Link to={articleInfo.permalink}>
+            {articleInfo.title}
+          </Link>
+        </h3>
+        <div class="meta">
+          <span class="date moment">{articleInfo.updated_at}</span>
+          {
+            !articleInfo.author
+              || (
+                <span class="author">
+                  <Link to={articleInfo.author.url}>
+                    {articleInfo.author.name}
+                  </Link>
+                </span>
+              )
           }
-          onupdate={(e) => {
-            e.oncreate(e);
-          }}
-        />
+        </div>
       </div>
     </article>
   );
