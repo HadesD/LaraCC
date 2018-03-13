@@ -3,7 +3,7 @@ import {
   Link
 } from '@hyperapp/router';
 
-import styles from '../../../../sass/home.scss';
+import styles from '../../../../../sass/home.scss';
 
 export default ({state, actions}) => {
   if (!state.isFetchingPage)

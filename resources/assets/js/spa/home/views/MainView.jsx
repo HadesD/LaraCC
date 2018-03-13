@@ -8,7 +8,7 @@ import Index from './Index.jsx';
 import Article from './Article.jsx';
 import Login from './Login.jsx';
 
-import Main from '../components/Main.jsx';
+import Main from './components/Main.jsx';
 
 export default (state, actions) => {
   return (

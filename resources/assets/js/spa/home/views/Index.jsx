@@ -3,8 +3,9 @@ import {
   Link
 } from '@hyperapp/router';
 
-import utils from '../../commons/utils.js';
-import ParseMarkdownJs from 'parse-markdown-js';
+import QuoteFormat from './index_components/QuoteFormat.jsx';
+import NormalFormat from './index_components/NormalFormat.jsx';
+import TilFormat from './index_components/TilFormat.jsx';
 
 let isCalledFetchData = false;
 
@@ -32,6 +33,27 @@ export default (state, actions) => ({match}) => {
       }}
     >
       {!state.homePage.listPost || state.homePage.listPost.map(articleInfo => {
+        let ArticleFormat;
+
+        switch (articleInfo.type)
+        {
+          case 1:
+            ArticleFormat = TilFormat;
+            break;
+          case 2:
+            ArticleFormat = QuoteFormat;
+            break;
+          case 3:
+            ArticleFormat = NormalFormat;
+            break;
+          case 4:
+            ArticleFormat = NormalFormat;
+            break;
+          case 0:
+          default:
+            ArticleFormat = NormalFormat;
+        }
+
         return (
           <div
             class={
@@ -50,60 +72,11 @@ export default (state, actions) => ({match}) => {
               >
               </i>
             </Link>
-            <article
-              class={!articleInfo.type_text || articleInfo.type_text.name }
-            >
-              {/* <div class="featured-image"> */}
-                {/*   <Link to={articleInfo.permalink}> */}
-                  {/*     <img src="/bilberry-hugo-theme/images/patreon.png" alt="" /> */}
-                  {/*   </Link> */}
-                {/* </div> */}
-              <div class="content">
-                <h3>
-                  <Link to={articleInfo.permalink}>
-                    {articleInfo.title}
-                  </Link>
-                </h3>
-                <div class="meta">
-                  <span class="date moment">{articleInfo.updated_at}</span>
-                  {
-                    !articleInfo.author
-                      || (
-                        <span class="author">
-                          <Link to={articleInfo.author.url}>
-                            {articleInfo.author.name}
-                          </Link>
-                        </span>
-                      )
-                  }
-                </div>
-                <div
-                  oncreate={
-                    utils.dangerouslySetInnerHTML(
-                      !articleInfo.content
-                      || ParseMarkdownJs(articleInfo.content)
-                    )
-                  }
-                  onupdate={(e) => {
-                    e.oncreate(e);
-                  }}
-                />
-              </div>
-              {
-                !articleInfo.tags ||
-                  (
-                    <div class="tags">
-                      <i class="fa fa-tags"></i> {articleInfo.tags.map(t => {
-                        return (
-                          <Link to={t.url}>
-                            {t.name}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  )
-              }
-            </article>
+            <ArticleFormat
+              state={state}
+              actions={actions}
+              articleInfo={articleInfo}
+            />
           </div>
         );
       })}

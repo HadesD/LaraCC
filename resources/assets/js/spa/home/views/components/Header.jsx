@@ -3,8 +3,8 @@ import {
   Link
 } from '@hyperapp/router';
 
-import utils from '../../commons/utils.js';
-import site from '../../commons/site.js';
+import utils from '../../../commons/utils.js';
+import site from '../../../commons/site.js';
 
 export default ({state, actions}) => {
   return (
