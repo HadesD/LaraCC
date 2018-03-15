@@ -1,0 +1,11 @@
+{
+  "name": "darkhades-blog",
+  "version": "0.9.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dark.Hades",
+  "license": "MIT"
+}

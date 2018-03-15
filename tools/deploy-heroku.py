@@ -1,61 +1,63 @@
 import os
 import subprocess
 import time
+from shutil import copyfile
 
 PWD = os.path.dirname(os.path.abspath(__file__))
 
-os.chdir(PWD+'/..')
-
-print(os.getcwd())
-
 CWD = os.getcwd()
 
-BUILD_DIR = os.getcwd() + '/bin'
+BUILD_DIR = PWD + '/../bin'
+REPO_DIR = BUILD_DIR + '/Release'
 
-# subprocess.Popen([
-#   'make',
-#   'build'
-# ], cwd=CWD)
-#
-# time.sleep(2)
+# Copy files
+copyfile(PWD + '/heroku/package.json', REPO_DIR + '/package.json')
+copyfile(PWD + '/heroku/Procfile', REPO_DIR + '/Procfile')
 
-f = open(BUILD_DIR + '/.gitignore', 'r')
-r = f.read()
-f.close()
-f = open(BUILD_DIR + '/.gitignore', 'w')
-f.write(
-  r
-  + '\n'
-  + '!/Release\n'
-  + '!/Release/**\n'
-)
-f.close()
+subprocess.call([
+  'git',
+  'init'
+], cwd=REPO_DIR)
 
-time.sleep(2)
+time.sleep(1)
+
+subprocess.call([
+  'heroku',
+  'git:remote',
+  '-a',
+  'hadesd'
+], cwd=REPO_DIR)
 
 subprocess.call([
   'git',
   'status'
-], cwd=CWD)
+], cwd=REPO_DIR)
 
-time.sleep(5)
+time.sleep(1)
 
 subprocess.call([
   'git',
   'add',
   '.'
-], cwd=CWD)
+], cwd=REPO_DIR)
 
-time.sleep(5)
+time.sleep(1)
 
 subprocess.call([
   'git',
   'commit',
   '-m',
   '"Deploy Heroku"'
-], cwd=CWD)
+], cwd=REPO_DIR)
 
-time.sleep(5)
+time.sleep(1)
+
+print('Username: blank')
+print('Password: ')
+subprocess.call([
+  'heroku',
+  'auth:token'
+], cwd=REPO_DIR)
 
 subprocess.call([
   'git',
@@ -63,5 +65,5 @@ subprocess.call([
   'heroku',
   'master',
   '-f'
-], cwd=CWD)
+], cwd=REPO_DIR)
 
