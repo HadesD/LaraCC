@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
     );
 
   std::cout << "*Server running at "
-  << srv.settings().get<std::string>("service.ip")
+  << "tcp://" << srv.settings().get<std::string>("service.ip")
   << ":"
   << srv.settings().get<int>("service.port")
   ;

@@ -23,9 +23,6 @@
         </span>
         --->
       </div>
-      <div>
-        <% c++ out() << article.getContentHtml(); %>
-      </div>
     </div>
   </article>
 </div>

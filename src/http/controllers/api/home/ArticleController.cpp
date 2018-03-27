@@ -81,11 +81,11 @@ namespace app::http::controllers::api::home
     catch (const app::database::ConnectorException& e)
     {
       this->response().status(cppcms::http::response::internal_server_error);
-      res.null();
+      res.undefined();
       res["error"] = e.what();
     }
 
-    if (res.is_null())
+    if (res.is_undefined())
     {
       this->response().status(cppcms::http::response::not_found);
       res["error"] = true;
@@ -150,7 +150,7 @@ namespace app::http::controllers::api::home
       res["error"] = e.what();
     }
 
-    if (res.is_null())
+    if (res.is_undefined())
     {
       this->response().status(cppcms::http::response::not_found);
       res["error"] = true;

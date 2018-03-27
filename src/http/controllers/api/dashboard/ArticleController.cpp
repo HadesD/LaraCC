@@ -79,7 +79,7 @@ namespace app::http::controllers::api::dashboard
       res["error"] = e.what();
     }
 
-    if (res.is_null())
+    if (res.is_undefined())
     {
       this->response().status(cppcms::http::response::not_found);
       res["error"] = true;
@@ -139,7 +139,7 @@ namespace app::http::controllers::api::dashboard
       res["error"] = e.what();
     }
 
-    if (res.is_null())
+    if (res.is_undefined())
     {
       this->response().status(cppcms::http::response::not_found);
       res["error"] = true;
