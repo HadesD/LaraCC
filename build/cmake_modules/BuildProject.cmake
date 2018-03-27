@@ -18,7 +18,7 @@ add_custom_command(
   DEPENDS ${VIEWS_TMPL}
   )
 add_library(${VIEW_SKIN} SHARED "${CMAKE_CURRENT_BINARY_DIR}/${VIEW_SKIN}.cpp" ${APP_SRC})
-target_link_libraries(${VIEW_SKIN} ${APP_REQUIRED_LIB})
+target_link_libraries(${VIEW_SKIN})
 
 # Application build
 add_executable(${APP_NAME} ${APP_SRC})

@@ -23,8 +23,11 @@ set(LIST_FILES_COPY_AFTER_BUILD
 set(APP_REQUIRED_LIB
   booster
   cppcms
-  sqlite3
+  # sqlite3
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite3/.libs/libsqlite3.a
   hoedown
+  pthread
+  dl
   )
 
 set(INCLUDE_DIR
@@ -37,6 +40,8 @@ set(INCLUDE_DIR
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite_modern_cpp/include/hdr
 
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/include/src
+
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite3
   )
 
 set(LINK_DIR)
@@ -50,6 +55,7 @@ if(UNIX AND NOT APPLE)
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64/libhoedown.so
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64/libhoedown.so.3
+
   )
   set(LINK_DIR "${LINK_DIR}"
     # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
