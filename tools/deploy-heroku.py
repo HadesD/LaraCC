@@ -25,7 +25,7 @@ subprocess.call([
   'heroku',
   'git:remote',
   '-a',
-  'hadesd'
+  'icodemylife'
 ], cwd=REPO_DIR)
 
 subprocess.call([
