@@ -23,11 +23,8 @@ set(LIST_FILES_COPY_AFTER_BUILD
 set(APP_REQUIRED_LIB
   booster
   cppcms
-  # sqlite3
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite3/.libs/libsqlite3.a
-  hoedown
+  # hoedown
   pthread
-  dl
   )
 
 set(INCLUDE_DIR
@@ -41,20 +38,27 @@ set(INCLUDE_DIR
 
   ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/include/src
 
-  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite3
+  ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite3/include
   )
 
 set(LINK_DIR)
 
 if(UNIX AND NOT APPLE)
+  set(APP_REQUIRED_LIB "${APP_REQUIRED_LIB}"
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.a
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.a
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/include/libhoedown.a
+    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/sqlite3/include/.libs/libsqlite3.a
+    )
+
   set(LIST_FILES_COPY_AFTER_BUILD "${LIST_FILES_COPY_AFTER_BUILD}"
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1.2.0
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/libcppcms.so.1
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0.2.0
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64/libhoedown.so
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64/libhoedown.so.3
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64/libhoedown.so
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64/libhoedown.so.3
 
   )
   set(LINK_DIR "${LINK_DIR}"
@@ -71,10 +75,10 @@ if(UNIX AND NOT APPLE)
     )
 elseif(APPLE)
   set(LIST_FILES_COPY_AFTER_BUILD "${LIST_FILES_COPY_AFTER_BUILD}"
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/libcppcms.1.2.0.dylib
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/libcppcms.1.dylib
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster/libbooster.0.2.0.dylib
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster/libbooster.0.dylib
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/libcppcms.1.2.0.dylib
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/libcppcms.1.dylib
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster/libbooster.0.2.0.dylib
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx/booster/libbooster.0.dylib
     )
   set(LINK_DIR "${LINK_DIR}"
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/osx

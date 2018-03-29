@@ -22,5 +22,5 @@ target_link_libraries(${VIEW_SKIN})
 
 # Application build
 add_executable(${APP_NAME} ${APP_SRC})
-target_link_libraries(${APP_NAME} ${APP_REQUIRED_LIB})
+target_link_libraries(${APP_NAME} ${APP_REQUIRED_LIB} -ldl)
 

@@ -39,6 +39,14 @@ namespace app::http::controllers::home
       const std::string &slug = article.getSlug();
 
       v.title = article.getTitle();
+      auto content = article.getContent();
+      std::size_t _maxContentChar = 150;
+      if (content.size() > _maxContentChar)
+      {
+        content.resize(_maxContentChar);
+        content += "&lsqb;...&rsqb;";
+      }
+      v.description = content;
 
       this->render("article_read", v);
     }
