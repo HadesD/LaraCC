@@ -57,17 +57,13 @@ if(UNIX AND NOT APPLE)
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0.2.0
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster/libbooster.so.0
 
-    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64/libhoedown.so
-    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64/libhoedown.so.3
-
+    /usr/lib/x86_64-linux-gnu/libicudata.so.60
+    /usr/lib/x86_64-linux-gnu/libicuuc.so.60
+    /usr/lib/x86_64-linux-gnu/libicui18n.so.60
   )
   set(LINK_DIR "${LINK_DIR}"
-    # ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppdb/prebuilt/linux/x64
-
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64/booster
-
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/hoedown/prebuilt/linux/x64
     )
   set(INCLUDE_DIR "${INCLUDE_DIR}"
     ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/cppcms/prebuilt/linux/x64
